@@ -1,0 +1,69 @@
+{
+  "generatedFor": "2026-09",
+  "reports": [
+    {
+      "source": "job_portal",
+      "recordsIn": 6645,
+      "recordsMapped": 6642,
+      "unmapped": [
+        {
+          "reason": "occupation",
+          "example": "Astrologer",
+          "count": 1
+        },
+        {
+          "reason": "place",
+          "example": "Chennai",
+          "count": 1
+        },
+        {
+          "reason": "occupation",
+          "example": "Drone Pilot",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "employment_exchange",
+      "recordsIn": 2215,
+      "recordsMapped": 2214,
+      "unmapped": [
+        {
+          "reason": "occupation",
+          "example": "Occupation not classified",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "industry_hiring",
+      "recordsIn": 2215,
+      "recordsMapped": 2214,
+      "unmapped": [
+        {
+          "reason": "period",
+          "example": "Q2 FY27",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "industry_survey",
+      "recordsIn": 2212,
+      "recordsMapped": 2211,
+      "unmapped": [
+        {
+          "reason": "place",
+          "example": "Kolhapur",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "source": "training_capacity",
+      "recordsIn": 369,
+      "recordsMapped": 369,
+      "unmapped": []
+    }
+  ]
+}

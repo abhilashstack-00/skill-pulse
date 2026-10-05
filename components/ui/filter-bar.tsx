@@ -1,121 +1,124 @@
 'use client'
 
-import type { FilterOptions, Filters, GapStatus, SkillMetrics, TrendPeriod } from '@/lib/types'
+import type { HorizonKey, StatusFilter } from '@/lib/domain/types'
 import { useFilters } from '@/lib/filters-context'
+import { useI18n } from '@/lib/i18n/context'
+import { useMeta } from '@/components/layout/app-shell'
 import { Select } from './select'
 
-export type FilterField = 'state' | 'district' | 'sector' | 'skill' | 'period' | 'gapType'
+export type FilterField = 'state' | 'district' | 'sector' | 'trade' | 'status' | 'horizon'
+
+const STATUSES: StatusFilter[] = ['any_shortage', 'severe_shortage', 'shortage', 'balanced', 'any_oversupply', 'oversupply', 'severe_oversupply', 'insufficient_data']
+const HORIZONS: HorizonKey[] = ['current', '3M', '6M', '12M']
 
 interface FilterBarProps {
   fields: FilterField[]
-  options: FilterOptions | undefined
   /**
-   * When set, the bar describes one focused skill: State, Sector and Skill
-   * always show that skill's values and cannot be cleared.
+   * Trade shown when none is chosen. When set, the Trade field always has a
+   * value and cannot be cleared (used where a screen describes one trade).
    */
-  focus?: SkillMetrics | null
+  focusTradeId?: string | null
   children?: React.ReactNode
 }
 
 /**
- * Shared filter row. Options cascade (a state narrows districts and skills)
- * and every change goes to the shared selection, so other screens follow.
+ * Shared filter row. Options cascade (a state narrows districts and trades),
+ * a planner's scope locks the fields above it, and every change goes to the
+ * shared selection so all screens follow.
  */
-export function FilterBar({ fields, options, focus, children }: FilterBarProps) {
+export function FilterBar({ fields, focusTradeId, children }: FilterBarProps) {
   const { filters, setFilters, resetFilters, activeCount } = useFilters()
-  const focused = focus !== undefined
+  const { meta, names } = useMeta()
+  const { t } = useI18n()
+  const options = meta?.options
+  const session = meta?.session
   const loading = !options
+  const focused = focusTradeId !== undefined
 
-  const stateId = filters.stateId ?? focus?.state.id ?? null
-  const sector = filters.sector ?? focus?.skill.sector ?? null
-  const skillId = filters.skillId ?? focus?.skill.id ?? null
+  const stateId = session?.stateId ?? filters.stateId
+  const districtId = session?.districtId ?? filters.districtId
+  const tradeId = filters.tradeId ?? focusTradeId ?? null
+  const sectorId = filters.sectorId ?? (focused && tradeId ? options?.trades.find((x) => x.id === tradeId)?.sectorId ?? null : null)
 
-  const districts = (options?.districts ?? []).filter((d) => !stateId || d.stateId === stateId)
-  const skills = (options?.skills ?? []).filter(
-    (s) =>
-      (!filters.stateId || s.stateId === filters.stateId) &&
-      (!filters.districtId || s.districtId === filters.districtId) &&
-      (!filters.sector || s.sector === filters.sector),
-  )
-
-  const pickSkill = (value: string | null) => {
-    const skill = options?.skills.find((s) => s.value === value)
-    if (focused && skill) {
-      setFilters({ skillId: skill.value, stateId: skill.stateId, sector: skill.sector, districtId: null })
-    } else {
-      setFilters({ skillId: value })
-    }
-  }
+  const inGeography = (cell: { stateId: string; districtId: string }) => (!stateId || cell.stateId === stateId) && (!districtId || cell.districtId === districtId)
+  const tradesHere = new Set((options?.cells ?? []).filter(inGeography).map((c) => c.tradeId))
+  const exists = (trade: string | null, geo: { stateId?: string | null; districtId?: string | null }) =>
+    !trade || (options?.cells ?? []).some((c) => c.tradeId === trade && (!geo.stateId || c.stateId === geo.stateId) && (!geo.districtId || c.districtId === geo.districtId))
 
   const controls: Record<FilterField, React.ReactNode> = {
     state: (
       <Select
-        key="state" label="State" value={stateId} options={options?.states ?? []} disabled={loading}
-        allLabel={focused ? undefined : 'All states'}
-        onChange={(value) => setFilters({ stateId: value, districtId: null, skillId: null, ...(focused ? { sector: null } : {}) })}
+        key="state" label={t('filter.state')} value={stateId} disabled={loading || Boolean(session?.stateId)}
+        options={(options?.states ?? []).map((s) => ({ value: s.id, label: names.state(s.id) }))}
+        allLabel={session?.stateId ? undefined : t('filter.allStates')}
+        onChange={(value) => setFilters({ stateId: value, districtId: null, ...(exists(filters.tradeId, { stateId: value }) ? {} : { tradeId: null }) })}
       />
     ),
     district: (
       <Select
-        key="district" label={focused ? 'All Districts' : 'District'} value={filters.districtId} options={districts} disabled={loading}
-        allLabel={focused ? 'All Districts' : 'All districts'}
+        key="district" label={t('filter.district')} value={districtId} disabled={loading || Boolean(session?.districtId)}
+        options={(options?.districts ?? []).filter((d) => !stateId || d.stateId === stateId).map((d) => ({ value: d.id, label: names.district(d.id) }))}
+        allLabel={session?.districtId ? undefined : t('filter.allDistricts')}
         onChange={(value) => {
-          const district = options?.districts.find((d) => d.value === value)
-          setFilters({ districtId: value, skillId: null, ...(district ? { stateId: district.stateId } : {}), ...(focused ? { sector: null } : {}) })
+          const district = options?.districts.find((d) => d.id === value)
+          setFilters({
+            districtId: value,
+            ...(district ? { stateId: district.stateId } : {}),
+            ...(exists(filters.tradeId, { districtId: value, stateId: district?.stateId ?? stateId }) ? {} : { tradeId: null }),
+          })
         }}
       />
     ),
     sector: (
       <Select
-        key="sector" label="Sector" value={sector} options={options?.sectors ?? []} disabled={loading}
-        allLabel={focused ? undefined : 'All sectors'}
-        onChange={(value) => setFilters({ sector: value, skillId: null, ...(focused ? { stateId: null, districtId: null } : {}) })}
+        key="sector" label={t('filter.sector')} value={sectorId} disabled={loading}
+        options={(options?.sectors ?? []).map((s) => ({ value: s.id, label: names.sector(s.id) }))}
+        allLabel={t('filter.allSectors')}
+        onChange={(value) => {
+          const keepsTrade = filters.tradeId && (!value || options?.trades.find((x) => x.id === filters.tradeId)?.sectorId === value)
+          setFilters({ sectorId: value, ...(keepsTrade ? {} : { tradeId: null }) })
+        }}
       />
     ),
-    skill: (
+    trade: (
       <Select
-        key="skill" label="Skill" value={skillId} options={focused ? (options?.skills ?? []) : skills} disabled={loading}
-        allLabel={focused ? undefined : 'All skills'}
-        onChange={pickSkill}
+        key="trade" label={t('filter.trade')} value={tradeId} disabled={loading}
+        options={(options?.trades ?? [])
+          .filter((x) => tradesHere.has(x.id) && (!filters.sectorId || x.sectorId === filters.sectorId))
+          .map((x) => ({ value: x.id, label: names.trade(x.id) }))}
+        allLabel={focused ? undefined : t('filter.allTrades')}
+        onChange={(value) => setFilters({ tradeId: value })}
       />
     ),
-    period: (
+    status: (
       <Select
-        key="period" label="Period" value={filters.period} options={options?.periods ?? []} disabled={loading}
-        onChange={(value) => value && setFilters({ period: value as TrendPeriod })}
+        key="status" label={t('filter.gapType')} value={filters.status} disabled={loading}
+        options={STATUSES.map((s) => ({ value: s, label: t(`status.${s}`) }))}
+        allLabel={t('filter.allGapTypes')}
+        onChange={(value) => setFilters({ status: value as StatusFilter | null })}
       />
     ),
-    gapType: (
+    horizon: (
       <Select
-        key="gapType" label="Gap Type" value={filters.gapType} options={options?.gapTypes ?? []} disabled={loading}
-        allLabel="All gap types"
-        onChange={(value) => setFilters({ gapType: value as GapStatus | null })}
+        key="horizon" label={t('filter.horizon')} value={filters.horizon} disabled={loading}
+        options={HORIZONS.map((h) => ({ value: h, label: t(`horizon.${h}`) }))}
+        onChange={(value) => value && setFilters({ horizon: value as HorizonKey })}
       />
     ),
   }
 
-  const clearable = !focused && fields.some((field) => field !== 'period' && isActive(filters, field))
+  const lockedCount = Number(Boolean(session?.stateId && filters.stateId)) + Number(Boolean(session?.districtId && filters.districtId))
+  const clearable = activeCount - lockedCount > 0 && fields.some((field) => field !== 'horizon')
 
   return (
-    <div className="filter-bar" role="group" aria-label="Filters">
+    <div className="filter-bar" role="group" aria-label={t('filter.label')}>
       {fields.map((field) => controls[field])}
       {children}
-      {clearable && activeCount > 0 && (
-        <button type="button" className="link-btn filter-reset" onClick={() => resetFilters({ period: filters.period })}>
-          Reset
+      {clearable && (
+        <button type="button" className="link-btn filter-reset" onClick={() => resetFilters()}>
+          {t('common.reset')}
         </button>
       )}
     </div>
   )
-}
-
-function isActive(filters: Filters, field: FilterField): boolean {
-  switch (field) {
-    case 'state': return !!filters.stateId
-    case 'district': return !!filters.districtId
-    case 'sector': return !!filters.sector
-    case 'skill': return !!filters.skillId
-    case 'gapType': return !!filters.gapType
-    default: return false
-  }
 }

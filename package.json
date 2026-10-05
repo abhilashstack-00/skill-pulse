@@ -7,24 +7,39 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "data:generate": "tsx scripts/pilot/generate-raw.ts",
+    "data:ingest": "tsx scripts/ingest.ts",
+    "data:build": "pnpm data:generate && pnpm data:ingest",
+    "db:setup": "tsx --env-file-if-exists=.env.local scripts/db-setup.ts",
+    "pipeline": "tsx --env-file-if-exists=.env.local scripts/pipeline.ts",
+    "demo:users": "tsx --env-file-if-exists=.env.local scripts/create-demo-users.ts",
+    "db:check-rls": "psql \"$DATABASE_URL\" -v ON_ERROR_STOP=1 -q -f supabase/tests/rls-check.sql"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.2",
     "@vercel/analytics": "1.6.1",
     "lucide-react": "^1.16.0",
     "next": "16.3.3",
+    "pg": "^8.23.1",
     "react": "^19",
     "react-dom": "^19",
     "recharts": "^3.10.1",
-    "@fontsource-variable/inter": "^5.2.5"
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8.5",
     "tailwindcss": "^4.3.3",
-    "typescript": "5.7.3"
+    "tsx": "^4.23.15",
+    "typescript": "5.7.3",
+    "vitest": "^5.0.3"
   }
 }

@@ -2,8 +2,12 @@
 
 import { useEffect, useId, useRef, useState } from 'react'
 import { Check } from 'lucide-react'
-import type { Option } from '@/lib/types'
 import { cx } from '@/lib/format'
+
+export interface Option {
+  value: string
+  label: string
+}
 
 interface SelectProps {
   /** Field name. Shown in the trigger while nothing is selected. */

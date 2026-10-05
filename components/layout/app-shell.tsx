@@ -1,26 +1,45 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
+import { getMeta, type MetaData } from '@/lib/client/api'
 import { FiltersProvider } from '@/lib/filters-context'
-import { useService } from '@/lib/hooks/use-service'
-import { getDatasetInfo } from '@/lib/services/skillpulse'
 import { cx } from '@/lib/format'
+import { useService } from '@/lib/hooks/use-service'
+import { I18nProvider, useI18n } from '@/lib/i18n/context'
+import { namesFrom, type Names } from '@/lib/i18n/render'
 import { Brand, Sidebar } from './sidebar'
 
-type DatasetInfo = Awaited<ReturnType<typeof getDatasetInfo>>
-const DatasetContext = createContext<DatasetInfo | undefined>(undefined)
+interface MetaContextValue {
+  meta: MetaData | undefined
+  failed: boolean
+  names: Names
+}
 
-export function useDataset() {
-  return useContext(DatasetContext)
+const emptyNames: Names = { state: (id) => id ?? '', district: (id) => id ?? '', sector: (id) => id ?? '', trade: (id) => id ?? '' }
+const MetaContext = createContext<MetaContextValue>({ meta: undefined, failed: false, names: emptyNames })
+
+/** Dataset information, the signed-in session, filter options and display names. */
+export function useMeta() {
+  return useContext(MetaContext)
+}
+
+export function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  return (
+    <I18nProvider>
+      {pathname === '/login' ? children : <Frame>{children}</Frame>}
+    </I18nProvider>
+  )
 }
 
 /** Sidebar + content frame shared by every screen. */
-export function AppShell({ children }: { children: React.ReactNode }) {
+function Frame({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const dataset = useService(getDatasetInfo, [])
+  const { locale, t } = useI18n()
+  const meta = useService(getMeta, [])
 
   useEffect(() => setOpen(false), [pathname])
 
@@ -31,15 +50,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [open])
 
+  const value = useMemo<MetaContextValue>(
+    () => ({ meta: meta.data, failed: meta.status === 'error', names: meta.data ? namesFrom(meta.data.options, locale) : emptyNames }),
+    [meta.data, meta.status, locale],
+  )
+
   return (
     <FiltersProvider>
-      <DatasetContext.Provider value={dataset.data}>
+      <MetaContext.Provider value={value}>
         <div className="app-shell">
-          <Sidebar open={open} onNavigate={() => setOpen(false)} dataset={dataset.data} unavailable={dataset.status === 'error'} />
+          <Sidebar open={open} onNavigate={() => setOpen(false)} />
           <div className={cx('scrim', open && 'is-open')} onClick={() => setOpen(false)} aria-hidden="true" />
           <div>
             <div className="mobile-bar">
-              <button type="button" className="icon-btn" aria-label="Open navigation" aria-expanded={open} aria-controls="sidebar" onClick={() => setOpen(true)}>
+              <button type="button" className="icon-btn" aria-label={t('nav.open')} aria-expanded={open} aria-controls="sidebar" onClick={() => setOpen(true)}>
                 <Menu aria-hidden="true" />
               </button>
               <Brand />
@@ -47,7 +71,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <main className="main">{children}</main>
           </div>
         </div>
-      </DatasetContext.Provider>
+      </MetaContext.Provider>
     </FiltersProvider>
   )
 }

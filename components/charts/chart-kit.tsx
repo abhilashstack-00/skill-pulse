@@ -1,21 +1,22 @@
-import { signed } from '@/lib/format'
+import { formatNumber, signed } from '@/lib/format'
 
 /** Shared chart styling so every chart reads as one family. */
 
 export const seriesColor = {
   demand: 'var(--series-demand)',
   supply: 'var(--series-supply)',
-  gap: 'var(--primary)',
 }
 
 export const axisTick = { fontSize: 11, fill: '#667085' }
 
-/** Round a value range out to multiples of `step` with a little headroom. */
-export function niceDomain(values: number[], step = 10): [number, number] {
+/** Round a value range out to a tidy axis with a little headroom. */
+export function niceDomain(values: number[]): [number, number] {
   const min = Math.min(...values)
   const max = Math.max(...values)
-  const low = Math.floor((min - 2) / step) * step
-  const high = Math.ceil((max + 2) / step) * step
+  const span = Math.max(max - min, max * 0.1, 1)
+  const step = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000].find((s) => span / s <= 5) ?? 20000
+  const low = Math.max(0, Math.floor((min - span * 0.08) / step) * step)
+  const high = Math.ceil((max + span * 0.08) / step) * step
   return [low, high === low ? low + step : high]
 }
 
@@ -43,9 +44,8 @@ export function ChartTooltip({ rows, active, label, payload }: ChartTooltipProps
         const raw = point[row.key]
         const value = Array.isArray(raw) ? raw : typeof raw === 'number' ? raw : null
         if (value === null) return null
-        const text = Array.isArray(value)
-          ? `${signed(Number(value[0]))} to ${signed(Number(value[1]))}`
-          : row.signed ? signed(value) : String(value)
+        const one = (n: number) => (row.signed ? signed(n) : formatNumber(Math.round(n)))
+        const text = Array.isArray(value) ? `${one(Number(value[0]))} – ${one(Number(value[1]))}` : one(value)
         return (
           <div className="chart-tooltip-row" key={row.key}>
             <span className="legend-item">
@@ -66,16 +66,14 @@ interface EndLabelProps {
   x?: number | string
   y?: number | string
   value?: number | string | null
-  format?: (value: number) => string
 }
 
 /** Direct label on the final point of a line. */
-export function EndLabel({ last, index, x, y, value, format }: EndLabelProps) {
+export function EndLabel({ last, index, x, y, value }: EndLabelProps) {
   if (index !== last || value == null || x == null || y == null) return null
-  const text = format ? format(Number(value)) : String(value)
   return (
     <text x={Number(x) + 8} y={Number(y)} dy={4} fontSize={11} fontWeight={600} fill="#142033">
-      {text}
+      {formatNumber(Math.round(Number(value)))}
     </text>
   )
 }

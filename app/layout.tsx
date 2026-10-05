@@ -6,7 +6,7 @@ import { AppShell } from '@/components/layout/app-shell'
 
 export const metadata: Metadata = {
   title: { default: 'SkillPulse', template: '%s · SkillPulse' },
-  description: 'Labour-market intelligence for workforce and training planning.',
+  description: 'Labour market intelligence and skill demand–supply forecasting for planners. Prototype with synthetic pilot data.',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },

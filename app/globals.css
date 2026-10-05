@@ -2335,3 +2335,776 @@ p {
   .filter-bar > * { flex-basis: 100%; }
   .filter-bar .filter-reset { flex-basis: auto; }
 }
+
+/* ==========================================================================
+   Functional additions (backend integration)
+   Same tokens, type sizes and radii as above; nothing here restyles the
+   existing design.
+   ========================================================================== */
+
+/* Sidebar foot: language, account, dataset ---------------------------------- */
+
+.sidebar-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: auto 20px clamp(20px, 5vh, 48px);
+  flex-shrink: 0;
+}
+
+.sidebar-foot .dataset-status {
+  margin: 0;
+}
+
+.lang-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+}
+
+.lang-switch button {
+  height: 28px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.lang-switch button:hover {
+  color: var(--text-primary);
+}
+
+.lang-switch button[aria-pressed='true'] {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.account {
+  padding: 0 2px;
+}
+
+.account-name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-role {
+  margin: 3px 0 8px;
+  font-size: 11px;
+  line-height: 13px;
+  color: var(--text-secondary);
+}
+
+.account-demo {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.account-demo select {
+  display: block;
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+  color: var(--text-primary);
+}
+
+/* Provenance tag in the page header ----------------------------------------- */
+
+.page-provenance {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.provenance-tag {
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--warning-soft);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 13px;
+  color: #b54708;
+  white-space: nowrap;
+}
+
+/* Severe statuses carry an outline as well as a different label -------------- */
+
+.pill-strong {
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+/* KPI cards that open their calculation -------------------------------------- */
+
+.kpi-card.is-action {
+  display: block;
+  width: 100%;
+  text-align: left;
+  transition: box-shadow 0.12s;
+}
+
+.kpi-card.is-action:hover {
+  box-shadow: var(--shadow-card), inset 0 0 0 1px var(--border);
+}
+
+.kpi-card.is-action:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+.kpi-hint {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* Calculation tables (explainability) ---------------------------------------- */
+
+.calc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.calc-table th,
+.calc-table td {
+  padding: 9px 0 9px 12px;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.calc-table thead th {
+  padding-top: 0;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.calc-table th[scope='row'] {
+  padding-left: 0;
+  text-align: left;
+  white-space: normal;
+  font-weight: 600;
+}
+
+.calc-table th[scope='row'] span {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.calc-table tbody tr,
+.calc-table tfoot tr {
+  border-top: 1px solid var(--surface-secondary);
+}
+
+.calc-table tfoot td,
+.calc-table tfoot th {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.calc-note {
+  margin: 12px 0 14px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.calc-note strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.calc-list {
+  margin: 0;
+}
+
+.calc-list .kv-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  padding: 9px 0;
+  font-size: 12px;
+  line-height: 16px;
+  border-top: 1px solid var(--surface-secondary);
+}
+
+.calc-list .kv-row:first-child {
+  border-top: 0;
+}
+
+.calc-list .kv-row.is-total .kv-label,
+.calc-list .kv-row.is-total .kv-value {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.calc-list dd {
+  margin: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.alias-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alias-list li {
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-secondary);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.tabs {
+  flex-wrap: wrap;
+}
+
+/* Map nodes by gap status ---------------------------------------------------- */
+
+.map-node[data-level='shortage'] { --node: var(--danger); }
+.map-node[data-level='balanced'] { --node: var(--success); }
+.map-node[data-level='oversupply'] { --node: var(--warning); }
+.map-node:disabled { cursor: default; }
+
+/* Drill-down ---------------------------------------------------------------- */
+
+.drill-card {
+  margin-top: 24px;
+  padding: 20px 0 16px;
+}
+
+.drill-card .card-header {
+  padding: 0 24px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumb svg {
+  width: 12px;
+  height: 12px;
+  color: var(--text-muted);
+}
+
+.breadcrumb button {
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.breadcrumb button:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb [aria-current='true'] {
+  padding: 2px 4px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.drill-table {
+  --row-gap: 4px;
+  min-width: 720px;
+  margin-top: 8px;
+}
+
+.drill-table th {
+  height: 20px;
+}
+
+.drill-table td {
+  height: 44px;
+  vertical-align: middle;
+  padding-top: 0;
+}
+
+.drill-table td:last-child {
+  padding-top: 0;
+}
+
+.drill-note {
+  padding: 4px 24px 0;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.ranking-score {
+  padding-top: 1px;
+  font-size: 11px;
+  line-height: 13px;
+  color: var(--text-secondary);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Trade detail rows ---------------------------------------------------------- */
+
+.detail-row {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: 24px;
+}
+
+.detail-card {
+  padding: 20px 20px 22px;
+}
+
+.notice-list {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.notice {
+  padding: 12px 14px;
+  border-radius: var(--radius-tile);
+  background: var(--tone-soft);
+}
+
+.notice-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.notice-kind {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 12px;
+  text-transform: uppercase;
+  color: var(--tone);
+}
+
+.notice-place {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.notice-title {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 17px;
+  color: var(--text-primary);
+}
+
+.notice-text {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-primary);
+}
+
+.notice-action {
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 15px;
+  color: var(--text-secondary);
+}
+
+.notice.tone-neutral .notice-kind {
+  color: var(--text-secondary);
+}
+
+.muted-text {
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 17px;
+  color: var(--text-secondary);
+}
+
+.why-rows .why-row {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  column-gap: 14px;
+  height: 52px;
+}
+
+.why-row .why-raw {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.why-row .kv-value {
+  min-width: 58px;
+  text-align: right;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.why-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--surface-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.why-total strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Gap matrix extras ---------------------------------------------------------- */
+
+.card-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.matrix-table td.cell-pct {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--tone);
+}
+
+/* Forecast extras ------------------------------------------------------------ */
+
+.build-card {
+  margin-top: 25px;
+  padding: 22px 24px 24px;
+}
+
+.build-lines {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.build-lines strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.summary-grid.is-five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0 16px;
+}
+
+/* Methodology extras --------------------------------------------------------- */
+
+.method-section {
+  margin-top: 24px;
+}
+
+.weights-note {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+.method-card {
+  margin-top: 24px;
+  padding: 22px 24px 24px;
+}
+
+.method-card .card-title {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.method-text {
+  margin-top: 12px;
+  max-width: 860px;
+  font-size: 12px;
+  line-height: 19px;
+  color: var(--text-secondary);
+}
+
+.method-table {
+  width: 100%;
+  max-width: 620px;
+  margin-top: 16px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.method-table th,
+.method-table td {
+  padding: 9px 12px 9px 0;
+  text-align: left;
+  border-top: 1px solid var(--surface-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.method-table thead th {
+  border-top: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.method-table td {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rule-list {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-secondary);
+}
+
+/* Data sources extras -------------------------------------------------------- */
+
+.source-mode {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Login ---------------------------------------------------------------------- */
+
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px 28px 28px;
+}
+
+.login-card .brand {
+  height: auto;
+  padding: 0;
+}
+
+.login-title {
+  margin-top: 26px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--text-heading);
+}
+
+.login-subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.field {
+  display: block;
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.field input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 6px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  font-size: 13px;
+}
+
+.field input:focus-visible {
+  border-color: var(--primary);
+}
+
+.login-card .btn {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.form-error {
+  margin-top: 14px;
+  padding: 9px 12px;
+  border-radius: var(--radius-control);
+  background: var(--danger-soft);
+  font-size: 12px;
+  color: var(--danger);
+}
+
+.login-note {
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.login-lang {
+  margin-top: 20px;
+}
+
+@media (max-width: 1180px) {
+  .detail-row { grid-template-columns: minmax(0, 1fr); }
+  .summary-grid.is-five { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 16px; }
+}
+
+@media (max-width: 640px) {
+  .page-provenance { align-items: flex-start; margin-top: 8px; }
+  .summary-grid.is-five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why-rows .why-row { grid-template-columns: minmax(0, 1fr) auto; height: auto; padding: 10px 0; }
+  .why-row .why-raw { grid-column: 1; }
+}
+
+.balance-tile-sub {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
+  color: var(--text-secondary);
+}
+
+/* Layout refinements for the connected screens ------------------------------ */
+
+@media (min-width: 1101px) {
+  .kpi-grid.is-eight { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.forecast-card .card-header,
+.trend-card .card-header { flex-wrap: wrap; }
+
+.forecast-card .legend,
+.trend-card .legend { margin: 4px 0 0; }
+
+.matrix-card .table-scroll { margin-top: 6px; }
+
+.action-metrics.is-five { grid-template-columns: repeat(5, minmax(0, 170px)); }
+
+.action-footer > div:first-child { flex: 1 1 360px; min-width: 0; }
+
+.action-row .queue-card { height: auto; max-height: 720px; }
+.action-row .queue-list { min-height: 0; }
+
+.trace-row .kv-value { white-space: normal; }
+.trace-card .trace-row { height: auto; min-height: 40px; padding: 6px 0; }
+
+.sources-table td { height: 64px; }
+
+.map-node-sub {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: none;
+  color: var(--text-secondary);
+}
+
+.bubble-label small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.bubble-label.is-above {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+
+.bubble-label.is-right {
+  top: 50%;
+  left: calc(100% + 8px);
+  transform: translateY(-50%);
+}
+
+.bubble-label.is-left {
+  top: 50%;
+  left: auto;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .bubble-label.is-right, .bubble-label.is-left { top: calc(100% + 8px); left: 50%; right: auto; transform: translateX(-50%); text-align: left; }
+}
+
+@media (max-width: 640px) {
+  .action-metrics.is-five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Radar on small screens: labels would overprint, so they move to a list below the plot. */
+.radar-legend { display: none; }
+
+@media (max-width: 640px) {
+  .radar-plot .bubble-label { display: none; }
+  .radar-legend {
+    display: grid;
+    gap: 8px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .radar-legend li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+  .radar-legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--tone); }
+  .radar-legend strong { color: var(--tone); font-weight: 600; }
+  .matrix-table td { height: 56px; }
+  .matrix-card { min-height: 0; }
+}

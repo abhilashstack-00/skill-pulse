@@ -1,0 +1,2213 @@
+survey_month,trade,district,outlook_score
+2024-10,Software Developer,Hyderabad,58.3
+2024-11,Software Developer,Hyderabad,58.3
+2024-12,Software Developer,Hyderabad,58.3
+2025-01,Software Developer,Hyderabad,64.5
+2025-02,Software Developer,Hyderabad,64.5
+2025-03,Software Developer,Hyderabad,64.4
+2025-04,Software Developer,Hyderabad,64.4
+2025-05,Software Developer,Hyderabad,64.3
+2025-06,Software Developer,Hyderabad,64.3
+2025-07,Software Developer,Hyderabad,64.3
+2025-08,Software Developer,Hyderabad,64.2
+2025-09,Software Developer,Hyderabad,64.2
+2025-10,Software Developer,Hyderabad,59.3
+2025-11,Software Developer,Hyderabad,59.3
+2025-12,Software Developer,Hyderabad,59.4
+2026-01,Software Developer,Hyderabad,55.2
+2026-02,Software Developer,Hyderabad,55.1
+2026-03,Software Developer,Hyderabad,55.1
+2026-04,Software Developer,Hyderabad,55.3
+2026-05,Software Developer,Hyderabad,55.3
+2026-06,Software Developer,Hyderabad,55.2
+2026-07,Software Developer,Hyderabad,55.3
+2026-08,Software Developer,Hyderabad,54.8
+2026-09,Software Developer,Hyderabad,54.9
+2024-10,Data Entry Operator,Hyderabad,36.9
+2024-11,Data Entry Operator,Hyderabad,36.8
+2024-12,Data Entry Operator,Hyderabad,36.8
+2025-01,Data Entry Operator,Hyderabad,38.4
+2025-02,Data Entry Operator,Hyderabad,38.4
+2025-03,Data Entry Operator,Hyderabad,38.3
+2025-04,Data Entry Operator,Hyderabad,38.6
+2025-05,Data Entry Operator,Hyderabad,38.6
+2025-06,Data Entry Operator,Hyderabad,38.5
+2025-07,Data Entry Operator,Hyderabad,38.5
+2025-08,Data Entry Operator,Hyderabad,38.1
+2025-09,Data Entry Operator,Hyderabad,38.1
+2025-10,Data Entry Operator,Hyderabad,38.2
+2025-11,Data Entry Operator,Hyderabad,38.3
+2025-12,Data Entry Operator,Hyderabad,38.3
+2026-01,Data Entry Operator,Hyderabad,41.3
+2026-02,Data Entry Operator,Hyderabad,41.2
+2026-03,Data Entry Operator,Hyderabad,41.3
+2026-04,Data Entry Operator,Hyderabad,41.2
+2026-05,Data Entry Operator,Hyderabad,41.2
+2026-06,Data Entry Operator,Hyderabad,41.1
+2026-07,Data Entry Operator,Hyderabad,41.1
+2026-08,Data Entry Operator,Hyderabad,41.6
+2026-09,Data Entry Operator,Hyderabad,41.7
+2024-10,Digital Marketing Executive,Hyderabad,62.7
+2024-11,Digital Marketing Executive,Hyderabad,62.7
+2024-12,Digital Marketing Executive,Hyderabad,52.8
+2025-01,Digital Marketing Executive,Hyderabad,61.5
+2025-02,Digital Marketing Executive,Hyderabad,61.6
+2025-03,Digital Marketing Executive,Hyderabad,61.6
+2025-04,Digital Marketing Executive,Hyderabad,61.7
+2025-05,Digital Marketing Executive,Hyderabad,61.6
+2025-06,Digital Marketing Executive,Hyderabad,61.8
+2025-07,Digital Marketing Executive,Hyderabad,61.7
+2025-08,Digital Marketing Executive,Hyderabad,61.2
+2025-09,Digital Marketing Executive,Hyderabad,61.2
+2025-10,Digital Marketing Executive,Hyderabad,61.3
+2025-11,Digital Marketing Executive,Hyderabad,61.3
+2025-12,Digital Marketing Executive,Hyderabad,61.2
+2026-01,Digital Marketing Executive,Hyderabad,57.9
+2026-02,Digital Marketing Executive,Hyderabad,57.9
+2026-03,Digital Marketing Executive,Hyderabad,57.9
+2026-04,Digital Marketing Executive,Hyderabad,58
+2026-05,Digital Marketing Executive,Hyderabad,58
+2026-06,Digital Marketing Executive,Hyderabad,58.1
+2026-07,Digital Marketing Executive,Hyderabad,58.1
+2026-08,Digital Marketing Executive,Hyderabad,57.5
+2026-09,Digital Marketing Executive,Hyderabad,57.6
+2024-10,Healthcare Assistant,Hyderabad,63
+2024-11,Healthcare Assistant,Hyderabad,63
+2024-12,Healthcare Assistant,Hyderabad,63
+2025-01,Healthcare Assistant,Hyderabad,54.5
+2025-02,Healthcare Assistant,Hyderabad,54.5
+2025-03,Healthcare Assistant,Hyderabad,54.5
+2025-04,Healthcare Assistant,Hyderabad,54.7
+2025-05,Healthcare Assistant,Hyderabad,54.7
+2025-06,Healthcare Assistant,Hyderabad,54.7
+2025-07,Healthcare Assistant,Hyderabad,54.6
+2025-08,Healthcare Assistant,Hyderabad,54.3
+2025-09,Healthcare Assistant,Hyderabad,54.2
+2025-10,Healthcare Assistant,Hyderabad,54.3
+2025-11,Healthcare Assistant,Hyderabad,54.4
+2025-12,Healthcare Assistant,Hyderabad,54.4
+2026-01,Healthcare Assistant,Hyderabad,54.8
+2026-02,Healthcare Assistant,Hyderabad,54.7
+2026-03,Healthcare Assistant,Hyderabad,54.7
+2026-04,Healthcare Assistant,Hyderabad,54.6
+2026-05,Healthcare Assistant,Hyderabad,54.6
+2026-06,Healthcare Assistant,Hyderabad,54.5
+2026-07,Healthcare Assistant,Hyderabad,54.5
+2026-08,Healthcare Assistant,Hyderabad,55
+2026-09,Healthcare Assistant,Hyderabad,55.1
+2024-10,Phlebotomy Technician,Hyderabad,51.1
+2024-11,Phlebotomy Technician,Hyderabad,51.1
+2024-12,Phlebotomy Technician,Hyderabad,51
+2025-01,Phlebotomy Technician,Hyderabad,56
+2025-02,Phlebotomy Technician,Hyderabad,56
+2025-03,Phlebotomy Technician,Hyderabad,55.9
+2025-04,Phlebotomy Technician,Hyderabad,55.9
+2025-05,Phlebotomy Technician,Hyderabad,55.8
+2025-06,Phlebotomy Technician,Hyderabad,55.8
+2025-07,Phlebotomy Technician,Hyderabad,55.8
+2025-08,Phlebotomy Technician,Hyderabad,56.3
+2025-09,Phlebotomy Technician,Hyderabad,56.3
+2025-10,Phlebotomy Technician,Hyderabad,55.8
+2025-11,Phlebotomy Technician,Hyderabad,55.8
+2025-12,Phlebotomy Technician,Hyderabad,55.9
+2026-01,Phlebotomy Technician,Hyderabad,55.1
+2026-02,Phlebotomy Technician,Hyderabad,55
+2026-03,Phlebotomy Technician,Hyderabad,55
+2026-04,Phlebotomy Technician,Hyderabad,55.2
+2026-05,Phlebotomy Technician,Hyderabad,55.2
+2026-06,Phlebotomy Technician,Hyderabad,55.1
+2026-07,Phlebotomy Technician,Hyderabad,55.2
+2026-08,Phlebotomy Technician,Hyderabad,55.3
+2026-09,Phlebotomy Technician,Hyderabad,55.4
+2024-10,Welder,Hyderabad,51.8
+2024-11,Welder,Hyderabad,51.8
+2024-12,Welder,Hyderabad,51.7
+2025-01,Welder,Hyderabad,52.5
+2025-02,Welder,Hyderabad,52.4
+2025-03,Welder,Hyderabad,52.5
+2025-04,Welder,Hyderabad,52.7
+2025-05,Welder,Hyderabad,52.7
+2025-06,Welder,Hyderabad,52.6
+2025-07,Welder,Hyderabad,52.6
+2025-08,Welder,Hyderabad,52.8
+2025-09,Welder,Hyderabad,52.9
+2025-10,Welder,Hyderabad,52.7
+2025-11,Welder,Hyderabad,52.7
+2025-12,Welder,Hyderabad,52.8
+2026-01,Welder,Hyderabad,53.5
+2026-02,Welder,Hyderabad,53.4
+2026-03,Welder,Hyderabad,53.4
+2026-04,Welder,Hyderabad,53.3
+2026-05,Welder,Hyderabad,53.3
+2026-06,Welder,Hyderabad,53.3
+2026-07,Welder,Hyderabad,53.2
+2026-08,Welder,Hyderabad,53.8
+2026-09,Welder,Hyderabad,53.8
+2024-10,Warehouse Associate,Hyderabad,53.6
+2024-11,Warehouse Associate,Hyderabad,53.6
+2024-12,Warehouse Associate,Hyderabad,53.5
+2025-01,Warehouse Associate,Hyderabad,58.5
+2025-02,Warehouse Associate,Hyderabad,58.5
+2025-03,Warehouse Associate,Hyderabad,58.4
+2025-04,Warehouse Associate,Hyderabad,58.4
+2025-05,Warehouse Associate,Hyderabad,58.4
+2025-06,Warehouse Associate,Hyderabad,58.3
+2025-07,Warehouse Associate,Hyderabad,58.3
+2025-08,Warehouse Associate,Hyderabad,58.9
+2025-09,Warehouse Associate,Hyderabad,58.8
+2025-10,Warehouse Associate,Hyderabad,58.3
+2025-11,Warehouse Associate,Hyderabad,58.4
+2025-12,Warehouse Associate,Hyderabad,58.4
+2026-01,Warehouse Associate,Hyderabad,57.6
+2026-02,Warehouse Associate,Hyderabad,57.5
+2026-03,Warehouse Associate,Hyderabad,57.5
+2026-04,Warehouse Associate,Hyderabad,57.7
+2026-05,Warehouse Associate,Hyderabad,57.7
+2026-06,Warehouse Associate,Hyderabad,57.6
+2026-07,Warehouse Associate,Hyderabad,57.7
+2026-08,Warehouse Associate,Hyderabad,57.9
+2026-09,Warehouse Associate,Hyderabad,57.9
+2024-10,Logistics Coordinator,Hyderabad,46.4
+2024-11,Logistics Coordinator,Hyderabad,46.4
+2024-12,Logistics Coordinator,Hyderabad,46.4
+2025-01,Logistics Coordinator,Hyderabad,51.4
+2025-02,Logistics Coordinator,Hyderabad,51.3
+2025-03,Logistics Coordinator,Hyderabad,51.3
+2025-04,Logistics Coordinator,Hyderabad,51.6
+2025-05,Logistics Coordinator,Hyderabad,51.5
+2025-06,Logistics Coordinator,Hyderabad,51.5
+2025-07,Logistics Coordinator,Hyderabad,51.5
+2025-08,Logistics Coordinator,Hyderabad,51.7
+2025-09,Logistics Coordinator,Hyderabad,51.7
+2025-10,Logistics Coordinator,Hyderabad,51.2
+2025-11,Logistics Coordinator,Hyderabad,51.2
+2025-12,Logistics Coordinator,Hyderabad,51.3
+2026-01,Logistics Coordinator,Hyderabad,52.8
+2026-02,Logistics Coordinator,Hyderabad,52.7
+2026-03,Logistics Coordinator,Hyderabad,52.7
+2026-04,Logistics Coordinator,Hyderabad,52.6
+2026-05,Logistics Coordinator,Hyderabad,52.7
+2026-06,Logistics Coordinator,Hyderabad,52.5
+2026-07,Logistics Coordinator,Hyderabad,52.6
+2026-08,Logistics Coordinator,Hyderabad,52.5
+2026-09,Logistics Coordinator,Hyderabad,52.5
+2024-10,Electrician,Hyderabad,51
+2024-11,Electrician,Hyderabad,51.1
+2024-12,Electrician,Hyderabad,50.9
+2025-01,Electrician,Hyderabad,53.5
+2025-02,Electrician,Hyderabad,53.4
+2025-03,Electrician,Hyderabad,53.4
+2025-04,Electrician,Hyderabad,53.3
+2025-05,Electrician,Hyderabad,53.3
+2025-06,Electrician,Hyderabad,53.2
+2025-07,Electrician,Hyderabad,53.3
+2025-08,Electrician,Hyderabad,53.2
+2025-09,Electrician,Hyderabad,53.2
+2025-10,Electrician,Hyderabad,52.5
+2025-11,Electrician,Hyderabad,52.4
+2025-12,Electrician,Hyderabad,52.5
+2026-01,Electrician,Hyderabad,49.3
+2026-02,Electrician,Hyderabad,49.3
+2026-03,Electrician,Hyderabad,49.2
+2026-04,Electrician,Hyderabad,49.5
+2026-05,Electrician,Hyderabad,49.5
+2026-06,Electrician,Hyderabad,49.4
+2026-07,Electrician,Hyderabad,49.4
+2026-08,Electrician,Hyderabad,49.7
+2026-09,Electrician,Hyderabad,49.6
+2024-10,Mason,Hyderabad,51.5
+2024-11,Mason,Hyderabad,51.4
+2024-12,Mason,Hyderabad,51.6
+2025-01,Mason,Hyderabad,50.7
+2025-02,Mason,Hyderabad,50.9
+2025-03,Mason,Hyderabad,50.8
+2025-04,Mason,Hyderabad,50.6
+2025-05,Mason,Hyderabad,50.6
+2025-06,Mason,Hyderabad,50.7
+2025-07,Mason,Hyderabad,50.7
+2025-08,Mason,Hyderabad,50.5
+2025-09,Mason,Hyderabad,50.4
+2025-10,Mason,Hyderabad,50.5
+2025-11,Mason,Hyderabad,50.6
+2025-12,Mason,Hyderabad,50.5
+2026-01,Mason,Hyderabad,47.1
+2026-02,Mason,Hyderabad,47.1
+2026-03,Mason,Hyderabad,47.2
+2026-04,Mason,Hyderabad,46.9
+2026-05,Mason,Hyderabad,46.9
+2026-06,Mason,Hyderabad,47
+2026-07,Mason,Hyderabad,47
+2026-08,Mason,Hyderabad,46.7
+2026-09,Mason,Hyderabad,46.8
+2024-10,Retail Sales Associate,Hyderabad,44.5
+2024-11,Retail Sales Associate,Hyderabad,44.5
+2024-12,Retail Sales Associate,Hyderabad,44.6
+2025-01,Retail Sales Associate,Hyderabad,45.6
+2025-02,Retail Sales Associate,Hyderabad,45.6
+2025-03,Retail Sales Associate,Hyderabad,45.7
+2025-04,Retail Sales Associate,Hyderabad,45.7
+2025-05,Retail Sales Associate,Hyderabad,45.7
+2025-06,Retail Sales Associate,Hyderabad,45.8
+2025-07,Retail Sales Associate,Hyderabad,45.8
+2025-08,Retail Sales Associate,Hyderabad,45.9
+2025-09,Retail Sales Associate,Hyderabad,45.9
+2025-10,Retail Sales Associate,Hyderabad,50.8
+2025-11,Retail Sales Associate,Hyderabad,50.7
+2025-12,Retail Sales Associate,Hyderabad,50.7
+2026-01,Retail Sales Associate,Hyderabad,45.3
+2026-02,Retail Sales Associate,Hyderabad,45.4
+2026-03,Retail Sales Associate,Hyderabad,45.4
+2026-04,Retail Sales Associate,Hyderabad,45.5
+2026-05,Retail Sales Associate,Hyderabad,45.5
+2026-06,Retail Sales Associate,Hyderabad,45.6
+2026-07,Retail Sales Associate,Hyderabad,45.6
+2026-08,Retail Sales Associate,Hyderabad,45.7
+2026-09,Retail Sales Associate,Hyderabad,45.6
+2024-10,Solar Technician,Hyderabad,58.2
+2024-11,Solar Technician,Hyderabad,58.2
+2024-12,Solar Technician,Hyderabad,58.2
+2025-01,Solar Technician,Hyderabad,66.7
+2025-02,Solar Technician,Hyderabad,66.6
+2025-03,Solar Technician,Hyderabad,66.6
+2025-04,Solar Technician,Hyderabad,66.5
+2025-05,Solar Technician,Hyderabad,66.5
+2025-06,Solar Technician,Hyderabad,66.5
+2025-07,Solar Technician,Hyderabad,66.4
+2025-08,Solar Technician,Hyderabad,66.4
+2025-09,Solar Technician,Hyderabad,66.3
+2025-10,Solar Technician,Hyderabad,66.5
+2025-11,Solar Technician,Hyderabad,66.5
+2025-12,Solar Technician,Hyderabad,66.5
+2026-01,Solar Technician,Hyderabad,59.6
+2026-02,Solar Technician,Hyderabad,59.5
+2026-03,Solar Technician,Hyderabad,59.5
+2026-04,Solar Technician,Hyderabad,59.7
+2026-05,Solar Technician,Hyderabad,59.8
+2026-06,Solar Technician,Hyderabad,59.6
+2026-07,Solar Technician,Hyderabad,59.7
+2026-08,Solar Technician,Hyderabad,59.2
+2026-09,Solar Technician,Hyderabad,59.3
+2024-10,Software Developer,Rangareddy,58.2
+2024-11,Software Developer,Rangareddy,58.2
+2024-12,Software Developer,Rangareddy,58.2
+2025-01,Software Developer,Rangareddy,59.3
+2025-02,Software Developer,Rangareddy,59.3
+2025-03,Software Developer,Rangareddy,59.3
+2025-04,Software Developer,Rangareddy,59.4
+2025-05,Software Developer,Rangareddy,59.4
+2025-06,Software Developer,Rangareddy,59.5
+2025-07,Software Developer,Rangareddy,59.5
+2025-08,Software Developer,Rangareddy,59.5
+2025-09,Software Developer,Rangareddy,59.6
+2025-10,Software Developer,Rangareddy,54.5
+2025-11,Software Developer,Rangareddy,54.4
+2025-12,Software Developer,Rangareddy,54.4
+2026-01,Software Developer,Rangareddy,59
+2026-02,Software Developer,Rangareddy,59.1
+2026-03,Software Developer,Rangareddy,59.1
+2026-04,Software Developer,Rangareddy,59.2
+2026-05,Software Developer,Rangareddy,59.2
+2026-06,Software Developer,Rangareddy,59.3
+2026-07,Software Developer,Rangareddy,59.2
+2026-08,Software Developer,Rangareddy,59.4
+2026-09,Software Developer,Rangareddy,59.3
+2024-10,Data Entry Operator,Rangareddy,38
+2024-11,Data Entry Operator,Rangareddy,38.1
+2024-12,Data Entry Operator,Rangareddy,38
+2025-01,Data Entry Operator,Rangareddy,39.3
+2025-02,Data Entry Operator,Rangareddy,39.2
+2025-03,Data Entry Operator,Rangareddy,39.2
+2025-04,Data Entry Operator,Rangareddy,39.4
+2025-05,Data Entry Operator,Rangareddy,39.4
+2025-06,Data Entry Operator,Rangareddy,39.3
+2025-07,Data Entry Operator,Rangareddy,39.4
+2025-08,Data Entry Operator,Rangareddy,39.6
+2025-09,Data Entry Operator,Rangareddy,39.6
+2025-10,Data Entry Operator,Rangareddy,39.5
+2025-11,Data Entry Operator,Rangareddy,39.4
+2025-12,Data Entry Operator,Rangareddy,39.6
+2026-01,Data Entry Operator,Rangareddy,44.7
+2026-02,Data Entry Operator,Rangareddy,44.7
+2026-03,Data Entry Operator,Rangareddy,44.6
+2026-04,Data Entry Operator,Rangareddy,44.6
+2026-05,Data Entry Operator,Rangareddy,44.6
+2026-06,Data Entry Operator,Rangareddy,44.5
+2026-07,Data Entry Operator,Rangareddy,44.5
+2026-08,Data Entry Operator,Rangareddy,45.1
+2026-09,Data Entry Operator,Rangareddy,45
+2024-10,Digital Marketing Executive,Rangareddy,61.7
+2024-11,Digital Marketing Executive,Rangareddy,61.7
+2024-12,Digital Marketing Executive,Rangareddy,61.7
+2025-01,Digital Marketing Executive,Rangareddy,56.8
+2025-02,Digital Marketing Executive,Rangareddy,56.8
+2025-03,Digital Marketing Executive,Rangareddy,56.9
+2025-04,Digital Marketing Executive,Rangareddy,56.6
+2025-05,Digital Marketing Executive,Rangareddy,56.6
+2025-06,Digital Marketing Executive,Rangareddy,56.7
+2025-07,Digital Marketing Executive,Rangareddy,56.7
+2025-08,Digital Marketing Executive,Rangareddy,57.1
+2025-09,Digital Marketing Executive,Rangareddy,57.1
+2025-10,Digital Marketing Executive,Rangareddy,57
+2025-11,Digital Marketing Executive,Rangareddy,56.9
+2025-12,Digital Marketing Executive,Rangareddy,56.9
+2026-01,Digital Marketing Executive,Rangareddy,59.3
+2026-02,Digital Marketing Executive,Rangareddy,59.4
+2026-03,Digital Marketing Executive,Rangareddy,59.3
+2026-04,Digital Marketing Executive,Rangareddy,59.1
+2026-05,Digital Marketing Executive,Rangareddy,59.1
+2026-06,Digital Marketing Executive,Rangareddy,59.2
+2026-07,Digital Marketing Executive,Rangareddy,59.2
+2026-08,Digital Marketing Executive,Rangareddy,59.6
+2026-09,Digital Marketing Executive,Rangareddy,59.6
+2024-10,Healthcare Assistant,Rangareddy,51.8
+2024-11,Healthcare Assistant,Rangareddy,51.8
+2024-12,Healthcare Assistant,Rangareddy,51.9
+2025-01,Healthcare Assistant,Rangareddy,53.4
+2025-02,Healthcare Assistant,Rangareddy,53.4
+2025-03,Healthcare Assistant,Rangareddy,53.5
+2025-04,Healthcare Assistant,Rangareddy,53.5
+2025-05,Healthcare Assistant,Rangareddy,53.6
+2025-06,Healthcare Assistant,Rangareddy,53.6
+2025-07,Healthcare Assistant,Rangareddy,53.6
+2025-08,Healthcare Assistant,Rangareddy,53.7
+2025-09,Healthcare Assistant,Rangareddy,53.7
+2025-10,Healthcare Assistant,Rangareddy,53.6
+2025-11,Healthcare Assistant,Rangareddy,53.6
+2025-12,Healthcare Assistant,Rangareddy,53.5
+2026-01,Healthcare Assistant,Rangareddy,58.1
+2026-02,Healthcare Assistant,Rangareddy,58.3
+2026-03,Healthcare Assistant,Rangareddy,58.2
+2026-04,Healthcare Assistant,Rangareddy,58.3
+2026-05,Healthcare Assistant,Rangareddy,58.3
+2026-06,Healthcare Assistant,Rangareddy,58.4
+2026-07,Healthcare Assistant,Rangareddy,58.4
+2026-08,Healthcare Assistant,Rangareddy,58.5
+2026-09,Healthcare Assistant,Rangareddy,58.5
+2024-10,Phlebotomy Technician,Rangareddy,47.8
+2024-11,Phlebotomy Technician,Rangareddy,47.8
+2024-12,Phlebotomy Technician,Rangareddy,47.7
+2025-01,Phlebotomy Technician,Rangareddy,46.3
+2025-02,Phlebotomy Technician,Rangareddy,46.1
+2025-03,Phlebotomy Technician,Rangareddy,46.2
+2025-04,Phlebotomy Technician,Rangareddy,46.4
+2025-05,Phlebotomy Technician,Rangareddy,46.4
+2025-06,Phlebotomy Technician,Rangareddy,46.3
+2025-07,Phlebotomy Technician,Rangareddy,46.3
+2025-08,Phlebotomy Technician,Rangareddy,46.5
+2025-09,Phlebotomy Technician,Rangareddy,46.6
+2025-10,Phlebotomy Technician,Rangareddy,46.5
+2025-11,Phlebotomy Technician,Rangareddy,46.4
+2025-12,Phlebotomy Technician,Rangareddy,46.5
+2026-01,Phlebotomy Technician,Rangareddy,51.7
+2026-02,Phlebotomy Technician,Rangareddy,51.6
+2026-03,Phlebotomy Technician,Rangareddy,51.6
+2026-04,Phlebotomy Technician,Rangareddy,51.6
+2026-05,Phlebotomy Technician,Rangareddy,51.5
+2026-06,Phlebotomy Technician,Rangareddy,51.5
+2026-07,Phlebotomy Technician,Rangareddy,51.4
+2026-08,Phlebotomy Technician,Rangareddy,52
+2026-09,Phlebotomy Technician,Rangareddy,52
+2024-10,CNC Operator,Rangareddy,45.2
+2024-11,CNC Operator,Rangareddy,45.2
+2024-12,CNC Operator,Rangareddy,45.1
+2025-01,CNC Operator,Rangareddy,51.3
+2025-02,CNC Operator,Rangareddy,51.2
+2025-03,CNC Operator,Rangareddy,51.2
+2025-04,CNC Operator,Rangareddy,51.4
+2025-05,CNC Operator,Rangareddy,51.4
+2025-06,CNC Operator,Rangareddy,51.4
+2025-07,CNC Operator,Rangareddy,51.3
+2025-08,CNC Operator,Rangareddy,51
+2025-09,CNC Operator,Rangareddy,50.9
+2025-10,CNC Operator,Rangareddy,51.1
+2025-11,CNC Operator,Rangareddy,51.1
+2025-12,CNC Operator,Rangareddy,51.1
+2026-01,CNC Operator,Rangareddy,49.2
+2026-02,CNC Operator,Rangareddy,49.1
+2026-03,CNC Operator,Rangareddy,49.1
+2026-04,CNC Operator,Rangareddy,49
+2026-05,CNC Operator,Rangareddy,49
+2026-06,CNC Operator,Rangareddy,48.9
+2026-07,CNC Operator,Rangareddy,48.9
+2026-08,CNC Operator,Rangareddy,49.5
+2026-09,CNC Operator,Rangareddy,49.5
+2024-10,Welder,Rangareddy,53.2
+2024-11,Welder,Rangareddy,53.2
+2024-12,Welder,Rangareddy,53.3
+2025-01,Welder,Rangareddy,52
+2025-02,Welder,Rangareddy,52.1
+2025-03,Welder,Rangareddy,52.1
+2025-04,Welder,Rangareddy,51.9
+2025-05,Welder,Rangareddy,51.8
+2025-06,Welder,Rangareddy,52
+2025-07,Welder,Rangareddy,51.9
+2025-08,Welder,Rangareddy,52.4
+2025-09,Welder,Rangareddy,52.3
+2025-10,Welder,Rangareddy,51.8
+2025-11,Welder,Rangareddy,51.8
+2025-12,Welder,Rangareddy,51.7
+2026-01,Welder,Rangareddy,52.2
+2026-02,Welder,Rangareddy,52.3
+2026-03,Welder,Rangareddy,52.3
+2026-04,Welder,Rangareddy,52
+2026-05,Welder,Rangareddy,52.1
+2026-06,Welder,Rangareddy,52.1
+2026-07,Welder,Rangareddy,52.1
+2026-08,Welder,Rangareddy,52.5
+2026-09,Welder,Rangareddy,52.5
+2024-10,Warehouse Associate,Rangareddy,59.1
+2024-11,Warehouse Associate,Rangareddy,59.1
+2024-12,Warehouse Associate,Rangareddy,59
+2025-01,Warehouse Associate,Rangareddy,52.5
+2025-02,Warehouse Associate,Rangareddy,52.4
+2025-03,Warehouse Associate,Rangareddy,52.5
+2025-04,Warehouse Associate,Rangareddy,52.3
+2025-05,Warehouse Associate,Rangareddy,52.4
+2025-06,Warehouse Associate,Rangareddy,52.3
+2025-07,Warehouse Associate,Rangareddy,52.3
+2025-08,Warehouse Associate,Rangareddy,52.8
+2025-09,Warehouse Associate,Rangareddy,52.9
+2025-10,Warehouse Associate,Rangareddy,52.7
+2025-11,Warehouse Associate,Rangareddy,52.7
+2025-12,Warehouse Associate,Rangareddy,52.8
+2026-01,Warehouse Associate,Rangareddy,56.9
+2026-02,Warehouse Associate,Rangareddy,56.8
+2026-03,Warehouse Associate,Rangareddy,56.8
+2026-04,Warehouse Associate,Rangareddy,57.1
+2026-05,Warehouse Associate,Rangareddy,57
+2026-06,Warehouse Associate,Rangareddy,57
+2026-07,Warehouse Associate,Rangareddy,56.9
+2026-08,Warehouse Associate,Rangareddy,56.6
+2026-09,Warehouse Associate,Rangareddy,56.6
+2024-10,Logistics Coordinator,Rangareddy,54
+2024-11,Logistics Coordinator,Rangareddy,54
+2024-12,Logistics Coordinator,Rangareddy,53.9
+2025-01,Logistics Coordinator,Rangareddy,56.4
+2025-02,Logistics Coordinator,Rangareddy,56.3
+2025-03,Logistics Coordinator,Rangareddy,56.4
+2025-04,Logistics Coordinator,Rangareddy,56.2
+2025-05,Logistics Coordinator,Rangareddy,56.3
+2025-06,Logistics Coordinator,Rangareddy,56.2
+2025-07,Logistics Coordinator,Rangareddy,56.2
+2025-08,Logistics Coordinator,Rangareddy,56.1
+2025-09,Logistics Coordinator,Rangareddy,56.1
+2025-10,Logistics Coordinator,Rangareddy,55.4
+2025-11,Logistics Coordinator,Rangareddy,55.3
+2025-12,Logistics Coordinator,Rangareddy,55.5
+2026-01,Logistics Coordinator,Rangareddy,62.3
+2026-02,Logistics Coordinator,Rangareddy,62.2
+2026-03,Logistics Coordinator,Rangareddy,62.2
+2026-04,Logistics Coordinator,Rangareddy,62.4
+2026-05,Logistics Coordinator,Rangareddy,62.4
+2026-06,Logistics Coordinator,Rangareddy,62.4
+2024-10,Electrician,Rangareddy,49
+2024-11,Electrician,Rangareddy,49
+2024-12,Electrician,Rangareddy,48.9
+2025-01,Electrician,Rangareddy,46.7
+2025-02,Electrician,Rangareddy,46.6
+2025-03,Electrician,Rangareddy,46.6
+2025-04,Electrician,Rangareddy,46.9
+2025-05,Electrician,Rangareddy,46.8
+2025-06,Electrician,Rangareddy,46.8
+2025-07,Electrician,Rangareddy,46.8
+2025-08,Electrician,Rangareddy,47
+2025-09,Electrician,Rangareddy,47
+2025-10,Electrician,Rangareddy,46.5
+2025-11,Electrician,Rangareddy,46.5
+2025-12,Electrician,Rangareddy,46.6
+2026-01,Electrician,Rangareddy,50.9
+2026-02,Electrician,Rangareddy,50.8
+2026-03,Electrician,Rangareddy,50.8
+2026-04,Electrician,Rangareddy,50.7
+2026-05,Electrician,Rangareddy,50.7
+2026-06,Electrician,Rangareddy,50.6
+2026-07,Electrician,Rangareddy,50.6
+2026-08,Electrician,Rangareddy,50.5
+2026-09,Electrician,Rangareddy,50.6
+2024-10,Mason,Rangareddy,46.9
+2024-11,Mason,Rangareddy,47
+2024-12,Mason,Rangareddy,47
+2025-01,Mason,Rangareddy,50.9
+2025-02,Mason,Rangareddy,50.9
+2025-03,Mason,Rangareddy,50.9
+2025-04,Mason,Rangareddy,50.7
+2025-05,Mason,Rangareddy,50.7
+2025-06,Mason,Rangareddy,50.7
+2025-07,Mason,Rangareddy,50.8
+2025-08,Mason,Rangareddy,50.5
+2025-09,Mason,Rangareddy,50.6
+2025-10,Mason,Rangareddy,46.1
+2025-11,Mason,Rangareddy,46
+2025-12,Mason,Rangareddy,46
+2026-01,Mason,Rangareddy,54.5
+2026-02,Mason,Rangareddy,44.6
+2026-03,Mason,Rangareddy,44.6
+2026-04,Mason,Rangareddy,54.4
+2026-05,Mason,Rangareddy,54.3
+2026-06,Mason,Rangareddy,54.5
+2026-07,Mason,Rangareddy,54.4
+2026-08,Mason,Rangareddy,54.2
+2026-09,Mason,Rangareddy,54.2
+2024-10,Retail Sales Associate,Rangareddy,51.1
+2024-11,Retail Sales Associate,Rangareddy,51.1
+2024-12,Retail Sales Associate,Rangareddy,51.1
+2025-01,Retail Sales Associate,Rangareddy,47.2
+2025-02,Retail Sales Associate,Rangareddy,47.2
+2025-03,Retail Sales Associate,Rangareddy,47.1
+2025-04,Retail Sales Associate,Rangareddy,47.4
+2025-05,Retail Sales Associate,Rangareddy,47.3
+2025-06,Retail Sales Associate,Rangareddy,47.3
+2025-07,Retail Sales Associate,Rangareddy,47.3
+2025-08,Retail Sales Associate,Rangareddy,46.9
+2025-09,Retail Sales Associate,Rangareddy,46.9
+2025-10,Retail Sales Associate,Rangareddy,52
+2025-11,Retail Sales Associate,Rangareddy,52
+2025-12,Retail Sales Associate,Rangareddy,52.1
+2026-01,Retail Sales Associate,Rangareddy,52.9
+2026-02,Retail Sales Associate,Rangareddy,52.8
+2026-03,Retail Sales Associate,Rangareddy,52.8
+2026-04,Retail Sales Associate,Rangareddy,52.7
+2026-05,Retail Sales Associate,Rangareddy,52.7
+2026-06,Retail Sales Associate,Rangareddy,52.6
+2026-07,Retail Sales Associate,Rangareddy,52.6
+2026-08,Retail Sales Associate,Rangareddy,53.1
+2026-09,Retail Sales Associate,Rangareddy,53.2
+2024-10,Solar Technician,Rangareddy,65.2
+2024-11,Solar Technician,Rangareddy,65.3
+2024-12,Solar Technician,Rangareddy,65.3
+2025-01,Solar Technician,Rangareddy,73.7
+2025-02,Solar Technician,Rangareddy,73.8
+2025-03,Solar Technician,Rangareddy,73.8
+2025-04,Solar Technician,Rangareddy,73.5
+2025-05,Solar Technician,Rangareddy,73.6
+2025-06,Solar Technician,Rangareddy,73.6
+2025-07,Solar Technician,Rangareddy,73.6
+2025-08,Solar Technician,Rangareddy,73.4
+2025-09,Solar Technician,Rangareddy,73.4
+2025-10,Solar Technician,Rangareddy,73.9
+2025-11,Solar Technician,Rangareddy,73.9
+2025-12,Solar Technician,Rangareddy,73.8
+2026-01,Solar Technician,Rangareddy,67.3
+2026-02,Solar Technician,Rangareddy,67.4
+2026-03,Solar Technician,Rangareddy,67.4
+2026-04,Solar Technician,Rangareddy,67.2
+2026-05,Solar Technician,Rangareddy,67.2
+2026-06,Solar Technician,Rangareddy,67.3
+2026-07,Solar Technician,Rangareddy,67.2
+2026-08,Solar Technician,Rangareddy,67
+2026-09,Solar Technician,Rangareddy,67
+2024-10,Software Developer,Warangal,55.7
+2024-11,Software Developer,Warangal,55.8
+2024-12,Software Developer,Warangal,55.8
+2025-01,Software Developer,Warangal,60.8
+2025-02,Software Developer,Warangal,60.9
+2025-03,Software Developer,Warangal,60.9
+2025-04,Software Developer,Warangal,61
+2025-05,Software Developer,Warangal,61
+2025-06,Software Developer,Warangal,61
+2025-07,Software Developer,Warangal,61.1
+2025-08,Software Developer,Warangal,60.5
+2025-09,Software Developer,Warangal,60.5
+2025-10,Software Developer,Warangal,61
+2025-11,Software Developer,Warangal,61
+2025-12,Software Developer,Warangal,61
+2026-01,Software Developer,Warangal,59.5
+2026-02,Software Developer,Warangal,59.6
+2026-03,Software Developer,Warangal,59.5
+2026-04,Software Developer,Warangal,59.7
+2026-05,Software Developer,Warangal,59.6
+2026-06,Software Developer,Warangal,59.7
+2026-07,Software Developer,Warangal,59.7
+2026-08,Software Developer,Warangal,59.2
+2026-09,Software Developer,Warangal,59.1
+2024-10,Data Entry Operator,Warangal,43.2
+2024-11,Data Entry Operator,Warangal,43.2
+2024-12,Data Entry Operator,Warangal,43.1
+2025-01,Data Entry Operator,Warangal,39.4
+2025-02,Data Entry Operator,Warangal,39.3
+2025-03,Data Entry Operator,Warangal,39.3
+2025-04,Data Entry Operator,Warangal,39.5
+2025-05,Data Entry Operator,Warangal,39.6
+2025-06,Data Entry Operator,Warangal,39.5
+2025-07,Data Entry Operator,Warangal,39.5
+2025-08,Data Entry Operator,Warangal,39.1
+2025-09,Data Entry Operator,Warangal,39.1
+2025-10,Data Entry Operator,Warangal,39.6
+2025-11,Data Entry Operator,Warangal,39.6
+2025-12,Data Entry Operator,Warangal,39.7
+2026-01,Data Entry Operator,Warangal,46.5
+2026-02,Data Entry Operator,Warangal,46.4
+2026-03,Data Entry Operator,Warangal,46.4
+2026-04,Data Entry Operator,Warangal,46.4
+2026-05,Data Entry Operator,Warangal,46.3
+2026-06,Data Entry Operator,Warangal,46.3
+2026-07,Data Entry Operator,Warangal,46.2
+2026-08,Data Entry Operator,Warangal,46.2
+2026-09,Data Entry Operator,Warangal,46.2
+2024-10,Digital Marketing Executive,Warangal,68
+2024-11,Digital Marketing Executive,Warangal,68.1
+2024-12,Digital Marketing Executive,Warangal,68.1
+2025-01,Digital Marketing Executive,Warangal,66.5
+2025-02,Digital Marketing Executive,Warangal,66.6
+2025-03,Digital Marketing Executive,Warangal,66.6
+2025-04,Digital Marketing Executive,Warangal,66.3
+2025-05,Digital Marketing Executive,Warangal,66.4
+2025-06,Digital Marketing Executive,Warangal,66.4
+2025-07,Digital Marketing Executive,Warangal,66.5
+2025-08,Digital Marketing Executive,Warangal,66.2
+2025-09,Digital Marketing Executive,Warangal,66.2
+2025-10,Digital Marketing Executive,Warangal,66.7
+2025-11,Digital Marketing Executive,Warangal,66.7
+2025-12,Digital Marketing Executive,Warangal,66.7
+2026-01,Digital Marketing Executive,Warangal,60.1
+2026-02,Digital Marketing Executive,Warangal,60.3
+2026-03,Digital Marketing Executive,Warangal,60.2
+2026-04,Digital Marketing Executive,Warangal,60
+2026-05,Digital Marketing Executive,Warangal,60
+2026-06,Digital Marketing Executive,Warangal,60.1
+2026-07,Digital Marketing Executive,Warangal,60.1
+2026-08,Digital Marketing Executive,Warangal,59.9
+2026-09,Digital Marketing Executive,Warangal,59.8
+2024-10,Healthcare Assistant,Warangal,53.9
+2024-11,Healthcare Assistant,Warangal,54
+2024-12,Healthcare Assistant,Warangal,54
+2025-01,Healthcare Assistant,Warangal,59
+2025-02,Healthcare Assistant,Warangal,59.1
+2025-03,Healthcare Assistant,Warangal,59.1
+2025-04,Healthcare Assistant,Warangal,59.2
+2025-05,Healthcare Assistant,Warangal,59.2
+2025-06,Healthcare Assistant,Warangal,59.2
+2025-07,Healthcare Assistant,Warangal,59.3
+2025-08,Healthcare Assistant,Warangal,58.7
+2025-09,Healthcare Assistant,Warangal,58.7
+2025-10,Healthcare Assistant,Warangal,59.2
+2025-11,Healthcare Assistant,Warangal,59.2
+2025-12,Healthcare Assistant,Warangal,59.2
+2026-01,Healthcare Assistant,Warangal,57.7
+2026-02,Healthcare Assistant,Warangal,57.8
+2026-03,Healthcare Assistant,Warangal,57.7
+2026-04,Healthcare Assistant,Warangal,57.9
+2026-05,Healthcare Assistant,Warangal,57.8
+2026-06,Healthcare Assistant,Warangal,57.9
+2026-07,Healthcare Assistant,Warangal,57.9
+2026-08,Healthcare Assistant,Warangal,57.4
+2026-09,Healthcare Assistant,Warangal,57.3
+2024-10,Phlebotomy Technician,Warangal,50.1
+2024-11,Phlebotomy Technician,Warangal,50.1
+2024-12,Phlebotomy Technician,Warangal,50
+2025-01,Phlebotomy Technician,Warangal,48.6
+2025-02,Phlebotomy Technician,Warangal,48.4
+2025-03,Phlebotomy Technician,Warangal,48.5
+2025-04,Phlebotomy Technician,Warangal,48.7
+2025-05,Phlebotomy Technician,Warangal,48.7
+2025-06,Phlebotomy Technician,Warangal,48.6
+2025-07,Phlebotomy Technician,Warangal,48.6
+2025-08,Phlebotomy Technician,Warangal,48.2
+2025-09,Phlebotomy Technician,Warangal,48.2
+2025-10,Phlebotomy Technician,Warangal,48.8
+2025-11,Phlebotomy Technician,Warangal,48.7
+2025-12,Phlebotomy Technician,Warangal,48.8
+2026-01,Phlebotomy Technician,Warangal,48.4
+2026-02,Phlebotomy Technician,Warangal,48.3
+2026-03,Phlebotomy Technician,Warangal,48.3
+2026-04,Phlebotomy Technician,Warangal,48.2
+2026-05,Phlebotomy Technician,Warangal,48.2
+2026-06,Phlebotomy Technician,Warangal,48.2
+2026-07,Phlebotomy Technician,Warangal,48.1
+2026-08,Phlebotomy Technician,Warangal,48.1
+2026-09,Phlebotomy Technician,Warangal,48.1
+2024-10,CNC Operator,Warangal,53.3
+2024-11,CNC Operator,Warangal,53.2
+2024-12,CNC Operator,Warangal,53.2
+2025-01,CNC Operator,Warangal,58.2
+2025-02,CNC Operator,Warangal,58.1
+2025-03,CNC Operator,Warangal,58.1
+2025-04,CNC Operator,Warangal,48.4
+2025-05,CNC Operator,Warangal,48.3
+2025-06,CNC Operator,Warangal,48.3
+2025-07,CNC Operator,Warangal,48.2
+2025-08,CNC Operator,Warangal,48.5
+2025-09,CNC Operator,Warangal,48.5
+2025-10,CNC Operator,Warangal,58
+2025-11,CNC Operator,Warangal,58
+2025-12,CNC Operator,Warangal,58.1
+2026-01,CNC Operator,Warangal,50.1
+2026-02,CNC Operator,Warangal,50
+2026-03,CNC Operator,Warangal,50
+2026-04,CNC Operator,Warangal,49.9
+2026-05,CNC Operator,Warangal,49.9
+2026-06,CNC Operator,Warangal,49.8
+2026-07,CNC Operator,Warangal,49.9
+2026-08,CNC Operator,Warangal,49.8
+2026-09,CNC Operator,Warangal,49.8
+2024-10,Welder,Warangal,46.8
+2024-11,Welder,Warangal,46.8
+2024-12,Welder,Warangal,46.9
+2025-01,Welder,Warangal,53.4
+2025-02,Welder,Warangal,53.5
+2025-03,Welder,Warangal,53.4
+2025-04,Welder,Warangal,53.2
+2025-05,Welder,Warangal,53.2
+2025-06,Welder,Warangal,53.3
+2025-07,Welder,Warangal,53.3
+2025-08,Welder,Warangal,53.1
+2025-09,Welder,Warangal,53
+2025-10,Welder,Warangal,53.2
+2025-11,Welder,Warangal,53.2
+2025-12,Welder,Warangal,53.1
+2026-01,Welder,Warangal,49.7
+2026-02,Welder,Warangal,49.8
+2026-03,Welder,Warangal,49.8
+2026-04,Welder,Warangal,49.5
+2026-05,Welder,Warangal,49.6
+2026-06,Welder,Warangal,49.6
+2026-07,Welder,Warangal,49.6
+2026-08,Welder,Warangal,49.4
+2026-09,Welder,Warangal,49.4
+2024-10,Warehouse Associate,Warangal,50.2
+2024-11,Warehouse Associate,Warangal,50.3
+2024-12,Warehouse Associate,Warangal,50.1
+2025-01,Warehouse Associate,Warangal,52.7
+2025-02,Warehouse Associate,Warangal,52.6
+2025-03,Warehouse Associate,Warangal,52.6
+2025-04,Warehouse Associate,Warangal,52.5
+2025-05,Warehouse Associate,Warangal,52.6
+2025-06,Warehouse Associate,Warangal,52.4
+2025-07,Warehouse Associate,Warangal,52.5
+2025-08,Warehouse Associate,Warangal,52.4
+2025-09,Warehouse Associate,Warangal,52.4
+2025-10,Warehouse Associate,Warangal,51.7
+2025-11,Warehouse Associate,Warangal,51.6
+2025-12,Warehouse Associate,Warangal,51.7
+2026-01,Warehouse Associate,Warangal,58.5
+2026-02,Warehouse Associate,Warangal,58.5
+2026-03,Warehouse Associate,Warangal,58.4
+2026-04,Warehouse Associate,Warangal,58.7
+2026-05,Warehouse Associate,Warangal,58.7
+2026-06,Warehouse Associate,Warangal,58.6
+2026-07,Warehouse Associate,Warangal,58.6
+2026-08,Warehouse Associate,Warangal,58.9
+2026-09,Warehouse Associate,Warangal,58.8
+2024-10,Logistics Coordinator,Warangal,57.3
+2024-11,Logistics Coordinator,Warangal,57.3
+2024-12,Logistics Coordinator,Warangal,57.2
+2025-01,Logistics Coordinator,Warangal,50.8
+2025-02,Logistics Coordinator,Warangal,50.6
+2025-03,Logistics Coordinator,Warangal,50.7
+2025-04,Logistics Coordinator,Warangal,50.6
+2025-05,Logistics Coordinator,Warangal,50.6
+2025-06,Logistics Coordinator,Warangal,50.5
+2025-07,Logistics Coordinator,Warangal,50.5
+2025-08,Logistics Coordinator,Warangal,51
+2025-09,Logistics Coordinator,Warangal,51.1
+2025-10,Logistics Coordinator,Warangal,50.9
+2025-11,Logistics Coordinator,Warangal,50.9
+2025-12,Logistics Coordinator,Warangal,51
+2026-01,Logistics Coordinator,Warangal,55.1
+2026-02,Logistics Coordinator,Warangal,55
+2026-03,Logistics Coordinator,Warangal,55
+2026-04,Logistics Coordinator,Warangal,55.3
+2026-05,Logistics Coordinator,Warangal,55.2
+2026-06,Logistics Coordinator,Warangal,55.2
+2026-07,Logistics Coordinator,Warangal,55.2
+2026-08,Logistics Coordinator,Warangal,54.8
+2026-09,Logistics Coordinator,Warangal,54.8
+2024-10,Electrician,Warangal,49.6
+2024-11,Electrician,Warangal,49.5
+2024-12,Electrician,Warangal,49.5
+2025-01,Electrician,Warangal,55.6
+2025-02,Electrician,Warangal,55.6
+2025-03,Electrician,Warangal,55.5
+2025-04,Electrician,Warangal,55.8
+2025-05,Electrician,Warangal,55.8
+2025-06,Electrician,Warangal,55.7
+2025-07,Electrician,Warangal,55.7
+2025-08,Electrician,Warangal,55.3
+2025-09,Electrician,Warangal,55.3
+2025-10,Electrician,Warangal,50.4
+2025-11,Electrician,Warangal,50.4
+2025-12,Electrician,Warangal,50.5
+2026-01,Electrician,Warangal,51.3
+2026-02,Electrician,Warangal,51.2
+2026-03,Electrician,Warangal,51.2
+2026-04,Electrician,Warangal,51.1
+2026-05,Electrician,Warangal,51.1
+2026-06,Electrician,Warangal,51
+2026-07,Electrician,Warangal,51
+2026-08,Electrician,Warangal,51.6
+2026-09,Electrician,Warangal,51.6
+2024-10,Mason,Warangal,43.2
+2024-11,Mason,Warangal,43.3
+2024-12,Mason,Warangal,43.3
+2025-01,Mason,Warangal,41.1
+2025-02,Mason,Warangal,41.1
+2025-03,Mason,Warangal,41.2
+2025-04,Mason,Warangal,40.9
+2025-05,Mason,Warangal,40.9
+2025-06,Mason,Warangal,41
+2025-07,Mason,Warangal,41
+2025-08,Mason,Warangal,41.4
+2025-09,Mason,Warangal,41.4
+2025-10,Mason,Warangal,46.3
+2025-11,Mason,Warangal,46.2
+2025-12,Mason,Warangal,46.2
+2026-01,Mason,Warangal,40.8
+2026-02,Mason,Warangal,40.9
+2026-03,Mason,Warangal,40.9
+2026-04,Mason,Warangal,40.7
+2026-05,Mason,Warangal,40.7
+2026-06,Mason,Warangal,40.8
+2026-07,Mason,Warangal,40.7
+2026-08,Mason,Warangal,41.2
+2026-09,Mason,Warangal,41.1
+2024-10,Retail Sales Associate,Warangal,44.8
+2024-11,Retail Sales Associate,Warangal,44.8
+2024-12,Retail Sales Associate,Warangal,44.7
+2025-01,Retail Sales Associate,Warangal,49.7
+2025-02,Retail Sales Associate,Warangal,49.7
+2025-03,Retail Sales Associate,Warangal,49.6
+2025-04,Retail Sales Associate,Warangal,49.9
+2025-05,Retail Sales Associate,Warangal,49.9
+2025-06,Retail Sales Associate,Warangal,49.8
+2025-07,Retail Sales Associate,Warangal,49.8
+2025-08,Retail Sales Associate,Warangal,50
+2025-09,Retail Sales Associate,Warangal,50
+2025-10,Retail Sales Associate,Warangal,49.5
+2025-11,Retail Sales Associate,Warangal,49.5
+2025-12,Retail Sales Associate,Warangal,49.6
+2026-01,Retail Sales Associate,Warangal,41.6
+2026-02,Retail Sales Associate,Warangal,41.5
+2026-03,Retail Sales Associate,Warangal,41.6
+2026-04,Retail Sales Associate,Warangal,41.4
+2026-05,Retail Sales Associate,Warangal,41.5
+2026-06,Retail Sales Associate,Warangal,41.4
+2026-07,Retail Sales Associate,Warangal,41.4
+2026-08,Retail Sales Associate,Warangal,41.3
+2026-09,Retail Sales Associate,Warangal,41.3
+2024-10,Solar Technician,Warangal,83.6
+2024-11,Solar Technician,Warangal,83.6
+2024-12,Solar Technician,Warangal,83.6
+2025-01,Solar Technician,Warangal,81.4
+2025-02,Solar Technician,Warangal,81.4
+2025-03,Solar Technician,Warangal,81.5
+2025-04,Solar Technician,Warangal,81.2
+2025-05,Solar Technician,Warangal,81.3
+2025-06,Solar Technician,Warangal,81.3
+2025-07,Solar Technician,Warangal,81.3
+2025-08,Solar Technician,Warangal,81.7
+2025-09,Solar Technician,Warangal,81.7
+2025-10,Solar Technician,Warangal,86.6
+2025-11,Solar Technician,Warangal,86.6
+2025-12,Solar Technician,Warangal,86.5
+2026-01,Solar Technician,Warangal,81.1
+2026-02,Solar Technician,Warangal,81.3
+2026-03,Solar Technician,Warangal,81.2
+2026-04,Solar Technician,Warangal,81
+2026-05,Solar Technician,Warangal,81
+2026-06,Solar Technician,Warangal,81.1
+2026-07,Solar Technician,Warangal,81.1
+2026-08,Solar Technician,Warangal,81.5
+2026-09,Solar Technician,Warangal,81.5
+2024-10,Software Developer,Bengaluru Urban,52.6
+2024-11,Software Developer,Bengaluru Urban,52.5
+2024-12,Software Developer,Bengaluru Urban,52.6
+2025-01,Software Developer,Bengaluru Urban,54.1
+2025-02,Software Developer,Bengaluru Urban,54.2
+2025-03,Software Developer,Bengaluru Urban,54.1
+2025-04,Software Developer,Bengaluru Urban,54
+2025-05,Software Developer,Bengaluru Urban,53.9
+2025-06,Software Developer,Bengaluru Urban,54
+2025-07,Software Developer,Bengaluru Urban,54
+2025-08,Software Developer,Bengaluru Urban,54.4
+2025-09,Software Developer,Bengaluru Urban,54.4
+2025-10,Software Developer,Bengaluru Urban,53.9
+2025-11,Software Developer,Bengaluru Urban,53.9
+2025-12,Software Developer,Bengaluru Urban,53.8
+2026-01,Software Developer,Bengaluru Urban,57
+2026-02,Software Developer,Bengaluru Urban,57.1
+2026-03,Software Developer,Bengaluru Urban,57.1
+2026-04,Software Developer,Bengaluru Urban,56.8
+2026-05,Software Developer,Bengaluru Urban,56.9
+2026-06,Software Developer,Bengaluru Urban,56.9
+2026-07,Software Developer,Bengaluru Urban,57
+2026-08,Software Developer,Bengaluru Urban,57.3
+2026-09,Software Developer,Bengaluru Urban,57.4
+2024-10,Data Entry Operator,Bengaluru Urban,40.5
+2024-11,Data Entry Operator,Bengaluru Urban,40.5
+2024-12,Data Entry Operator,Bengaluru Urban,40.6
+2025-01,Data Entry Operator,Bengaluru Urban,39.3
+2025-02,Data Entry Operator,Bengaluru Urban,39.4
+2025-03,Data Entry Operator,Bengaluru Urban,39.3
+2025-04,Data Entry Operator,Bengaluru Urban,39.1
+2025-05,Data Entry Operator,Bengaluru Urban,39.1
+2025-06,Data Entry Operator,Bengaluru Urban,39.2
+2025-07,Data Entry Operator,Bengaluru Urban,39.2
+2025-08,Data Entry Operator,Bengaluru Urban,39.6
+2025-09,Data Entry Operator,Bengaluru Urban,39.6
+2025-10,Data Entry Operator,Bengaluru Urban,39.1
+2025-11,Data Entry Operator,Bengaluru Urban,39.1
+2025-12,Data Entry Operator,Bengaluru Urban,39
+2026-01,Data Entry Operator,Bengaluru Urban,39.5
+2026-02,Data Entry Operator,Bengaluru Urban,39.5
+2026-03,Data Entry Operator,Bengaluru Urban,39.6
+2026-04,Data Entry Operator,Bengaluru Urban,39.3
+2026-05,Data Entry Operator,Bengaluru Urban,39.3
+2026-06,Data Entry Operator,Bengaluru Urban,39.4
+2026-07,Data Entry Operator,Bengaluru Urban,39.4
+2026-08,Data Entry Operator,Bengaluru Urban,39.8
+2026-09,Data Entry Operator,Bengaluru Urban,39.8
+2024-10,Digital Marketing Executive,Bengaluru Urban,63.2
+2024-11,Digital Marketing Executive,Bengaluru Urban,63.2
+2024-12,Digital Marketing Executive,Bengaluru Urban,63.1
+2025-01,Digital Marketing Executive,Bengaluru Urban,60.9
+2025-02,Digital Marketing Executive,Bengaluru Urban,60.9
+2025-03,Digital Marketing Executive,Bengaluru Urban,60.8
+2025-04,Digital Marketing Executive,Bengaluru Urban,60.8
+2025-05,Digital Marketing Executive,Bengaluru Urban,60.8
+2025-06,Digital Marketing Executive,Bengaluru Urban,60.7
+2025-07,Digital Marketing Executive,Bengaluru Urban,60.7
+2025-08,Digital Marketing Executive,Bengaluru Urban,61.3
+2025-09,Digital Marketing Executive,Bengaluru Urban,61.2
+2025-10,Digital Marketing Executive,Bengaluru Urban,55.7
+2025-11,Digital Marketing Executive,Bengaluru Urban,55.8
+2025-12,Digital Marketing Executive,Bengaluru Urban,55.8
+2026-01,Digital Marketing Executive,Bengaluru Urban,54.9
+2026-02,Digital Marketing Executive,Bengaluru Urban,54.8
+2026-03,Digital Marketing Executive,Bengaluru Urban,54.9
+2026-04,Digital Marketing Executive,Bengaluru Urban,55.1
+2026-05,Digital Marketing Executive,Bengaluru Urban,55.1
+2026-06,Digital Marketing Executive,Bengaluru Urban,55
+2026-07,Digital Marketing Executive,Bengaluru Urban,55
+2026-08,Digital Marketing Executive,Bengaluru Urban,55.2
+2026-09,Digital Marketing Executive,Bengaluru Urban,55.3
+2024-10,Healthcare Assistant,Bengaluru Urban,60.4
+2024-11,Healthcare Assistant,Bengaluru Urban,60.4
+2024-12,Healthcare Assistant,Bengaluru Urban,60.5
+2025-01,Healthcare Assistant,Bengaluru Urban,63.4
+2025-02,Healthcare Assistant,Bengaluru Urban,63.5
+2025-03,Healthcare Assistant,Bengaluru Urban,63.5
+2025-04,Healthcare Assistant,Bengaluru Urban,63.6
+2025-05,Healthcare Assistant,Bengaluru Urban,63.6
+2025-06,Healthcare Assistant,Bengaluru Urban,63.7
+2025-07,Healthcare Assistant,Bengaluru Urban,63.7
+2025-08,Healthcare Assistant,Bengaluru Urban,63.8
+2025-09,Healthcare Assistant,Bengaluru Urban,63.7
+2025-10,Healthcare Assistant,Bengaluru Urban,54.5
+2025-11,Healthcare Assistant,Bengaluru Urban,54.5
+2025-12,Healthcare Assistant,Bengaluru Urban,54.4
+2026-01,Healthcare Assistant,Bengaluru Urban,58.7
+2026-02,Healthcare Assistant,Bengaluru Urban,58.7
+2026-03,Healthcare Assistant,Bengaluru Urban,58.8
+2026-04,Healthcare Assistant,Bengaluru Urban,58.8
+2026-05,Healthcare Assistant,Bengaluru Urban,58.8
+2026-06,Healthcare Assistant,Bengaluru Urban,58.9
+2026-07,Healthcare Assistant,Bengaluru Urban,58.9
+2026-08,Healthcare Assistant,Bengaluru Urban,59
+2026-09,Healthcare Assistant,Bengaluru Urban,59
+2024-10,Phlebotomy Technician,Bengaluru Urban,45.7
+2024-11,Phlebotomy Technician,Bengaluru Urban,45.6
+2024-12,Phlebotomy Technician,Bengaluru Urban,45.8
+2025-01,Phlebotomy Technician,Bengaluru Urban,54.5
+2025-02,Phlebotomy Technician,Bengaluru Urban,54.6
+2025-03,Phlebotomy Technician,Bengaluru Urban,54.5
+2025-04,Phlebotomy Technician,Bengaluru Urban,54.3
+2025-05,Phlebotomy Technician,Bengaluru Urban,54.3
+2025-06,Phlebotomy Technician,Bengaluru Urban,54.4
+2025-07,Phlebotomy Technician,Bengaluru Urban,54.4
+2025-08,Phlebotomy Technician,Bengaluru Urban,54.2
+2025-09,Phlebotomy Technician,Bengaluru Urban,54.2
+2025-10,Phlebotomy Technician,Bengaluru Urban,49.3
+2025-11,Phlebotomy Technician,Bengaluru Urban,49.3
+2025-12,Phlebotomy Technician,Bengaluru Urban,49.2
+2026-01,Phlebotomy Technician,Bengaluru Urban,50.8
+2026-02,Phlebotomy Technician,Bengaluru Urban,50.9
+2026-03,Phlebotomy Technician,Bengaluru Urban,50.9
+2026-04,Phlebotomy Technician,Bengaluru Urban,50.6
+2026-05,Phlebotomy Technician,Bengaluru Urban,50.7
+2026-06,Phlebotomy Technician,Bengaluru Urban,50.7
+2026-07,Phlebotomy Technician,Bengaluru Urban,50.7
+2026-08,Phlebotomy Technician,Bengaluru Urban,50.5
+2026-09,Phlebotomy Technician,Bengaluru Urban,50.5
+2024-10,CNC Operator,Bengaluru Urban,47.1
+2024-11,CNC Operator,Bengaluru Urban,47.1
+2024-12,CNC Operator,Bengaluru Urban,47
+2025-01,CNC Operator,Bengaluru Urban,50.6
+2025-02,CNC Operator,Bengaluru Urban,50.5
+2025-03,CNC Operator,Bengaluru Urban,50.5
+2025-04,CNC Operator,Bengaluru Urban,50.4
+2025-05,CNC Operator,Bengaluru Urban,50.4
+2025-06,CNC Operator,Bengaluru Urban,50.3
+2025-07,CNC Operator,Bengaluru Urban,50.4
+2025-08,CNC Operator,Bengaluru Urban,50.9
+2025-09,CNC Operator,Bengaluru Urban,50.9
+2025-10,CNC Operator,Bengaluru Urban,50.8
+2025-11,CNC Operator,Bengaluru Urban,50.7
+2025-12,CNC Operator,Bengaluru Urban,50.9
+2026-01,CNC Operator,Bengaluru Urban,44.9
+2026-02,CNC Operator,Bengaluru Urban,44.9
+2026-03,CNC Operator,Bengaluru Urban,44.8
+2026-04,CNC Operator,Bengaluru Urban,45.1
+2026-05,CNC Operator,Bengaluru Urban,45.1
+2026-06,CNC Operator,Bengaluru Urban,45
+2026-07,CNC Operator,Bengaluru Urban,45
+2026-08,CNC Operator,Bengaluru Urban,44.6
+2026-09,CNC Operator,Bengaluru Urban,54.6
+2024-10,Welder,Bengaluru Urban,49.6
+2024-11,Welder,Bengaluru Urban,49.6
+2024-12,Welder,Bengaluru Urban,49.7
+2025-01,Welder,Bengaluru Urban,51.2
+2025-02,Welder,Bengaluru Urban,51.2
+2025-03,Welder,Bengaluru Urban,51.3
+2025-04,Welder,Bengaluru Urban,51.3
+2025-05,Welder,Bengaluru Urban,51.4
+2025-06,Welder,Bengaluru Urban,51.4
+2025-07,Welder,Bengaluru Urban,51.4
+2025-08,Welder,Bengaluru Urban,51.5
+2025-09,Welder,Bengaluru Urban,51.5
+2025-10,Welder,Bengaluru Urban,51.4
+2025-11,Welder,Bengaluru Urban,51.4
+2025-12,Welder,Bengaluru Urban,51.3
+2026-01,Welder,Bengaluru Urban,55.9
+2026-02,Welder,Bengaluru Urban,56.1
+2026-03,Welder,Bengaluru Urban,56
+2026-04,Welder,Bengaluru Urban,56.1
+2026-05,Welder,Bengaluru Urban,56.1
+2026-06,Welder,Bengaluru Urban,56.2
+2026-07,Welder,Bengaluru Urban,56.2
+2026-08,Welder,Bengaluru Urban,56.3
+2026-09,Welder,Bengaluru Urban,56.3
+2024-10,Warehouse Associate,Bengaluru Urban,65.3
+2024-11,Warehouse Associate,Bengaluru Urban,65.3
+2024-12,Warehouse Associate,Bengaluru Urban,65.4
+2025-01,Warehouse Associate,Bengaluru Urban,56.8
+2025-02,Warehouse Associate,Bengaluru Urban,56.9
+2025-03,Warehouse Associate,Bengaluru Urban,56.9
+2025-04,Warehouse Associate,Bengaluru Urban,57
+2025-05,Warehouse Associate,Bengaluru Urban,57
+2025-06,Warehouse Associate,Bengaluru Urban,57.1
+2025-07,Warehouse Associate,Bengaluru Urban,57
+2025-08,Warehouse Associate,Bengaluru Urban,56.5
+2025-09,Warehouse Associate,Bengaluru Urban,56.5
+2025-10,Warehouse Associate,Bengaluru Urban,56.6
+2025-11,Warehouse Associate,Bengaluru Urban,56.7
+2025-12,Warehouse Associate,Bengaluru Urban,56.5
+2026-01,Warehouse Associate,Bengaluru Urban,58.2
+2026-02,Warehouse Associate,Bengaluru Urban,58.2
+2026-03,Warehouse Associate,Bengaluru Urban,58.3
+2026-04,Warehouse Associate,Bengaluru Urban,58.3
+2026-05,Warehouse Associate,Bengaluru Urban,58.3
+2026-06,Warehouse Associate,Bengaluru Urban,58.4
+2026-07,Warehouse Associate,Bengaluru Urban,58.4
+2026-08,Warehouse Associate,Bengaluru Urban,57.8
+2026-09,Warehouse Associate,Bengaluru Urban,57.9
+2024-10,Logistics Coordinator,Bengaluru Urban,57.7
+2024-11,Logistics Coordinator,Bengaluru Urban,57.7
+2024-12,Logistics Coordinator,Bengaluru Urban,57.8
+2025-01,Logistics Coordinator,Bengaluru Urban,56.5
+2025-02,Logistics Coordinator,Bengaluru Urban,56.6
+2025-03,Logistics Coordinator,Bengaluru Urban,56.6
+2025-04,Logistics Coordinator,Bengaluru Urban,56.4
+2025-05,Logistics Coordinator,Bengaluru Urban,56.4
+2025-06,Logistics Coordinator,Bengaluru Urban,56.5
+2025-07,Logistics Coordinator,Bengaluru Urban,56.4
+2025-08,Logistics Coordinator,Bengaluru Urban,56.9
+2025-09,Logistics Coordinator,Bengaluru Urban,56.8
+2025-10,Logistics Coordinator,Bengaluru Urban,56.3
+2025-11,Logistics Coordinator,Bengaluru Urban,56.4
+2025-12,Logistics Coordinator,Bengaluru Urban,56.2
+2026-01,Logistics Coordinator,Bengaluru Urban,56.7
+2026-02,Logistics Coordinator,Bengaluru Urban,56.8
+2026-03,Logistics Coordinator,Bengaluru Urban,56.8
+2026-04,Logistics Coordinator,Bengaluru Urban,56.5
+2026-05,Logistics Coordinator,Bengaluru Urban,56.6
+2026-06,Logistics Coordinator,Bengaluru Urban,56.6
+2026-07,Logistics Coordinator,Bengaluru Urban,56.7
+2026-08,Logistics Coordinator,Bengaluru Urban,57
+2026-09,Logistics Coordinator,Bengaluru Urban,57
+2024-10,Electrician,Bengaluru Urban,53.3
+2024-11,Electrician,Bengaluru Urban,53.4
+2024-12,Electrician,Bengaluru Urban,53.4
+2025-01,Electrician,Bengaluru Urban,52.1
+2025-02,Electrician,Bengaluru Urban,52.2
+2025-03,Electrician,Bengaluru Urban,52.2
+2025-04,Electrician,Bengaluru Urban,52.2
+2025-05,Electrician,Bengaluru Urban,52.3
+2025-06,Electrician,Bengaluru Urban,52.3
+2025-07,Electrician,Bengaluru Urban,52.4
+2025-08,Electrician,Bengaluru Urban,52.4
+2025-09,Electrician,Bengaluru Urban,52.4
+2025-10,Electrician,Bengaluru Urban,52.3
+2025-11,Electrician,Bengaluru Urban,52.3
+2025-12,Electrician,Bengaluru Urban,52.2
+2026-01,Electrician,Bengaluru Urban,54.2
+2026-02,Electrician,Bengaluru Urban,54.3
+2026-03,Electrician,Bengaluru Urban,54.2
+2026-04,Electrician,Bengaluru Urban,54.4
+2026-05,Electrician,Bengaluru Urban,54.3
+2026-06,Electrician,Bengaluru Urban,54.4
+2026-07,Electrician,Bengaluru Urban,54.4
+2026-08,Electrician,Bengaluru Urban,54.5
+2026-09,Electrician,Bengaluru Urban,54.5
+2024-10,Mason,Bengaluru Urban,41
+2024-11,Mason,Bengaluru Urban,41
+2024-12,Mason,Bengaluru Urban,41
+2025-01,Mason,Bengaluru Urban,48.7
+2025-02,Mason,Bengaluru Urban,48.7
+2025-03,Mason,Bengaluru Urban,48.6
+2025-04,Mason,Bengaluru Urban,48.9
+2025-05,Mason,Bengaluru Urban,48.9
+2025-06,Mason,Bengaluru Urban,48.8
+2025-07,Mason,Bengaluru Urban,48.8
+2025-08,Mason,Bengaluru Urban,49.1
+2025-09,Mason,Bengaluru Urban,49
+2025-10,Mason,Bengaluru Urban,48.5
+2025-11,Mason,Bengaluru Urban,48.6
+2025-12,Mason,Bengaluru Urban,48.6
+2026-01,Mason,Bengaluru Urban,42.9
+2026-02,Mason,Bengaluru Urban,42.8
+2026-03,Mason,Bengaluru Urban,42.8
+2026-04,Mason,Bengaluru Urban,42.7
+2026-05,Mason,Bengaluru Urban,42.8
+2026-06,Mason,Bengaluru Urban,42.6
+2026-07,Mason,Bengaluru Urban,42.7
+2026-08,Mason,Bengaluru Urban,42.6
+2026-09,Mason,Bengaluru Urban,42.6
+2024-10,Retail Sales Associate,Bengaluru Urban,45.4
+2024-11,Retail Sales Associate,Bengaluru Urban,45.4
+2024-12,Retail Sales Associate,Bengaluru Urban,45.3
+2025-01,Retail Sales Associate,Bengaluru Urban,53.9
+2025-02,Retail Sales Associate,Bengaluru Urban,53.7
+2025-03,Retail Sales Associate,Bengaluru Urban,53.8
+2025-04,Retail Sales Associate,Bengaluru Urban,54
+2025-05,Retail Sales Associate,Bengaluru Urban,54
+2025-06,Retail Sales Associate,Bengaluru Urban,53.9
+2025-07,Retail Sales Associate,Bengaluru Urban,53.9
+2025-08,Retail Sales Associate,Bengaluru Urban,54.1
+2025-09,Retail Sales Associate,Bengaluru Urban,54.2
+2025-10,Retail Sales Associate,Bengaluru Urban,54
+2025-11,Retail Sales Associate,Bengaluru Urban,54
+2025-12,Retail Sales Associate,Bengaluru Urban,54.1
+2026-01,Retail Sales Associate,Bengaluru Urban,49.3
+2026-02,Retail Sales Associate,Bengaluru Urban,49.2
+2026-03,Retail Sales Associate,Bengaluru Urban,49.2
+2026-04,Retail Sales Associate,Bengaluru Urban,49.2
+2026-05,Retail Sales Associate,Bengaluru Urban,49.1
+2026-06,Retail Sales Associate,Bengaluru Urban,49.1
+2026-07,Retail Sales Associate,Bengaluru Urban,49
+2026-08,Retail Sales Associate,Bengaluru Urban,49.6
+2026-09,Retail Sales Associate,Bengaluru Urban,49.6
+2024-10,Solar Technician,Bengaluru Urban,61.8
+2024-11,Solar Technician,Bengaluru Urban,61.8
+2024-12,Solar Technician,Bengaluru Urban,61.9
+2025-01,Solar Technician,Bengaluru Urban,69.3
+2025-02,Solar Technician,Bengaluru Urban,69.4
+2025-03,Solar Technician,Bengaluru Urban,69.4
+2025-04,Solar Technician,Bengaluru Urban,69.5
+2025-05,Solar Technician,Bengaluru Urban,69.5
+2025-06,Solar Technician,Bengaluru Urban,69.6
+2025-07,Solar Technician,Bengaluru Urban,69.6
+2025-08,Solar Technician,Bengaluru Urban,69.7
+2025-09,Solar Technician,Bengaluru Urban,69.6
+2025-10,Solar Technician,Bengaluru Urban,65.4
+2025-11,Solar Technician,Bengaluru Urban,65.4
+2025-12,Solar Technician,Bengaluru Urban,65.3
+2026-01,Solar Technician,Bengaluru Urban,69.6
+2026-02,Solar Technician,Bengaluru Urban,69.6
+2026-03,Solar Technician,Bengaluru Urban,69.7
+2026-04,Solar Technician,Bengaluru Urban,69.7
+2026-05,Solar Technician,Bengaluru Urban,69.7
+2026-06,Solar Technician,Bengaluru Urban,69.8
+2026-07,Solar Technician,Bengaluru Urban,69.8
+2026-08,Solar Technician,Bengaluru Urban,69.9
+2026-09,Solar Technician,Bengaluru Urban,69.9
+2024-10,Wind Turbine Technician,Bengaluru Urban,53.7
+2024-11,Wind Turbine Technician,Bengaluru Urban,53.8
+2024-12,Wind Turbine Technician,Bengaluru Urban,53.8
+2025-01,Wind Turbine Technician,Bengaluru Urban,58.9
+2025-02,Wind Turbine Technician,Bengaluru Urban,58.9
+2025-03,Wind Turbine Technician,Bengaluru Urban,58.9
+2025-04,Wind Turbine Technician,Bengaluru Urban,58.7
+2025-05,Wind Turbine Technician,Bengaluru Urban,58.7
+2025-06,Wind Turbine Technician,Bengaluru Urban,58.7
+2025-07,Wind Turbine Technician,Bengaluru Urban,58.8
+2025-08,Wind Turbine Technician,Bengaluru Urban,59.1
+2025-09,Wind Turbine Technician,Bengaluru Urban,59.2
+2025-10,Wind Turbine Technician,Bengaluru Urban,59.1
+2025-11,Wind Turbine Technician,Bengaluru Urban,59
+2025-12,Wind Turbine Technician,Bengaluru Urban,59
+2026-01,Wind Turbine Technician,Bengaluru Urban,61.3
+2026-02,Wind Turbine Technician,Bengaluru Urban,61.4
+2026-03,Wind Turbine Technician,Bengaluru Urban,61.4
+2026-04,Wind Turbine Technician,Bengaluru Urban,61.2
+2026-05,Wind Turbine Technician,Bengaluru Urban,61.2
+2026-06,Wind Turbine Technician,Bengaluru Urban,61.3
+2026-07,Wind Turbine Technician,Bengaluru Urban,61.3
+2026-08,Wind Turbine Technician,Bengaluru Urban,61.7
+2026-09,Wind Turbine Technician,Bengaluru Urban,61.6
+2024-10,Software Developer,Mysuru,55
+2024-11,Software Developer,Mysuru,55
+2024-12,Software Developer,Mysuru,55.1
+2025-01,Software Developer,Mysuru,56.1
+2025-02,Software Developer,Mysuru,56.1
+2025-03,Software Developer,Mysuru,56.2
+2025-04,Software Developer,Mysuru,56.2
+2025-05,Software Developer,Mysuru,56.2
+2025-06,Software Developer,Mysuru,56.3
+2025-07,Software Developer,Mysuru,56.3
+2025-08,Software Developer,Mysuru,56.4
+2025-09,Software Developer,Mysuru,56.4
+2025-10,Software Developer,Mysuru,61.3
+2025-11,Software Developer,Mysuru,61.2
+2025-12,Software Developer,Mysuru,61.2
+2026-01,Software Developer,Mysuru,55.8
+2026-02,Software Developer,Mysuru,55.9
+2026-03,Software Developer,Mysuru,55.9
+2026-04,Software Developer,Mysuru,56
+2026-05,Software Developer,Mysuru,56
+2026-06,Software Developer,Mysuru,56.1
+2026-07,Software Developer,Mysuru,56.1
+2026-08,Software Developer,Mysuru,56.2
+2026-09,Software Developer,Mysuru,56.1
+2024-10,Data Entry Operator,Mysuru,47
+2024-11,Data Entry Operator,Mysuru,47
+2024-12,Data Entry Operator,Mysuru,46.9
+2025-01,Data Entry Operator,Mysuru,48.2
+2025-02,Data Entry Operator,Mysuru,48.1
+2025-03,Data Entry Operator,Mysuru,48.1
+2025-04,Data Entry Operator,Mysuru,48.3
+2025-05,Data Entry Operator,Mysuru,48.4
+2025-06,Data Entry Operator,Mysuru,48.2
+2025-07,Data Entry Operator,Mysuru,48.3
+2025-08,Data Entry Operator,Mysuru,38.5
+2025-09,Data Entry Operator,Mysuru,38.5
+2025-10,Data Entry Operator,Mysuru,38.4
+2025-11,Data Entry Operator,Mysuru,48.4
+2025-12,Data Entry Operator,Mysuru,38.5
+2026-01,Data Entry Operator,Mysuru,43.6
+2026-02,Data Entry Operator,Mysuru,43.6
+2026-03,Data Entry Operator,Mysuru,43.5
+2026-04,Data Entry Operator,Mysuru,43.5
+2026-05,Data Entry Operator,Mysuru,43.5
+2026-06,Data Entry Operator,Mysuru,43.4
+2026-07,Data Entry Operator,Mysuru,43.4
+2026-08,Data Entry Operator,Mysuru,44
+2026-09,Data Entry Operator,Mysuru,43.9
+2024-10,Digital Marketing Executive,Mysuru,57.3
+2024-11,Digital Marketing Executive,Mysuru,57.3
+2024-12,Digital Marketing Executive,Mysuru,57.3
+2025-01,Digital Marketing Executive,Mysuru,62.4
+2025-02,Digital Marketing Executive,Mysuru,62.4
+2025-03,Digital Marketing Executive,Mysuru,62.4
+2025-04,Digital Marketing Executive,Mysuru,62.2
+2025-05,Digital Marketing Executive,Mysuru,62.2
+2025-06,Digital Marketing Executive,Mysuru,62.2
+2025-07,Digital Marketing Executive,Mysuru,62.3
+2025-08,Digital Marketing Executive,Mysuru,62.6
+2025-09,Digital Marketing Executive,Mysuru,62.7
+2025-10,Digital Marketing Executive,Mysuru,62.6
+2025-11,Digital Marketing Executive,Mysuru,62.5
+2025-12,Digital Marketing Executive,Mysuru,62.5
+2026-01,Digital Marketing Executive,Mysuru,64.8
+2026-02,Digital Marketing Executive,Mysuru,65
+2026-03,Digital Marketing Executive,Mysuru,64.9
+2026-04,Digital Marketing Executive,Mysuru,64.7
+2026-05,Digital Marketing Executive,Mysuru,64.7
+2026-06,Digital Marketing Executive,Mysuru,64.8
+2026-07,Digital Marketing Executive,Mysuru,64.8
+2026-08,Digital Marketing Executive,Mysuru,65.2
+2026-09,Digital Marketing Executive,Mysuru,65.2
+2024-10,Healthcare Assistant,Mysuru,47.7
+2024-11,Healthcare Assistant,Mysuru,47.8
+2024-12,Healthcare Assistant,Mysuru,47.8
+2025-01,Healthcare Assistant,Mysuru,49.3
+2025-02,Healthcare Assistant,Mysuru,49.4
+2025-03,Healthcare Assistant,Mysuru,49.4
+2025-04,Healthcare Assistant,Mysuru,49.5
+2025-05,Healthcare Assistant,Mysuru,49.5
+2025-06,Healthcare Assistant,Mysuru,49.5
+2025-07,Healthcare Assistant,Mysuru,49.6
+2025-08,Healthcare Assistant,Mysuru,49.6
+2025-09,Healthcare Assistant,Mysuru,49.6
+2025-10,Healthcare Assistant,Mysuru,49.5
+2025-11,Healthcare Assistant,Mysuru,49.5
+2025-12,Healthcare Assistant,Mysuru,49.5
+2026-01,Healthcare Assistant,Mysuru,54.1
+2026-02,Healthcare Assistant,Mysuru,54.2
+2026-03,Healthcare Assistant,Mysuru,54.2
+2026-04,Healthcare Assistant,Mysuru,54.3
+2026-05,Healthcare Assistant,Mysuru,54.2
+2026-06,Healthcare Assistant,Mysuru,54.4
+2026-07,Healthcare Assistant,Mysuru,54.3
+2026-08,Healthcare Assistant,Mysuru,54.4
+2026-09,Healthcare Assistant,Mysuru,54.4
+2026-08,Phlebotomy Technician,Mysuru,54.3
+2026-09,Phlebotomy Technician,Mysuru,54.3
+2024-10,CNC Operator,Mysuru,60
+2024-11,CNC Operator,Mysuru,60
+2024-12,CNC Operator,Mysuru,59.9
+2025-01,CNC Operator,Mysuru,56.1
+2025-02,CNC Operator,Mysuru,56
+2025-03,CNC Operator,Mysuru,56
+2025-04,CNC Operator,Mysuru,56.3
+2025-05,CNC Operator,Mysuru,56.2
+2025-06,CNC Operator,Mysuru,56.2
+2025-07,CNC Operator,Mysuru,56.2
+2025-08,CNC Operator,Mysuru,55.8
+2025-09,CNC Operator,Mysuru,55.8
+2025-10,CNC Operator,Mysuru,55.9
+2025-11,CNC Operator,Mysuru,55.9
+2025-12,CNC Operator,Mysuru,56
+2026-01,CNC Operator,Mysuru,54
+2026-02,CNC Operator,Mysuru,53.9
+2026-03,CNC Operator,Mysuru,53.9
+2026-04,CNC Operator,Mysuru,53.8
+2026-05,CNC Operator,Mysuru,53.8
+2026-06,CNC Operator,Mysuru,53.7
+2026-07,CNC Operator,Mysuru,53.8
+2026-08,CNC Operator,Mysuru,54.3
+2026-09,CNC Operator,Mysuru,54.3
+2024-10,Welder,Mysuru,50
+2024-11,Welder,Mysuru,50
+2024-12,Welder,Mysuru,50.1
+2025-01,Welder,Mysuru,58.8
+2025-02,Welder,Mysuru,58.9
+2025-03,Welder,Mysuru,58.9
+2025-04,Welder,Mysuru,58.7
+2025-05,Welder,Mysuru,58.6
+2025-06,Welder,Mysuru,58.8
+2025-07,Welder,Mysuru,58.7
+2025-08,Welder,Mysuru,59.1
+2025-09,Welder,Mysuru,59.1
+2025-10,Welder,Mysuru,58.6
+2025-11,Welder,Mysuru,58.6
+2025-12,Welder,Mysuru,58.5
+2026-01,Welder,Mysuru,59
+2026-02,Welder,Mysuru,59.1
+2026-03,Welder,Mysuru,59.1
+2026-04,Welder,Mysuru,58.8
+2026-05,Welder,Mysuru,58.9
+2026-06,Welder,Mysuru,58.9
+2026-07,Welder,Mysuru,58.9
+2026-08,Welder,Mysuru,59.3
+2026-09,Welder,Mysuru,59.3
+2024-10,Warehouse Associate,Mysuru,58
+2024-11,Warehouse Associate,Mysuru,58
+2024-12,Warehouse Associate,Mysuru,57.9
+2025-01,Warehouse Associate,Mysuru,61.5
+2025-02,Warehouse Associate,Mysuru,61.3
+2025-03,Warehouse Associate,Mysuru,61.4
+2025-04,Warehouse Associate,Mysuru,61.3
+2025-05,Warehouse Associate,Mysuru,61.3
+2025-06,Warehouse Associate,Mysuru,61.2
+2025-07,Warehouse Associate,Mysuru,61.2
+2025-08,Warehouse Associate,Mysuru,61.7
+2025-09,Warehouse Associate,Mysuru,61.8
+2025-10,Warehouse Associate,Mysuru,61.7
+2025-11,Warehouse Associate,Mysuru,61.6
+2025-12,Warehouse Associate,Mysuru,61.7
+2026-01,Warehouse Associate,Mysuru,55.8
+2026-02,Warehouse Associate,Mysuru,55.8
+2026-03,Warehouse Associate,Mysuru,55.7
+2026-04,Warehouse Associate,Mysuru,56
+2026-05,Warehouse Associate,Mysuru,55.9
+2026-06,Warehouse Associate,Mysuru,55.9
+2026-07,Warehouse Associate,Mysuru,55.9
+2026-08,Warehouse Associate,Mysuru,55.5
+2026-09,Warehouse Associate,Mysuru,55.5
+2024-10,Logistics Coordinator,Mysuru,56.2
+2024-11,Logistics Coordinator,Mysuru,56.3
+2024-12,Logistics Coordinator,Mysuru,56.1
+2025-01,Logistics Coordinator,Mysuru,58.7
+2025-02,Logistics Coordinator,Mysuru,58.6
+2025-03,Logistics Coordinator,Mysuru,58.6
+2025-04,Logistics Coordinator,Mysuru,58.5
+2025-05,Logistics Coordinator,Mysuru,58.6
+2025-06,Logistics Coordinator,Mysuru,58.4
+2025-07,Logistics Coordinator,Mysuru,58.5
+2025-08,Logistics Coordinator,Mysuru,58.4
+2025-09,Logistics Coordinator,Mysuru,58.4
+2025-10,Logistics Coordinator,Mysuru,57.7
+2025-11,Logistics Coordinator,Mysuru,57.6
+2025-12,Logistics Coordinator,Mysuru,57.7
+2026-01,Logistics Coordinator,Mysuru,54.5
+2026-02,Logistics Coordinator,Mysuru,54.5
+2026-03,Logistics Coordinator,Mysuru,54.4
+2026-04,Logistics Coordinator,Mysuru,54.7
+2026-05,Logistics Coordinator,Mysuru,54.7
+2026-06,Logistics Coordinator,Mysuru,54.6
+2026-07,Logistics Coordinator,Mysuru,54.6
+2026-08,Logistics Coordinator,Mysuru,54.9
+2026-09,Logistics Coordinator,Mysuru,54.8
+2024-10,Electrician,Mysuru,57.7
+2024-11,Electrician,Mysuru,57.6
+2024-12,Electrician,Mysuru,57.6
+2025-01,Electrician,Mysuru,55.4
+2025-02,Electrician,Mysuru,55.3
+2025-03,Electrician,Mysuru,55.3
+2025-04,Electrician,Mysuru,55.5
+2025-05,Electrician,Mysuru,55.5
+2025-06,Electrician,Mysuru,55.5
+2025-07,Electrician,Mysuru,55.4
+2025-08,Electrician,Mysuru,55.7
+2025-09,Electrician,Mysuru,55.7
+2025-10,Electrician,Mysuru,55.2
+2025-11,Electrician,Mysuru,55.2
+2025-12,Electrician,Mysuru,55.2
+2026-01,Electrician,Mysuru,59.5
+2026-02,Electrician,Mysuru,59.4
+2026-03,Electrician,Mysuru,59.5
+2026-04,Electrician,Mysuru,59.3
+2026-05,Electrician,Mysuru,59.4
+2026-06,Electrician,Mysuru,59.3
+2026-07,Electrician,Mysuru,59.3
+2026-08,Electrician,Mysuru,59.2
+2026-09,Electrician,Mysuru,59.2
+2024-10,Mason,Mysuru,51.7
+2024-11,Mason,Mysuru,51.7
+2024-12,Mason,Mysuru,51.7
+2025-01,Mason,Mysuru,45.6
+2025-02,Mason,Mysuru,45.6
+2025-03,Mason,Mysuru,45.7
+2025-04,Mason,Mysuru,45.4
+2025-05,Mason,Mysuru,45.4
+2025-06,Mason,Mysuru,45.5
+2025-07,Mason,Mysuru,45.5
+2025-08,Mason,Mysuru,45.3
+2025-09,Mason,Mysuru,45.3
+2025-10,Mason,Mysuru,50.8
+2025-11,Mason,Mysuru,50.8
+2025-12,Mason,Mysuru,50.7
+2026-01,Mason,Mysuru,49.2
+2026-02,Mason,Mysuru,49.4
+2026-03,Mason,Mysuru,49.3
+2026-04,Mason,Mysuru,49.1
+2026-05,Mason,Mysuru,49.1
+2026-06,Mason,Mysuru,49.2
+2026-07,Mason,Mysuru,49.2
+2026-08,Mason,Mysuru,49
+2026-09,Mason,Mysuru,48.9
+2024-10,Retail Sales Associate,Mysuru,51.5
+2024-11,Retail Sales Associate,Mysuru,51.4
+2024-12,Retail Sales Associate,Mysuru,51.4
+2025-01,Retail Sales Associate,Mysuru,47.5
+2025-02,Retail Sales Associate,Mysuru,47.5
+2025-03,Retail Sales Associate,Mysuru,47.4
+2025-04,Retail Sales Associate,Mysuru,47.7
+2025-05,Retail Sales Associate,Mysuru,47.7
+2025-06,Retail Sales Associate,Mysuru,47.6
+2025-07,Retail Sales Associate,Mysuru,47.6
+2025-08,Retail Sales Associate,Mysuru,47.3
+2025-09,Retail Sales Associate,Mysuru,47.2
+2025-10,Retail Sales Associate,Mysuru,52.3
+2025-11,Retail Sales Associate,Mysuru,52.4
+2025-12,Retail Sales Associate,Mysuru,52.4
+2026-01,Retail Sales Associate,Mysuru,53.2
+2026-02,Retail Sales Associate,Mysuru,53.1
+2026-03,Retail Sales Associate,Mysuru,53.1
+2026-04,Retail Sales Associate,Mysuru,53
+2026-05,Retail Sales Associate,Mysuru,53
+2026-06,Retail Sales Associate,Mysuru,52.9
+2026-07,Retail Sales Associate,Mysuru,53
+2026-08,Retail Sales Associate,Mysuru,53.5
+2026-09,Retail Sales Associate,Mysuru,53.5
+2024-10,Solar Technician,Mysuru,66.3
+2024-11,Solar Technician,Mysuru,66.3
+2024-12,Solar Technician,Mysuru,66.3
+2025-01,Solar Technician,Mysuru,64.8
+2025-02,Solar Technician,Mysuru,64.8
+2025-03,Solar Technician,Mysuru,64.8
+2025-04,Solar Technician,Mysuru,64.6
+2025-05,Solar Technician,Mysuru,64.6
+2025-06,Solar Technician,Mysuru,64.6
+2025-07,Solar Technician,Mysuru,64.7
+2025-08,Solar Technician,Mysuru,64.4
+2025-09,Solar Technician,Mysuru,64.4
+2025-10,Solar Technician,Mysuru,65
+2025-11,Solar Technician,Mysuru,64.9
+2025-12,Solar Technician,Mysuru,64.9
+2026-01,Solar Technician,Mysuru,58.3
+2026-02,Solar Technician,Mysuru,58.5
+2026-03,Solar Technician,Mysuru,58.4
+2026-04,Solar Technician,Mysuru,58.2
+2026-05,Solar Technician,Mysuru,58.2
+2026-06,Solar Technician,Mysuru,58.3
+2026-07,Solar Technician,Mysuru,58.3
+2026-08,Solar Technician,Mysuru,58.1
+2026-09,Solar Technician,Mysuru,58
+2024-10,Wind Turbine Technician,Mysuru,51.6
+2024-11,Wind Turbine Technician,Mysuru,51.5
+2024-12,Wind Turbine Technician,Mysuru,51.5
+2025-01,Wind Turbine Technician,Mysuru,55.5
+2025-02,Wind Turbine Technician,Mysuru,55.4
+2025-03,Wind Turbine Technician,Mysuru,55.4
+2025-04,Wind Turbine Technician,Mysuru,55.4
+2025-05,Wind Turbine Technician,Mysuru,55.3
+2025-06,Wind Turbine Technician,Mysuru,55.3
+2025-07,Wind Turbine Technician,Mysuru,55.2
+2025-08,Wind Turbine Technician,Mysuru,55.2
+2025-09,Wind Turbine Technician,Mysuru,55.2
+2025-10,Wind Turbine Technician,Mysuru,55.3
+2025-11,Wind Turbine Technician,Mysuru,55.3
+2025-12,Wind Turbine Technician,Mysuru,55.4
+2026-01,Wind Turbine Technician,Mysuru,48.4
+2026-02,Wind Turbine Technician,Mysuru,48.3
+2026-03,Wind Turbine Technician,Mysuru,48.3
+2026-04,Wind Turbine Technician,Mysuru,48.5
+2026-05,Wind Turbine Technician,Mysuru,48.6
+2026-06,Wind Turbine Technician,Mysuru,48.5
+2026-07,Wind Turbine Technician,Mysuru,48.5
+2026-08,Wind Turbine Technician,Mysuru,48.1
+2026-09,Wind Turbine Technician,Mysuru,48.1
+2024-10,Software Developer,Pune,56.5
+2024-11,Software Developer,Pune,56.5
+2024-12,Software Developer,Pune,56.4
+2025-01,Software Developer,Pune,53.7
+2025-02,Software Developer,Pune,53.6
+2025-03,Software Developer,Pune,53.6
+2025-04,Software Developer,Pune,53.5
+2025-05,Software Developer,Pune,53.5
+2025-06,Software Developer,Pune,53.5
+2025-07,Software Developer,Pune,53.4
+2025-08,Software Developer,Pune,54
+2025-09,Software Developer,Pune,54
+2025-10,Software Developer,Pune,53.5
+2025-11,Software Developer,Pune,53.5
+2025-12,Software Developer,Pune,53.5
+2026-01,Software Developer,Pune,58.2
+2026-02,Software Developer,Pune,58.1
+2026-03,Software Developer,Pune,58.1
+2026-04,Software Developer,Pune,58.3
+2026-05,Software Developer,Pune,58.4
+2026-06,Software Developer,Pune,58.3
+2026-07,Software Developer,Pune,58.3
+2026-08,Software Developer,Pune,58.5
+2026-09,Software Developer,Pune,58.5
+2024-10,Data Entry Operator,Pune,42.8
+2024-11,Data Entry Operator,Pune,42.8
+2024-12,Data Entry Operator,Pune,42.7
+2025-01,Data Entry Operator,Pune,44.9
+2025-02,Data Entry Operator,Pune,44.9
+2025-03,Data Entry Operator,Pune,44.9
+2025-04,Data Entry Operator,Pune,45.1
+2025-05,Data Entry Operator,Pune,45.1
+2025-06,Data Entry Operator,Pune,45.1
+2025-07,Data Entry Operator,Pune,45
+2025-08,Data Entry Operator,Pune,45.3
+2025-09,Data Entry Operator,Pune,45.3
+2025-10,Data Entry Operator,Pune,39.8
+2025-11,Data Entry Operator,Pune,39.8
+2025-12,Data Entry Operator,Pune,39.8
+2026-01,Data Entry Operator,Pune,44.1
+2026-02,Data Entry Operator,Pune,44
+2026-03,Data Entry Operator,Pune,44.1
+2026-04,Data Entry Operator,Pune,43.9
+2026-05,Data Entry Operator,Pune,44
+2026-06,Data Entry Operator,Pune,43.9
+2026-07,Data Entry Operator,Pune,43.9
+2026-08,Data Entry Operator,Pune,43.8
+2026-09,Data Entry Operator,Pune,43.8
+2024-10,Digital Marketing Executive,Pune,56.9
+2024-11,Digital Marketing Executive,Pune,56.9
+2024-12,Digital Marketing Executive,Pune,57
+2025-01,Digital Marketing Executive,Pune,57.2
+2025-02,Digital Marketing Executive,Pune,57.3
+2025-03,Digital Marketing Executive,Pune,57.3
+2025-04,Digital Marketing Executive,Pune,57.4
+2025-05,Digital Marketing Executive,Pune,57.3
+2025-06,Digital Marketing Executive,Pune,57.5
+2025-07,Digital Marketing Executive,Pune,57.4
+2025-08,Digital Marketing Executive,Pune,57.5
+2025-09,Digital Marketing Executive,Pune,57.5
+2025-10,Digital Marketing Executive,Pune,63.2
+2025-11,Digital Marketing Executive,Pune,63.3
+2025-12,Digital Marketing Executive,Pune,63.2
+2026-01,Digital Marketing Executive,Pune,64.7
+2026-02,Digital Marketing Executive,Pune,64.7
+2026-03,Digital Marketing Executive,Pune,64.8
+2026-04,Digital Marketing Executive,Pune,64.8
+2026-05,Digital Marketing Executive,Pune,64.8
+2026-06,Digital Marketing Executive,Pune,64.9
+2026-07,Digital Marketing Executive,Pune,64.9
+2026-08,Digital Marketing Executive,Pune,65
+2026-09,Digital Marketing Executive,Pune,65
+2024-10,Healthcare Assistant,Pune,54.3
+2024-11,Healthcare Assistant,Pune,54.2
+2024-12,Healthcare Assistant,Pune,54.2
+2025-01,Healthcare Assistant,Pune,56.4
+2025-02,Healthcare Assistant,Pune,56.4
+2025-03,Healthcare Assistant,Pune,56.3
+2025-04,Healthcare Assistant,Pune,56.6
+2025-05,Healthcare Assistant,Pune,56.6
+2025-06,Healthcare Assistant,Pune,56.5
+2025-07,Healthcare Assistant,Pune,56.5
+2025-08,Healthcare Assistant,Pune,56.8
+2025-09,Healthcare Assistant,Pune,56.7
+2025-10,Healthcare Assistant,Pune,51.2
+2025-11,Healthcare Assistant,Pune,51.3
+2025-12,Healthcare Assistant,Pune,51.3
+2026-01,Healthcare Assistant,Pune,55.6
+2026-02,Healthcare Assistant,Pune,55.5
+2026-03,Healthcare Assistant,Pune,55.5
+2026-04,Healthcare Assistant,Pune,55.4
+2026-05,Healthcare Assistant,Pune,55.4
+2026-06,Healthcare Assistant,Pune,55.3
+2026-07,Healthcare Assistant,Pune,55.4
+2026-08,Healthcare Assistant,Pune,55.3
+2026-09,Healthcare Assistant,Pune,55.3
+2024-10,Phlebotomy Technician,Pune,48.8
+2024-11,Phlebotomy Technician,Pune,48.8
+2024-12,Phlebotomy Technician,Pune,48.8
+2025-01,Phlebotomy Technician,Pune,57.3
+2025-02,Phlebotomy Technician,Pune,57.2
+2025-03,Phlebotomy Technician,Pune,57.2
+2025-04,Phlebotomy Technician,Pune,57.1
+2025-05,Phlebotomy Technician,Pune,57.1
+2025-06,Phlebotomy Technician,Pune,57.1
+2025-07,Phlebotomy Technician,Pune,57
+2025-08,Phlebotomy Technician,Pune,57
+2025-09,Phlebotomy Technician,Pune,56.9
+2025-10,Phlebotomy Technician,Pune,57.1
+2025-11,Phlebotomy Technician,Pune,57.1
+2025-12,Phlebotomy Technician,Pune,57.1
+2026-01,Phlebotomy Technician,Pune,50.2
+2026-02,Phlebotomy Technician,Pune,50.1
+2026-03,Phlebotomy Technician,Pune,50.1
+2026-04,Phlebotomy Technician,Pune,50.3
+2026-05,Phlebotomy Technician,Pune,50.3
+2026-06,Phlebotomy Technician,Pune,50.2
+2026-07,Phlebotomy Technician,Pune,50.3
+2026-08,Phlebotomy Technician,Pune,49.8
+2026-09,Phlebotomy Technician,Pune,49.9
+2024-10,CNC Operator,Pune,55
+2024-11,CNC Operator,Pune,55.1
+2024-12,CNC Operator,Pune,55.1
+2025-01,CNC Operator,Pune,53.5
+2025-02,CNC Operator,Pune,53.5
+2025-03,CNC Operator,Pune,53.5
+2025-04,CNC Operator,Pune,53.3
+2025-05,CNC Operator,Pune,53.3
+2025-06,CNC Operator,Pune,53.4
+2025-07,CNC Operator,Pune,53.4
+2025-08,CNC Operator,Pune,53.1
+2025-09,CNC Operator,Pune,53.2
+2025-10,CNC Operator,Pune,53.7
+2025-11,CNC Operator,Pune,53.6
+2025-12,CNC Operator,Pune,53.6
+2026-01,CNC Operator,Pune,57.1
+2026-02,CNC Operator,Pune,57.2
+2026-03,CNC Operator,Pune,57.2
+2026-04,CNC Operator,Pune,57
+2026-05,CNC Operator,Pune,57
+2026-06,CNC Operator,Pune,57.1
+2026-07,CNC Operator,Pune,57
+2026-08,CNC Operator,Pune,56.8
+2026-09,CNC Operator,Pune,56.8
+2024-10,Welder,Pune,58.8
+2024-11,Welder,Pune,58.8
+2024-12,Welder,Pune,58.7
+2025-01,Welder,Pune,54.5
+2025-02,Welder,Pune,54.4
+2025-03,Welder,Pune,54.4
+2025-04,Welder,Pune,54.6
+2025-05,Welder,Pune,54.7
+2025-06,Welder,Pune,54.6
+2025-07,Welder,Pune,54.6
+2025-08,Welder,Pune,54.2
+2025-09,Welder,Pune,54.2
+2025-10,Welder,Pune,54.7
+2025-11,Welder,Pune,54.7
+2025-12,Welder,Pune,54.8
+2026-01,Welder,Pune,51.6
+2026-02,Welder,Pune,51.5
+2026-03,Welder,Pune,51.5
+2026-04,Welder,Pune,51.5
+2026-05,Welder,Pune,51.4
+2026-06,Welder,Pune,51.4
+2026-07,Welder,Pune,51.3
+2026-08,Welder,Pune,51.3
+2026-09,Welder,Pune,51.3
+2024-10,Warehouse Associate,Pune,51.8
+2024-11,Warehouse Associate,Pune,51.8
+2024-12,Warehouse Associate,Pune,51.7
+2025-01,Warehouse Associate,Pune,57.9
+2025-02,Warehouse Associate,Pune,57.9
+2025-03,Warehouse Associate,Pune,57.9
+2025-04,Warehouse Associate,Pune,57.8
+2025-05,Warehouse Associate,Pune,57.8
+2025-06,Warehouse Associate,Pune,57.8
+2025-07,Warehouse Associate,Pune,57.7
+2025-08,Warehouse Associate,Pune,57.7
+2025-09,Warehouse Associate,Pune,57.6
+2025-10,Warehouse Associate,Pune,52.8
+2025-11,Warehouse Associate,Pune,52.8
+2025-12,Warehouse Associate,Pune,52.8
+2026-01,Warehouse Associate,Pune,58.6
+2026-02,Warehouse Associate,Pune,58.5
+2026-03,Warehouse Associate,Pune,58.6
+2026-04,Warehouse Associate,Pune,58.8
+2026-05,Warehouse Associate,Pune,58.8
+2026-06,Warehouse Associate,Pune,58.7
+2026-07,Warehouse Associate,Pune,58.7
+2026-08,Warehouse Associate,Pune,58.3
+2026-09,Warehouse Associate,Pune,58.3
+2024-10,Logistics Coordinator,Pune,60.3
+2024-11,Logistics Coordinator,Pune,60.3
+2024-12,Logistics Coordinator,Pune,60.3
+2025-01,Logistics Coordinator,Pune,61.9
+2025-02,Logistics Coordinator,Pune,61.9
+2025-03,Logistics Coordinator,Pune,61.8
+2025-04,Logistics Coordinator,Pune,62.1
+2025-05,Logistics Coordinator,Pune,62.1
+2025-06,Logistics Coordinator,Pune,62
+2025-07,Logistics Coordinator,Pune,62
+2025-08,Logistics Coordinator,Pune,61.6
+2025-09,Logistics Coordinator,Pune,61.6
+2025-10,Logistics Coordinator,Pune,61.7
+2025-11,Logistics Coordinator,Pune,61.7
+2025-12,Logistics Coordinator,Pune,61.8
+2026-01,Logistics Coordinator,Pune,54.8
+2026-02,Logistics Coordinator,Pune,54.7
+2026-03,Logistics Coordinator,Pune,54.7
+2026-04,Logistics Coordinator,Pune,54.6
+2026-05,Logistics Coordinator,Pune,54.7
+2026-06,Logistics Coordinator,Pune,54.6
+2026-07,Logistics Coordinator,Pune,54.6
+2026-08,Logistics Coordinator,Pune,55.1
+2026-09,Logistics Coordinator,Pune,55.1
+2024-10,Electrician,Pune,50.8
+2024-11,Electrician,Pune,50.9
+2024-12,Electrician,Pune,50.8
+2025-01,Electrician,Pune,49.4
+2025-02,Electrician,Pune,49.3
+2025-03,Electrician,Pune,49.3
+2025-04,Electrician,Pune,49.2
+2025-05,Electrician,Pune,49.2
+2025-06,Electrician,Pune,49.1
+2025-07,Electrician,Pune,49.1
+2025-08,Electrician,Pune,49.6
+2025-09,Electrician,Pune,49.7
+2025-10,Electrician,Pune,54.6
+2025-11,Electrician,Pune,54.5
+2025-12,Electrician,Pune,54.6
+2026-01,Electrician,Pune,49.1
+2026-02,Electrician,Pune,49.1
+2026-03,Electrician,Pune,49.1
+2026-04,Electrician,Pune,49.3
+2026-05,Electrician,Pune,49.3
+2026-06,Electrician,Pune,49.3
+2026-07,Electrician,Pune,49.2
+2026-08,Electrician,Pune,48.9
+2026-09,Electrician,Pune,48.8
+2024-10,Mason,Pune,45.4
+2024-11,Mason,Pune,45.4
+2024-12,Mason,Pune,45.5
+2025-01,Mason,Pune,46.9
+2025-02,Mason,Pune,47
+2025-03,Mason,Pune,47
+2025-04,Mason,Pune,46.8
+2025-05,Mason,Pune,46.7
+2025-06,Mason,Pune,46.9
+2025-07,Mason,Pune,46.8
+2025-08,Mason,Pune,47.3
+2025-09,Mason,Pune,47.2
+2025-10,Mason,Pune,46.7
+2025-11,Mason,Pune,46.7
+2025-12,Mason,Pune,46.6
+2026-01,Mason,Pune,49.9
+2026-02,Mason,Pune,49.9
+2026-03,Mason,Pune,49.9
+2026-04,Mason,Pune,49.7
+2026-05,Mason,Pune,49.7
+2026-06,Mason,Pune,49.8
+2026-07,Mason,Pune,49.8
+2026-08,Mason,Pune,50.1
+2026-09,Mason,Pune,50.2
+2024-10,Retail Sales Associate,Pune,45.6
+2024-11,Retail Sales Associate,Pune,45.7
+2024-12,Retail Sales Associate,Pune,45.7
+2025-01,Retail Sales Associate,Pune,43.5
+2025-02,Retail Sales Associate,Pune,43.5
+2025-03,Retail Sales Associate,Pune,43.6
+2025-04,Retail Sales Associate,Pune,43.6
+2025-05,Retail Sales Associate,Pune,43.6
+2025-06,Retail Sales Associate,Pune,43.7
+2025-07,Retail Sales Associate,Pune,43.7
+2025-08,Retail Sales Associate,Pune,43.1
+2025-09,Retail Sales Associate,Pune,43.2
+2025-10,Retail Sales Associate,Pune,38.7
+2025-11,Retail Sales Associate,Pune,38.6
+2025-12,Retail Sales Associate,Pune,38.6
+2026-01,Retail Sales Associate,Pune,42.1
+2026-02,Retail Sales Associate,Pune,42.2
+2026-03,Retail Sales Associate,Pune,42.2
+2026-04,Retail Sales Associate,Pune,42.3
+2026-05,Retail Sales Associate,Pune,42.3
+2026-06,Retail Sales Associate,Pune,42.4
+2026-07,Retail Sales Associate,Pune,42.3
+2026-08,Retail Sales Associate,Pune,41.8
+2026-09,Retail Sales Associate,Pune,41.8
+2024-10,Solar Technician,Pune,67.5
+2024-11,Solar Technician,Pune,67.5
+2024-12,Solar Technician,Pune,67.4
+2025-01,Solar Technician,Pune,67.4
+2025-02,Solar Technician,Pune,67.4
+2025-03,Solar Technician,Pune,67.3
+2025-04,Solar Technician,Pune,67.3
+2025-05,Solar Technician,Pune,67.3
+2025-06,Solar Technician,Pune,67.2
+2025-07,Solar Technician,Pune,67.2
+2025-08,Solar Technician,Pune,67.8
+2025-09,Solar Technician,Pune,67.7
+2025-10,Solar Technician,Pune,67.2
+2025-11,Solar Technician,Pune,67.3
+2025-12,Solar Technician,Pune,67.3
+2026-01,Solar Technician,Pune,62
+2026-02,Solar Technician,Pune,61.9
+2026-03,Solar Technician,Pune,61.9
+2026-04,Solar Technician,Pune,62.1
+2026-05,Solar Technician,Pune,62.1
+2026-06,Solar Technician,Pune,62
+2026-07,Solar Technician,Pune,62.1
+2026-08,Solar Technician,Pune,62.3
+2026-09,Solar Technician,Pune,62.3
+2024-10,Wind Turbine Technician,Pune,58
+2024-11,Wind Turbine Technician,Pune,58.1
+2024-12,Wind Turbine Technician,Pune,57.9
+2025-01,Wind Turbine Technician,Pune,57.8
+2025-02,Wind Turbine Technician,Pune,57.6
+2025-03,Wind Turbine Technician,Pune,57.7
+2025-04,Wind Turbine Technician,Pune,57.6
+2025-05,Wind Turbine Technician,Pune,57.6
+2025-06,Wind Turbine Technician,Pune,57.5
+2025-07,Wind Turbine Technician,Pune,57.5
+2025-08,Wind Turbine Technician,Pune,57.4
+2025-09,Wind Turbine Technician,Pune,57.5
+2025-10,Wind Turbine Technician,Pune,61.7
+2025-11,Wind Turbine Technician,Pune,61.7
+2025-12,Wind Turbine Technician,Pune,61.8
+2026-01,Wind Turbine Technician,Pune,55.8
+2026-02,Wind Turbine Technician,Pune,55.8
+2026-03,Wind Turbine Technician,Pune,55.8
+2026-04,Wind Turbine Technician,Pune,56
+2026-05,Wind Turbine Technician,Pune,56
+2026-06,Wind Turbine Technician,Pune,55.9
+2026-07,Wind Turbine Technician,Pune,55.9
+2026-08,Wind Turbine Technician,Pune,56.2
+2026-09,Wind Turbine Technician,Pune,56.1
+2024-10,Software Developer,Nagpur,53.8
+2024-11,Software Developer,Nagpur,53.8
+2024-12,Software Developer,Nagpur,53.7
+2025-01,Software Developer,Nagpur,53.5
+2025-02,Software Developer,Nagpur,53.4
+2025-03,Software Developer,Nagpur,53.4
+2025-04,Software Developer,Nagpur,53.3
+2025-05,Software Developer,Nagpur,53.3
+2025-06,Software Developer,Nagpur,53.2
+2025-07,Software Developer,Nagpur,53.3
+2025-08,Software Developer,Nagpur,53.2
+2025-09,Software Developer,Nagpur,53.2
+2025-10,Software Developer,Nagpur,57.4
+2025-11,Software Developer,Nagpur,57.4
+2025-12,Software Developer,Nagpur,57.5
+2026-01,Software Developer,Nagpur,61.6
+2026-02,Software Developer,Nagpur,61.5
+2026-03,Software Developer,Nagpur,61.5
+2026-04,Software Developer,Nagpur,61.8
+2026-05,Software Developer,Nagpur,61.7
+2026-06,Software Developer,Nagpur,61.7
+2026-07,Software Developer,Nagpur,61.6
+2026-08,Software Developer,Nagpur,61.9
+2026-09,Software Developer,Nagpur,61.9
+2024-10,Data Entry Operator,Nagpur,47.5
+2024-11,Data Entry Operator,Nagpur,47.5
+2024-12,Data Entry Operator,Nagpur,37.6
+2025-01,Data Entry Operator,Nagpur,45.3
+2025-02,Data Entry Operator,Nagpur,45.4
+2025-03,Data Entry Operator,Nagpur,45.4
+2025-04,Data Entry Operator,Nagpur,45.1
+2025-05,Data Entry Operator,Nagpur,45.2
+2025-06,Data Entry Operator,Nagpur,45.2
+2025-07,Data Entry Operator,Nagpur,45.3
+2025-08,Data Entry Operator,Nagpur,45.6
+2025-09,Data Entry Operator,Nagpur,45.6
+2025-10,Data Entry Operator,Nagpur,40.5
+2025-11,Data Entry Operator,Nagpur,40.5
+2025-12,Data Entry Operator,Nagpur,40.5
+2026-01,Data Entry Operator,Nagpur,45.1
+2026-02,Data Entry Operator,Nagpur,45.2
+2026-03,Data Entry Operator,Nagpur,45.1
+2026-04,Data Entry Operator,Nagpur,44.9
+2026-05,Data Entry Operator,Nagpur,44.9
+2026-06,Data Entry Operator,Nagpur,45
+2026-07,Data Entry Operator,Nagpur,45
+2026-08,Data Entry Operator,Nagpur,45.4
+2026-09,Data Entry Operator,Nagpur,45.4
+2024-10,Digital Marketing Executive,Nagpur,64.2
+2024-11,Digital Marketing Executive,Nagpur,64.3
+2024-12,Digital Marketing Executive,Nagpur,64.2
+2025-01,Digital Marketing Executive,Nagpur,60.5
+2025-02,Digital Marketing Executive,Nagpur,60.4
+2025-03,Digital Marketing Executive,Nagpur,60.4
+2025-04,Digital Marketing Executive,Nagpur,60.6
+2025-05,Digital Marketing Executive,Nagpur,60.6
+2025-06,Digital Marketing Executive,Nagpur,60.5
+2025-07,Digital Marketing Executive,Nagpur,60.5
+2025-08,Digital Marketing Executive,Nagpur,60.1
+2025-09,Digital Marketing Executive,Nagpur,60.2
+2025-10,Digital Marketing Executive,Nagpur,60.7
+2025-11,Digital Marketing Executive,Nagpur,60.6
+2025-12,Digital Marketing Executive,Nagpur,60.7
+2026-01,Digital Marketing Executive,Nagpur,57.5
+2026-02,Digital Marketing Executive,Nagpur,57.5
+2026-03,Digital Marketing Executive,Nagpur,57.5
+2026-04,Digital Marketing Executive,Nagpur,57.4
+2026-05,Digital Marketing Executive,Nagpur,57.4
+2026-06,Digital Marketing Executive,Nagpur,57.3
+2026-07,Digital Marketing Executive,Nagpur,57.3
+2026-08,Digital Marketing Executive,Nagpur,57.3
+2026-09,Digital Marketing Executive,Nagpur,57.2
+2024-10,Healthcare Assistant,Nagpur,53.3
+2024-11,Healthcare Assistant,Nagpur,53.3
+2024-12,Healthcare Assistant,Nagpur,53.2
+2025-01,Healthcare Assistant,Nagpur,53
+2025-02,Healthcare Assistant,Nagpur,52.9
+2025-03,Healthcare Assistant,Nagpur,52.9
+2025-04,Healthcare Assistant,Nagpur,52.8
+2025-05,Healthcare Assistant,Nagpur,52.8
+2025-06,Healthcare Assistant,Nagpur,52.7
+2025-07,Healthcare Assistant,Nagpur,52.8
+2025-08,Healthcare Assistant,Nagpur,52.7
+2025-09,Healthcare Assistant,Nagpur,52.7
+2025-10,Healthcare Assistant,Nagpur,62
+2025-11,Healthcare Assistant,Nagpur,61.9
+2025-12,Healthcare Assistant,Nagpur,52
+2026-01,Healthcare Assistant,Nagpur,61.6
+2026-02,Healthcare Assistant,Nagpur,61.5
+2026-03,Healthcare Assistant,Nagpur,61.5
+2026-04,Healthcare Assistant,Nagpur,61.8
+2026-05,Healthcare Assistant,Nagpur,61.7
+2026-06,Healthcare Assistant,Nagpur,61.7
+2026-07,Healthcare Assistant,Nagpur,61.6
+2026-08,Healthcare Assistant,Nagpur,61.9
+2026-09,Healthcare Assistant,Nagpur,61.9
+2024-10,Phlebotomy Technician,Nagpur,56.4
+2024-11,Phlebotomy Technician,Nagpur,56.4
+2024-12,Phlebotomy Technician,Nagpur,56.5
+2025-01,Phlebotomy Technician,Nagpur,55.2
+2025-02,Phlebotomy Technician,Nagpur,55.2
+2025-03,Phlebotomy Technician,Nagpur,55.3
+2025-04,Phlebotomy Technician,Nagpur,55.3
+2025-05,Phlebotomy Technician,Nagpur,55.3
+2025-06,Phlebotomy Technician,Nagpur,55.4
+2025-07,Phlebotomy Technician,Nagpur,55.4
+2025-08,Phlebotomy Technician,Nagpur,55.4
+2025-09,Phlebotomy Technician,Nagpur,55.5
+2025-10,Phlebotomy Technician,Nagpur,55.4
+2025-11,Phlebotomy Technician,Nagpur,55.3
+2025-12,Phlebotomy Technician,Nagpur,55.3
+2026-01,Phlebotomy Technician,Nagpur,57.2
+2026-02,Phlebotomy Technician,Nagpur,57.3
+2026-03,Phlebotomy Technician,Nagpur,57.3
+2026-04,Phlebotomy Technician,Nagpur,57.4
+2026-05,Phlebotomy Technician,Nagpur,57.4
+2026-06,Phlebotomy Technician,Nagpur,57.5
+2026-07,Phlebotomy Technician,Nagpur,57.4
+2026-08,Phlebotomy Technician,Nagpur,57.6
+2026-09,Phlebotomy Technician,Nagpur,57.5
+2024-10,CNC Operator,Nagpur,50.4
+2024-11,CNC Operator,Nagpur,50.3
+2024-12,CNC Operator,Nagpur,50.4
+2025-01,CNC Operator,Nagpur,56.8
+2025-02,CNC Operator,Nagpur,57
+2025-03,CNC Operator,Nagpur,56.9
+2025-04,CNC Operator,Nagpur,56.7
+2025-05,CNC Operator,Nagpur,56.7
+2025-06,CNC Operator,Nagpur,56.8
+2025-07,CNC Operator,Nagpur,56.8
+2025-08,CNC Operator,Nagpur,56.6
+2025-09,CNC Operator,Nagpur,56.5
+2025-10,CNC Operator,Nagpur,56.6
+2025-11,CNC Operator,Nagpur,56.7
+2025-12,CNC Operator,Nagpur,56.6
+2026-01,CNC Operator,Nagpur,53.2
+2026-02,CNC Operator,Nagpur,53.3
+2026-03,CNC Operator,Nagpur,53.3
+2026-04,CNC Operator,Nagpur,53.1
+2026-05,CNC Operator,Nagpur,53.1
+2026-06,CNC Operator,Nagpur,53.1
+2026-07,CNC Operator,Nagpur,53.2
+2026-08,CNC Operator,Nagpur,52.9
+2026-09,CNC Operator,Nagpur,52.9
+2024-10,Welder,Nagpur,53.7
+2024-11,Welder,Nagpur,53.6
+2024-12,Welder,Nagpur,53.6
+2025-01,Welder,Nagpur,55.2
+2025-02,Welder,Nagpur,55.1
+2025-03,Welder,Nagpur,55.1
+2025-04,Welder,Nagpur,55.4
+2025-05,Welder,Nagpur,55.3
+2025-06,Welder,Nagpur,55.3
+2025-07,Welder,Nagpur,55.2
+2025-08,Welder,Nagpur,54.9
+2025-09,Welder,Nagpur,54.8
+2025-10,Welder,Nagpur,55
+2025-11,Welder,Nagpur,55
+2025-12,Welder,Nagpur,55
+2026-01,Welder,Nagpur,55.4
+2026-02,Welder,Nagpur,55.3
+2026-03,Welder,Nagpur,55.3
+2026-04,Welder,Nagpur,55.2
+2026-05,Welder,Nagpur,55.2
+2026-06,Welder,Nagpur,55.1
+2026-07,Welder,Nagpur,55.1
+2026-08,Welder,Nagpur,55.7
+2026-09,Welder,Nagpur,55.7
+2024-10,Warehouse Associate,Nagpur,58.2
+2024-11,Warehouse Associate,Nagpur,58.2
+2024-12,Warehouse Associate,Nagpur,58.2
+2025-01,Warehouse Associate,Nagpur,57
+2025-02,Warehouse Associate,Nagpur,57
+2025-03,Warehouse Associate,Nagpur,57.1
+2025-04,Warehouse Associate,Nagpur,57.1
+2025-05,Warehouse Associate,Nagpur,57.2
+2025-06,Warehouse Associate,Nagpur,57.2
+2025-07,Warehouse Associate,Nagpur,57.2
+2025-08,Warehouse Associate,Nagpur,57.3
+2025-09,Warehouse Associate,Nagpur,57.3
+2025-10,Warehouse Associate,Nagpur,57.2
+2025-11,Warehouse Associate,Nagpur,57.2
+2025-12,Warehouse Associate,Nagpur,57.1
+2026-01,Warehouse Associate,Nagpur,59.5
+2026-02,Warehouse Associate,Nagpur,59.6
+2026-03,Warehouse Associate,Nagpur,59.6
+2026-04,Warehouse Associate,Nagpur,59.7
+2026-05,Warehouse Associate,Nagpur,59.7
+2026-06,Warehouse Associate,Nagpur,59.8
+2026-07,Warehouse Associate,Nagpur,59.7
+2026-08,Warehouse Associate,Nagpur,59.9
+2026-09,Warehouse Associate,Nagpur,59.8
+2024-10,Logistics Coordinator,Nagpur,59.7
+2024-11,Logistics Coordinator,Nagpur,59.8
+2024-12,Logistics Coordinator,Nagpur,59.8
+2025-01,Logistics Coordinator,Nagpur,58.6
+2025-02,Logistics Coordinator,Nagpur,58.6
+2025-03,Logistics Coordinator,Nagpur,58.6
+2025-04,Logistics Coordinator,Nagpur,58.7
+2025-05,Logistics Coordinator,Nagpur,58.7
+2025-06,Logistics Coordinator,Nagpur,58.8
+2025-07,Logistics Coordinator,Nagpur,58.8
+2025-08,Logistics Coordinator,Nagpur,58.8
+2025-09,Logistics Coordinator,Nagpur,58.9
+2025-10,Logistics Coordinator,Nagpur,58.8
+2025-11,Logistics Coordinator,Nagpur,58.7
+2025-12,Logistics Coordinator,Nagpur,58.7
+2026-01,Logistics Coordinator,Nagpur,61.1
+2026-02,Logistics Coordinator,Nagpur,61.2
+2026-03,Logistics Coordinator,Nagpur,61.1
+2026-04,Logistics Coordinator,Nagpur,61.3
+2026-05,Logistics Coordinator,Nagpur,61.2
+2026-06,Logistics Coordinator,Nagpur,61.3
+2026-07,Logistics Coordinator,Nagpur,61.3
+2026-08,Logistics Coordinator,Nagpur,61.4
+2026-09,Logistics Coordinator,Nagpur,61.4
+2024-10,Electrician,Nagpur,53
+2024-11,Electrician,Nagpur,53
+2024-12,Electrician,Nagpur,53.1
+2025-01,Electrician,Nagpur,54.5
+2025-02,Electrician,Nagpur,54.6
+2025-03,Electrician,Nagpur,54.6
+2025-04,Electrician,Nagpur,54.4
+2025-05,Electrician,Nagpur,54.3
+2025-06,Electrician,Nagpur,54.5
+2025-07,Electrician,Nagpur,54.4
+2025-08,Electrician,Nagpur,54.8
+2025-09,Electrician,Nagpur,54.8
+2025-10,Electrician,Nagpur,54.3
+2025-11,Electrician,Nagpur,54.3
+2025-12,Electrician,Nagpur,54.2
+2026-01,Electrician,Nagpur,57.5
+2026-02,Electrician,Nagpur,57.5
+2026-03,Electrician,Nagpur,57.5
+2026-04,Electrician,Nagpur,57.3
+2026-05,Electrician,Nagpur,57.3
+2026-06,Electrician,Nagpur,57.3
+2026-07,Electrician,Nagpur,57.4
+2026-08,Electrician,Nagpur,57.7
+2026-09,Electrician,Nagpur,57.8
+2024-10,Mason,Nagpur,53.5
+2024-11,Mason,Nagpur,53.5
+2024-12,Mason,Nagpur,53.4
+2025-01,Mason,Nagpur,52
+2025-02,Mason,Nagpur,51.8
+2025-03,Mason,Nagpur,51.9
+2025-04,Mason,Nagpur,52.1
+2025-05,Mason,Nagpur,52.1
+2025-06,Mason,Nagpur,52
+2025-07,Mason,Nagpur,52
+2025-08,Mason,Nagpur,51.6
+2025-09,Mason,Nagpur,51.6
+2025-10,Mason,Nagpur,52.2
+2025-11,Mason,Nagpur,52.1
+2025-12,Mason,Nagpur,52.2
+2026-01,Mason,Nagpur,51.8
+2026-02,Mason,Nagpur,51.7
+2026-03,Mason,Nagpur,51.7
+2026-04,Mason,Nagpur,51.7
+2026-05,Mason,Nagpur,51.6
+2026-06,Mason,Nagpur,51.6
+2026-07,Mason,Nagpur,51.5
+2026-08,Mason,Nagpur,51.5
+2026-09,Mason,Nagpur,51.5
+2024-10,Retail Sales Associate,Nagpur,41.6
+2024-11,Retail Sales Associate,Nagpur,41.6
+2024-12,Retail Sales Associate,Nagpur,41.7
+2025-01,Retail Sales Associate,Nagpur,40.9
+2025-02,Retail Sales Associate,Nagpur,41
+2025-03,Retail Sales Associate,Nagpur,41
+2025-04,Retail Sales Associate,Nagpur,40.8
+2025-05,Retail Sales Associate,Nagpur,40.7
+2025-06,Retail Sales Associate,Nagpur,40.9
+2025-07,Retail Sales Associate,Nagpur,40.8
+2025-08,Retail Sales Associate,Nagpur,40.6
+2025-09,Retail Sales Associate,Nagpur,40.6
+2025-10,Retail Sales Associate,Nagpur,40.7
+2025-11,Retail Sales Associate,Nagpur,40.7
+2025-12,Retail Sales Associate,Nagpur,40.6
+2026-01,Retail Sales Associate,Nagpur,47.3
+2026-02,Retail Sales Associate,Nagpur,47.3
+2026-03,Retail Sales Associate,Nagpur,47.3
+2026-04,Retail Sales Associate,Nagpur,47.1
+2026-05,Retail Sales Associate,Nagpur,47.1
+2026-06,Retail Sales Associate,Nagpur,47.1
+2026-07,Retail Sales Associate,Nagpur,47.2
+2026-08,Retail Sales Associate,Nagpur,46.9
+2026-09,Retail Sales Associate,Nagpur,46.9
+2024-10,Solar Technician,Nagpur,67.5
+2024-11,Solar Technician,Nagpur,67.5
+2024-12,Solar Technician,Nagpur,67.4
+2025-01,Solar Technician,Nagpur,61
+2025-02,Solar Technician,Nagpur,60.9
+2025-03,Solar Technician,Nagpur,60.9
+2025-04,Solar Technician,Nagpur,60.8
+2025-05,Solar Technician,Nagpur,60.8
+2025-06,Solar Technician,Nagpur,60.7
+2025-07,Solar Technician,Nagpur,60.8
+2025-08,Solar Technician,Nagpur,61.3
+2025-09,Solar Technician,Nagpur,61.3
+2025-10,Solar Technician,Nagpur,61.2
+2025-11,Solar Technician,Nagpur,61.1
+2025-12,Solar Technician,Nagpur,61.3
+2026-01,Solar Technician,Nagpur,65.3
+2026-02,Solar Technician,Nagpur,65.3
+2026-03,Solar Technician,Nagpur,65.2
+2026-04,Solar Technician,Nagpur,65.5
+2026-05,Solar Technician,Nagpur,65.5
+2026-06,Solar Technician,Nagpur,65.4
+2026-07,Solar Technician,Nagpur,65.4
+2026-08,Solar Technician,Nagpur,65
+2026-09,Solar Technician,Nagpur,65
+2026-06,Wind Turbine Technician,Nagpur,55.3
+2026-07,Wind Turbine Technician,Nagpur,55.4
+2026-08,Wind Turbine Technician,Nagpur,55.1
+2026-09,Wind Turbine Technician,Nagpur,55.1
+2026-09,Electrician,Kolhapur,58

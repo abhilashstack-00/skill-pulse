@@ -2,85 +2,140 @@
 
 import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
-import type { IndexWeight } from '@/lib/types'
+import { getMethodology } from '@/lib/client/api'
+import { formatNumber } from '@/lib/format'
 import { useService } from '@/lib/hooks/use-service'
-import { getMethodology } from '@/lib/services/skillpulse'
+import { useI18n } from '@/lib/i18n/context'
 import { PageHeader } from '@/components/layout/page-header'
-import { ErrorState, LoadingState, SectionCard } from '@/components/ui/primitives'
+import { ErrorState, LoadingState, Pill, SectionCard } from '@/components/ui/primitives'
+
+const STEPS = ['data', 'normalize', 'measure', 'forecast', 'prioritize', 'recommend'] as const
 
 export function MethodologyPage() {
+  const { t } = useI18n()
   const methodology = useService(getMethodology, [])
+  const [step, setStep] = useState<(typeof STEPS)[number]>('recommend')
   const data = methodology.data
-  const [stepId, setStepId] = useState<string | null>(null)
-  const steps = data?.steps ?? []
-  const active = steps.find((s) => s.id === stepId) ?? steps[steps.length - 1]
 
   return (
     <div className="page">
-      <PageHeader title="Methodology" subtitle="How SkillPulse turns labour signals into planning decisions." />
+      <PageHeader title="method.title" subtitle="method.subtitle" />
 
       {methodology.status === 'error' ? (
-        <SectionCard style={{ marginTop: 62 }}>
-          <ErrorState text={methodology.error.message} onRetry={methodology.retry} />
-        </SectionCard>
+        <SectionCard style={{ marginTop: 62 }}><ErrorState error={methodology.error} onRetry={methodology.retry} /></SectionCard>
       ) : !data ? (
-        <SectionCard style={{ marginTop: 62 }}>
-          <LoadingState height={420} label="Loading methodology" />
-        </SectionCard>
+        <SectionCard style={{ marginTop: 62 }}><LoadingState height={420} /></SectionCard>
       ) : (
-        <>
-          <ol className="pipeline" aria-label="Pipeline steps">
-            {steps.map((step, index) => (
-              <li className="pipeline-item" key={step.id}>
-                {index > 0 && <span className="pipeline-arrow" aria-hidden="true"><ArrowRight /></span>}
-                <button type="button" className="pipeline-step" aria-pressed={step.id === active?.id} onClick={() => setStepId(step.id)}>
-                  {step.label}
-                </button>
-              </li>
-            ))}
-          </ol>
-          <p className="pipeline-note" aria-live="polite">
-            {active && (
-              <>
-                <strong>Step {steps.indexOf(active) + 1} · {active.label}.</strong> {active.description}
-              </>
-            )}
-          </p>
+        (() => {
+          const m = data.methodology
+          const pct = (weight: number) => `${Math.round(weight * 100)}%`
+          const weights = (title: string, id: string, entries: Record<string, number>, note?: string) => (
+            <SectionCard className="weights-card" aria-labelledby={id}>
+              <h2 className="card-title" id={id}>{title}</h2>
+              <dl className="weights-rows" style={{ marginBottom: 0 }}>
+                {Object.entries(entries).map(([key, weight]) => (
+                  <div className="kv-row weights-row" key={key}>
+                    <dt className="kv-label">{t(`comp.${key}`)}</dt>
+                    <dd className="kv-value" style={{ marginLeft: 0 }}>{pct(weight)}</dd>
+                  </div>
+                ))}
+              </dl>
+              {note && <p className="weights-note">{note}</p>}
+            </SectionCard>
+          )
+          const g = m.gapThresholds
+          return (
+            <>
+              <ol className="pipeline" aria-label={t('method.title')}>
+                {STEPS.map((id, index) => (
+                  <li className="pipeline-item" key={id}>
+                    {index > 0 && <span className="pipeline-arrow" aria-hidden="true"><ArrowRight /></span>}
+                    <button type="button" className="pipeline-step" aria-pressed={id === step} onClick={() => setStep(id)}>
+                      {t(`method.step.${id}`)}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+              <p className="pipeline-note" aria-live="polite">
+                <strong>{t('method.stepLabel', { n: STEPS.indexOf(step) + 1, label: t(`method.step.${step}`) })}</strong> {t(`method.step.${step}.text`)}
+              </p>
 
-          <div className="split method-row">
-            <WeightsCard id="demand-weights" title="Demand Index" weights={data.demandWeights} />
-            <WeightsCard id="supply-weights" title="Supply Index" weights={data.supplyWeights} />
-          </div>
+              <div className="split method-row">
+                {weights(t('method.demandIndex'), 'demand-weights', m.demandIndex.weights)}
+                {weights(t('method.supplyIndex'), 'supply-weights', m.supplyIndex.weights)}
+              </div>
+              <p className="weights-note" style={{ marginTop: 14 }}>
+                {t('method.scaling', {
+                  postings: formatNumber(data.references.jobPostings, 0), registrations: formatNumber(data.references.employmentRegistrations, 0), seats: formatNumber(data.references.seats, 0),
+                })}
+              </p>
 
-          <section className="formula-card" aria-labelledby="formula-title">
-            <h2 className="formula-title" id="formula-title">{data.formula.title}</h2>
-            <p className="formula-note">{data.formula.note}</p>
-            <p className="formula-thresholds">
-              <span><strong>Shortage</strong> gap ≥ +{data.thresholds.balanced}</span>
-              <span><strong>Balanced</strong> within ±{data.thresholds.balanced}</span>
-              <span><strong>Surplus</strong> gap ≤ −{data.thresholds.balanced}</span>
-              <span><strong>High priority</strong> gap size ≥ {data.thresholds.high}</span>
-              <span><strong>Medium priority</strong> gap size ≥ {data.thresholds.medium}</span>
-            </p>
-          </section>
-        </>
+              <section className="formula-card" aria-labelledby="formula-title">
+                <h2 className="formula-title" id="formula-title">{t('method.formula')}</h2>
+                <p className="formula-note">{t('method.formulaNote')}</p>
+                <p className="formula-thresholds">
+                  <span><strong>{t('status.severe_shortage')}</strong> ≥ +{g.severeShortage}%</span>
+                  <span><strong>{t('status.shortage')}</strong> +{g.shortage}% … +{g.severeShortage}%</span>
+                  <span><strong>{t('status.balanced')}</strong> −{Math.abs(g.oversupply)}% … +{g.shortage}%</span>
+                  <span><strong>{t('status.oversupply')}</strong> −{Math.abs(g.severeOversupply)}% … −{Math.abs(g.oversupply)}%</span>
+                  <span><strong>{t('status.severe_oversupply')}</strong> ≤ −{Math.abs(g.severeOversupply)}%</span>
+                </p>
+              </section>
+
+              <div className="split method-row method-section">
+                {weights(
+                  t('method.priority'), 'priority-weights', m.priority.weights,
+                  `${t('method.priority.gapSaturation', { value: m.priority.gapSaturationPct })} ${t('method.priority.growthSaturation', { value: m.priority.growthSaturationPct })} ${t('method.priority.bands', { high: m.priority.bands.high, medium: m.priority.bands.medium })} ${t('common.notOfficial')}`,
+                )}
+                <SectionCard className="weights-card" aria-labelledby="alert-rules">
+                  <h2 className="card-title" id="alert-rules">{t('method.alerts')}</h2>
+                  <ul className="rule-list">
+                    <li>{t('method.alerts.emerging', { growth: m.alerts.rapidDemandGrowthPct, flat: m.alerts.flatCapacityPct })}</li>
+                    <li>{t('method.alerts.oversupply', { capacity: m.alerts.capacityGrowthPct, decline: m.alerts.demandDeclinePct })}</li>
+                    <li>{t('method.alerts.upcoming')}</li>
+                    <li>{t('method.alerts.monitor', { margin: m.alerts.monitorMarginPct })}</li>
+                  </ul>
+                </SectionCard>
+              </div>
+
+              <SectionCard className="method-card" aria-labelledby="forecast-method">
+                <h2 className="card-title" id="forecast-method">{t('method.forecast')}</h2>
+                <p className="method-text">
+                  {t('method.forecast.text', {
+                    baseline: m.forecast.baselineWindow, trendWeight: Math.round(m.forecast.trendWeight * 100), growthWeight: Math.round((1 - m.forecast.trendWeight) * 100),
+                    damping: m.forecast.growthDamping, minTrend: m.forecast.minMonthsTrend, minBaseline: m.forecast.minMonthsBaseline,
+                  })}
+                </p>
+                <h3 className="drawer-section-title">{t('method.backtest')}</h3>
+                <table className="method-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">{t('method.backtest.col.horizon')}</th>
+                      <th scope="col">{t('method.backtest.col.pairs')}</th>
+                      <th scope="col">{t('method.backtest.col.wape')}</th>
+                      <th scope="col">{t('method.backtest.col.p80')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.backtest.map((b) => (
+                      <tr key={b.horizon}>
+                        <td>{t(`horizon.${b.horizon}`)}</td>
+                        <td>{b.cells}</td>
+                        <td>{b.wape === null ? '—' : `${formatNumber(b.wape, 1)}%`}</td>
+                        <td>{b.p80Ape === null ? '—' : `±${formatNumber(b.p80Ape, 1)}%`}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="method-text">{t('method.backtest.note')}</p>
+                <p className="method-text">
+                  <Pill tone="neutral" compact>{t('common.prototypeThresholds')}</Pill> &nbsp;{t('method.version', { version: m.version })} · {m.forecast.modelVersion} · {m.supplyForecast.modelVersion}
+                </p>
+              </SectionCard>
+            </>
+          )
+        })()
       )}
     </div>
-  )
-}
-
-function WeightsCard({ id, title, weights }: { id: string; title: string; weights: IndexWeight[] }) {
-  return (
-    <SectionCard className="weights-card" aria-labelledby={id}>
-      <h2 className="card-title" id={id}>{title}</h2>
-      <dl className="weights-rows" style={{ marginBottom: 0 }}>
-        {weights.map((item) => (
-          <div className="kv-row weights-row" key={item.label}>
-            <dt className="kv-label">{item.label}</dt>
-            <dd className="kv-value" style={{ marginLeft: 0 }}>{item.weight}%</dd>
-          </div>
-        ))}
-      </dl>
-    </SectionCard>
   )
 }

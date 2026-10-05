@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 interface DrawerProps {
   open: boolean
@@ -15,6 +16,7 @@ interface DrawerProps {
 /** Right-hand panel used for the "Why?" evidence view. */
 export function Drawer({ open, onClose, eyebrow, title, children, footer }: DrawerProps) {
   const panelRef = useRef<HTMLDivElement>(null)
+  const { t } = useI18n()
 
   useEffect(() => {
     if (!open) return
@@ -53,7 +55,7 @@ export function Drawer({ open, onClose, eyebrow, title, children, footer }: Draw
             {eyebrow && <p className="drawer-eyebrow">{eyebrow}</p>}
             <h2 className="drawer-title">{title}</h2>
           </div>
-          <button type="button" className="icon-btn" aria-label="Close" onClick={onClose}>
+          <button type="button" className="icon-btn" aria-label={t('common.close')} onClick={onClose}>
             <X aria-hidden="true" />
           </button>
         </div>

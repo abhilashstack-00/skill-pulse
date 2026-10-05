@@ -1,148 +1,171 @@
 'use client'
 
-import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
-import type { ForecastHorizon, Tone } from '@/lib/types'
-import { useFilters } from '@/lib/filters-context'
+import { getAlerts, getForecasts } from '@/lib/client/api'
+import type { HorizonKey } from '@/lib/domain/types'
+import { toQuery, useFilters } from '@/lib/filters-context'
+import { cx, formatDate, formatNumber, signed, signedPct } from '@/lib/format'
 import { useService } from '@/lib/hooks/use-service'
-import { getEarlyWarnings, getFilterOptions, getForecast, type WarningKind } from '@/lib/services/skillpulse'
-import { cx, formatDate, signed } from '@/lib/format'
+import { useI18n } from '@/lib/i18n/context'
+import { useMeta } from '@/components/layout/app-shell'
 import { PageHeader } from '@/components/layout/page-header'
 import { Legend, seriesColor } from '@/components/charts/chart-kit'
-import { ForecastChart } from '@/components/charts/forecast-chart'
-import { Select } from '@/components/ui/select'
-import { Button, EmptyState, ErrorState, LoadingState, SectionCard } from '@/components/ui/primitives'
+import { DemandSupplyChart } from '@/components/charts/demand-supply-chart'
+import { FilterBar } from '@/components/ui/filter-bar'
+import { useFigures, WarningList } from '@/components/ui/intelligence'
+import { Button, EmptyState, ErrorState, LoadingState, SectionCard, StatusBadge } from '@/components/ui/primitives'
 
-const HORIZONS: { value: ForecastHorizon; label: string; short: string }[] = [
-  { value: 'current', label: 'Current', short: 'Current' },
-  { value: '3M', label: '3 Months', short: '3M' },
-  { value: '6M', label: '6 Months', short: '6M' },
-  { value: '12M', label: '12 Months', short: '12M' },
-]
-
-const WARNING_STYLE: Record<WarningKind, { label: string; tone: Tone }> = {
-  critical: { label: 'Critical', tone: 'danger' },
-  emerging: { label: 'Emerging', tone: 'warning' },
-  saturation: { label: 'Saturation', tone: 'primary' },
-}
+const HORIZONS: HorizonKey[] = ['current', '3M', '6M', '12M']
 
 export function ForecastsPage() {
   const router = useRouter()
+  const { t, locale } = useI18n()
+  const { meta, names } = useMeta()
   const { filters, setFilters } = useFilters()
-  const [horizon, setHorizon] = useState<ForecastHorizon>('6M')
-  const options = useService(getFilterOptions, [])
-  const forecast = useService(() => getForecast(filters.skillId, horizon), [filters.skillId, horizon])
-  const warnings = useService(getEarlyWarnings, [])
+  const { num, periodText } = useFigures()
+  const scopeQuery = toQuery(filters, ['stateId', 'districtId', 'sectorId', 'tradeId', 'horizon'])
+  const deps = [filters.stateId, filters.districtId, filters.sectorId, filters.tradeId, filters.horizon]
+  const forecast = useService(() => getForecasts(scopeQuery), deps)
+  const alerts = useService(() => getAlerts(scopeQuery), deps.slice(0, 4))
   const data = forecast.data
-  const short = HORIZONS.find((h) => h.value === horizon)?.short ?? ''
-
-  const pickSkill = (skillId: string | null) => {
-    const skill = options.data?.skills.find((s) => s.value === skillId)
-    if (skill) setFilters({ skillId: skill.value, stateId: skill.stateId, sector: skill.sector, districtId: null })
-  }
+  const totals = data?.totals
+  const short = t(`horizon.short.${filters.horizon}`)
+  const place = filters.districtId ? names.district(filters.districtId) : filters.stateId ? names.state(filters.stateId) : t('common.national')
+  const tested = data?.backtest.find((b) => b.horizon === filters.horizon)
 
   return (
     <div className="page">
-      <PageHeader title="Labour Demand Forecasts" subtitle="See where current mismatches are likely to move next." />
+      <PageHeader title="forecast.title" subtitle="forecast.subtitle" />
 
       <div className="filter-bar">
-        <div role="group" aria-label="Forecast horizon" style={{ display: 'contents' }}>
+        <div role="group" aria-label={t('filter.horizon')} style={{ display: 'contents' }}>
           {HORIZONS.map((h) => (
-            <button key={h.value} type="button" className="toggle" aria-pressed={horizon === h.value} onClick={() => setHorizon(h.value)}>
-              {h.label}
+            <button key={h} type="button" className="toggle" aria-pressed={filters.horizon === h} onClick={() => setFilters({ horizon: h })}>
+              {t(`horizon.${h}`)}
             </button>
           ))}
         </div>
-        <Select label="Skill" value={data?.metrics.skill.id ?? null} options={options.data?.skills ?? []} disabled={!options.data} onChange={pickSkill} />
       </div>
+      <FilterBar fields={['state', 'district', 'sector', 'trade']} />
 
       <div className="split forecast-row content-top">
         <SectionCard className="forecast-card" aria-labelledby="forecast-title">
           <div className="card-header">
-            <h2 className="card-title" id="forecast-title">Projected Skill Gap</h2>
+            <div>
+              <h2 className="card-title" id="forecast-title">{t('forecast.chart')}</h2>
+              <p className="card-subtitle">{t('forecast.scope', { trade: filters.tradeId ? names.trade(filters.tradeId) : filters.sectorId ? names.sector(filters.sectorId) : t('forecast.allTrades'), place })}</p>
+            </div>
             <Legend
               items={[
-                { label: 'Actual', color: seriesColor.gap },
-                { label: 'Forecast', color: seriesColor.gap, kind: 'dashed' },
-                { label: 'Confidence band', color: seriesColor.gap, kind: 'band' },
+                { label: t('forecast.legend.actual'), color: seriesColor.demand },
+                { label: t('forecast.legend.forecast'), color: seriesColor.demand, kind: 'dashed' },
+                { label: t('forecast.legend.band'), color: seriesColor.demand, kind: 'band' },
+                { label: t('forecast.legend.capacity'), color: seriesColor.supply },
               ]}
             />
           </div>
           {forecast.status === 'error' ? (
-            <ErrorState text={forecast.error.message} onRetry={forecast.retry} />
+            <ErrorState error={forecast.error} onRetry={forecast.retry} />
           ) : !data ? (
-            <LoadingState height={390} label="Loading forecast" />
+            <LoadingState height={390} />
+          ) : data.history.length === 0 ? (
+            <EmptyState title={t('forecast.empty')} text={t('common.emptyHint')} />
           ) : (
             <div className={cx('forecast-plot plot-surface', forecast.refreshing && 'is-refreshing')}>
-              <ForecastChart data={data.series} skillName={data.metrics.skill.name} />
+              <DemandSupplyChart history={data.history} forecast={data.monthly} supplyPerMonth={data.supplyPerMonth} />
             </div>
           )}
         </SectionCard>
 
         <SectionCard className="warnings-card" aria-labelledby="warnings-title">
-          <h2 className="card-title" id="warnings-title">Early Warnings</h2>
-          {warnings.status === 'error' ? (
-            <ErrorState text={warnings.error.message} onRetry={warnings.retry} />
-          ) : !warnings.data ? (
-            <LoadingState height={380} label="Loading early warnings" />
-          ) : warnings.data.length === 0 ? (
-            <EmptyState title="No early warnings" text="No skill is forecast to move out of balance." />
+          <h2 className="card-title" id="warnings-title">{t('forecast.warnings')}</h2>
+          {alerts.status === 'error' ? (
+            <ErrorState error={alerts.error} onRetry={alerts.retry} />
+          ) : !alerts.data ? (
+            <LoadingState height={380} />
           ) : (
-            <div className="warning-list">
-              {warnings.data.map(({ kind, metrics: m, gapChange6M }) => (
-                <button
-                  key={kind}
-                  type="button"
-                  className={cx('warning-tile', `tone-${WARNING_STYLE[kind].tone}`)}
-                  aria-pressed={data?.metrics.skill.id === m.skill.id}
-                  aria-label={`${WARNING_STYLE[kind].label}: ${m.skill.name}, ${m.state.name}. Gap forecast to change ${signed(gapChange6M)} points in 6 months. Show forecast.`}
-                  onClick={() => pickSkill(m.skill.id)}
-                >
-                  <span className="warning-kind">{WARNING_STYLE[kind].label}</span>
-                  <span className="warning-name">{m.skill.name}</span>
-                  <span className="warning-place">{m.state.name}</span>
-                </button>
-              ))}
-            </div>
+            <WarningList warnings={alerts.data.warnings} limit={3} />
           )}
         </SectionCard>
       </div>
 
-      <SectionCard className="summary-card" aria-label="Forecast summary">
-        {forecast.status === 'error' ? null : !data ? (
-          <div className="skeleton" style={{ height: 60 }} role="status" aria-label="Loading forecast summary" />
+      <SectionCard className="summary-card" aria-label={t('forecast.chart')}>
+        {forecast.status === 'error' ? null : !data || !totals ? (
+          <div className="skeleton" style={{ height: 60 }} role="status" aria-label={t('common.loading')} />
         ) : (
           <>
-            <dl className={cx('summary-grid', forecast.refreshing && 'is-refreshing')} style={{ margin: 0 }}>
+            <dl className={cx('summary-grid is-five', forecast.refreshing && 'is-refreshing')} style={{ margin: 0 }}>
               <div>
-                <dt className="summary-label">{horizon === 'current' ? 'Current gap' : `${short} forecast`}</dt>
-                <dd className="summary-value" style={{ marginLeft: 0 }}>{signed(data.forecast.gap)}</dd>
+                <dt className="summary-label">{filters.horizon === 'current' ? t('forecast.summary.demandCurrent') : t('forecast.summary.demand', { horizon: short })}</dt>
+                <dd className="summary-value" style={{ marginLeft: 0 }}>{totals.demand === null ? t('common.insufficient') : num(totals.demand)}</dd>
               </div>
               <div>
-                <dt className="summary-label">Confidence</dt>
-                <dd className="summary-value" style={{ marginLeft: 0 }}>{horizon === 'current' ? 'Observed' : data.forecast.confidence}</dd>
+                <dt className="summary-label">{t('forecast.summary.supply')}</dt>
+                <dd className="summary-value" style={{ marginLeft: 0 }}>{totals.supply === null ? t('common.insufficient') : num(totals.supply)}</dd>
               </div>
               <div>
-                <dt className="summary-label">Data coverage</dt>
-                <dd className="summary-value" style={{ marginLeft: 0 }}>{data.coverage}%</dd>
+                <dt className="summary-label">{t('forecast.summary.gap')}</dt>
+                <dd className="summary-value" style={{ marginLeft: 0 }}>
+                  {totals.gap === null ? t('common.insufficient') : `${signed(totals.gap)}${totals.gapPercentage === null ? '' : ` (${signedPct(totals.gapPercentage)})`}`}
+                </dd>
               </div>
               <div>
-                <dt className="summary-label">Freshness</dt>
-                <dd className="summary-value" style={{ marginLeft: 0 }}>{formatDate(data.freshness)}</dd>
+                <dt className="summary-label">{t('forecast.summary.confidence')}</dt>
+                <dd className="summary-value" style={{ marginLeft: 0 }}>
+                  {filters.horizon === 'current' ? t('forecast.summary.observed') : totals.confidence ? `${t(`confidence.${totals.confidence.label}`)} · ${totals.confidence.score}` : t('common.insufficient')}
+                </dd>
+              </div>
+              <div>
+                <dt className="summary-label">{t('forecast.summary.freshness')}</dt>
+                <dd className="summary-value" style={{ marginLeft: 0 }}>{meta ? formatDate(meta.dataset.updatedAt, locale) : '—'}</dd>
               </div>
             </dl>
             <div className="action-footer" style={{ marginTop: 24 }}>
               <p className="summary-note" style={{ marginTop: 0 }}>
-                {data.metrics.skill.name} · {data.metrics.district.name}, {data.metrics.state.name} · demand {data.forecast.demand}, supply {data.forecast.supply}. Illustrative pilot values, not model output.
+                <StatusBadge status={totals.status} /> &nbsp;{periodText(data.horizon)} · {t('common.pairs', { count: totals.cellsIncluded + totals.cellsExcluded })}
               </p>
-              <Button variant="secondary" onClick={() => router.push('/action-center')}>
-                Open in Action Center <ArrowRight aria-hidden="true" />
-              </Button>
+              {meta?.session.permissions.recommendations && (
+                <Button variant="secondary" onClick={() => router.push('/action-center')}>
+                  {t('forecast.openActions')} <ArrowRight aria-hidden="true" />
+                </Button>
+              )}
             </div>
           </>
         )}
       </SectionCard>
+
+      {data && totals && (
+        <SectionCard className="build-card" aria-labelledby="build-title">
+          <h2 className="card-title" id="build-title">{t('forecast.build.title')}</h2>
+          <div className="build-lines">
+            {data.components ? (
+              <p>
+                <strong>
+                  {t('forecast.build.line', {
+                    baseline: formatNumber(data.components.parts.baseline), trend: signed(data.components.parts.trend),
+                    growth: signed(data.components.parts.recentGrowth), total: num(totals.demand),
+                  })}
+                </strong>{' '}
+                {t('forecast.build.interval', { lower: num(totals.lower), upper: num(totals.upper) })}
+              </p>
+            ) : (
+              <p><strong>{t('horizon.window.current')}</strong></p>
+            )}
+            <p>{t('forecast.build.methods', { methods: Object.entries(data.methods).map(([method, count]) => `${t(`method.short.${method}`)} ${count}`).join(' · ') })}</p>
+            {totals.cellsExcluded > 0 && (
+              <p>
+                {t('forecast.build.excluded', { count: totals.cellsExcluded })}{' '}
+                {data.excluded.slice(0, 4).map((x) => `${names.trade(x.tradeId)} (${names.district(x.districtId)})`).join(', ')}
+              </p>
+            )}
+            {tested && tested.wape !== null && tested.p80Ape !== null && (
+              <p>{t('forecast.backtest', { months: data.horizon.months, p80: formatNumber(tested.p80Ape, 1), wape: formatNumber(tested.wape, 1) })}</p>
+            )}
+            <p>{t('skill.forecast.model')}: {data.model.demand} · {data.model.supply}</p>
+          </div>
+        </SectionCard>
+      )}
     </div>
   )
 }

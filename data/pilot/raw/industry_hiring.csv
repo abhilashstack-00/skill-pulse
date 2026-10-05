@@ -1,0 +1,2216 @@
+month,role,location,sector,hiring_intent_score
+01/10/2024,Software Developer,Hyderabad,IT & Digital,55.7
+01/11/2024,Software Developer,Hyd,IT & Digital,55.9
+01/12/2024,Software Developer,Secunderabad,IT & Digital,56
+01/01/2025,Software Developer,Hyderabad City,IT & Digital,62.9
+01/02/2025,Software Developer,Hyderabad,IT & Digital,63
+01/03/2025,Software Developer,Hyd,IT & Digital,63.2
+01/04/2025,Software Developer,Secunderabad,IT & Digital,63.3
+01/05/2025,Software Developer,Hyderabad City,IT & Digital,63.4
+01/06/2025,Software Developer,Hyderabad,IT & Digital,63.5
+01/07/2025,Software Developer,Hyd,IT & Digital,63.6
+01/08/2025,Software Developer,Secunderabad,IT & Digital,63.8
+01/09/2025,Software Developer,Hyderabad City,IT & Digital,63.9
+01/10/2025,Software Developer,Hyderabad,IT & Digital,64.1
+01/11/2025,Software Developer,Hyd,IT & Digital,64.3
+01/12/2025,Software Developer,Secunderabad,IT & Digital,64.5
+01/01/2026,Software Developer,Hyderabad City,IT & Digital,59.1
+01/02/2026,Software Developer,Hyderabad,IT & Digital,59.1
+01/03/2026,Software Developer,Hyd,IT & Digital,59.3
+01/04/2026,Software Developer,Secunderabad,IT & Digital,59.6
+01/05/2026,Software Developer,Hyderabad City,IT & Digital,59.8
+01/06/2026,Software Developer,Hyderabad,IT & Digital,59.9
+01/07/2026,Software Developer,Hyd,IT & Digital,60
+01/08/2026,Software Developer,Secunderabad,IT & Digital,59.8
+01/09/2026,Software Developer,Hyderabad City,IT & Digital,60
+01/10/2024,Data Entry Operator,Hyderabad,IT & Digital,41.8
+01/11/2024,Data Entry Operator,Hyd,IT & Digital,41.9
+01/12/2024,Data Entry Operator,Secunderabad,IT & Digital,42
+01/01/2025,Data Entry Operator,Hyderabad City,IT & Digital,43.4
+01/02/2025,Data Entry Operator,Hyderabad,IT & Digital,43.5
+01/03/2025,Data Entry Operator,Hyd,IT & Digital,43.6
+01/04/2025,Data Entry Operator,Secunderabad,IT & Digital,44
+01/05/2025,Data Entry Operator,Hyderabad City,IT & Digital,44.1
+01/06/2025,Data Entry Operator,Hyderabad,IT & Digital,44.3
+01/07/2025,Data Entry Operator,Hyd,IT & Digital,44.4
+01/08/2025,Data Entry Operator,Secunderabad,IT & Digital,44.2
+01/09/2025,Data Entry Operator,Hyderabad City,IT & Digital,44.4
+01/10/2025,Data Entry Operator,Hyderabad,IT & Digital,44.6
+01/11/2025,Data Entry Operator,Hyd,IT & Digital,44.8
+01/12/2025,Data Entry Operator,Secunderabad,IT & Digital,45
+01/01/2026,Data Entry Operator,Hyderabad City,IT & Digital,45.4
+01/02/2026,Data Entry Operator,Hyderabad,IT & Digital,45.4
+01/03/2026,Data Entry Operator,Hyd,IT & Digital,45.6
+01/04/2026,Data Entry Operator,Secunderabad,IT & Digital,45.7
+01/05/2026,Data Entry Operator,Hyderabad City,IT & Digital,45.9
+01/06/2026,Data Entry Operator,Hyderabad,IT & Digital,45.9
+01/07/2026,Data Entry Operator,Hyd,IT & Digital,46.1
+01/08/2026,Data Entry Operator,Secunderabad,IT & Digital,46.7
+01/09/2026,Data Entry Operator,Hyderabad City,IT & Digital,46.8
+01/10/2024,Digital Marketing Executive,Hyderabad,IT & Digital,58.8
+01/11/2024,Digital Marketing Executive,Hyd,IT & Digital,58.9
+01/12/2024,Digital Marketing Executive,Secunderabad,IT & Digital,59.1
+01/01/2025,Digital Marketing Executive,Hyderabad City,IT & Digital,58.2
+01/02/2025,Digital Marketing Executive,Hyderabad,IT & Digital,58.5
+01/03/2025,Digital Marketing Executive,Hyd,IT & Digital,58.6
+01/04/2025,Digital Marketing Executive,Secunderabad,IT & Digital,58.8
+01/05/2025,Digital Marketing Executive,Hyderabad City,IT & Digital,58.9
+01/06/2025,Digital Marketing Executive,Hyderabad,IT & Digital,59.2
+01/07/2025,Digital Marketing Executive,Hyd,IT & Digital,59.3
+01/08/2025,Digital Marketing Executive,Secunderabad,IT & Digital,59.1
+01/09/2025,Digital Marketing Executive,Hyderabad City,IT & Digital,59.2
+01/10/2025,Digital Marketing Executive,Hyderabad,IT & Digital,59.4
+01/11/2025,Digital Marketing Executive,Hyd,IT & Digital,59.6
+01/12/2025,Digital Marketing Executive,Secunderabad,IT & Digital,59.7
+01/01/2026,Digital Marketing Executive,Hyderabad City,IT & Digital,57.1
+01/02/2026,Digital Marketing Executive,Hyderabad,IT & Digital,57.3
+01/03/2026,Digital Marketing Executive,Hyd,IT & Digital,57.5
+01/04/2026,Digital Marketing Executive,Secunderabad,IT & Digital,57.7
+01/05/2026,Digital Marketing Executive,Hyderabad City,IT & Digital,57.8
+01/06/2026,Digital Marketing Executive,Hyderabad,IT & Digital,58
+01/07/2026,Digital Marketing Executive,Hyd,IT & Digital,58.2
+01/08/2026,Digital Marketing Executive,Secunderabad,IT & Digital,57.9
+01/09/2026,Digital Marketing Executive,Hyderabad City,IT & Digital,58.1
+01/10/2024,Healthcare Assistant,Hyderabad,Healthcare,56.5
+01/11/2024,Healthcare Assistant,Hyd,Healthcare,56.6
+01/12/2024,Healthcare Assistant,Secunderabad,Healthcare,56.7
+01/01/2025,Healthcare Assistant,Hyderabad City,Healthcare,53.8
+01/02/2025,Healthcare Assistant,Hyderabad,Healthcare,61.9
+01/03/2025,Healthcare Assistant,Hyd,Healthcare,62
+01/04/2025,Healthcare Assistant,Secunderabad,Healthcare,54.4
+01/05/2025,Healthcare Assistant,Hyderabad City,Healthcare,54.5
+01/06/2025,Healthcare Assistant,Hyderabad,Healthcare,54.6
+01/07/2025,Healthcare Assistant,Hyd,Healthcare,54.8
+01/08/2025,Healthcare Assistant,Secunderabad,Healthcare,62.6
+01/09/2025,Healthcare Assistant,Hyderabad City,Healthcare,62.7
+01/10/2025,Healthcare Assistant,Hyderabad,Healthcare,63
+01/11/2025,Healthcare Assistant,Hyd,Healthcare,63.2
+01/12/2025,Healthcare Assistant,Secunderabad,Healthcare,63.3
+01/01/2026,Healthcare Assistant,Hyderabad City,Healthcare,61.9
+01/02/2026,Healthcare Assistant,Hyderabad,Healthcare,62
+01/03/2026,Healthcare Assistant,Hyd,Healthcare,62.2
+01/04/2026,Healthcare Assistant,Secunderabad,Healthcare,62.2
+01/05/2026,Healthcare Assistant,Hyderabad City,Healthcare,62.4
+01/06/2026,Healthcare Assistant,Hyderabad,Healthcare,62.5
+01/07/2026,Healthcare Assistant,Hyd,Healthcare,62.6
+01/08/2026,Healthcare Assistant,Secunderabad,Healthcare,63.2
+01/09/2026,Healthcare Assistant,Hyderabad City,Healthcare,63.4
+01/10/2024,Phlebotomy Technician,Hyderabad,Healthcare,53.3
+01/11/2024,Phlebotomy Technician,Hyd,Healthcare,53.4
+01/12/2024,Phlebotomy Technician,Secunderabad,Healthcare,53.6
+01/01/2025,Phlebotomy Technician,Hyderabad City,Healthcare,53.7
+01/02/2025,Phlebotomy Technician,Hyderabad,Healthcare,53.8
+01/03/2025,Phlebotomy Technician,Hyd,Healthcare,53.9
+01/04/2025,Phlebotomy Technician,Secunderabad,Healthcare,54.1
+01/05/2025,Phlebotomy Technician,Hyderabad City,Healthcare,54.2
+01/06/2025,Phlebotomy Technician,Hyderabad,Healthcare,54.3
+01/07/2025,Phlebotomy Technician,Hyd,Healthcare,54.4
+01/08/2025,Phlebotomy Technician,Secunderabad,Healthcare,55
+01/09/2025,Phlebotomy Technician,Hyderabad City,Healthcare,55.1
+01/10/2025,Phlebotomy Technician,Hyderabad,Healthcare,54.9
+01/11/2025,Phlebotomy Technician,Hyd,Healthcare,55.1
+01/12/2025,Phlebotomy Technician,Secunderabad,Healthcare,55.3
+01/01/2026,Phlebotomy Technician,Hyderabad City,Healthcare,51.2
+01/02/2026,Phlebotomy Technician,Hyderabad,Healthcare,51.2
+01/03/2026,Phlebotomy Technician,Hyd,Healthcare,51.4
+01/04/2026,Phlebotomy Technician,Secunderabad,Healthcare,51.7
+01/05/2026,Phlebotomy Technician,Hyderabad City,Healthcare,51.9
+01/06/2026,Phlebotomy Technician,Hyderabad,Healthcare,51.9
+01/07/2026,Phlebotomy Technician,Hyd,Healthcare,52.1
+01/08/2026,Phlebotomy Technician,Secunderabad,Healthcare,52.4
+01/09/2026,Phlebotomy Technician,Hyderabad City,Healthcare,52.6
+01/10/2024,Welder,Hyderabad,Manufacturing,48
+01/11/2024,Welder,Hyd,Manufacturing,48.2
+01/12/2024,Welder,Secunderabad,Manufacturing,48.3
+01/01/2025,Welder,Hyderabad City,Manufacturing,45.4
+01/02/2025,Welder,Hyderabad,Manufacturing,45.5
+01/03/2025,Welder,Hyd,Manufacturing,45.7
+01/04/2025,Welder,Secunderabad,Manufacturing,45.7
+01/05/2025,Welder,Hyderabad City,Manufacturing,45.9
+01/06/2025,Welder,Hyderabad,Manufacturing,46
+01/07/2025,Welder,Hyd,Manufacturing,46.2
+01/08/2025,Welder,Secunderabad,Manufacturing,46.7
+01/09/2025,Welder,Hyderabad City,Manufacturing,46.9
+01/10/2025,Welder,Hyderabad,Manufacturing,47
+01/11/2025,Welder,Hyd,Manufacturing,47.1
+01/12/2025,Welder,Secunderabad,Manufacturing,47.3
+01/01/2026,Welder,Hyderabad City,Manufacturing,52.9
+01/02/2026,Welder,Hyderabad,Manufacturing,53
+01/03/2026,Welder,Hyd,Manufacturing,53.1
+01/04/2026,Welder,Secunderabad,Manufacturing,53.5
+01/05/2026,Welder,Hyderabad City,Manufacturing,53.6
+01/06/2026,Welder,Hyderabad,Manufacturing,53.8
+01/07/2026,Welder,Hyd,Manufacturing,53.9
+01/08/2026,Welder,Secunderabad,Manufacturing,53.7
+01/09/2026,Welder,Hyderabad City,Manufacturing,53.9
+01/10/2024,Warehouse Associate,Hyderabad,Logistics,58.9
+01/11/2024,Warehouse Associate,Hyd,Logistics,59
+01/12/2024,Warehouse Associate,Secunderabad,Logistics,59.2
+01/01/2025,Warehouse Associate,Hyderabad City,Logistics,59.3
+01/02/2025,Warehouse Associate,Hyderabad,Logistics,59.4
+01/03/2025,Warehouse Associate,Hyd,Logistics,59.5
+01/04/2025,Warehouse Associate,Secunderabad,Logistics,59.7
+01/05/2025,Warehouse Associate,Hyderabad City,Logistics,59.8
+01/06/2025,Warehouse Associate,Hyderabad,Logistics,59.9
+01/07/2025,Warehouse Associate,Hyd,Logistics,60
+01/08/2025,Warehouse Associate,Secunderabad,Logistics,52.6
+01/09/2025,Warehouse Associate,Hyderabad City,Logistics,52.8
+01/10/2025,Warehouse Associate,Hyderabad,Logistics,60.5
+01/11/2025,Warehouse Associate,Hyd,Logistics,60.7
+01/12/2025,Warehouse Associate,Secunderabad,Logistics,60.9
+01/01/2026,Warehouse Associate,Hyderabad City,Logistics,56.8
+01/02/2026,Warehouse Associate,Hyderabad,Logistics,56.8
+01/03/2026,Warehouse Associate,Hyd,Logistics,57
+01/04/2026,Warehouse Associate,Secunderabad,Logistics,57.3
+01/05/2026,Warehouse Associate,Hyderabad City,Logistics,57.5
+01/06/2026,Warehouse Associate,Hyderabad,Logistics,57.5
+01/07/2026,Warehouse Associate,Hyd,Logistics,57.7
+01/08/2026,Warehouse Associate,Secunderabad,Logistics,58
+01/09/2026,Warehouse Associate,Hyderabad City,Logistics,58.2
+01/10/2024,Logistics Coordinator,Hyderabad,Logistics,50
+01/11/2024,Logistics Coordinator,Hyd,Logistics,50.1
+01/12/2024,Logistics Coordinator,Secunderabad,Logistics,50.2
+01/01/2025,Logistics Coordinator,Hyderabad City,Logistics,46.4
+01/02/2025,Logistics Coordinator,Hyderabad,Logistics,46.5
+01/03/2025,Logistics Coordinator,Hyd,Logistics,46.6
+01/04/2025,Logistics Coordinator,Secunderabad,Logistics,47
+01/05/2025,Logistics Coordinator,Hyderabad City,Logistics,47.1
+01/06/2025,Logistics Coordinator,Hyderabad,Logistics,47.2
+01/07/2025,Logistics Coordinator,Hyd,Logistics,47.3
+01/08/2025,Logistics Coordinator,Secunderabad,Logistics,47.7
+01/09/2025,Logistics Coordinator,Hyderabad City,Logistics,47.8
+01/10/2025,Logistics Coordinator,Hyderabad,Logistics,47.6
+01/11/2025,Logistics Coordinator,Hyd,Logistics,47.7
+01/12/2025,Logistics Coordinator,Secunderabad,Logistics,47.9
+01/01/2026,Logistics Coordinator,Hyderabad City,Logistics,49.3
+01/02/2026,Logistics Coordinator,Hyderabad,Logistics,49.4
+01/03/2026,Logistics Coordinator,Hyd,Logistics,49.6
+01/04/2026,Logistics Coordinator,Secunderabad,Logistics,49.6
+01/05/2026,Logistics Coordinator,Hyderabad City,Logistics,49.8
+01/06/2026,Logistics Coordinator,Hyderabad,Logistics,49.9
+01/07/2026,Logistics Coordinator,Hyd,Logistics,50
+01/08/2026,Logistics Coordinator,Secunderabad,Logistics,50.1
+01/09/2026,Logistics Coordinator,Hyderabad City,Logistics,50.3
+01/10/2024,Electrician,Hyderabad,Construction,56.8
+01/11/2024,Electrician,Hyd,Construction,49
+01/12/2024,Electrician,Secunderabad,Construction,57
+01/01/2025,Electrician,Hyderabad City,Construction,56
+01/02/2025,Electrician,Hyderabad,Construction,56.1
+01/03/2025,Electrician,Hyd,Construction,56.3
+01/04/2025,Electrician,Secunderabad,Construction,56.6
+01/05/2025,Electrician,Hyderabad City,Construction,56.7
+01/06/2025,Electrician,Hyderabad,Construction,56.8
+01/07/2025,Electrician,Hyd,Construction,57
+01/08/2025,Electrician,Secunderabad,Construction,57.3
+01/09/2025,Electrician,Hyderabad City,Construction,57.5
+01/10/2025,Electrician,Hyderabad,Construction,57.5
+01/11/2025,Electrician,Hyd,Construction,57.6
+01/12/2025,Electrician,Secunderabad,Construction,57.9
+01/01/2026,Electrician,Hyderabad City,Construction,54.2
+01/02/2026,Electrician,Hyderabad,Construction,54.3
+01/03/2026,Electrician,Hyd,Construction,54.4
+01/04/2026,Electrician,Secunderabad,Construction,54.5
+01/05/2026,Electrician,Hyderabad City,Construction,54.6
+01/06/2026,Electrician,Hyderabad,Construction,54.8
+01/07/2026,Electrician,Hyd,Construction,54.9
+01/08/2026,Electrician,Secunderabad,Construction,55.5
+01/09/2026,Electrician,Hyderabad City,Construction,55.6
+01/10/2024,Mason,Hyderabad,Construction,52.4
+01/11/2024,Mason,Hyd,Construction,52.5
+01/12/2024,Mason,Secunderabad,Construction,52.8
+01/01/2025,Mason,Hyderabad City,Construction,52.3
+01/02/2025,Mason,Hyderabad,Construction,52.5
+01/03/2025,Mason,Hyd,Construction,52.6
+01/04/2025,Mason,Secunderabad,Construction,52.6
+01/05/2025,Mason,Hyderabad City,Construction,52.7
+01/06/2025,Mason,Hyderabad,Construction,53
+01/07/2025,Mason,Hyd,Construction,53.1
+01/08/2025,Mason,Secunderabad,Construction,53.1
+01/09/2025,Mason,Hyderabad City,Construction,53.2
+01/10/2025,Mason,Hyderabad,Construction,53.5
+01/11/2025,Mason,Hyd,Construction,53.6
+01/12/2025,Mason,Secunderabad,Construction,53.7
+01/01/2026,Mason,Hyderabad City,Construction,51.2
+01/02/2026,Mason,Hyderabad,Construction,51.3
+01/03/2026,Mason,Hyd,Construction,51.5
+01/04/2026,Mason,Secunderabad,Construction,51.4
+01/05/2026,Mason,Hyderabad City,Construction,51.6
+01/06/2026,Mason,Hyderabad,Construction,51.8
+01/07/2026,Mason,Hyd,Construction,52
+01/08/2026,Mason,Secunderabad,Construction,51.9
+01/09/2026,Mason,Hyderabad City,Construction,52.1
+01/10/2024,Retail Sales Associate,Hyderabad,Retail,43.6
+01/11/2024,Retail Sales Associate,Hyd,Retail,43.8
+01/12/2024,Retail Sales Associate,Secunderabad,Retail,43.9
+01/01/2025,Retail Sales Associate,Hyderabad City,Retail,48.1
+01/02/2025,Retail Sales Associate,Hyderabad,Retail,48.3
+01/03/2025,Retail Sales Associate,Hyd,Retail,48.5
+01/04/2025,Retail Sales Associate,Secunderabad,Retail,48.4
+01/05/2025,Retail Sales Associate,Hyderabad City,Retail,48.6
+01/06/2025,Retail Sales Associate,Hyderabad,Retail,48.8
+01/07/2025,Retail Sales Associate,Hyd,Retail,49
+01/08/2025,Retail Sales Associate,Secunderabad,Retail,49.4
+01/09/2025,Retail Sales Associate,Hyderabad City,Retail,49.6
+01/10/2025,Retail Sales Associate,Hyderabad,Retail,49.6
+01/11/2025,Retail Sales Associate,Hyd,Retail,49.7
+01/12/2025,Retail Sales Associate,Secunderabad,Retail,49.9
+01/01/2026,Retail Sales Associate,Hyderabad City,Retail,43.9
+01/02/2026,Retail Sales Associate,Hyderabad,Retail,44.1
+01/03/2026,Retail Sales Associate,Hyd,Retail,44.3
+01/04/2026,Retail Sales Associate,Secunderabad,Retail,44.3
+01/05/2026,Retail Sales Associate,Hyderabad City,Retail,44.4
+01/06/2026,Retail Sales Associate,Hyderabad,Retail,44.6
+01/07/2026,Retail Sales Associate,Hyd,Retail,44.7
+01/08/2026,Retail Sales Associate,Secunderabad,Retail,45.2
+01/09/2026,Retail Sales Associate,Hyderabad City,Retail,45.4
+01/10/2024,Solar Technician,Hyderabad,Renewable Energy,61.5
+01/11/2024,Solar Technician,Hyd,Renewable Energy,61.6
+01/12/2024,Solar Technician,Secunderabad,Renewable Energy,61.7
+01/01/2025,Solar Technician,Hyderabad City,Renewable Energy,62.9
+01/02/2025,Solar Technician,Hyderabad,Renewable Energy,63
+01/03/2025,Solar Technician,Hyd,Renewable Energy,63.1
+01/04/2025,Solar Technician,Secunderabad,Renewable Energy,63.2
+01/05/2025,Solar Technician,Hyderabad City,Renewable Energy,63.4
+01/06/2025,Solar Technician,Hyderabad,Renewable Energy,63.5
+01/07/2025,Solar Technician,Hyd,Renewable Energy,63.6
+01/08/2025,Solar Technician,Secunderabad,Renewable Energy,63.7
+01/09/2025,Solar Technician,Hyderabad City,Renewable Energy,63.8
+01/10/2025,Solar Technician,Hyderabad,Renewable Energy,64.1
+01/11/2025,Solar Technician,Hyd,Renewable Energy,64.3
+01/12/2025,Solar Technician,Secunderabad,Renewable Energy,64.4
+01/01/2026,Solar Technician,Hyderabad City,Renewable Energy,64.8
+01/02/2026,Solar Technician,Hyderabad,Renewable Energy,64.9
+01/03/2026,Solar Technician,Hyd,Renewable Energy,65.1
+01/04/2026,Solar Technician,Secunderabad,Renewable Energy,65.4
+01/05/2026,Solar Technician,Hyderabad City,Renewable Energy,65.6
+01/06/2026,Solar Technician,Hyderabad,Renewable Energy,65.6
+01/07/2026,Solar Technician,Hyd,Renewable Energy,65.8
+01/08/2026,Solar Technician,Secunderabad,Renewable Energy,65.6
+01/09/2026,Solar Technician,Hyderabad City,Renewable Energy,65.8
+01/10/2024,Software Developer,Rangareddy,IT & Digital,58.8
+01/11/2024,Software Developer,Ranga Reddy,IT & Digital,59
+01/12/2024,Software Developer,Rr District,IT & Digital,59.1
+01/01/2025,Software Developer,K V Rangareddy,IT & Digital,55.3
+01/02/2025,Software Developer,Gachibowli,IT & Digital,55.5
+01/03/2025,Software Developer,Shamshabad,IT & Digital,55.7
+01/04/2025,Software Developer,Rangareddy,IT & Digital,55.6
+01/05/2025,Software Developer,Ranga Reddy,IT & Digital,55.8
+01/06/2025,Software Developer,Rr District,IT & Digital,56
+01/07/2025,Software Developer,K V Rangareddy,IT & Digital,56.2
+01/08/2025,Software Developer,Gachibowli,IT & Digital,56.6
+01/09/2025,Software Developer,Shamshabad,IT & Digital,56.8
+01/10/2025,Software Developer,Rangareddy,IT & Digital,56.8
+01/11/2025,Software Developer,Ranga Reddy,IT & Digital,56.9
+01/12/2025,Software Developer,Rr District,IT & Digital,57.1
+01/01/2026,Software Developer,K V Rangareddy,IT & Digital,59.1
+01/02/2026,Software Developer,Gachibowli,IT & Digital,59.3
+01/03/2026,Software Developer,Shamshabad,IT & Digital,59.5
+01/04/2026,Software Developer,Rangareddy,IT & Digital,59.5
+01/05/2026,Software Developer,Ranga Reddy,IT & Digital,59.6
+01/06/2026,Software Developer,Rr District,IT & Digital,59.8
+01/07/2026,Software Developer,K V Rangareddy,IT & Digital,59.9
+01/08/2026,Software Developer,Gachibowli,IT & Digital,60.4
+01/09/2026,Software Developer,Shamshabad,IT & Digital,60.6
+01/10/2024,Data Entry Operator,Rangareddy,IT & Digital,35.2
+01/11/2024,Data Entry Operator,Ranga Reddy,IT & Digital,35.3
+01/12/2024,Data Entry Operator,Rr District,IT & Digital,35.4
+01/01/2025,Data Entry Operator,K V Rangareddy,IT & Digital,36.2
+01/02/2025,Data Entry Operator,Gachibowli,IT & Digital,36.3
+01/03/2025,Data Entry Operator,Shamshabad,IT & Digital,36.4
+01/04/2025,Data Entry Operator,Rangareddy,IT & Digital,36.5
+01/05/2025,Data Entry Operator,Ranga Reddy,IT & Digital,36.7
+01/06/2025,Data Entry Operator,Rr District,IT & Digital,36.7
+01/07/2025,Data Entry Operator,K V Rangareddy,IT & Digital,36.9
+01/08/2025,Data Entry Operator,Gachibowli,IT & Digital,37.5
+01/09/2025,Data Entry Operator,Shamshabad,IT & Digital,37.6
+01/10/2025,Data Entry Operator,Rangareddy,IT & Digital,37.7
+01/11/2025,Data Entry Operator,Ranga Reddy,IT & Digital,37.8
+01/12/2025,Data Entry Operator,Rr District,IT & Digital,38.1
+01/01/2026,Data Entry Operator,K V Rangareddy,IT & Digital,39.7
+01/02/2026,Data Entry Operator,Gachibowli,IT & Digital,39.8
+01/03/2026,Data Entry Operator,Shamshabad,IT & Digital,39.9
+01/04/2026,Data Entry Operator,Rangareddy,IT & Digital,40.3
+01/05/2026,Data Entry Operator,Ranga Reddy,IT & Digital,40.4
+01/06/2026,Data Entry Operator,Rr District,IT & Digital,40.5
+01/07/2026,Data Entry Operator,K V Rangareddy,IT & Digital,40.6
+01/08/2026,Data Entry Operator,Gachibowli,IT & Digital,40.5
+01/09/2026,Data Entry Operator,Shamshabad,IT & Digital,40.6
+01/10/2024,Digital Marketing Executive,Rangareddy,IT & Digital,56.8
+01/11/2024,Digital Marketing Executive,Ranga Reddy,IT & Digital,57
+01/12/2024,Digital Marketing Executive,Rr District,IT & Digital,57.2
+01/01/2025,Digital Marketing Executive,K V Rangareddy,IT & Digital,57.3
+01/02/2025,Digital Marketing Executive,Gachibowli,IT & Digital,57.5
+01/03/2025,Digital Marketing Executive,Shamshabad,IT & Digital,57.7
+01/04/2025,Digital Marketing Executive,Rangareddy,IT & Digital,57.9
+01/05/2025,Digital Marketing Executive,Ranga Reddy,IT & Digital,58.1
+01/06/2025,Digital Marketing Executive,Rr District,IT & Digital,58.2
+01/07/2025,Digital Marketing Executive,K V Rangareddy,IT & Digital,58.4
+01/08/2025,Digital Marketing Executive,Gachibowli,IT & Digital,58.1
+01/09/2025,Digital Marketing Executive,Shamshabad,IT & Digital,58.3
+01/10/2025,Digital Marketing Executive,Rangareddy,IT & Digital,58.8
+01/11/2025,Digital Marketing Executive,Ranga Reddy,IT & Digital,59
+01/12/2025,Digital Marketing Executive,Rr District,IT & Digital,59.1
+01/01/2026,Digital Marketing Executive,K V Rangareddy,IT & Digital,62
+01/02/2026,Digital Marketing Executive,Gachibowli,IT & Digital,62.3
+01/03/2026,Digital Marketing Executive,Shamshabad,IT & Digital,62.4
+01/04/2026,Digital Marketing Executive,Rangareddy,IT & Digital,62.7
+01/05/2026,Digital Marketing Executive,Ranga Reddy,IT & Digital,62.8
+01/06/2026,Digital Marketing Executive,Rr District,IT & Digital,63
+01/07/2026,Digital Marketing Executive,K V Rangareddy,IT & Digital,63.1
+01/08/2026,Digital Marketing Executive,Gachibowli,IT & Digital,62.9
+01/09/2026,Digital Marketing Executive,Shamshabad,IT & Digital,63
+01/10/2024,Healthcare Assistant,Rangareddy,Healthcare,55.2
+01/11/2024,Healthcare Assistant,Ranga Reddy,Healthcare,55.4
+01/12/2024,Healthcare Assistant,Rr District,Healthcare,55.5
+01/01/2025,Healthcare Assistant,K V Rangareddy,Healthcare,51.7
+01/02/2025,Healthcare Assistant,Gachibowli,Healthcare,51.9
+01/03/2025,Healthcare Assistant,Shamshabad,Healthcare,52
+01/04/2025,Healthcare Assistant,Rangareddy,Healthcare,52
+01/05/2025,Healthcare Assistant,Ranga Reddy,Healthcare,52.2
+01/06/2025,Healthcare Assistant,Rr District,Healthcare,52.3
+01/07/2025,Healthcare Assistant,K V Rangareddy,Healthcare,52.5
+01/08/2025,Healthcare Assistant,Gachibowli,Healthcare,52.9
+01/09/2025,Healthcare Assistant,Shamshabad,Healthcare,53.1
+01/10/2025,Healthcare Assistant,Rangareddy,Healthcare,53.2
+01/11/2025,Healthcare Assistant,Ranga Reddy,Healthcare,53.3
+01/12/2025,Healthcare Assistant,Rr District,Healthcare,53.4
+01/01/2026,Healthcare Assistant,K V Rangareddy,Healthcare,51.1
+01/02/2026,Healthcare Assistant,Gachibowli,Healthcare,51.3
+01/03/2026,Healthcare Assistant,Shamshabad,Healthcare,51.5
+01/04/2026,Healthcare Assistant,Rangareddy,Healthcare,51.5
+01/05/2026,Healthcare Assistant,Ranga Reddy,Healthcare,51.6
+01/06/2026,Healthcare Assistant,Rr District,Healthcare,51.8
+01/07/2026,Healthcare Assistant,K V Rangareddy,Healthcare,51.9
+01/08/2026,Healthcare Assistant,Gachibowli,Healthcare,52.4
+01/09/2026,Healthcare Assistant,Shamshabad,Healthcare,52.6
+01/10/2024,Phlebotomy Technician,Rangareddy,Healthcare,52.5
+01/11/2024,Phlebotomy Technician,Ranga Reddy,Healthcare,52.6
+01/12/2024,Phlebotomy Technician,Rr District,Healthcare,52.7
+01/01/2025,Phlebotomy Technician,K V Rangareddy,Healthcare,51.7
+01/02/2025,Phlebotomy Technician,Gachibowli,Healthcare,51.8
+01/03/2025,Phlebotomy Technician,Shamshabad,Healthcare,52
+01/04/2025,Phlebotomy Technician,Rangareddy,Healthcare,52
+01/05/2025,Phlebotomy Technician,Ranga Reddy,Healthcare,52.2
+01/06/2025,Phlebotomy Technician,Rr District,Healthcare,52.3
+01/07/2025,Phlebotomy Technician,K V Rangareddy,Healthcare,52.5
+01/08/2025,Phlebotomy Technician,Gachibowli,Healthcare,53
+01/09/2025,Phlebotomy Technician,Shamshabad,Healthcare,53.2
+01/10/2025,Phlebotomy Technician,Rangareddy,Healthcare,49.2
+01/11/2025,Phlebotomy Technician,Ranga Reddy,Healthcare,49.4
+01/12/2025,Phlebotomy Technician,Rr District,Healthcare,49.6
+01/01/2026,Phlebotomy Technician,K V Rangareddy,Healthcare,53.4
+01/02/2026,Phlebotomy Technician,Gachibowli,Healthcare,53.5
+01/03/2026,Phlebotomy Technician,Shamshabad,Healthcare,53.6
+01/04/2026,Phlebotomy Technician,Rangareddy,Healthcare,54
+01/05/2026,Phlebotomy Technician,Ranga Reddy,Healthcare,54.1
+01/06/2026,Phlebotomy Technician,Rr District,Healthcare,54.2
+01/07/2026,Phlebotomy Technician,K V Rangareddy,Healthcare,54.3
+01/08/2026,Phlebotomy Technician,Gachibowli,Healthcare,54.2
+01/09/2026,Phlebotomy Technician,Shamshabad,Healthcare,54.3
+01/10/2024,CNC Operator,Rangareddy,Manufacturing,48.5
+01/11/2024,CNC Operator,Ranga Reddy,Manufacturing,48.6
+01/12/2024,CNC Operator,Rr District,Manufacturing,48.7
+01/01/2025,CNC Operator,K V Rangareddy,Manufacturing,45.8
+01/02/2025,CNC Operator,Gachibowli,Manufacturing,45.9
+01/03/2025,CNC Operator,Shamshabad,Manufacturing,46
+01/04/2025,CNC Operator,Rangareddy,Manufacturing,46.4
+01/05/2025,CNC Operator,Ranga Reddy,Manufacturing,46.5
+01/06/2025,CNC Operator,Rr District,Manufacturing,46.6
+01/07/2025,CNC Operator,K V Rangareddy,Manufacturing,46.7
+01/08/2025,CNC Operator,Gachibowli,Manufacturing,46.6
+01/09/2025,CNC Operator,Shamshabad,Manufacturing,46.7
+01/10/2025,CNC Operator,Rangareddy,Manufacturing,51
+01/11/2025,CNC Operator,Ranga Reddy,Manufacturing,51.1
+01/12/2025,CNC Operator,Rr District,Manufacturing,51.3
+01/01/2026,CNC Operator,K V Rangareddy,Manufacturing,52.1
+01/02/2026,CNC Operator,Gachibowli,Manufacturing,52.2
+01/03/2026,CNC Operator,Shamshabad,Manufacturing,52.3
+01/04/2026,CNC Operator,Rangareddy,Manufacturing,52.4
+01/05/2026,CNC Operator,Ranga Reddy,Manufacturing,52.6
+01/06/2026,CNC Operator,Rr District,Manufacturing,52.6
+01/07/2026,CNC Operator,K V Rangareddy,Manufacturing,52.8
+01/08/2026,CNC Operator,Gachibowli,Manufacturing,53.4
+01/09/2026,CNC Operator,Shamshabad,Manufacturing,53.6
+01/10/2024,Welder,Rangareddy,Manufacturing,51.9
+01/11/2024,Welder,Ranga Reddy,Manufacturing,52
+01/12/2024,Welder,Rr District,Manufacturing,52.2
+01/01/2025,Welder,K V Rangareddy,Manufacturing,53.5
+01/02/2025,Welder,Gachibowli,Manufacturing,53.8
+01/03/2025,Welder,Shamshabad,Manufacturing,53.9
+01/04/2025,Welder,Rangareddy,Manufacturing,53.9
+01/05/2025,Welder,Ranga Reddy,Manufacturing,54
+01/06/2025,Welder,Rr District,Manufacturing,54.2
+01/07/2025,Welder,K V Rangareddy,Manufacturing,54.3
+01/08/2025,Welder,Gachibowli,Manufacturing,54.8
+01/09/2025,Welder,Shamshabad,Manufacturing,55
+01/10/2025,Welder,Rangareddy,Manufacturing,54.7
+01/11/2025,Welder,Ranga Reddy,Manufacturing,54.9
+01/12/2025,Welder,Rr District,Manufacturing,54.9
+01/01/2026,Welder,K V Rangareddy,Manufacturing,57.7
+01/02/2026,Welder,Gachibowli,Manufacturing,57.9
+01/03/2026,Welder,Shamshabad,Manufacturing,58
+01/04/2026,Welder,Rangareddy,Manufacturing,58
+01/05/2026,Welder,Ranga Reddy,Manufacturing,58.2
+01/06/2026,Welder,Rr District,Manufacturing,58.3
+01/07/2026,Welder,K V Rangareddy,Manufacturing,58.5
+01/08/2026,Welder,Gachibowli,Manufacturing,59
+01/09/2026,Welder,Shamshabad,Manufacturing,59.1
+01/10/2024,Warehouse Associate,Rangareddy,Logistics,50.8
+01/11/2024,Warehouse Associate,Ranga Reddy,Logistics,51
+01/12/2024,Warehouse Associate,Rr District,Logistics,51
+01/01/2025,Warehouse Associate,K V Rangareddy,Logistics,56.2
+01/02/2025,Warehouse Associate,Gachibowli,Logistics,56.3
+01/03/2025,Warehouse Associate,Shamshabad,Logistics,56.5
+01/04/2025,Warehouse Associate,Rangareddy,Logistics,56.8
+01/05/2025,Warehouse Associate,Ranga Reddy,Logistics,57
+01/06/2025,Warehouse Associate,Rr District,Logistics,57
+01/07/2025,Warehouse Associate,K V Rangareddy,Logistics,57.2
+01/08/2025,Warehouse Associate,Gachibowli,Logistics,57
+01/09/2025,Warehouse Associate,Shamshabad,Logistics,57.2
+01/10/2025,Warehouse Associate,Rangareddy,Logistics,57.7
+01/11/2025,Warehouse Associate,Ranga Reddy,Logistics,57.9
+01/12/2025,Warehouse Associate,Rr District,Logistics,58.1
+01/01/2026,Warehouse Associate,K V Rangareddy,Logistics,55.7
+01/02/2026,Warehouse Associate,Gachibowli,Logistics,55.8
+01/03/2026,Warehouse Associate,Shamshabad,Logistics,55.9
+01/04/2026,Warehouse Associate,Rangareddy,Logistics,56
+01/05/2026,Warehouse Associate,Ranga Reddy,Logistics,56.2
+01/06/2026,Warehouse Associate,Rr District,Logistics,56.3
+01/07/2026,Warehouse Associate,K V Rangareddy,Logistics,56.4
+01/08/2026,Warehouse Associate,Gachibowli,Logistics,56.5
+01/09/2026,Warehouse Associate,Shamshabad,Logistics,56.6
+01/10/2024,Logistics Coordinator,Rangareddy,Logistics,58.7
+01/11/2024,Logistics Coordinator,Ranga Reddy,Logistics,58.9
+01/12/2024,Logistics Coordinator,Rr District,Logistics,58.9
+01/01/2025,Logistics Coordinator,K V Rangareddy,Logistics,57.9
+01/02/2025,Logistics Coordinator,Gachibowli,Logistics,58
+01/03/2025,Logistics Coordinator,Shamshabad,Logistics,58.2
+01/04/2025,Logistics Coordinator,Rangareddy,Logistics,58.5
+01/05/2025,Logistics Coordinator,Ranga Reddy,Logistics,58.6
+01/06/2025,Logistics Coordinator,Rr District,Logistics,58.7
+01/07/2025,Logistics Coordinator,K V Rangareddy,Logistics,58.9
+01/08/2025,Logistics Coordinator,Gachibowli,Logistics,59.2
+01/09/2025,Logistics Coordinator,Shamshabad,Logistics,59.4
+01/10/2025,Logistics Coordinator,Rangareddy,Logistics,59.4
+01/11/2025,Logistics Coordinator,Ranga Reddy,Logistics,59.5
+01/12/2025,Logistics Coordinator,Rr District,Logistics,59.8
+01/01/2026,Logistics Coordinator,K V Rangareddy,Logistics,56.1
+01/02/2026,Logistics Coordinator,Gachibowli,Logistics,56.2
+01/03/2026,Logistics Coordinator,Shamshabad,Logistics,56.3
+01/04/2026,Logistics Coordinator,Rangareddy,Logistics,56.4
+01/05/2026,Logistics Coordinator,Ranga Reddy,Logistics,56.5
+01/06/2026,Logistics Coordinator,Rr District,Logistics,56.7
+01/07/2026,Logistics Coordinator,K V Rangareddy,Logistics,56.8
+01/08/2026,Logistics Coordinator,Gachibowli,Logistics,57.4
+01/09/2026,Logistics Coordinator,Shamshabad,Logistics,57.5
+01/10/2024,Electrician,Rangareddy,Construction,50.4
+01/11/2024,Electrician,Ranga Reddy,Construction,50.5
+01/12/2024,Electrician,Rr District,Construction,50.6
+01/01/2025,Electrician,K V Rangareddy,Construction,49
+01/02/2025,Electrician,Gachibowli,Construction,49.1
+01/03/2025,Electrician,Shamshabad,Construction,49.2
+01/04/2025,Electrician,Rangareddy,Construction,49.6
+01/05/2025,Electrician,Ranga Reddy,Construction,49.7
+01/06/2025,Electrician,Rr District,Construction,49.8
+01/07/2025,Electrician,K V Rangareddy,Construction,49.9
+01/08/2025,Electrician,Gachibowli,Construction,50.3
+01/09/2025,Electrician,Shamshabad,Construction,50.4
+01/10/2025,Electrician,Rangareddy,Construction,50.2
+01/11/2025,Electrician,Ranga Reddy,Construction,50.4
+01/12/2025,Electrician,Rr District,Construction,50.5
+01/01/2026,Electrician,K V Rangareddy,Construction,54.1
+01/02/2026,Electrician,Gachibowli,Construction,54.2
+01/03/2026,Electrician,Shamshabad,Construction,54.4
+01/04/2026,Electrician,Rangareddy,Construction,54.4
+01/05/2026,Electrician,Ranga Reddy,Construction,54.6
+01/06/2026,Electrician,Rr District,Construction,54.7
+01/07/2026,Electrician,K V Rangareddy,Construction,54.8
+01/08/2026,Electrician,Gachibowli,Construction,54.9
+01/09/2026,Electrician,Shamshabad,Construction,55.1
+01/10/2024,Mason,Rangareddy,Construction,51.9
+01/11/2024,Mason,Ranga Reddy,Construction,52.1
+01/12/2024,Mason,Rr District,Construction,52.3
+01/01/2025,Mason,K V Rangareddy,Construction,45.2
+01/02/2025,Mason,Gachibowli,Construction,45.4
+01/03/2025,Mason,Shamshabad,Construction,45.6
+01/04/2025,Mason,Rangareddy,Construction,45.8
+01/05/2025,Mason,Ranga Reddy,Construction,46
+01/06/2025,Mason,Rr District,Construction,46.1
+01/07/2025,Mason,K V Rangareddy,Construction,46.3
+01/08/2025,Mason,Gachibowli,Construction,46.5
+01/09/2025,Mason,Shamshabad,Construction,46.7
+01/10/2025,Mason,Rangareddy,Construction,50.7
+01/11/2025,Mason,Ranga Reddy,Construction,50.9
+01/12/2025,Mason,Rr District,Construction,51
+01/01/2026,Mason,K V Rangareddy,Construction,46.8
+01/02/2026,Mason,Gachibowli,Construction,47.1
+01/03/2026,Mason,Shamshabad,Construction,47.2
+01/04/2026,Mason,Rangareddy,Construction,47.4
+01/05/2026,Mason,Ranga Reddy,Construction,47.6
+01/06/2026,Mason,Rr District,Construction,47.8
+01/07/2026,Mason,K V Rangareddy,Construction,47.9
+01/08/2026,Mason,Gachibowli,Construction,48.2
+01/09/2026,Mason,Shamshabad,Construction,48.3
+01/10/2024,Retail Sales Associate,Rangareddy,Retail,47.2
+01/11/2024,Retail Sales Associate,Ranga Reddy,Retail,47.3
+01/12/2024,Retail Sales Associate,Rr District,Retail,47.4
+01/01/2025,Retail Sales Associate,K V Rangareddy,Retail,48.9
+01/02/2025,Retail Sales Associate,Gachibowli,Retail,49
+01/03/2025,Retail Sales Associate,Shamshabad,Retail,49.1
+01/04/2025,Retail Sales Associate,Rangareddy,Retail,49.5
+01/05/2025,Retail Sales Associate,Ranga Reddy,Retail,49.6
+01/06/2025,Retail Sales Associate,Rr District,Retail,49.7
+01/07/2025,Retail Sales Associate,K V Rangareddy,Retail,49.8
+01/08/2025,Retail Sales Associate,Gachibowli,Retail,49.7
+01/09/2025,Retail Sales Associate,Shamshabad,Retail,49.8
+01/10/2025,Retail Sales Associate,Rangareddy,Retail,50.1
+01/11/2025,Retail Sales Associate,Ranga Reddy,Retail,50.2
+01/12/2025,Retail Sales Associate,Rr District,Retail,50.4
+01/01/2026,Retail Sales Associate,K V Rangareddy,Retail,53
+01/02/2026,Retail Sales Associate,Gachibowli,Retail,53.1
+01/03/2026,Retail Sales Associate,Shamshabad,Retail,53.2
+01/04/2026,Retail Sales Associate,Rangareddy,Retail,53.3
+01/05/2026,Retail Sales Associate,Ranga Reddy,Retail,53.5
+01/06/2026,Retail Sales Associate,Rr District,Retail,53.5
+01/07/2026,Retail Sales Associate,K V Rangareddy,Retail,53.7
+01/08/2026,Retail Sales Associate,Gachibowli,Retail,54.3
+01/09/2026,Retail Sales Associate,Shamshabad,Retail,54.5
+01/10/2024,Solar Technician,Rangareddy,Renewable Energy,71.1
+01/11/2024,Solar Technician,Ranga Reddy,Renewable Energy,71.3
+01/12/2024,Solar Technician,Rr District,Renewable Energy,71.5
+01/01/2025,Solar Technician,K V Rangareddy,Renewable Energy,72.8
+01/02/2025,Solar Technician,Gachibowli,Renewable Energy,73
+01/03/2025,Solar Technician,Shamshabad,Renewable Energy,73.2
+01/04/2025,Solar Technician,Rangareddy,Renewable Energy,73.4
+01/05/2025,Solar Technician,Ranga Reddy,Renewable Energy,73.6
+01/06/2025,Solar Technician,Rr District,Renewable Energy,73.7
+01/07/2025,Solar Technician,K V Rangareddy,Renewable Energy,73.9
+01/08/2025,Solar Technician,Gachibowli,Renewable Energy,74.1
+01/09/2025,Solar Technician,Shamshabad,Renewable Energy,74.3
+01/10/2025,Solar Technician,Rangareddy,Renewable Energy,74.3
+01/11/2025,Solar Technician,Ranga Reddy,Renewable Energy,74.5
+01/12/2025,Solar Technician,Rr District,Renewable Energy,74.6
+01/01/2026,Solar Technician,K V Rangareddy,Renewable Energy,70.4
+01/02/2026,Solar Technician,Gachibowli,Renewable Energy,70.7
+01/03/2026,Solar Technician,Shamshabad,Renewable Energy,70.8
+01/04/2026,Solar Technician,Rangareddy,Renewable Energy,71
+01/05/2026,Solar Technician,Ranga Reddy,Renewable Energy,71.2
+01/06/2026,Solar Technician,Rr District,Renewable Energy,71.4
+01/07/2026,Solar Technician,K V Rangareddy,Renewable Energy,71.5
+01/08/2026,Solar Technician,Gachibowli,Renewable Energy,71.8
+01/09/2026,Solar Technician,Shamshabad,Renewable Energy,71.9
+01/10/2024,Software Developer,Warangal,IT & Digital,60
+01/11/2024,Software Developer,Warangal Urban,IT & Digital,60.2
+01/12/2024,Software Developer,Hanamkonda,IT & Digital,60.4
+01/01/2025,Software Developer,Hanumakonda,IT & Digital,55.7
+01/02/2025,Software Developer,Warangal,IT & Digital,55.8
+01/03/2025,Software Developer,Warangal Urban,IT & Digital,56
+01/04/2025,Software Developer,Hanamkonda,IT & Digital,55.9
+01/05/2025,Software Developer,Hanumakonda,IT & Digital,56.1
+01/06/2025,Software Developer,Warangal,IT & Digital,56.3
+01/07/2025,Software Developer,Warangal Urban,IT & Digital,56.5
+01/08/2025,Software Developer,Hanamkonda,IT & Digital,56.4
+01/09/2025,Software Developer,Hanumakonda,IT & Digital,56.6
+01/10/2025,Software Developer,Warangal,IT & Digital,57.2
+01/11/2025,Software Developer,Warangal Urban,IT & Digital,57.3
+01/12/2025,Software Developer,Hanamkonda,IT & Digital,57.4
+01/01/2026,Software Developer,Hanumakonda,IT & Digital,60.4
+01/02/2026,Software Developer,Warangal,IT & Digital,60.6
+01/03/2026,Software Developer,Warangal Urban,IT & Digital,60.7
+01/04/2026,Software Developer,Hanamkonda,IT & Digital,60.7
+01/05/2026,Software Developer,Hanumakonda,IT & Digital,60.8
+01/06/2026,Software Developer,Warangal,IT & Digital,61.1
+01/07/2026,Software Developer,Warangal Urban,IT & Digital,61.2
+01/08/2026,Software Developer,Hanamkonda,IT & Digital,61.2
+01/09/2026,Software Developer,Hanumakonda,IT & Digital,61.3
+01/10/2024,Data Entry Operator,Warangal,IT & Digital,37.3
+01/11/2024,Data Entry Operator,Warangal Urban,IT & Digital,37.5
+01/12/2024,Data Entry Operator,Hanamkonda,IT & Digital,37.6
+01/01/2025,Data Entry Operator,Hanumakonda,IT & Digital,37.6
+01/02/2025,Data Entry Operator,Warangal,IT & Digital,37.6
+01/03/2025,Data Entry Operator,Warangal Urban,IT & Digital,37.8
+01/04/2025,Data Entry Operator,Hanamkonda,IT & Digital,37.9
+01/05/2025,Data Entry Operator,Hanumakonda,IT & Digital,38.1
+01/06/2025,Data Entry Operator,Warangal,IT & Digital,38.1
+01/07/2025,Data Entry Operator,Warangal Urban,IT & Digital,38.3
+01/08/2025,Data Entry Operator,Hanamkonda,IT & Digital,38.4
+01/09/2025,Data Entry Operator,Hanumakonda,IT & Digital,38.5
+01/10/2025,Data Entry Operator,Warangal,IT & Digital,38.1
+01/11/2025,Data Entry Operator,Warangal Urban,IT & Digital,38.2
+01/12/2025,Data Entry Operator,Hanamkonda,IT & Digital,38.5
+01/01/2026,Data Entry Operator,Hanumakonda,IT & Digital,38.2
+01/02/2026,Data Entry Operator,Warangal,IT & Digital,38.4
+01/03/2026,Data Entry Operator,Warangal Urban,IT & Digital,38.5
+01/04/2026,Data Entry Operator,Hanamkonda,IT & Digital,38.8
+01/05/2026,Data Entry Operator,Hanumakonda,IT & Digital,39
+01/06/2026,Data Entry Operator,Warangal,IT & Digital,39.1
+01/07/2026,Data Entry Operator,Warangal Urban,IT & Digital,39.2
+01/08/2026,Data Entry Operator,Hanamkonda,IT & Digital,39.6
+01/09/2026,Data Entry Operator,Hanumakonda,IT & Digital,39.7
+01/10/2024,Digital Marketing Executive,Warangal,IT & Digital,64.4
+01/11/2024,Digital Marketing Executive,Warangal Urban,IT & Digital,64.6
+01/12/2024,Digital Marketing Executive,Hanamkonda,IT & Digital,64.8
+01/01/2025,Digital Marketing Executive,Hanumakonda,IT & Digital,66.1
+01/02/2025,Digital Marketing Executive,Warangal,IT & Digital,66.3
+01/03/2025,Digital Marketing Executive,Warangal Urban,IT & Digital,66.5
+01/04/2025,Digital Marketing Executive,Hanamkonda,IT & Digital,66.7
+01/05/2025,Digital Marketing Executive,Hanumakonda,IT & Digital,66.9
+01/06/2025,Digital Marketing Executive,Warangal,IT & Digital,67
+01/07/2025,Digital Marketing Executive,Warangal Urban,IT & Digital,67.2
+01/08/2025,Digital Marketing Executive,Hanamkonda,IT & Digital,67.4
+01/09/2025,Digital Marketing Executive,Hanumakonda,IT & Digital,67.6
+01/10/2025,Digital Marketing Executive,Warangal,IT & Digital,67.6
+01/11/2025,Digital Marketing Executive,Warangal Urban,IT & Digital,67.8
+01/12/2025,Digital Marketing Executive,Hanamkonda,IT & Digital,67.9
+01/01/2026,Digital Marketing Executive,Hanumakonda,IT & Digital,63.7
+01/02/2026,Digital Marketing Executive,Warangal,IT & Digital,64
+01/03/2026,Digital Marketing Executive,Warangal Urban,IT & Digital,64.1
+01/04/2026,Digital Marketing Executive,Hanamkonda,IT & Digital,64.3
+01/05/2026,Digital Marketing Executive,Hanumakonda,IT & Digital,64.5
+01/06/2026,Digital Marketing Executive,Warangal,IT & Digital,64.7
+01/07/2026,Digital Marketing Executive,Warangal Urban,IT & Digital,64.8
+01/08/2026,Digital Marketing Executive,Hanamkonda,IT & Digital,65.1
+01/09/2026,Digital Marketing Executive,Hanumakonda,IT & Digital,65.2
+01/10/2024,Healthcare Assistant,Warangal,Healthcare,59.2
+01/11/2024,Healthcare Assistant,Warangal Urban,Healthcare,59.4
+01/12/2024,Healthcare Assistant,Hanamkonda,Healthcare,59.6
+01/01/2025,Healthcare Assistant,Hanumakonda,Healthcare,54.8
+01/02/2025,Healthcare Assistant,Warangal,Healthcare,55
+01/03/2025,Healthcare Assistant,Warangal Urban,Healthcare,55.2
+01/04/2025,Healthcare Assistant,Hanamkonda,Healthcare,55.1
+01/05/2025,Healthcare Assistant,Hanumakonda,Healthcare,55.3
+01/06/2025,Healthcare Assistant,Warangal,Healthcare,55.5
+01/07/2025,Healthcare Assistant,Warangal Urban,Healthcare,55.7
+01/08/2025,Healthcare Assistant,Hanamkonda,Healthcare,55.6
+01/09/2025,Healthcare Assistant,Hanumakonda,Healthcare,55.8
+01/10/2025,Healthcare Assistant,Warangal,Healthcare,56.3
+01/11/2025,Healthcare Assistant,Warangal Urban,Healthcare,56.5
+01/12/2025,Healthcare Assistant,Hanamkonda,Healthcare,56.6
+01/01/2026,Healthcare Assistant,Hanumakonda,Healthcare,59.5
+01/02/2026,Healthcare Assistant,Warangal,Healthcare,59.8
+01/03/2026,Healthcare Assistant,Warangal Urban,Healthcare,59.9
+01/04/2026,Healthcare Assistant,Hanamkonda,Healthcare,59.9
+01/05/2026,Healthcare Assistant,Hanumakonda,Healthcare,60
+01/06/2026,Healthcare Assistant,Warangal,Healthcare,60.3
+01/07/2026,Healthcare Assistant,Warangal Urban,Healthcare,60.4
+01/08/2026,Healthcare Assistant,Hanamkonda,Healthcare,60.4
+01/09/2026,Healthcare Assistant,Hanumakonda,Healthcare,60.5
+01/10/2024,Phlebotomy Technician,Warangal,Healthcare,49.7
+01/11/2024,Phlebotomy Technician,Warangal Urban,Healthcare,49.9
+01/12/2024,Phlebotomy Technician,Hanamkonda,Healthcare,49.9
+01/01/2025,Phlebotomy Technician,Hanumakonda,Healthcare,47.7
+01/02/2025,Phlebotomy Technician,Warangal,Healthcare,47.8
+01/03/2025,Phlebotomy Technician,Warangal Urban,Healthcare,48
+01/04/2025,Phlebotomy Technician,Hanamkonda,Healthcare,48
+01/05/2025,Phlebotomy Technician,Hanumakonda,Healthcare,48.2
+01/06/2025,Phlebotomy Technician,Warangal,Healthcare,48.3
+01/07/2025,Phlebotomy Technician,Warangal Urban,Healthcare,48.4
+01/08/2025,Phlebotomy Technician,Hanamkonda,Healthcare,48.5
+01/09/2025,Phlebotomy Technician,Hanumakonda,Healthcare,48.7
+01/10/2025,Phlebotomy Technician,Warangal,Healthcare,52.2
+01/11/2025,Phlebotomy Technician,Warangal Urban,Healthcare,52.3
+01/12/2025,Phlebotomy Technician,Hanamkonda,Healthcare,52.6
+01/01/2026,Phlebotomy Technician,Hanumakonda,Healthcare,50.2
+01/02/2026,Phlebotomy Technician,Warangal,Healthcare,50.3
+01/03/2026,Phlebotomy Technician,Warangal Urban,Healthcare,50.4
+01/04/2026,Phlebotomy Technician,Hanamkonda,Healthcare,50.8
+01/05/2026,Phlebotomy Technician,Hanumakonda,Healthcare,50.9
+01/06/2026,Phlebotomy Technician,Warangal,Healthcare,51
+01/07/2026,Phlebotomy Technician,Warangal Urban,Healthcare,51.1
+01/08/2026,Phlebotomy Technician,Hanamkonda,Healthcare,51.5
+01/09/2026,Phlebotomy Technician,Hanumakonda,Healthcare,51.6
+01/10/2024,CNC Operator,Warangal,Manufacturing,55.5
+01/11/2024,CNC Operator,Warangal Urban,Manufacturing,55.6
+01/12/2024,CNC Operator,Hanamkonda,Manufacturing,55.8
+01/01/2025,CNC Operator,Hanumakonda,Manufacturing,51.9
+01/02/2025,CNC Operator,Warangal,Manufacturing,52
+01/03/2025,CNC Operator,Warangal Urban,Manufacturing,52.1
+01/04/2025,CNC Operator,Hanamkonda,Manufacturing,52.5
+01/05/2025,CNC Operator,Hanumakonda,Manufacturing,52.6
+01/06/2025,CNC Operator,Warangal,Manufacturing,52.7
+01/07/2025,CNC Operator,Warangal Urban,Manufacturing,52.8
+01/08/2025,CNC Operator,Hanamkonda,Manufacturing,53.2
+01/09/2025,CNC Operator,Hanumakonda,Manufacturing,53.3
+01/10/2025,CNC Operator,Warangal,Manufacturing,53.1
+01/11/2025,CNC Operator,Warangal Urban,Manufacturing,53.3
+01/12/2025,CNC Operator,Hanamkonda,Manufacturing,53.4
+01/01/2026,CNC Operator,Hanumakonda,Manufacturing,55.2
+01/02/2026,CNC Operator,Warangal,Manufacturing,55.3
+01/03/2026,CNC Operator,Warangal Urban,Manufacturing,55.5
+01/04/2026,CNC Operator,Hanamkonda,Manufacturing,55.5
+01/05/2026,CNC Operator,Hanumakonda,Manufacturing,55.7
+01/06/2026,CNC Operator,Warangal,Manufacturing,55.8
+01/07/2026,CNC Operator,Warangal Urban,Manufacturing,55.9
+01/08/2026,CNC Operator,Hanamkonda,Manufacturing,56
+01/09/2026,CNC Operator,Hanumakonda,Manufacturing,56.2
+01/10/2024,Welder,Warangal,Manufacturing,44
+01/11/2024,Welder,Warangal Urban,Manufacturing,44.1
+01/12/2024,Welder,Hanamkonda,Manufacturing,44.4
+01/01/2025,Welder,Hanumakonda,Manufacturing,49.7
+01/02/2025,Welder,Warangal,Manufacturing,49.9
+01/03/2025,Welder,Warangal Urban,Manufacturing,50
+01/04/2025,Welder,Hanamkonda,Manufacturing,50
+01/05/2025,Welder,Hanumakonda,Manufacturing,50.2
+01/06/2025,Welder,Warangal,Manufacturing,50.4
+01/07/2025,Welder,Warangal Urban,Manufacturing,50.5
+01/08/2025,Welder,Hanamkonda,Manufacturing,50.5
+01/09/2025,Welder,Hanumakonda,Manufacturing,50.6
+01/10/2025,Welder,Warangal,Manufacturing,50.9
+01/11/2025,Welder,Warangal Urban,Manufacturing,51.1
+01/12/2025,Welder,Hanamkonda,Manufacturing,51.1
+01/01/2026,Welder,Hanumakonda,Manufacturing,48.6
+01/02/2026,Welder,Warangal,Manufacturing,48.8
+01/03/2026,Welder,Warangal Urban,Manufacturing,48.9
+01/04/2026,Welder,Hanamkonda,Manufacturing,48.9
+01/05/2026,Welder,Hanumakonda,Manufacturing,49
+01/06/2026,Welder,Warangal,Manufacturing,49.2
+01/07/2026,Welder,Warangal Urban,Manufacturing,49.4
+01/08/2026,Welder,Hanamkonda,Manufacturing,49.3
+01/09/2026,Welder,Hanumakonda,Manufacturing,49.5
+01/10/2024,Warehouse Associate,Warangal,Logistics,55.4
+01/11/2024,Warehouse Associate,Warangal Urban,Logistics,55.6
+01/12/2024,Warehouse Associate,Hanamkonda,Logistics,55.6
+01/01/2025,Warehouse Associate,Hanumakonda,Logistics,54.6
+01/02/2025,Warehouse Associate,Warangal,Logistics,54.7
+01/03/2025,Warehouse Associate,Warangal Urban,Logistics,54.9
+01/04/2025,Warehouse Associate,Hanamkonda,Logistics,55.2
+01/05/2025,Warehouse Associate,Hanumakonda,Logistics,55.3
+01/06/2025,Warehouse Associate,Warangal,Logistics,55.4
+01/07/2025,Warehouse Associate,Warangal Urban,Logistics,55.6
+01/08/2025,Warehouse Associate,Hanamkonda,Logistics,55.9
+01/09/2025,Warehouse Associate,Hanumakonda,Logistics,56.1
+01/10/2025,Warehouse Associate,Warangal,Logistics,56.1
+01/11/2025,Warehouse Associate,Warangal Urban,Logistics,56.2
+01/12/2025,Warehouse Associate,Hanamkonda,Logistics,56.5
+01/01/2026,Warehouse Associate,Hanumakonda,Logistics,52.8
+01/02/2026,Warehouse Associate,Warangal,Logistics,52.9
+01/03/2026,Warehouse Associate,Warangal Urban,Logistics,53
+01/04/2026,Warehouse Associate,Hanamkonda,Logistics,53.1
+01/05/2026,Warehouse Associate,Hanumakonda,Logistics,53.2
+01/06/2026,Warehouse Associate,Warangal,Logistics,53.4
+01/07/2026,Warehouse Associate,Warangal Urban,Logistics,53.5
+01/08/2026,Warehouse Associate,Hanamkonda,Logistics,54.1
+01/09/2026,Warehouse Associate,Hanumakonda,Logistics,54.2
+01/10/2024,Logistics Coordinator,Warangal,Logistics,53.8
+01/11/2024,Logistics Coordinator,Warangal Urban,Logistics,54
+01/12/2024,Logistics Coordinator,Hanamkonda,Logistics,54
+01/01/2025,Logistics Coordinator,Hanumakonda,Logistics,51.2
+01/02/2025,Logistics Coordinator,Warangal,Logistics,51.3
+01/03/2025,Logistics Coordinator,Warangal Urban,Logistics,51.5
+01/04/2025,Logistics Coordinator,Hanamkonda,Logistics,51.8
+01/05/2025,Logistics Coordinator,Hanumakonda,Logistics,51.9
+01/06/2025,Logistics Coordinator,Warangal,Logistics,52
+01/07/2025,Logistics Coordinator,Warangal Urban,Logistics,52.2
+01/08/2025,Logistics Coordinator,Hanamkonda,Logistics,52
+01/09/2025,Logistics Coordinator,Hanumakonda,Logistics,52.2
+01/10/2025,Logistics Coordinator,Warangal,Logistics,52.7
+01/11/2025,Logistics Coordinator,Warangal Urban,Logistics,52.8
+01/12/2025,Logistics Coordinator,Hanamkonda,Logistics,53.1
+01/01/2026,Logistics Coordinator,Hanumakonda,Logistics,58.7
+01/02/2026,Logistics Coordinator,Warangal,Logistics,58.8
+01/03/2026,Logistics Coordinator,Warangal Urban,Logistics,58.9
+01/04/2026,Logistics Coordinator,Hanamkonda,Logistics,59
+01/05/2026,Logistics Coordinator,Hanumakonda,Logistics,59.1
+01/06/2026,Logistics Coordinator,Warangal,Logistics,59.3
+01/07/2026,Logistics Coordinator,Warangal Urban,Logistics,59.4
+01/08/2026,Logistics Coordinator,Hanamkonda,Logistics,59.5
+01/09/2026,Logistics Coordinator,Hanumakonda,Logistics,59.6
+01/10/2024,Electrician,Warangal,Construction,53.1
+01/11/2024,Electrician,Warangal Urban,Construction,53.2
+01/12/2024,Electrician,Hanamkonda,Construction,53.3
+01/01/2025,Electrician,Hanumakonda,Construction,54.7
+01/02/2025,Electrician,Warangal,Construction,54.9
+01/03/2025,Electrician,Warangal Urban,Construction,55
+01/04/2025,Electrician,Hanamkonda,Construction,55.4
+01/05/2025,Electrician,Hanumakonda,Construction,55.5
+01/06/2025,Electrician,Warangal,Construction,55.6
+01/07/2025,Electrician,Warangal Urban,Construction,55.7
+01/08/2025,Electrician,Hanamkonda,Construction,55.6
+01/09/2025,Electrician,Hanumakonda,Construction,55.7
+01/10/2025,Electrician,Warangal,Construction,55.9
+01/11/2025,Electrician,Warangal Urban,Construction,56.1
+01/12/2025,Electrician,Hanamkonda,Construction,56.3
+01/01/2026,Electrician,Hanumakonda,Construction,50.9
+01/02/2026,Electrician,Warangal,Construction,50.9
+01/03/2026,Electrician,Warangal Urban,Construction,51.1
+01/04/2026,Electrician,Hanamkonda,Construction,51.2
+01/05/2026,Electrician,Hanumakonda,Construction,51.4
+01/06/2026,Electrician,Warangal,Construction,51.4
+01/07/2026,Electrician,Warangal Urban,Construction,51.6
+01/08/2026,Electrician,Hanamkonda,Construction,52.2
+01/09/2026,Electrician,Hanumakonda,Construction,52.3
+01/10/2024,Mason,Warangal,Construction,39.3
+01/11/2024,Mason,Warangal Urban,Construction,39.5
+01/12/2024,Mason,Hanamkonda,Construction,39.7
+01/01/2025,Mason,Hanumakonda,Construction,46
+01/02/2025,Mason,Warangal,Construction,46.2
+01/03/2025,Mason,Warangal Urban,Construction,46.4
+01/04/2025,Mason,Hanamkonda,Construction,46.6
+01/05/2025,Mason,Hanumakonda,Construction,46.8
+01/06/2025,Mason,Warangal,Construction,46.9
+01/07/2025,Mason,Warangal Urban,Construction,47.1
+01/08/2025,Mason,Hanamkonda,Construction,46.8
+01/09/2025,Mason,Hanumakonda,Construction,47
+01/10/2025,Mason,Warangal,Construction,43.5
+01/11/2025,Mason,Warangal Urban,Construction,43.7
+01/12/2025,Mason,Hanamkonda,Construction,43.8
+01/01/2026,Mason,Hanumakonda,Construction,46.7
+01/02/2026,Mason,Warangal,Construction,47
+01/03/2026,Mason,Warangal Urban,Construction,47.1
+01/04/2026,Mason,Hanamkonda,Construction,47.3
+01/05/2026,Mason,Hanumakonda,Construction,47.5
+01/06/2026,Mason,Warangal,Construction,47.7
+01/07/2026,Mason,Warangal Urban,Construction,47.8
+01/08/2026,Mason,Hanamkonda,Construction,47.6
+01/09/2026,Mason,Hanumakonda,Construction,47.7
+01/10/2024,Retail Sales Associate,Warangal,Retail,42.6
+01/11/2024,Retail Sales Associate,Warangal Urban,Retail,42.8
+01/12/2024,Retail Sales Associate,Hanamkonda,Retail,42.9
+01/01/2025,Retail Sales Associate,Hanumakonda,Retail,47
+01/02/2025,Retail Sales Associate,Warangal,Retail,47.1
+01/03/2025,Retail Sales Associate,Warangal Urban,Retail,47.2
+01/04/2025,Retail Sales Associate,Hanamkonda,Retail,47.6
+01/05/2025,Retail Sales Associate,Hanumakonda,Retail,47.7
+01/06/2025,Retail Sales Associate,Warangal,Retail,47.8
+01/07/2025,Retail Sales Associate,Warangal Urban,Retail,48
+01/08/2025,Retail Sales Associate,Hanamkonda,Retail,48.3
+01/09/2025,Retail Sales Associate,Hanumakonda,Retail,48.5
+01/10/2025,Retail Sales Associate,Warangal,Retail,48.2
+01/11/2025,Retail Sales Associate,Warangal Urban,Retail,48.4
+01/12/2025,Retail Sales Associate,Hanamkonda,Retail,48.6
+01/01/2026,Retail Sales Associate,Hanumakonda,Retail,42.4
+01/02/2026,Retail Sales Associate,Warangal,Retail,50.4
+01/03/2026,Retail Sales Associate,Warangal Urban,Retail,50.6
+01/04/2026,Retail Sales Associate,Hanamkonda,Retail,50.6
+01/05/2026,Retail Sales Associate,Hanumakonda,Retail,50.8
+01/06/2026,Retail Sales Associate,Warangal,Retail,50.9
+01/07/2026,Retail Sales Associate,Warangal Urban,Retail,51.1
+01/08/2026,Retail Sales Associate,Hanamkonda,Retail,51.1
+01/09/2026,Retail Sales Associate,Hanumakonda,Retail,51.3
+01/10/2024,Solar Technician,Warangal,Renewable Energy,87.3
+01/11/2024,Solar Technician,Warangal Urban,Renewable Energy,87.5
+01/12/2024,Solar Technician,Hanamkonda,Renewable Energy,87.7
+01/01/2025,Solar Technician,Hanumakonda,Renewable Energy,86
+01/02/2025,Solar Technician,Warangal,Renewable Energy,86.2
+01/03/2025,Solar Technician,Warangal Urban,Renewable Energy,86.4
+01/04/2025,Solar Technician,Hanamkonda,Renewable Energy,86.6
+01/05/2025,Solar Technician,Hanumakonda,Renewable Energy,86.8
+01/06/2025,Solar Technician,Warangal,Renewable Energy,86.9
+01/07/2025,Solar Technician,Warangal Urban,Renewable Energy,87.1
+01/08/2025,Solar Technician,Hanamkonda,Renewable Energy,86.8
+01/09/2025,Solar Technician,Hanumakonda,Renewable Energy,87
+01/10/2025,Solar Technician,Warangal,Renewable Energy,91.5
+01/11/2025,Solar Technician,Warangal Urban,Renewable Energy,91.7
+01/12/2025,Solar Technician,Hanamkonda,Renewable Energy,91.8
+01/01/2026,Solar Technician,Hanumakonda,Renewable Energy,86.7
+01/02/2026,Solar Technician,Warangal,Renewable Energy,87
+01/03/2026,Solar Technician,Warangal Urban,Renewable Energy,87.1
+01/04/2026,Solar Technician,Hanamkonda,Renewable Energy,87.3
+01/05/2026,Solar Technician,Hanumakonda,Renewable Energy,87.5
+01/06/2026,Solar Technician,Warangal,Renewable Energy,87.7
+01/07/2026,Solar Technician,Warangal Urban,Renewable Energy,87.8
+01/08/2026,Solar Technician,Hanamkonda,Renewable Energy,87.6
+01/09/2026,Solar Technician,Hanumakonda,Renewable Energy,87.7
+01/10/2024,Software Developer,Bengaluru Urban,IT & Digital,55.8
+01/11/2024,Software Developer,Bengaluru,IT & Digital,55.9
+01/12/2024,Software Developer,Bangalore,IT & Digital,56.1
+01/01/2025,Software Developer,Bangalore Urban,IT & Digital,55.6
+01/02/2025,Software Developer,Blr,IT & Digital,55.9
+01/03/2025,Software Developer,Bengaluru Urban,IT & Digital,56
+01/04/2025,Software Developer,Bengaluru,IT & Digital,56
+01/05/2025,Software Developer,Bangalore,IT & Digital,56.1
+01/06/2025,Software Developer,Bangalore Urban,IT & Digital,56.3
+01/07/2025,Software Developer,Blr,IT & Digital,56.5
+01/08/2025,Software Developer,Bengaluru Urban,IT & Digital,56.9
+01/09/2025,Software Developer,Bengaluru,IT & Digital,57.1
+01/10/2025,Software Developer,Bangalore,IT & Digital,56.8
+01/11/2025,Software Developer,Bangalore Urban,IT & Digital,57
+01/12/2025,Software Developer,Blr,IT & Digital,57
+01/01/2026,Software Developer,Bengaluru Urban,IT & Digital,57.6
+01/02/2026,Software Developer,Bengaluru,IT & Digital,57.8
+01/03/2026,Software Developer,Bangalore,IT & Digital,58
+01/04/2026,Software Developer,Bangalore Urban,IT & Digital,57.9
+01/05/2026,Software Developer,Blr,IT & Digital,58.1
+01/06/2026,Software Developer,Bengaluru Urban,IT & Digital,58.3
+01/07/2026,Software Developer,Bengaluru,IT & Digital,58.5
+01/08/2026,Software Developer,Bangalore,IT & Digital,58.9
+01/09/2026,Software Developer,Bangalore Urban,IT & Digital,59.1
+01/10/2024,Data Entry Operator,Bengaluru Urban,IT & Digital,36.8
+01/11/2024,Data Entry Operator,Bengaluru,IT & Digital,37
+01/12/2024,Data Entry Operator,Bangalore,IT & Digital,37.2
+01/01/2025,Data Entry Operator,Bangalore Urban,IT & Digital,38.5
+01/02/2025,Data Entry Operator,Blr,IT & Digital,38.7
+01/03/2025,Data Entry Operator,Bengaluru Urban,IT & Digital,38.9
+01/04/2025,Data Entry Operator,Bengaluru,IT & Digital,38.9
+01/05/2025,Data Entry Operator,Bangalore,IT & Digital,39
+01/06/2025,Data Entry Operator,Bangalore Urban,IT & Digital,39.2
+01/07/2025,Data Entry Operator,Blr,IT & Digital,39.3
+01/08/2025,Data Entry Operator,Bengaluru Urban,IT & Digital,39.8
+01/09/2025,Data Entry Operator,Bengaluru,IT & Digital,40
+01/10/2025,Data Entry Operator,Bangalore,IT & Digital,39.7
+01/11/2025,Data Entry Operator,Bangalore Urban,IT & Digital,39.9
+01/12/2025,Data Entry Operator,Blr,IT & Digital,39.9
+01/01/2026,Data Entry Operator,Bengaluru Urban,IT & Digital,42.7
+01/02/2026,Data Entry Operator,Bengaluru,IT & Digital,42.9
+01/03/2026,Data Entry Operator,Bangalore,IT & Digital,43
+01/04/2026,Data Entry Operator,Bangalore Urban,IT & Digital,43
+01/05/2026,Data Entry Operator,Blr,IT & Digital,43.2
+01/06/2026,Data Entry Operator,Bengaluru Urban,IT & Digital,43.3
+01/07/2026,Data Entry Operator,Bengaluru,IT & Digital,43.5
+01/08/2026,Data Entry Operator,Bangalore,IT & Digital,43.9
+01/09/2026,Data Entry Operator,Bangalore Urban,IT & Digital,44.1
+01/10/2024,Digital Marketing Executive,Bengaluru Urban,IT & Digital,61
+01/11/2024,Digital Marketing Executive,Bengaluru,IT & Digital,61.1
+01/12/2024,Digital Marketing Executive,Bangalore,IT & Digital,61.2
+01/01/2025,Digital Marketing Executive,Bangalore Urban,IT & Digital,59.2
+01/02/2025,Digital Marketing Executive,Blr,IT & Digital,59.3
+01/03/2025,Digital Marketing Executive,Bengaluru Urban,IT & Digital,59.4
+01/04/2025,Digital Marketing Executive,Bengaluru,IT & Digital,59.5
+01/05/2025,Digital Marketing Executive,Bangalore,IT & Digital,59.7
+01/06/2025,Digital Marketing Executive,Bangalore Urban,IT & Digital,59.8
+01/07/2025,Digital Marketing Executive,Blr,IT & Digital,59.9
+01/08/2025,Digital Marketing Executive,Bengaluru Urban,IT & Digital,60.5
+01/09/2025,Digital Marketing Executive,Bengaluru,IT & Digital,60.6
+01/10/2025,Digital Marketing Executive,Bangalore,IT & Digital,60.4
+01/11/2025,Digital Marketing Executive,Bangalore Urban,IT & Digital,60.6
+01/12/2025,Digital Marketing Executive,Blr,IT & Digital,60.7
+01/01/2026,Digital Marketing Executive,Bengaluru Urban,IT & Digital,64.6
+01/02/2026,Digital Marketing Executive,Bengaluru,IT & Digital,64.7
+01/03/2026,Digital Marketing Executive,Bangalore,IT & Digital,64.9
+01/04/2026,Digital Marketing Executive,Bangalore Urban,IT & Digital,65.2
+01/05/2026,Digital Marketing Executive,Blr,IT & Digital,65.4
+01/06/2026,Digital Marketing Executive,Bengaluru Urban,IT & Digital,65.4
+01/07/2026,Digital Marketing Executive,Bengaluru,IT & Digital,65.6
+01/08/2026,Digital Marketing Executive,Bangalore,IT & Digital,65.9
+01/09/2026,Digital Marketing Executive,Bangalore Urban,IT & Digital,66.1
+01/10/2024,Healthcare Assistant,Bengaluru Urban,Healthcare,55.6
+01/11/2024,Healthcare Assistant,Bengaluru,Healthcare,55.7
+01/12/2024,Healthcare Assistant,Bangalore,Healthcare,56
+01/01/2025,Healthcare Assistant,Bangalore Urban,Healthcare,56.3
+01/02/2025,Healthcare Assistant,Blr,Healthcare,56.5
+01/03/2025,Healthcare Assistant,Bengaluru Urban,Healthcare,56.6
+01/04/2025,Healthcare Assistant,Bengaluru,Healthcare,56.9
+01/05/2025,Healthcare Assistant,Bangalore,Healthcare,57
+01/06/2025,Healthcare Assistant,Bangalore Urban,Healthcare,57.2
+01/07/2025,Healthcare Assistant,Blr,Healthcare,57.4
+01/08/2025,Healthcare Assistant,Bengaluru Urban,Healthcare,57.6
+01/09/2025,Healthcare Assistant,Bengaluru,Healthcare,57.7
+01/10/2025,Healthcare Assistant,Bangalore,Healthcare,58.5
+01/11/2025,Healthcare Assistant,Bangalore Urban,Healthcare,58.6
+01/12/2025,Healthcare Assistant,Blr,Healthcare,58.7
+01/01/2026,Healthcare Assistant,Bengaluru Urban,Healthcare,64.4
+01/02/2026,Healthcare Assistant,Bengaluru,Healthcare,64.6
+01/03/2026,Healthcare Assistant,Bangalore,Healthcare,64.8
+01/04/2026,Healthcare Assistant,Bangalore Urban,Healthcare,65
+01/05/2026,Healthcare Assistant,Blr,Healthcare,65.2
+01/06/2026,Healthcare Assistant,Bengaluru Urban,Healthcare,65.3
+01/07/2026,Healthcare Assistant,Bengaluru,Healthcare,65.5
+01/08/2026,Healthcare Assistant,Bangalore,Healthcare,65.7
+01/09/2026,Healthcare Assistant,Bangalore Urban,Healthcare,65.9
+01/10/2024,Phlebotomy Technician,Bengaluru Urban,Healthcare,50.4
+01/11/2024,Phlebotomy Technician,Bengaluru,Healthcare,50.5
+01/12/2024,Phlebotomy Technician,Bangalore,Healthcare,50.8
+01/01/2025,Phlebotomy Technician,Bangalore Urban,Healthcare,49.9
+01/02/2025,Phlebotomy Technician,Blr,Healthcare,50.1
+01/03/2025,Phlebotomy Technician,Bengaluru Urban,Healthcare,50.2
+01/04/2025,Phlebotomy Technician,Bengaluru,Healthcare,50.2
+01/05/2025,Phlebotomy Technician,Bangalore,Healthcare,50.4
+01/06/2025,Phlebotomy Technician,Bangalore Urban,Healthcare,50.6
+01/07/2025,Phlebotomy Technician,Blr,Healthcare,50.7
+01/08/2025,Phlebotomy Technician,Bengaluru Urban,Healthcare,50.7
+01/09/2025,Phlebotomy Technician,Bengaluru,Healthcare,50.8
+01/10/2025,Phlebotomy Technician,Bangalore,Healthcare,47.1
+01/11/2025,Phlebotomy Technician,Bangalore Urban,Healthcare,47.3
+01/12/2025,Phlebotomy Technician,Blr,Healthcare,47.3
+01/01/2026,Phlebotomy Technician,Bengaluru Urban,Healthcare,48.8
+01/02/2026,Phlebotomy Technician,Bengaluru,Healthcare,48.9
+01/03/2026,Phlebotomy Technician,Bangalore,Healthcare,49.1
+01/04/2026,Phlebotomy Technician,Bangalore Urban,Healthcare,49.1
+01/05/2026,Phlebotomy Technician,Blr,Healthcare,49.2
+01/06/2026,Phlebotomy Technician,Bengaluru Urban,Healthcare,49.4
+01/07/2026,Phlebotomy Technician,Bengaluru,Healthcare,49.6
+01/08/2026,Phlebotomy Technician,Bangalore,Healthcare,49.5
+01/09/2026,Phlebotomy Technician,Bangalore Urban,Healthcare,49.7
+01/10/2024,CNC Operator,Bengaluru Urban,Manufacturing,45.6
+01/11/2024,CNC Operator,Bengaluru,Manufacturing,45.7
+01/12/2024,CNC Operator,Bangalore,Manufacturing,45.8
+01/01/2025,CNC Operator,Bangalore Urban,Manufacturing,51
+01/02/2025,CNC Operator,Blr,Manufacturing,51
+01/03/2025,CNC Operator,Bengaluru Urban,Manufacturing,51.2
+01/04/2025,CNC Operator,Bengaluru,Manufacturing,51.5
+01/05/2025,CNC Operator,Bangalore,Manufacturing,51.7
+01/06/2025,CNC Operator,Bangalore Urban,Manufacturing,51.8
+01/07/2025,CNC Operator,Blr,Manufacturing,52
+01/08/2025,CNC Operator,Bengaluru Urban,Manufacturing,51.8
+01/09/2025,CNC Operator,Bengaluru,Manufacturing,51.9
+01/10/2025,CNC Operator,Bangalore,Manufacturing,52.5
+01/11/2025,CNC Operator,Bangalore Urban,Manufacturing,52.6
+01/12/2025,CNC Operator,Blr,Manufacturing,52.9
+01/01/2026,CNC Operator,Bengaluru Urban,Manufacturing,50.4
+01/02/2026,CNC Operator,Bengaluru,Manufacturing,50.6
+01/03/2026,CNC Operator,Bangalore,Manufacturing,50.7
+01/04/2026,CNC Operator,Bangalore Urban,Manufacturing,50.8
+01/05/2026,CNC Operator,Blr,Manufacturing,50.9
+01/06/2026,CNC Operator,Bengaluru Urban,Manufacturing,51
+01/07/2026,CNC Operator,Bengaluru,Manufacturing,51.2
+01/08/2026,CNC Operator,Bangalore,Manufacturing,51.3
+01/09/2026,CNC Operator,Bangalore Urban,Manufacturing,51.4
+01/10/2024,Welder,Bengaluru Urban,Manufacturing,56.8
+01/11/2024,Welder,Bengaluru,Manufacturing,57
+01/12/2024,Welder,Bangalore,Manufacturing,57.2
+01/01/2025,Welder,Bangalore Urban,Manufacturing,53.3
+01/02/2025,Welder,Blr,Manufacturing,53.5
+01/03/2025,Welder,Bengaluru Urban,Manufacturing,53.7
+01/04/2025,Welder,Bengaluru,Manufacturing,53.6
+01/05/2025,Welder,Bangalore,Manufacturing,53.8
+01/06/2025,Welder,Bangalore Urban,Manufacturing,54
+01/07/2025,Welder,Blr,Manufacturing,54.2
+01/08/2025,Welder,Bengaluru Urban,Manufacturing,54.6
+01/09/2025,Welder,Bengaluru,Manufacturing,54.8
+01/10/2025,Welder,Bangalore,Manufacturing,54.8
+01/11/2025,Welder,Bangalore Urban,Manufacturing,55
+01/12/2025,Welder,Blr,Manufacturing,55.1
+01/01/2026,Welder,Bengaluru Urban,Manufacturing,52.8
+01/02/2026,Welder,Bengaluru,Manufacturing,53
+01/03/2026,Welder,Bangalore,Manufacturing,53.1
+01/04/2026,Welder,Bangalore Urban,Manufacturing,53.1
+01/05/2026,Welder,Blr,Manufacturing,53.2
+01/06/2026,Welder,Bengaluru Urban,Manufacturing,53.5
+01/07/2026,Welder,Bengaluru,Manufacturing,53.6
+01/08/2026,Welder,Bangalore,Manufacturing,54.1
+01/09/2026,Welder,Bangalore Urban,Manufacturing,54.2
+01/10/2024,Warehouse Associate,Bengaluru Urban,Logistics,60.5
+01/11/2024,Warehouse Associate,Bengaluru,Logistics,60.6
+01/12/2024,Warehouse Associate,Bangalore,Logistics,60.8
+01/01/2025,Warehouse Associate,Bangalore Urban,Logistics,62.1
+01/02/2025,Warehouse Associate,Blr,Logistics,62.4
+01/03/2025,Warehouse Associate,Bengaluru Urban,Logistics,62.5
+01/04/2025,Warehouse Associate,Bengaluru,Logistics,62.7
+01/05/2025,Warehouse Associate,Bangalore,Logistics,62.9
+01/06/2025,Warehouse Associate,Bangalore Urban,Logistics,63.1
+01/07/2025,Warehouse Associate,Blr,Logistics,63.2
+01/08/2025,Warehouse Associate,Bengaluru Urban,Logistics,63
+01/09/2025,Warehouse Associate,Bengaluru,Logistics,63.1
+01/10/2025,Warehouse Associate,Bangalore,Logistics,63.3
+01/11/2025,Warehouse Associate,Bangalore Urban,Logistics,63.5
+01/12/2025,Warehouse Associate,Blr,Logistics,63.6
+01/01/2026,Warehouse Associate,Bengaluru Urban,Logistics,65
+01/02/2026,Warehouse Associate,Bengaluru,Logistics,65.2
+01/03/2026,Warehouse Associate,Bangalore,Logistics,65.4
+01/04/2026,Warehouse Associate,Bangalore Urban,Logistics,65.6
+01/05/2026,Warehouse Associate,Blr,Logistics,65.8
+01/06/2026,Warehouse Associate,Bengaluru Urban,Logistics,65.9
+01/07/2026,Warehouse Associate,Bengaluru,Logistics,66.1
+01/08/2026,Warehouse Associate,Bangalore,Logistics,65.8
+01/09/2026,Warehouse Associate,Bangalore Urban,Logistics,66
+01/10/2024,Logistics Coordinator,Bengaluru Urban,Logistics,54
+01/11/2024,Logistics Coordinator,Bengaluru,Logistics,54.1
+01/12/2024,Logistics Coordinator,Bangalore,Logistics,54.3
+01/01/2025,Logistics Coordinator,Bangalore Urban,Logistics,55.6
+01/02/2025,Logistics Coordinator,Blr,Logistics,55.9
+01/03/2025,Logistics Coordinator,Bengaluru Urban,Logistics,56
+01/04/2025,Logistics Coordinator,Bengaluru,Logistics,56
+01/05/2025,Logistics Coordinator,Bangalore,Logistics,56.1
+01/06/2025,Logistics Coordinator,Bangalore Urban,Logistics,56.3
+01/07/2025,Logistics Coordinator,Blr,Logistics,56.4
+01/08/2025,Logistics Coordinator,Bengaluru Urban,Logistics,56.9
+01/09/2025,Logistics Coordinator,Bengaluru,Logistics,57.1
+01/10/2025,Logistics Coordinator,Bangalore,Logistics,56.8
+01/11/2025,Logistics Coordinator,Bangalore Urban,Logistics,57
+01/12/2025,Logistics Coordinator,Blr,Logistics,57
+01/01/2026,Logistics Coordinator,Bengaluru Urban,Logistics,59.8
+01/02/2026,Logistics Coordinator,Bengaluru,Logistics,60
+01/03/2026,Logistics Coordinator,Bangalore,Logistics,60.1
+01/04/2026,Logistics Coordinator,Bangalore Urban,Logistics,60.1
+01/05/2026,Logistics Coordinator,Blr,Logistics,60.3
+01/06/2026,Logistics Coordinator,Bengaluru Urban,Logistics,60.4
+01/07/2026,Logistics Coordinator,Bengaluru,Logistics,60.6
+01/08/2026,Logistics Coordinator,Bangalore,Logistics,61.1
+01/09/2026,Logistics Coordinator,Bangalore Urban,Logistics,61.2
+01/10/2024,Electrician,Bengaluru Urban,Construction,52.1
+01/11/2024,Electrician,Bengaluru,Construction,52.3
+01/12/2024,Electrician,Bangalore,Construction,52.5
+01/01/2025,Electrician,Bangalore Urban,Construction,54.4
+01/02/2025,Electrician,Blr,Construction,54.6
+01/03/2025,Electrician,Bengaluru Urban,Construction,54.8
+01/04/2025,Electrician,Bengaluru,Construction,54.7
+01/05/2025,Electrician,Bangalore,Construction,54.9
+01/06/2025,Electrician,Bangalore Urban,Construction,55.1
+01/07/2025,Electrician,Blr,Construction,55.3
+01/08/2025,Electrician,Bengaluru Urban,Construction,47.7
+01/09/2025,Electrician,Bengaluru,Construction,47.9
+01/10/2025,Electrician,Bangalore,Construction,55.9
+01/11/2025,Electrician,Bangalore Urban,Construction,56.1
+01/12/2025,Electrician,Blr,Construction,56.2
+01/01/2026,Electrician,Bengaluru Urban,Construction,56.1
+01/02/2026,Electrician,Bengaluru,Construction,56.3
+01/03/2026,Electrician,Bangalore,Construction,56.4
+01/04/2026,Electrician,Bangalore Urban,Construction,56.4
+01/05/2026,Electrician,Blr,Construction,56.5
+01/06/2026,Electrician,Bengaluru Urban,Construction,56.8
+01/07/2026,Electrician,Bengaluru,Construction,56.9
+01/08/2026,Electrician,Bangalore,Construction,57.4
+01/09/2026,Electrician,Bangalore Urban,Construction,57.5
+01/10/2024,Mason,Bengaluru Urban,Construction,39.4
+01/11/2024,Mason,Bengaluru,Construction,39.6
+01/12/2024,Mason,Bangalore,Construction,39.7
+01/01/2025,Mason,Bangalore Urban,Construction,46
+01/02/2025,Mason,Blr,Construction,46.1
+01/03/2025,Mason,Bengaluru Urban,Construction,46.3
+01/04/2025,Mason,Bengaluru,Construction,46.6
+01/05/2025,Mason,Bangalore,Construction,46.8
+01/06/2025,Mason,Bangalore Urban,Construction,46.9
+01/07/2025,Mason,Blr,Construction,47
+01/08/2025,Mason,Bengaluru Urban,Construction,47.4
+01/09/2025,Mason,Bengaluru,Construction,47.5
+01/10/2025,Mason,Bangalore,Construction,47.2
+01/11/2025,Mason,Bangalore Urban,Construction,47.4
+01/12/2025,Mason,Blr,Construction,47.6
+01/01/2026,Mason,Bengaluru Urban,Construction,43.2
+01/02/2026,Mason,Bengaluru,Construction,43.2
+01/03/2026,Mason,Bangalore,Construction,43.4
+01/04/2026,Mason,Bangalore Urban,Construction,43.5
+01/05/2026,Mason,Blr,Construction,43.7
+01/06/2026,Mason,Bengaluru Urban,Construction,43.7
+01/07/2026,Mason,Bengaluru,Construction,43.9
+01/08/2026,Mason,Bangalore,Construction,44
+01/09/2026,Mason,Bangalore Urban,Construction,44.1
+01/10/2024,Retail Sales Associate,Bengaluru Urban,Retail,48.8
+01/11/2024,Retail Sales Associate,Bengaluru,Retail,48.9
+01/12/2024,Retail Sales Associate,Bangalore,Retail,49
+01/01/2025,Retail Sales Associate,Bangalore Urban,Retail,48
+01/02/2025,Retail Sales Associate,Blr,Retail,48.1
+01/03/2025,Retail Sales Associate,Bengaluru Urban,Retail,48.3
+01/04/2025,Retail Sales Associate,Bengaluru,Retail,48.3
+01/05/2025,Retail Sales Associate,Bangalore,Retail,48.5
+01/06/2025,Retail Sales Associate,Bangalore Urban,Retail,48.6
+01/07/2025,Retail Sales Associate,Blr,Retail,48.7
+01/08/2025,Retail Sales Associate,Bengaluru Urban,Retail,49.3
+01/09/2025,Retail Sales Associate,Bengaluru,Retail,49.5
+01/10/2025,Retail Sales Associate,Bangalore,Retail,53.5
+01/11/2025,Retail Sales Associate,Bangalore Urban,Retail,53.7
+01/12/2025,Retail Sales Associate,Blr,Retail,53.9
+01/01/2026,Retail Sales Associate,Bengaluru Urban,Retail,49.6
+01/02/2026,Retail Sales Associate,Bengaluru,Retail,49.8
+01/03/2026,Retail Sales Associate,Bangalore,Retail,49.9
+01/04/2026,Retail Sales Associate,Bangalore Urban,Retail,50.3
+01/05/2026,Retail Sales Associate,Blr,Retail,50.4
+01/06/2026,Retail Sales Associate,Bengaluru Urban,Retail,50.5
+01/07/2026,Retail Sales Associate,Bengaluru,Retail,50.6
+01/08/2026,Retail Sales Associate,Bangalore,Retail,50.5
+01/09/2026,Retail Sales Associate,Bangalore Urban,Retail,50.6
+01/10/2024,Solar Technician,Bengaluru Urban,Renewable Energy,64.1
+01/11/2024,Solar Technician,Bengaluru,Renewable Energy,64.2
+01/12/2024,Solar Technician,Bangalore,Renewable Energy,64.5
+01/01/2025,Solar Technician,Bangalore Urban,Renewable Energy,64.8
+01/02/2025,Solar Technician,Blr,Renewable Energy,65
+01/03/2025,Solar Technician,Bengaluru Urban,Renewable Energy,65.1
+01/04/2025,Solar Technician,Bengaluru,Renewable Energy,65.4
+01/05/2025,Solar Technician,Bangalore,Renewable Energy,65.5
+01/06/2025,Solar Technician,Bangalore Urban,Renewable Energy,65.8
+01/07/2025,Solar Technician,Blr,Renewable Energy,65.9
+01/08/2025,Solar Technician,Bengaluru Urban,Renewable Energy,66.1
+01/09/2025,Solar Technician,Bengaluru,Renewable Energy,66.2
+01/10/2025,Solar Technician,Bangalore,Renewable Energy,71
+01/11/2025,Solar Technician,Bangalore Urban,Renewable Energy,71.2
+01/12/2025,Solar Technician,Blr,Renewable Energy,71.2
+01/01/2026,Solar Technician,Bengaluru Urban,Renewable Energy,64.6
+01/02/2026,Solar Technician,Bengaluru,Renewable Energy,64.8
+01/03/2026,Solar Technician,Bangalore,Renewable Energy,65
+01/04/2026,Solar Technician,Bangalore Urban,Renewable Energy,65.1
+01/05/2026,Solar Technician,Blr,Renewable Energy,65.3
+01/06/2026,Solar Technician,Bengaluru Urban,Renewable Energy,65.5
+01/07/2026,Solar Technician,Bengaluru,Renewable Energy,65.7
+01/08/2026,Solar Technician,Bangalore,Renewable Energy,65.9
+01/09/2026,Solar Technician,Bangalore Urban,Renewable Energy,66
+01/10/2024,Wind Turbine Technician,Bengaluru Urban,Renewable Energy,59.1
+01/11/2024,Wind Turbine Technician,Bengaluru,Renewable Energy,59.3
+01/12/2024,Wind Turbine Technician,Bangalore,Renewable Energy,59.4
+01/01/2025,Wind Turbine Technician,Bangalore Urban,Renewable Energy,59.6
+01/02/2025,Wind Turbine Technician,Blr,Renewable Energy,59.8
+01/03/2025,Wind Turbine Technician,Bengaluru Urban,Renewable Energy,60
+01/04/2025,Wind Turbine Technician,Bengaluru,Renewable Energy,60.2
+01/05/2025,Wind Turbine Technician,Bangalore,Renewable Energy,60.3
+01/06/2025,Wind Turbine Technician,Bangalore Urban,Renewable Energy,60.5
+01/07/2025,Wind Turbine Technician,Blr,Renewable Energy,60.7
+01/08/2025,Wind Turbine Technician,Bengaluru Urban,Renewable Energy,60.4
+01/09/2025,Wind Turbine Technician,Bengaluru,Renewable Energy,60.6
+01/10/2025,Wind Turbine Technician,Bangalore,Renewable Energy,61.1
+01/11/2025,Wind Turbine Technician,Bangalore Urban,Renewable Energy,61.2
+01/12/2025,Wind Turbine Technician,Blr,Renewable Energy,61.4
+01/01/2026,Wind Turbine Technician,Bengaluru Urban,Renewable Energy,56.3
+01/02/2026,Wind Turbine Technician,Bengaluru,Renewable Energy,56.6
+01/03/2026,Wind Turbine Technician,Bangalore,Renewable Energy,56.7
+01/04/2026,Wind Turbine Technician,Bangalore Urban,Renewable Energy,56.9
+01/05/2026,Wind Turbine Technician,Blr,Renewable Energy,57
+01/06/2026,Wind Turbine Technician,Bengaluru Urban,Renewable Energy,57.3
+01/07/2026,Wind Turbine Technician,Bengaluru,Renewable Energy,57.4
+01/08/2026,Wind Turbine Technician,Bangalore,Renewable Energy,57.1
+01/09/2026,Wind Turbine Technician,Bangalore Urban,Renewable Energy,57.3
+01/10/2024,Software Developer,Mysuru,IT & Digital,57.6
+01/11/2024,Software Developer,Mysore,IT & Digital,57.8
+01/12/2024,Software Developer,Mysuru,IT & Digital,58
+01/01/2025,Software Developer,Mysore,IT & Digital,54.1
+01/02/2025,Software Developer,Mysuru,IT & Digital,54.3
+01/03/2025,Software Developer,Mysore,IT & Digital,54.5
+01/04/2025,Software Developer,Mysuru,IT & Digital,54.4
+01/05/2025,Software Developer,Mysore,IT & Digital,54.6
+01/06/2025,Software Developer,Mysuru,IT & Digital,54.8
+01/07/2025,Software Developer,Mysore,IT & Digital,55
+01/08/2025,Software Developer,Mysuru,IT & Digital,55.4
+01/09/2025,Software Developer,Mysore,IT & Digital,55.6
+01/10/2025,Software Developer,Mysuru,IT & Digital,55.6
+01/11/2025,Software Developer,Mysore,IT & Digital,55.8
+01/12/2025,Software Developer,Mysuru,IT & Digital,55.9
+01/01/2026,Software Developer,Mysore,IT & Digital,57.9
+01/02/2026,Software Developer,Mysuru,IT & Digital,58.2
+01/03/2026,Software Developer,Mysore,IT & Digital,58.3
+01/04/2026,Software Developer,Mysuru,IT & Digital,58.3
+01/05/2026,Software Developer,Mysore,IT & Digital,58.4
+01/06/2026,Software Developer,Mysuru,IT & Digital,58.6
+01/07/2026,Software Developer,Mysore,IT & Digital,58.8
+01/08/2026,Software Developer,Mysuru,IT & Digital,59.2
+01/09/2026,Software Developer,Mysore,IT & Digital,59.4
+01/10/2024,Data Entry Operator,Mysuru,IT & Digital,44.1
+01/11/2024,Data Entry Operator,Mysore,IT & Digital,44.3
+01/12/2024,Data Entry Operator,Mysuru,IT & Digital,44.4
+01/01/2025,Data Entry Operator,Mysore,IT & Digital,45.2
+01/02/2025,Data Entry Operator,Mysuru,IT & Digital,45.2
+01/03/2025,Data Entry Operator,Mysore,IT & Digital,45.4
+01/04/2025,Data Entry Operator,Mysuru,IT & Digital,45.5
+01/05/2025,Data Entry Operator,Mysore,IT & Digital,45.6
+01/06/2025,Data Entry Operator,Mysuru,IT & Digital,45.7
+01/07/2025,Data Entry Operator,Mysore,IT & Digital,45.9
+01/08/2025,Data Entry Operator,Mysuru,IT & Digital,46.4
+01/09/2025,Data Entry Operator,Mysore,IT & Digital,46.6
+01/10/2025,Data Entry Operator,Mysuru,IT & Digital,46.7
+01/11/2025,Data Entry Operator,Mysore,IT & Digital,46.8
+01/12/2025,Data Entry Operator,Mysuru,IT & Digital,47
+01/01/2026,Data Entry Operator,Mysore,IT & Digital,40.6
+01/02/2026,Data Entry Operator,Mysuru,IT & Digital,40.7
+01/03/2026,Data Entry Operator,Mysore,IT & Digital,40.9
+01/04/2026,Data Entry Operator,Mysuru,IT & Digital,41.2
+01/05/2026,Data Entry Operator,Mysore,IT & Digital,41.4
+01/06/2026,Data Entry Operator,Mysuru,IT & Digital,41.5
+01/07/2026,Data Entry Operator,Mysore,IT & Digital,41.6
+01/08/2026,Data Entry Operator,Mysuru,IT & Digital,41.5
+01/09/2026,Data Entry Operator,Mysore,IT & Digital,41.6
+01/10/2024,Digital Marketing Executive,Mysuru,IT & Digital,58.7
+01/11/2024,Digital Marketing Executive,Mysore,IT & Digital,58.8
+01/12/2024,Digital Marketing Executive,Mysuru,IT & Digital,59
+01/01/2025,Digital Marketing Executive,Mysore,IT & Digital,59.2
+01/02/2025,Digital Marketing Executive,Mysuru,IT & Digital,59.4
+01/03/2025,Digital Marketing Executive,Mysore,IT & Digital,59.5
+01/04/2025,Digital Marketing Executive,Mysuru,IT & Digital,59.7
+01/05/2025,Digital Marketing Executive,Mysore,IT & Digital,59.9
+01/06/2025,Digital Marketing Executive,Mysuru,IT & Digital,60.1
+01/07/2025,Digital Marketing Executive,Mysore,IT & Digital,60.3
+01/08/2025,Digital Marketing Executive,Mysuru,IT & Digital,60
+01/09/2025,Digital Marketing Executive,Mysore,IT & Digital,60.1
+01/10/2025,Digital Marketing Executive,Mysuru,IT & Digital,60.7
+01/11/2025,Digital Marketing Executive,Mysore,IT & Digital,60.8
+01/12/2025,Digital Marketing Executive,Mysuru,IT & Digital,60.9
+01/01/2026,Digital Marketing Executive,Mysore,IT & Digital,63.9
+01/02/2026,Digital Marketing Executive,Mysuru,IT & Digital,64.1
+01/03/2026,Digital Marketing Executive,Mysore,IT & Digital,64.2
+01/04/2026,Digital Marketing Executive,Mysuru,IT & Digital,64.5
+01/05/2026,Digital Marketing Executive,Mysore,IT & Digital,64.6
+01/06/2026,Digital Marketing Executive,Mysuru,IT & Digital,64.9
+01/07/2026,Digital Marketing Executive,Mysore,IT & Digital,65
+01/08/2026,Digital Marketing Executive,Mysuru,IT & Digital,64.7
+01/09/2026,Digital Marketing Executive,Mysore,IT & Digital,64.8
+01/10/2024,Healthcare Assistant,Mysuru,Healthcare,51
+01/11/2024,Healthcare Assistant,Mysore,Healthcare,51.2
+01/12/2024,Healthcare Assistant,Mysuru,Healthcare,51.4
+01/01/2025,Healthcare Assistant,Mysore,Healthcare,55.5
+01/02/2025,Healthcare Assistant,Mysuru,Healthcare,55.7
+01/03/2025,Healthcare Assistant,Mysore,Healthcare,55.9
+01/04/2025,Healthcare Assistant,Mysuru,Healthcare,55.8
+01/05/2025,Healthcare Assistant,Mysore,Healthcare,56
+01/06/2025,Healthcare Assistant,Mysuru,Healthcare,56.2
+01/07/2025,Healthcare Assistant,Mysore,Healthcare,56.4
+01/08/2025,Healthcare Assistant,Mysuru,Healthcare,56.8
+01/09/2025,Healthcare Assistant,Mysore,Healthcare,49
+01/10/2025,Healthcare Assistant,Mysuru,Healthcare,57
+01/11/2025,Healthcare Assistant,Mysore,Healthcare,57.2
+01/12/2025,Healthcare Assistant,Mysuru,Healthcare,57.3
+01/01/2026,Healthcare Assistant,Mysore,Healthcare,55
+01/02/2026,Healthcare Assistant,Mysuru,Healthcare,55.2
+01/03/2026,Healthcare Assistant,Mysore,Healthcare,55.3
+01/04/2026,Healthcare Assistant,Mysuru,Healthcare,55.3
+01/05/2026,Healthcare Assistant,Mysore,Healthcare,55.4
+01/06/2026,Healthcare Assistant,Mysuru,Healthcare,55.7
+01/07/2026,Healthcare Assistant,Mysore,Healthcare,55.8
+01/08/2026,Healthcare Assistant,Mysuru,Healthcare,56.3
+01/09/2026,Healthcare Assistant,Mysore,Healthcare,56.4
+01/08/2026,Phlebotomy Technician,Mysuru,Healthcare,50.9
+01/09/2026,Phlebotomy Technician,Mysore,Healthcare,51
+01/10/2024,CNC Operator,Mysuru,Manufacturing,55.8
+01/11/2024,CNC Operator,Mysore,Manufacturing,55.9
+01/12/2024,CNC Operator,Mysuru,Manufacturing,56
+01/01/2025,CNC Operator,Mysore,Manufacturing,53.1
+01/02/2025,CNC Operator,Mysuru,Manufacturing,53.2
+01/03/2025,CNC Operator,Mysore,Manufacturing,53.3
+01/04/2025,CNC Operator,Mysuru,Manufacturing,53.7
+01/05/2025,CNC Operator,Mysore,Manufacturing,53.8
+01/06/2025,CNC Operator,Mysuru,Manufacturing,53.9
+01/07/2025,CNC Operator,Mysore,Manufacturing,54.1
+01/08/2025,CNC Operator,Mysuru,Manufacturing,53.9
+01/09/2025,CNC Operator,Mysore,Manufacturing,54
+01/10/2025,CNC Operator,Mysuru,Manufacturing,58.3
+01/11/2025,CNC Operator,Mysore,Manufacturing,58.5
+01/12/2025,CNC Operator,Mysuru,Manufacturing,58.7
+01/01/2026,CNC Operator,Mysore,Manufacturing,59.4
+01/02/2026,CNC Operator,Mysuru,Manufacturing,59.5
+01/03/2026,CNC Operator,Mysore,Manufacturing,59.7
+01/04/2026,CNC Operator,Mysuru,Manufacturing,59.7
+01/05/2026,CNC Operator,Mysore,Manufacturing,59.9
+01/06/2026,CNC Operator,Mysuru,Manufacturing,60
+01/07/2026,CNC Operator,Mysore,Manufacturing,60.2
+01/08/2026,CNC Operator,Mysuru,Manufacturing,60.7
+01/09/2026,CNC Operator,Mysore,Manufacturing,60.9
+01/10/2024,Welder,Mysuru,Manufacturing,52
+01/11/2024,Welder,Mysore,Manufacturing,52.1
+01/12/2024,Welder,Mysuru,Manufacturing,52.4
+01/01/2025,Welder,Mysore,Manufacturing,53.7
+01/02/2025,Welder,Mysuru,Manufacturing,53.9
+01/03/2025,Welder,Mysore,Manufacturing,54
+01/04/2025,Welder,Mysuru,Manufacturing,54
+01/05/2025,Welder,Mysore,Manufacturing,54.1
+01/06/2025,Welder,Mysuru,Manufacturing,54.4
+01/07/2025,Welder,Mysore,Manufacturing,54.5
+01/08/2025,Welder,Mysuru,Manufacturing,55
+01/09/2025,Welder,Mysore,Manufacturing,55.1
+01/10/2025,Welder,Mysuru,Manufacturing,54.8
+01/11/2025,Welder,Mysore,Manufacturing,55
+01/12/2025,Welder,Mysuru,Manufacturing,55.1
+01/01/2026,Welder,Mysore,Manufacturing,57.8
+01/02/2026,Welder,Mysuru,Manufacturing,58
+01/03/2026,Welder,Mysore,Manufacturing,58.2
+01/04/2026,Welder,Mysuru,Manufacturing,58.1
+01/05/2026,Welder,Mysore,Manufacturing,58.3
+01/06/2026,Welder,Mysuru,Manufacturing,58.5
+01/07/2026,Welder,Mysore,Manufacturing,58.7
+01/08/2026,Welder,Mysuru,Manufacturing,59.1
+01/09/2026,Welder,Mysore,Manufacturing,59.3
+01/10/2024,Warehouse Associate,Mysuru,Logistics,59.8
+01/11/2024,Warehouse Associate,Mysore,Logistics,60
+01/12/2024,Warehouse Associate,Mysuru,Logistics,60
+01/01/2025,Warehouse Associate,Mysore,Logistics,57.2
+01/02/2025,Warehouse Associate,Mysuru,Logistics,57.3
+01/03/2025,Warehouse Associate,Mysore,Logistics,57.5
+01/04/2025,Warehouse Associate,Mysuru,Logistics,57.8
+01/05/2025,Warehouse Associate,Mysore,Logistics,57.9
+01/06/2025,Warehouse Associate,Mysuru,Logistics,58
+01/07/2025,Warehouse Associate,Mysore,Logistics,58.2
+01/08/2025,Warehouse Associate,Mysuru,Logistics,58
+01/09/2025,Warehouse Associate,Mysore,Logistics,58.2
+01/10/2025,Warehouse Associate,Mysuru,Logistics,58.7
+01/11/2025,Warehouse Associate,Mysore,Logistics,58.8
+01/12/2025,Warehouse Associate,Mysuru,Logistics,59.1
+01/01/2026,Warehouse Associate,Mysore,Logistics,56.7
+01/02/2026,Warehouse Associate,Mysuru,Logistics,56.8
+01/03/2026,Warehouse Associate,Mysore,Logistics,56.9
+01/04/2026,Warehouse Associate,Mysuru,Logistics,57
+01/05/2026,Warehouse Associate,Mysore,Logistics,57.1
+01/06/2026,Warehouse Associate,Mysuru,Logistics,57.3
+01/07/2026,Warehouse Associate,Mysore,Logistics,57.4
+01/08/2026,Warehouse Associate,Mysuru,Logistics,57.5
+01/09/2026,Warehouse Associate,Mysore,Logistics,57.6
+01/10/2024,Logistics Coordinator,Mysuru,Logistics,55.4
+01/11/2024,Logistics Coordinator,Mysore,Logistics,55.6
+01/12/2024,Logistics Coordinator,Mysuru,Logistics,55.7
+01/01/2025,Logistics Coordinator,Mysore,Logistics,54.7
+01/02/2025,Logistics Coordinator,Mysuru,Logistics,54.7
+01/03/2025,Logistics Coordinator,Mysore,Logistics,54.9
+01/04/2025,Logistics Coordinator,Mysuru,Logistics,55.2
+01/05/2025,Logistics Coordinator,Mysore,Logistics,55.4
+01/06/2025,Logistics Coordinator,Mysuru,Logistics,55.4
+01/07/2025,Logistics Coordinator,Mysore,Logistics,55.6
+01/08/2025,Logistics Coordinator,Mysuru,Logistics,55.9
+01/09/2025,Logistics Coordinator,Mysore,Logistics,56.1
+01/10/2025,Logistics Coordinator,Mysuru,Logistics,56.2
+01/11/2025,Logistics Coordinator,Mysore,Logistics,56.3
+01/12/2025,Logistics Coordinator,Mysuru,Logistics,56.5
+01/01/2026,Logistics Coordinator,Mysore,Logistics,60.8
+01/02/2026,Logistics Coordinator,Mysuru,Logistics,60.9
+01/03/2026,Logistics Coordinator,Mysore,Logistics,61
+01/04/2026,Logistics Coordinator,Mysuru,Logistics,61.2
+01/05/2026,Logistics Coordinator,Mysore,Logistics,61.3
+01/06/2026,Logistics Coordinator,Mysuru,Logistics,61.4
+01/07/2026,Logistics Coordinator,Mysore,Logistics,61.5
+01/08/2026,Logistics Coordinator,Mysuru,Logistics,62.1
+01/09/2026,Logistics Coordinator,Mysore,Logistics,62.3
+01/10/2024,Electrician,Mysuru,Construction,56.3
+01/11/2024,Electrician,Mysore,Construction,56.4
+01/12/2024,Electrician,Mysuru,Construction,56.6
+01/01/2025,Electrician,Mysore,Construction,54.9
+01/02/2025,Electrician,Mysuru,Construction,55
+01/03/2025,Electrician,Mysore,Construction,55.2
+01/04/2025,Electrician,Mysuru,Construction,55.5
+01/05/2025,Electrician,Mysore,Construction,55.6
+01/06/2025,Electrician,Mysuru,Construction,55.8
+01/07/2025,Electrician,Mysore,Construction,55.9
+01/08/2025,Electrician,Mysuru,Construction,56.3
+01/09/2025,Electrician,Mysore,Construction,56.4
+01/10/2025,Electrician,Mysuru,Construction,56.1
+01/11/2025,Electrician,Mysore,Construction,56.3
+01/12/2025,Electrician,Mysuru,Construction,56.5
+01/01/2026,Electrician,Mysore,Construction,60.1
+01/02/2026,Electrician,Mysuru,Construction,60.1
+01/03/2026,Electrician,Mysore,Construction,60.3
+01/04/2026,Electrician,Mysuru,Construction,60.4
+01/05/2026,Electrician,Mysore,Construction,60.5
+01/06/2026,Electrician,Mysuru,Construction,60.6
+01/07/2026,Electrician,Mysore,Construction,60.8
+01/08/2026,Electrician,Mysuru,Construction,60.8
+01/09/2026,Electrician,Mysore,Construction,61
+01/10/2024,Mason,Mysuru,Construction,49.6
+01/11/2024,Mason,Mysore,Construction,49.8
+01/12/2024,Mason,Mysuru,Construction,50
+01/01/2025,Mason,Mysore,Construction,50.9
+01/02/2025,Mason,Mysuru,Construction,51.1
+01/03/2025,Mason,Mysore,Construction,51.3
+01/04/2025,Mason,Mysuru,Construction,51.5
+01/05/2025,Mason,Mysore,Construction,51.7
+01/06/2025,Mason,Mysuru,Construction,51.8
+01/07/2025,Mason,Mysore,Construction,52
+01/08/2025,Mason,Mysuru,Construction,52.2
+01/09/2025,Mason,Mysore,Construction,52.4
+01/10/2025,Mason,Mysuru,Construction,48.4
+01/11/2025,Mason,Mysore,Construction,48.6
+01/12/2025,Mason,Mysuru,Construction,48.7
+01/01/2026,Mason,Mysore,Construction,52.5
+01/02/2026,Mason,Mysuru,Construction,52.8
+01/03/2026,Mason,Mysore,Construction,52.9
+01/04/2026,Mason,Mysuru,Construction,53.1
+01/05/2026,Mason,Mysore,Construction,53.3
+01/06/2026,Mason,Mysuru,Construction,53.5
+01/07/2026,Mason,Mysore,Construction,53.6
+01/08/2026,Mason,Mysuru,Construction,53.9
+01/09/2026,Mason,Mysore,Construction,54
+01/10/2024,Retail Sales Associate,Mysuru,Retail,46
+01/11/2024,Retail Sales Associate,Mysore,Retail,46.1
+01/12/2024,Retail Sales Associate,Mysuru,Retail,46.2
+01/01/2025,Retail Sales Associate,Mysore,Retail,47.7
+01/02/2025,Retail Sales Associate,Mysuru,Retail,47.8
+01/03/2025,Retail Sales Associate,Mysore,Retail,47.9
+01/04/2025,Retail Sales Associate,Mysuru,Retail,48.3
+01/05/2025,Retail Sales Associate,Mysore,Retail,48.4
+01/06/2025,Retail Sales Associate,Mysuru,Retail,48.5
+01/07/2025,Retail Sales Associate,Mysore,Retail,48.7
+01/08/2025,Retail Sales Associate,Mysuru,Retail,48.5
+01/09/2025,Retail Sales Associate,Mysore,Retail,48.6
+01/10/2025,Retail Sales Associate,Mysuru,Retail,48.9
+01/11/2025,Retail Sales Associate,Mysore,Retail,49.1
+01/12/2025,Retail Sales Associate,Mysuru,Retail,49.3
+01/01/2026,Retail Sales Associate,Mysore,Retail,51.8
+01/02/2026,Retail Sales Associate,Mysuru,Retail,51.9
+01/03/2026,Retail Sales Associate,Mysore,Retail,52.1
+01/04/2026,Retail Sales Associate,Mysuru,Retail,52.1
+01/05/2026,Retail Sales Associate,Mysore,Retail,52.3
+01/06/2026,Retail Sales Associate,Mysuru,Retail,52.4
+01/07/2026,Retail Sales Associate,Mysore,Retail,52.5
+01/08/2026,Retail Sales Associate,Mysuru,Retail,53.1
+01/09/2026,Retail Sales Associate,Mysore,Retail,53.3
+01/10/2024,Solar Technician,Mysuru,Renewable Energy,64.7
+01/11/2024,Solar Technician,Mysore,Renewable Energy,64.9
+01/12/2024,Solar Technician,Mysuru,Renewable Energy,65.1
+01/01/2025,Solar Technician,Mysore,Renewable Energy,58.4
+01/02/2025,Solar Technician,Mysuru,Renewable Energy,58.6
+01/03/2025,Solar Technician,Mysore,Renewable Energy,58.8
+01/04/2025,Solar Technician,Mysuru,Renewable Energy,59
+01/05/2025,Solar Technician,Mysore,Renewable Energy,59.1
+01/06/2025,Solar Technician,Mysuru,Renewable Energy,59.3
+01/07/2025,Solar Technician,Mysore,Renewable Energy,59.5
+01/08/2025,Solar Technician,Mysuru,Renewable Energy,59.7
+01/09/2025,Solar Technician,Mysore,Renewable Energy,59.9
+01/10/2025,Solar Technician,Mysuru,Renewable Energy,59.9
+01/11/2025,Solar Technician,Mysore,Renewable Energy,60
+01/12/2025,Solar Technician,Mysuru,Renewable Energy,60.2
+01/01/2026,Solar Technician,Mysore,Renewable Energy,64
+01/02/2026,Solar Technician,Mysuru,Renewable Energy,64.3
+01/03/2026,Solar Technician,Mysore,Renewable Energy,64.4
+01/04/2026,Solar Technician,Mysuru,Renewable Energy,64.6
+01/05/2026,Solar Technician,Mysore,Renewable Energy,64.7
+01/06/2026,Solar Technician,Mysuru,Renewable Energy,65
+01/07/2026,Solar Technician,Mysore,Renewable Energy,65.1
+01/08/2026,Solar Technician,Mysuru,Renewable Energy,65.3
+01/09/2026,Solar Technician,Mysore,Renewable Energy,65.5
+01/10/2024,Wind Turbine Technician,Mysuru,Renewable Energy,51
+01/11/2024,Wind Turbine Technician,Mysore,Renewable Energy,51.2
+01/12/2024,Wind Turbine Technician,Mysuru,Renewable Energy,51.3
+01/01/2025,Wind Turbine Technician,Mysore,Renewable Energy,48.4
+01/02/2025,Wind Turbine Technician,Mysuru,Renewable Energy,48.5
+01/03/2025,Wind Turbine Technician,Mysore,Renewable Energy,48.7
+01/04/2025,Wind Turbine Technician,Mysuru,Renewable Energy,48.8
+01/05/2025,Wind Turbine Technician,Mysore,Renewable Energy,48.9
+01/06/2025,Wind Turbine Technician,Mysuru,Renewable Energy,49
+01/07/2025,Wind Turbine Technician,Mysore,Renewable Energy,49.1
+01/08/2025,Wind Turbine Technician,Mysuru,Renewable Energy,49.2
+01/09/2025,Wind Turbine Technician,Mysore,Renewable Energy,49.4
+01/10/2025,Wind Turbine Technician,Mysuru,Renewable Energy,53.6
+01/11/2025,Wind Turbine Technician,Mysore,Renewable Energy,53.8
+01/12/2025,Wind Turbine Technician,Mysuru,Renewable Energy,54
+01/01/2026,Wind Turbine Technician,Mysore,Renewable Energy,50.8
+01/02/2026,Wind Turbine Technician,Mysuru,Renewable Energy,50.8
+01/03/2026,Wind Turbine Technician,Mysore,Renewable Energy,51
+01/04/2026,Wind Turbine Technician,Mysuru,Renewable Energy,51.3
+01/05/2026,Wind Turbine Technician,Mysore,Renewable Energy,51.5
+01/06/2026,Wind Turbine Technician,Mysuru,Renewable Energy,51.5
+01/07/2026,Wind Turbine Technician,Mysore,Renewable Energy,51.7
+01/08/2026,Wind Turbine Technician,Mysuru,Renewable Energy,51.5
+01/09/2026,Wind Turbine Technician,Mysore,Renewable Energy,51.7
+01/10/2024,Software Developer,Pune,IT & Digital,54.6
+01/11/2024,Software Developer,Poona,IT & Digital,54.7
+01/12/2024,Software Developer,Pimpri Chinchwad,IT & Digital,54.8
+01/01/2025,Software Developer,Pcmc,IT & Digital,53.2
+01/02/2025,Software Developer,Pune,IT & Digital,53.3
+01/03/2025,Software Developer,Poona,IT & Digital,53.4
+01/04/2025,Software Developer,Pimpri Chinchwad,IT & Digital,53.5
+01/05/2025,Software Developer,Pcmc,IT & Digital,53.6
+01/06/2025,Software Developer,Pune,IT & Digital,53.8
+01/07/2025,Software Developer,Poona,IT & Digital,53.9
+01/08/2025,Software Developer,Pimpri Chinchwad,IT & Digital,54.5
+01/09/2025,Software Developer,Pcmc,IT & Digital,54.6
+01/10/2025,Software Developer,Pune,IT & Digital,58.4
+01/11/2025,Software Developer,Poona,IT & Digital,58.5
+01/12/2025,Software Developer,Pimpri Chinchwad,IT & Digital,58.7
+01/01/2026,Software Developer,Pcmc,IT & Digital,58.2
+01/02/2026,Software Developer,Pune,IT & Digital,58.2
+01/03/2026,Software Developer,Poona,IT & Digital,58.4
+01/04/2026,Software Developer,Pimpri Chinchwad,IT & Digital,58.7
+01/05/2026,Software Developer,Pcmc,IT & Digital,58.9
+01/06/2026,Software Developer,Pune,IT & Digital,59
+01/07/2026,Software Developer,Poona,IT & Digital,59.2
+01/08/2026,Software Developer,Pimpri Chinchwad,IT & Digital,59.5
+01/09/2026,Software Developer,Pcmc,IT & Digital,59.6
+01/10/2024,Data Entry Operator,Pune,IT & Digital,40.2
+01/11/2024,Data Entry Operator,Poona,IT & Digital,40.3
+01/12/2024,Data Entry Operator,Pimpri Chinchwad,IT & Digital,40.4
+01/01/2025,Data Entry Operator,Pcmc,IT & Digital,42.4
+01/02/2025,Data Entry Operator,Pune,IT & Digital,42.5
+01/03/2025,Data Entry Operator,Poona,IT & Digital,42.6
+01/04/2025,Data Entry Operator,Pimpri Chinchwad,IT & Digital,43
+01/05/2025,Data Entry Operator,Pcmc,IT & Digital,43.1
+01/06/2025,Data Entry Operator,Pune,IT & Digital,43.2
+01/07/2025,Data Entry Operator,Poona,IT & Digital,43.3
+01/08/2025,Data Entry Operator,Pimpri Chinchwad,IT & Digital,43.7
+01/09/2025,Data Entry Operator,Pcmc,IT & Digital,43.8
+01/10/2025,Data Entry Operator,Pune,IT & Digital,39.5
+01/11/2025,Data Entry Operator,Poona,IT & Digital,39.7
+01/12/2025,Data Entry Operator,Pimpri Chinchwad,IT & Digital,39.9
+01/01/2026,Data Entry Operator,Pcmc,IT & Digital,43.5
+01/02/2026,Data Entry Operator,Pune,IT & Digital,43.6
+01/03/2026,Data Entry Operator,Poona,IT & Digital,43.7
+01/04/2026,Data Entry Operator,Pimpri Chinchwad,IT & Digital,43.8
+01/05/2026,Data Entry Operator,Pcmc,IT & Digital,44
+01/06/2026,Data Entry Operator,Pune,IT & Digital,44
+01/07/2026,Data Entry Operator,Poona,IT & Digital,44.2
+01/08/2026,Data Entry Operator,Pimpri Chinchwad,IT & Digital,44.3
+01/09/2026,Data Entry Operator,Pcmc,IT & Digital,44.5
+01/10/2024,Digital Marketing Executive,Pune,IT & Digital,59.3
+01/11/2024,Digital Marketing Executive,Poona,IT & Digital,59.5
+01/12/2024,Digital Marketing Executive,Pimpri Chinchwad,IT & Digital,59.7
+01/01/2025,Digital Marketing Executive,Pcmc,IT & Digital,62.2
+01/02/2025,Digital Marketing Executive,Pune,IT & Digital,62.4
+01/03/2025,Digital Marketing Executive,Poona,IT & Digital,62.6
+01/04/2025,Digital Marketing Executive,Pimpri Chinchwad,IT & Digital,62.8
+01/05/2025,Digital Marketing Executive,Pcmc,IT & Digital,62.9
+01/06/2025,Digital Marketing Executive,Pune,IT & Digital,63.2
+01/07/2025,Digital Marketing Executive,Poona,IT & Digital,63.3
+01/08/2025,Digital Marketing Executive,Pimpri Chinchwad,IT & Digital,63.5
+01/09/2025,Digital Marketing Executive,Pcmc,IT & Digital,63.6
+01/10/2025,Digital Marketing Executive,Pune,IT & Digital,64.4
+01/11/2025,Digital Marketing Executive,Poona,IT & Digital,64.6
+01/12/2025,Digital Marketing Executive,Pimpri Chinchwad,IT & Digital,64.6
+01/01/2026,Digital Marketing Executive,Pcmc,IT & Digital,60.2
+01/02/2026,Digital Marketing Executive,Pune,IT & Digital,60.4
+01/03/2026,Digital Marketing Executive,Poona,IT & Digital,60.6
+01/04/2026,Digital Marketing Executive,Pimpri Chinchwad,IT & Digital,60.7
+01/05/2026,Digital Marketing Executive,Pcmc,IT & Digital,60.9
+01/06/2026,Digital Marketing Executive,Pune,IT & Digital,61.1
+01/07/2026,Digital Marketing Executive,Poona,IT & Digital,61.3
+01/08/2026,Digital Marketing Executive,Pimpri Chinchwad,IT & Digital,61.5
+01/09/2026,Digital Marketing Executive,Pcmc,IT & Digital,61.6
+01/10/2024,Healthcare Assistant,Pune,Healthcare,52.6
+01/11/2024,Healthcare Assistant,Poona,Healthcare,52.7
+01/12/2024,Healthcare Assistant,Pimpri Chinchwad,Healthcare,52.8
+01/01/2025,Healthcare Assistant,Pcmc,Healthcare,54.8
+01/02/2025,Healthcare Assistant,Pune,Healthcare,54.9
+01/03/2025,Healthcare Assistant,Poona,Healthcare,55
+01/04/2025,Healthcare Assistant,Pimpri Chinchwad,Healthcare,55.4
+01/05/2025,Healthcare Assistant,Pcmc,Healthcare,55.5
+01/06/2025,Healthcare Assistant,Pune,Healthcare,55.6
+01/07/2025,Healthcare Assistant,Poona,Healthcare,55.7
+01/08/2025,Healthcare Assistant,Pimpri Chinchwad,Healthcare,56.1
+01/09/2025,Healthcare Assistant,Pcmc,Healthcare,56.2
+01/10/2025,Healthcare Assistant,Pune,Healthcare,51.9
+01/11/2025,Healthcare Assistant,Poona,Healthcare,52.1
+01/12/2025,Healthcare Assistant,Pimpri Chinchwad,Healthcare,52.3
+01/01/2026,Healthcare Assistant,Pcmc,Healthcare,55.9
+01/02/2026,Healthcare Assistant,Pune,Healthcare,56
+01/03/2026,Healthcare Assistant,Poona,Healthcare,56.1
+01/04/2026,Healthcare Assistant,Pimpri Chinchwad,Healthcare,56.2
+01/05/2026,Healthcare Assistant,Pcmc,Healthcare,56.4
+01/06/2026,Healthcare Assistant,Pune,Healthcare,56.4
+01/07/2026,Healthcare Assistant,Poona,Healthcare,56.6
+01/08/2026,Healthcare Assistant,Pimpri Chinchwad,Healthcare,56.7
+01/09/2026,Healthcare Assistant,Pcmc,Healthcare,56.9
+01/10/2024,Phlebotomy Technician,Pune,Healthcare,52.2
+01/11/2024,Phlebotomy Technician,Poona,Healthcare,52.3
+01/12/2024,Phlebotomy Technician,Pimpri Chinchwad,Healthcare,52.4
+01/01/2025,Phlebotomy Technician,Pcmc,Healthcare,53.6
+01/02/2025,Phlebotomy Technician,Pune,Healthcare,53.7
+01/03/2025,Phlebotomy Technician,Poona,Healthcare,53.8
+01/04/2025,Phlebotomy Technician,Pimpri Chinchwad,Healthcare,53.9
+01/05/2025,Phlebotomy Technician,Pcmc,Healthcare,54.1
+01/06/2025,Phlebotomy Technician,Pune,Healthcare,54.2
+01/07/2025,Phlebotomy Technician,Poona,Healthcare,54.3
+01/08/2025,Phlebotomy Technician,Pimpri Chinchwad,Healthcare,54.4
+01/09/2025,Phlebotomy Technician,Pcmc,Healthcare,54.5
+01/10/2025,Phlebotomy Technician,Pune,Healthcare,54.8
+01/11/2025,Phlebotomy Technician,Poona,Healthcare,55
+01/12/2025,Phlebotomy Technician,Pimpri Chinchwad,Healthcare,55.1
+01/01/2026,Phlebotomy Technician,Pcmc,Healthcare,55.5
+01/02/2026,Phlebotomy Technician,Pune,Healthcare,55.6
+01/03/2026,Phlebotomy Technician,Poona,Healthcare,55.8
+01/04/2026,Phlebotomy Technician,Pimpri Chinchwad,Healthcare,56.1
+01/05/2026,Phlebotomy Technician,Pcmc,Healthcare,56.3
+01/06/2026,Phlebotomy Technician,Pune,Healthcare,56.3
+01/07/2026,Phlebotomy Technician,Poona,Healthcare,56.5
+01/08/2026,Phlebotomy Technician,Pimpri Chinchwad,Healthcare,56.3
+01/09/2026,Phlebotomy Technician,Pcmc,Healthcare,56.5
+01/10/2024,CNC Operator,Pune,Manufacturing,51.3
+01/11/2024,CNC Operator,Poona,Manufacturing,51.5
+01/12/2024,CNC Operator,Pimpri Chinchwad,Manufacturing,51.7
+01/01/2025,CNC Operator,Pcmc,Manufacturing,50.8
+01/02/2025,CNC Operator,Pune,Manufacturing,51
+01/03/2025,CNC Operator,Poona,Manufacturing,51.2
+01/04/2025,CNC Operator,Pimpri Chinchwad,Manufacturing,51.4
+01/05/2025,CNC Operator,Pcmc,Manufacturing,51.6
+01/06/2025,CNC Operator,Pune,Manufacturing,51.7
+01/07/2025,CNC Operator,Poona,Manufacturing,51.9
+01/08/2025,CNC Operator,Pimpri Chinchwad,Manufacturing,52.1
+01/09/2025,CNC Operator,Pcmc,Manufacturing,52.3
+01/10/2025,CNC Operator,Pune,Manufacturing,52.3
+01/11/2025,CNC Operator,Poona,Manufacturing,52.5
+01/12/2025,CNC Operator,Pimpri Chinchwad,Manufacturing,52.6
+01/01/2026,CNC Operator,Pcmc,Manufacturing,54.3
+01/02/2026,CNC Operator,Pune,Manufacturing,54.5
+01/03/2026,CNC Operator,Poona,Manufacturing,54.6
+01/04/2026,CNC Operator,Pimpri Chinchwad,Manufacturing,54.9
+01/05/2026,CNC Operator,Pcmc,Manufacturing,55
+01/06/2026,CNC Operator,Pune,Manufacturing,55.2
+01/07/2026,CNC Operator,Poona,Manufacturing,55.4
+01/08/2026,CNC Operator,Pimpri Chinchwad,Manufacturing,55.6
+01/09/2026,CNC Operator,Pcmc,Manufacturing,55.7
+01/10/2024,Welder,Pune,Manufacturing,51.4
+01/11/2024,Welder,Poona,Manufacturing,51.6
+01/12/2024,Welder,Pimpri Chinchwad,Manufacturing,51.7
+01/01/2025,Welder,Pcmc,Manufacturing,51.7
+01/02/2025,Welder,Pune,Manufacturing,51.7
+01/03/2025,Welder,Poona,Manufacturing,51.9
+01/04/2025,Welder,Pimpri Chinchwad,Manufacturing,52
+01/05/2025,Welder,Pcmc,Manufacturing,52.2
+01/06/2025,Welder,Pune,Manufacturing,52.2
+01/07/2025,Welder,Poona,Manufacturing,52.4
+01/08/2025,Welder,Pimpri Chinchwad,Manufacturing,52.4
+01/09/2025,Welder,Pcmc,Manufacturing,52.6
+01/10/2025,Welder,Pune,Manufacturing,56.2
+01/11/2025,Welder,Poona,Manufacturing,56.3
+01/12/2025,Welder,Pimpri Chinchwad,Manufacturing,56.6
+01/01/2026,Welder,Pcmc,Manufacturing,51.9
+01/02/2026,Welder,Pune,Manufacturing,52.1
+01/03/2026,Welder,Poona,Manufacturing,52.2
+01/04/2026,Welder,Pimpri Chinchwad,Manufacturing,52.5
+01/05/2026,Welder,Pcmc,Manufacturing,52.7
+01/06/2026,Welder,Pune,Manufacturing,52.8
+01/07/2026,Welder,Poona,Manufacturing,52.9
+01/08/2026,Welder,Pimpri Chinchwad,Manufacturing,53.3
+01/09/2026,Welder,Pcmc,Manufacturing,53.4
+01/10/2024,Warehouse Associate,Pune,Logistics,52.9
+01/11/2024,Warehouse Associate,Poona,Logistics,53
+01/12/2024,Warehouse Associate,Pimpri Chinchwad,Logistics,53.1
+01/01/2025,Warehouse Associate,Pcmc,Logistics,52.1
+01/02/2025,Warehouse Associate,Pune,Logistics,52.2
+01/03/2025,Warehouse Associate,Poona,Logistics,52.3
+01/04/2025,Warehouse Associate,Pimpri Chinchwad,Logistics,52.4
+01/05/2025,Warehouse Associate,Pcmc,Logistics,52.5
+01/06/2025,Warehouse Associate,Pune,Logistics,52.6
+01/07/2025,Warehouse Associate,Poona,Logistics,52.8
+01/08/2025,Warehouse Associate,Pimpri Chinchwad,Logistics,52.9
+01/09/2025,Warehouse Associate,Pcmc,Logistics,53
+01/10/2025,Warehouse Associate,Pune,Logistics,53.2
+01/11/2025,Warehouse Associate,Poona,Logistics,53.4
+01/12/2025,Warehouse Associate,Pimpri Chinchwad,Logistics,53.6
+01/01/2026,Warehouse Associate,Pcmc,Logistics,56.2
+01/02/2026,Warehouse Associate,Pune,Logistics,56.3
+01/03/2026,Warehouse Associate,Poona,Logistics,56.4
+01/04/2026,Warehouse Associate,Pimpri Chinchwad,Logistics,56.7
+01/05/2026,Warehouse Associate,Pcmc,Logistics,56.9
+01/06/2026,Warehouse Associate,Pune,Logistics,57
+01/07/2026,Warehouse Associate,Poona,Logistics,57.2
+01/08/2026,Warehouse Associate,Pimpri Chinchwad,Logistics,57
+01/09/2026,Warehouse Associate,Pcmc,Logistics,57.2
+01/10/2024,Logistics Coordinator,Pune,Logistics,58.7
+01/11/2024,Logistics Coordinator,Poona,Logistics,58.8
+01/12/2024,Logistics Coordinator,Pimpri Chinchwad,Logistics,58.9
+01/01/2025,Logistics Coordinator,Pcmc,Logistics,60.3
+01/02/2025,Logistics Coordinator,Pune,Logistics,60.5
+01/03/2025,Logistics Coordinator,Poona,Logistics,60.6
+01/04/2025,Logistics Coordinator,Pimpri Chinchwad,Logistics,60.9
+01/05/2025,Logistics Coordinator,Pcmc,Logistics,61.1
+01/06/2025,Logistics Coordinator,Pune,Logistics,61.2
+01/07/2025,Logistics Coordinator,Poona,Logistics,61.3
+01/08/2025,Logistics Coordinator,Pimpri Chinchwad,Logistics,61.2
+01/09/2025,Logistics Coordinator,Pcmc,Logistics,61.3
+01/10/2025,Logistics Coordinator,Pune,Logistics,61.5
+01/11/2025,Logistics Coordinator,Poona,Logistics,61.7
+01/12/2025,Logistics Coordinator,Pimpri Chinchwad,Logistics,61.9
+01/01/2026,Logistics Coordinator,Pcmc,Logistics,62.3
+01/02/2026,Logistics Coordinator,Pune,Logistics,62.4
+01/03/2026,Logistics Coordinator,Poona,Logistics,62.6
+01/04/2026,Logistics Coordinator,Pimpri Chinchwad,Logistics,62.6
+01/05/2026,Logistics Coordinator,Pcmc,Logistics,62.8
+01/06/2026,Logistics Coordinator,Pune,Logistics,62.9
+01/07/2026,Logistics Coordinator,Poona,Logistics,63
+01/08/2026,Logistics Coordinator,Pimpri Chinchwad,Logistics,63.6
+01/09/2026,Logistics Coordinator,Pcmc,Logistics,63.8
+01/10/2024,Electrician,Pune,Construction,50.3
+01/11/2024,Electrician,Poona,Construction,50.5
+01/12/2024,Electrician,Pimpri Chinchwad,Construction,50.6
+01/01/2025,Electrician,Pcmc,Construction,47.4
+01/02/2025,Electrician,Pune,Construction,47.5
+01/03/2025,Electrician,Poona,Construction,47.6
+01/04/2025,Electrician,Pimpri Chinchwad,Construction,47.9
+01/05/2025,Electrician,Pcmc,Construction,48.1
+01/06/2025,Electrician,Pune,Construction,48.2
+01/07/2025,Electrician,Poona,Construction,48.4
+01/08/2025,Electrician,Pimpri Chinchwad,Construction,48.2
+01/09/2025,Electrician,Pcmc,Construction,48.3
+01/10/2025,Electrician,Pune,Construction,48.9
+01/11/2025,Electrician,Poona,Construction,49
+01/12/2025,Electrician,Pimpri Chinchwad,Construction,49.3
+01/01/2026,Electrician,Pcmc,Construction,54.8
+01/02/2026,Electrician,Pune,Construction,55
+01/03/2026,Electrician,Poona,Construction,55.1
+01/04/2026,Electrician,Pimpri Chinchwad,Construction,55.2
+01/05/2026,Electrician,Pcmc,Construction,55.3
+01/06/2026,Electrician,Pune,Construction,55.4
+01/07/2026,Electrician,Poona,Construction,55.6
+01/08/2026,Electrician,Pimpri Chinchwad,Construction,55.7
+01/09/2026,Electrician,Pcmc,Construction,55.8
+01/10/2024,Mason,Pune,Construction,45.5
+01/11/2024,Mason,Poona,Construction,45.6
+01/12/2024,Mason,Pimpri Chinchwad,Construction,45.9
+01/01/2025,Mason,Pcmc,Construction,45.4
+01/02/2025,Mason,Pune,Construction,45.6
+01/03/2025,Mason,Poona,Construction,45.7
+01/04/2025,Mason,Pimpri Chinchwad,Construction,45.7
+01/05/2025,Mason,Pcmc,Construction,45.8
+01/06/2025,Mason,Pune,Construction,46.1
+01/07/2025,Mason,Poona,Construction,46.2
+01/08/2025,Mason,Pimpri Chinchwad,Construction,46.7
+01/09/2025,Mason,Pcmc,Construction,46.8
+01/10/2025,Mason,Pune,Construction,46.6
+01/11/2025,Mason,Poona,Construction,46.7
+01/12/2025,Mason,Pimpri Chinchwad,Construction,46.8
+01/01/2026,Mason,Pcmc,Construction,47.4
+01/02/2026,Mason,Pune,Construction,47.6
+01/03/2026,Mason,Poona,Construction,47.8
+01/04/2026,Mason,Pimpri Chinchwad,Construction,47.7
+01/05/2026,Mason,Pcmc,Construction,47.9
+01/06/2026,Mason,Pune,Construction,48
+01/07/2026,Mason,Poona,Construction,48.2
+01/08/2026,Mason,Pimpri Chinchwad,Construction,48.7
+01/09/2026,Mason,Pcmc,Construction,48.8
+01/10/2024,Retail Sales Associate,Pune,Retail,39.8
+01/11/2024,Retail Sales Associate,Poona,Retail,40
+01/12/2024,Retail Sales Associate,Pimpri Chinchwad,Retail,40.1
+01/01/2025,Retail Sales Associate,Pcmc,Retail,43.4
+01/02/2025,Retail Sales Associate,Pune,Retail,43.6
+01/03/2025,Retail Sales Associate,Poona,Retail,43.8
+01/04/2025,Retail Sales Associate,Pimpri Chinchwad,Retail,43.7
+01/05/2025,Retail Sales Associate,Pcmc,Retail,43.9
+01/06/2025,Retail Sales Associate,Pune,Retail,44
+01/07/2025,Retail Sales Associate,Poona,Retail,44.2
+01/08/2025,Retail Sales Associate,Pimpri Chinchwad,Retail,44.2
+01/09/2025,Retail Sales Associate,Pcmc,Retail,44.3
+01/10/2025,Retail Sales Associate,Pune,Retail,40.9
+01/11/2025,Retail Sales Associate,Poona,Retail,41
+01/12/2025,Retail Sales Associate,Pimpri Chinchwad,Retail,41.1
+01/01/2026,Retail Sales Associate,Pcmc,Retail,40.1
+01/02/2026,Retail Sales Associate,Pune,Retail,40.3
+01/03/2026,Retail Sales Associate,Poona,Retail,40.5
+01/04/2026,Retail Sales Associate,Pimpri Chinchwad,Retail,40.5
+01/05/2026,Retail Sales Associate,Pcmc,Retail,40.6
+01/06/2026,Retail Sales Associate,Pune,Retail,40.8
+01/07/2026,Retail Sales Associate,Poona,Retail,40.9
+01/08/2026,Retail Sales Associate,Pimpri Chinchwad,Retail,40.9
+01/09/2026,Retail Sales Associate,Pcmc,Retail,41.1
+01/10/2024,Solar Technician,Pune,Renewable Energy,64.6
+01/11/2024,Solar Technician,Poona,Renewable Energy,64.7
+01/12/2024,Solar Technician,Pimpri Chinchwad,Renewable Energy,64.9
+01/01/2025,Solar Technician,Pcmc,Renewable Energy,61
+01/02/2025,Solar Technician,Pune,Renewable Energy,61.1
+01/03/2025,Solar Technician,Poona,Renewable Energy,69.2
+01/04/2025,Solar Technician,Pimpri Chinchwad,Renewable Energy,69.4
+01/05/2025,Solar Technician,Pcmc,Renewable Energy,69.5
+01/06/2025,Solar Technician,Pune,Renewable Energy,69.6
+01/07/2025,Solar Technician,Poona,Renewable Energy,69.7
+01/08/2025,Solar Technician,Pimpri Chinchwad,Renewable Energy,62.3
+01/09/2025,Solar Technician,Pcmc,Renewable Energy,62.5
+01/10/2025,Solar Technician,Pune,Renewable Energy,70.2
+01/11/2025,Solar Technician,Poona,Renewable Energy,70.4
+01/12/2025,Solar Technician,Pimpri Chinchwad,Renewable Energy,70.6
+01/01/2026,Solar Technician,Pcmc,Renewable Energy,70.1
+01/02/2026,Solar Technician,Pune,Renewable Energy,70.1
+01/03/2026,Solar Technician,Poona,Renewable Energy,70.3
+01/04/2026,Solar Technician,Pimpri Chinchwad,Renewable Energy,70.6
+01/05/2026,Solar Technician,Pcmc,Renewable Energy,70.8
+01/06/2026,Solar Technician,Pune,Renewable Energy,70.8
+01/07/2026,Solar Technician,Poona,Renewable Energy,71
+01/08/2026,Solar Technician,Pimpri Chinchwad,Renewable Energy,71.3
+01/09/2026,Solar Technician,Pcmc,Renewable Energy,71.5
+01/10/2024,Wind Turbine Technician,Pune,Renewable Energy,56.5
+01/11/2024,Wind Turbine Technician,Poona,Renewable Energy,56.7
+01/12/2024,Wind Turbine Technician,Pimpri Chinchwad,Renewable Energy,56.8
+01/01/2025,Wind Turbine Technician,Pcmc,Renewable Energy,57.6
+01/02/2025,Wind Turbine Technician,Pune,Renewable Energy,57.6
+01/03/2025,Wind Turbine Technician,Poona,Renewable Energy,57.8
+01/04/2025,Wind Turbine Technician,Pimpri Chinchwad,Renewable Energy,58.1
+01/05/2025,Wind Turbine Technician,Pcmc,Renewable Energy,58.3
+01/06/2025,Wind Turbine Technician,Pune,Renewable Energy,58.4
+01/07/2025,Wind Turbine Technician,Poona,Renewable Energy,58.6
+01/08/2025,Wind Turbine Technician,Pimpri Chinchwad,Renewable Energy,58.9
+01/09/2025,Wind Turbine Technician,Pcmc,Renewable Energy,59
+01/10/2025,Wind Turbine Technician,Pune,Renewable Energy,59.1
+01/11/2025,Wind Turbine Technician,Poona,Renewable Energy,59.2
+01/12/2025,Wind Turbine Technician,Pimpri Chinchwad,Renewable Energy,59.5
+01/01/2026,Wind Turbine Technician,Pcmc,Renewable Energy,60.1
+01/02/2026,Wind Turbine Technician,Pune,Renewable Energy,60.2
+01/03/2026,Wind Turbine Technician,Poona,Renewable Energy,60.4
+01/04/2026,Wind Turbine Technician,Pimpri Chinchwad,Renewable Energy,60.5
+01/05/2026,Wind Turbine Technician,Pcmc,Renewable Energy,60.6
+01/06/2026,Wind Turbine Technician,Pune,Renewable Energy,60.7
+01/07/2026,Wind Turbine Technician,Poona,Renewable Energy,60.8
+01/08/2026,Wind Turbine Technician,Pimpri Chinchwad,Renewable Energy,61.5
+01/09/2026,Wind Turbine Technician,Pcmc,Renewable Energy,61.6
+01/10/2024,Software Developer,Nagpur,IT & Digital,59.6
+01/11/2024,Software Developer,Nagpur City,IT & Digital,59.8
+01/12/2024,Software Developer,Nagpur,IT & Digital,59.9
+01/01/2025,Software Developer,Nagpur City,IT & Digital,52.7
+01/02/2025,Software Developer,Nagpur,IT & Digital,52.7
+01/03/2025,Software Developer,Nagpur City,IT & Digital,52.9
+01/04/2025,Software Developer,Nagpur,IT & Digital,53.2
+01/05/2025,Software Developer,Nagpur City,IT & Digital,53.4
+01/06/2025,Software Developer,Nagpur,IT & Digital,53.5
+01/07/2025,Software Developer,Nagpur City,IT & Digital,53.7
+01/08/2025,Software Developer,Nagpur,IT & Digital,54
+01/09/2025,Software Developer,Nagpur City,IT & Digital,54.1
+01/10/2025,Software Developer,Nagpur,IT & Digital,54.2
+01/11/2025,Software Developer,Nagpur City,IT & Digital,54.3
+01/12/2025,Software Developer,Nagpur,IT & Digital,54.6
+01/01/2026,Software Developer,Nagpur City,IT & Digital,55.2
+01/02/2026,Software Developer,Nagpur,IT & Digital,55.3
+01/03/2026,Software Developer,Nagpur City,IT & Digital,55.5
+01/04/2026,Software Developer,Nagpur,IT & Digital,55.6
+01/05/2026,Software Developer,Nagpur City,IT & Digital,55.7
+01/06/2026,Software Developer,Nagpur,IT & Digital,55.8
+01/07/2026,Software Developer,Nagpur City,IT & Digital,55.9
+01/08/2026,Software Developer,Nagpur,IT & Digital,56.6
+01/09/2026,Software Developer,Nagpur City,IT & Digital,56.7
+01/10/2024,Data Entry Operator,Nagpur,IT & Digital,40
+01/11/2024,Data Entry Operator,Nagpur City,IT & Digital,40.2
+01/12/2024,Data Entry Operator,Nagpur,IT & Digital,40.4
+01/01/2025,Data Entry Operator,Nagpur City,IT & Digital,38.7
+01/02/2025,Data Entry Operator,Nagpur,IT & Digital,38.9
+01/03/2025,Data Entry Operator,Nagpur City,IT & Digital,39.1
+01/04/2025,Data Entry Operator,Nagpur,IT & Digital,39.3
+01/05/2025,Data Entry Operator,Nagpur City,IT & Digital,39.5
+01/06/2025,Data Entry Operator,Nagpur,IT & Digital,39.6
+01/07/2025,Data Entry Operator,Nagpur City,IT & Digital,39.8
+01/08/2025,Data Entry Operator,Nagpur,IT & Digital,39.5
+01/09/2025,Data Entry Operator,Nagpur City,IT & Digital,39.7
+01/10/2025,Data Entry Operator,Nagpur,IT & Digital,44.2
+01/11/2025,Data Entry Operator,Nagpur City,IT & Digital,44.4
+01/12/2025,Data Entry Operator,Nagpur,IT & Digital,44.5
+01/01/2026,Data Entry Operator,Nagpur City,IT & Digital,39.4
+01/02/2026,Data Entry Operator,Nagpur,IT & Digital,39.7
+01/03/2026,Data Entry Operator,Nagpur City,IT & Digital,39.8
+01/04/2026,Data Entry Operator,Nagpur,IT & Digital,40
+01/05/2026,Data Entry Operator,Nagpur City,IT & Digital,40.2
+01/06/2026,Data Entry Operator,Nagpur,IT & Digital,40.4
+01/07/2026,Data Entry Operator,Nagpur City,IT & Digital,40.5
+01/08/2026,Data Entry Operator,Nagpur,IT & Digital,40.3
+01/09/2026,Data Entry Operator,Nagpur City,IT & Digital,40.4
+01/10/2024,Digital Marketing Executive,Nagpur,IT & Digital,61.2
+01/11/2024,Digital Marketing Executive,Nagpur City,IT & Digital,61.4
+01/12/2024,Digital Marketing Executive,Nagpur,IT & Digital,61.4
+01/01/2025,Digital Marketing Executive,Nagpur City,IT & Digital,61.4
+01/02/2025,Digital Marketing Executive,Nagpur,IT & Digital,61.5
+01/03/2025,Digital Marketing Executive,Nagpur City,IT & Digital,61.7
+01/04/2025,Digital Marketing Executive,Nagpur,IT & Digital,61.7
+01/05/2025,Digital Marketing Executive,Nagpur City,IT & Digital,61.9
+01/06/2025,Digital Marketing Executive,Nagpur,IT & Digital,62
+01/07/2025,Digital Marketing Executive,Nagpur City,IT & Digital,62.2
+01/08/2025,Digital Marketing Executive,Nagpur,IT & Digital,62.2
+01/09/2025,Digital Marketing Executive,Nagpur City,IT & Digital,62.4
+01/10/2025,Digital Marketing Executive,Nagpur,IT & Digital,61.9
+01/11/2025,Digital Marketing Executive,Nagpur City,IT & Digital,62.1
+01/12/2025,Digital Marketing Executive,Nagpur,IT & Digital,62.3
+01/01/2026,Digital Marketing Executive,Nagpur City,IT & Digital,62.1
+01/02/2026,Digital Marketing Executive,Nagpur,IT & Digital,62.2
+01/03/2026,Digital Marketing Executive,Nagpur City,IT & Digital,62.3
+01/04/2026,Digital Marketing Executive,Nagpur,IT & Digital,62.7
+01/05/2026,Digital Marketing Executive,Nagpur City,IT & Digital,62.8
+01/06/2026,Digital Marketing Executive,Nagpur,IT & Digital,62.9
+01/07/2026,Digital Marketing Executive,Nagpur City,IT & Digital,63.1
+01/08/2026,Digital Marketing Executive,Nagpur,IT & Digital,63.4
+01/09/2026,Digital Marketing Executive,Nagpur City,IT & Digital,63.5
+01/10/2024,Healthcare Assistant,Nagpur,Healthcare,53.8
+01/11/2024,Healthcare Assistant,Nagpur City,Healthcare,54
+01/12/2024,Healthcare Assistant,Nagpur,Healthcare,54
+01/01/2025,Healthcare Assistant,Nagpur City,Healthcare,55.2
+01/02/2025,Healthcare Assistant,Nagpur,Healthcare,55.3
+01/03/2025,Healthcare Assistant,Nagpur City,Healthcare,55.5
+01/04/2025,Healthcare Assistant,Nagpur,Healthcare,55.8
+01/05/2025,Healthcare Assistant,Nagpur City,Healthcare,55.9
+01/06/2025,Healthcare Assistant,Nagpur,Healthcare,56
+01/07/2025,Healthcare Assistant,Nagpur City,Healthcare,56.2
+01/08/2025,Healthcare Assistant,Nagpur,Healthcare,56.5
+01/09/2025,Healthcare Assistant,Nagpur City,Healthcare,56.7
+01/10/2025,Healthcare Assistant,Nagpur,Healthcare,56.7
+01/11/2025,Healthcare Assistant,Nagpur City,Healthcare,56.8
+01/12/2025,Healthcare Assistant,Nagpur,Healthcare,57.1
+01/01/2026,Healthcare Assistant,Nagpur City,Healthcare,61.4
+01/02/2026,Healthcare Assistant,Nagpur,Healthcare,61.5
+01/03/2026,Healthcare Assistant,Nagpur City,Healthcare,61.6
+01/04/2026,Healthcare Assistant,Nagpur,Healthcare,61.7
+01/05/2026,Healthcare Assistant,Nagpur City,Healthcare,61.8
+01/06/2026,Healthcare Assistant,Nagpur,Healthcare,62
+01/07/2026,Healthcare Assistant,Nagpur City,Healthcare,62.1
+01/08/2026,Healthcare Assistant,Nagpur,Healthcare,62.7
+01/09/2026,Healthcare Assistant,Nagpur City,Healthcare,62.8
+01/10/2024,Phlebotomy Technician,Nagpur,Healthcare,53.3
+01/11/2024,Phlebotomy Technician,Nagpur City,Healthcare,53.5
+01/12/2024,Phlebotomy Technician,Nagpur,Healthcare,53.7
+01/01/2025,Phlebotomy Technician,Nagpur City,Healthcare,55.6
+01/02/2025,Phlebotomy Technician,Nagpur,Healthcare,55.8
+01/03/2025,Phlebotomy Technician,Nagpur City,Healthcare,56
+01/04/2025,Phlebotomy Technician,Nagpur,Healthcare,55.9
+01/05/2025,Phlebotomy Technician,Nagpur City,Healthcare,56.1
+01/06/2025,Phlebotomy Technician,Nagpur,Healthcare,56.3
+01/07/2025,Phlebotomy Technician,Nagpur City,Healthcare,56.5
+01/08/2025,Phlebotomy Technician,Nagpur,Healthcare,56.9
+01/09/2025,Phlebotomy Technician,Nagpur City,Healthcare,57.1
+01/10/2025,Phlebotomy Technician,Nagpur,Healthcare,57.1
+01/11/2025,Phlebotomy Technician,Nagpur City,Healthcare,57.2
+01/12/2025,Phlebotomy Technician,Nagpur,Healthcare,57.4
+01/01/2026,Phlebotomy Technician,Nagpur City,Healthcare,57.2
+01/02/2026,Phlebotomy Technician,Nagpur,Healthcare,57.5
+01/03/2026,Phlebotomy Technician,Nagpur City,Healthcare,57.6
+01/04/2026,Phlebotomy Technician,Nagpur,Healthcare,57.6
+01/05/2026,Phlebotomy Technician,Nagpur City,Healthcare,57.7
+01/06/2026,Phlebotomy Technician,Nagpur,Healthcare,58
+01/07/2026,Phlebotomy Technician,Nagpur City,Healthcare,58.1
+01/08/2026,Phlebotomy Technician,Nagpur,Healthcare,58.6
+01/09/2026,Phlebotomy Technician,Nagpur City,Healthcare,58.7
+01/10/2024,CNC Operator,Nagpur,Manufacturing,55.6
+01/11/2024,CNC Operator,Nagpur City,Manufacturing,55.8
+01/12/2024,CNC Operator,Nagpur,Manufacturing,56
+01/01/2025,CNC Operator,Nagpur City,Manufacturing,53.3
+01/02/2025,CNC Operator,Nagpur,Manufacturing,53.5
+01/03/2025,CNC Operator,Nagpur City,Manufacturing,53.6
+01/04/2025,CNC Operator,Nagpur,Manufacturing,53.6
+01/05/2025,CNC Operator,Nagpur City,Manufacturing,53.7
+01/06/2025,CNC Operator,Nagpur,Manufacturing,54
+01/07/2025,CNC Operator,Nagpur City,Manufacturing,54.1
+01/08/2025,CNC Operator,Nagpur,Manufacturing,54.1
+01/09/2025,CNC Operator,Nagpur City,Manufacturing,54.2
+01/10/2025,CNC Operator,Nagpur,Manufacturing,54.5
+01/11/2025,CNC Operator,Nagpur City,Manufacturing,54.6
+01/12/2025,CNC Operator,Nagpur,Manufacturing,54.7
+01/01/2026,CNC Operator,Nagpur City,Manufacturing,52.2
+01/02/2026,CNC Operator,Nagpur,Manufacturing,52.4
+01/03/2026,CNC Operator,Nagpur City,Manufacturing,52.5
+01/04/2026,CNC Operator,Nagpur,Manufacturing,52.5
+01/05/2026,CNC Operator,Nagpur City,Manufacturing,52.7
+01/06/2026,CNC Operator,Nagpur,Manufacturing,52.8
+01/07/2026,CNC Operator,Nagpur City,Manufacturing,53
+01/08/2026,CNC Operator,Nagpur,Manufacturing,53
+01/09/2026,CNC Operator,Nagpur City,Manufacturing,53.1
+01/10/2024,Welder,Nagpur,Manufacturing,53.4
+01/11/2024,Welder,Nagpur City,Manufacturing,53.6
+01/12/2024,Welder,Nagpur,Manufacturing,53.7
+01/01/2025,Welder,Nagpur City,Manufacturing,50.7
+01/02/2025,Welder,Nagpur,Manufacturing,50.9
+01/03/2025,Welder,Nagpur City,Manufacturing,51
+01/04/2025,Welder,Nagpur,Manufacturing,51.3
+01/05/2025,Welder,Nagpur City,Manufacturing,51.5
+01/06/2025,Welder,Nagpur,Manufacturing,51.6
+01/07/2025,Welder,Nagpur City,Manufacturing,51.7
+01/08/2025,Welder,Nagpur,Manufacturing,51.6
+01/09/2025,Welder,Nagpur City,Manufacturing,51.7
+01/10/2025,Welder,Nagpur,Manufacturing,51.9
+01/11/2025,Welder,Nagpur City,Manufacturing,52.1
+01/12/2025,Welder,Nagpur,Manufacturing,52.3
+01/01/2026,Welder,Nagpur City,Manufacturing,50.9
+01/02/2026,Welder,Nagpur,Manufacturing,50.9
+01/03/2026,Welder,Nagpur City,Manufacturing,51.1
+01/04/2026,Welder,Nagpur,Manufacturing,51.2
+01/05/2026,Welder,Nagpur City,Manufacturing,51.4
+01/06/2026,Welder,Nagpur,Manufacturing,51.4
+01/07/2026,Welder,Nagpur City,Manufacturing,51.6
+01/08/2026,Welder,Nagpur,Manufacturing,52.1
+01/09/2026,Welder,Nagpur City,Manufacturing,52.3
+01/10/2024,Warehouse Associate,Nagpur,Logistics,54.8
+01/11/2024,Warehouse Associate,Nagpur City,Logistics,55
+01/12/2024,Warehouse Associate,Nagpur,Logistics,55.2
+01/01/2025,Warehouse Associate,Nagpur City,Logistics,61.6
+01/02/2025,Warehouse Associate,Nagpur,Logistics,61.7
+01/03/2025,Warehouse Associate,Nagpur City,Logistics,61.9
+01/04/2025,Warehouse Associate,Nagpur,Logistics,61.9
+01/05/2025,Warehouse Associate,Nagpur City,Logistics,62
+01/06/2025,Warehouse Associate,Nagpur,Logistics,62.2
+01/07/2025,Warehouse Associate,Nagpur City,Logistics,62.4
+01/08/2025,Warehouse Associate,Nagpur,Logistics,62.8
+01/09/2025,Warehouse Associate,Nagpur City,Logistics,63
+01/10/2025,Warehouse Associate,Nagpur,Logistics,59.1
+01/11/2025,Warehouse Associate,Nagpur City,Logistics,59.2
+01/12/2025,Warehouse Associate,Nagpur,Logistics,59.3
+01/01/2026,Warehouse Associate,Nagpur City,Logistics,63.1
+01/02/2026,Warehouse Associate,Nagpur,Logistics,63.4
+01/03/2026,Warehouse Associate,Nagpur City,Logistics,63.5
+01/04/2026,Warehouse Associate,Nagpur,Logistics,63.5
+01/05/2026,Warehouse Associate,Nagpur City,Logistics,63.6
+01/06/2026,Warehouse Associate,Nagpur,Logistics,63.9
+01/07/2026,Warehouse Associate,Nagpur City,Logistics,64
+01/08/2026,Warehouse Associate,Nagpur,Logistics,64.5
+01/09/2026,Warehouse Associate,Nagpur City,Logistics,64.6
+01/10/2024,Logistics Coordinator,Nagpur,Logistics,60.3
+01/11/2024,Logistics Coordinator,Nagpur City,Logistics,60.5
+01/12/2024,Logistics Coordinator,Nagpur,Logistics,60.7
+01/01/2025,Logistics Coordinator,Nagpur City,Logistics,59
+01/02/2025,Logistics Coordinator,Nagpur,Logistics,59.2
+01/03/2025,Logistics Coordinator,Nagpur City,Logistics,59.4
+01/04/2025,Logistics Coordinator,Nagpur,Logistics,59.3
+01/05/2025,Logistics Coordinator,Nagpur City,Logistics,59.5
+01/06/2025,Logistics Coordinator,Nagpur,Logistics,59.7
+01/07/2025,Logistics Coordinator,Nagpur City,Logistics,59.9
+01/08/2025,Logistics Coordinator,Nagpur,Logistics,60.3
+01/09/2025,Logistics Coordinator,Nagpur City,Logistics,60.5
+01/10/2025,Logistics Coordinator,Nagpur,Logistics,56.5
+01/11/2025,Logistics Coordinator,Nagpur City,Logistics,56.6
+01/12/2025,Logistics Coordinator,Nagpur,Logistics,56.8
+01/01/2026,Logistics Coordinator,Nagpur City,Logistics,60.6
+01/02/2026,Logistics Coordinator,Nagpur,Logistics,60.9
+01/03/2026,Logistics Coordinator,Nagpur City,Logistics,61
+01/04/2026,Logistics Coordinator,Nagpur,Logistics,61
+01/05/2026,Logistics Coordinator,Nagpur City,Logistics,61.1
+01/06/2026,Logistics Coordinator,Nagpur,Logistics,61.3
+01/07/2026,Logistics Coordinator,Nagpur City,Logistics,61.4
+01/08/2026,Logistics Coordinator,Nagpur,Logistics,61.9
+01/09/2026,Logistics Coordinator,Nagpur City,Logistics,62.1
+01/10/2024,Electrician,Nagpur,Construction,53.8
+01/11/2024,Electrician,Nagpur City,Construction,53.9
+01/12/2024,Electrician,Nagpur,Construction,54.2
+01/01/2025,Electrician,Nagpur City,Construction,53.6
+01/02/2025,Electrician,Nagpur,Construction,53.9
+01/03/2025,Electrician,Nagpur City,Construction,54
+01/04/2025,Electrician,Nagpur,Construction,54
+01/05/2025,Electrician,Nagpur City,Construction,54.1
+01/06/2025,Electrician,Nagpur,Construction,54.4
+01/07/2025,Electrician,Nagpur City,Construction,54.5
+01/08/2025,Electrician,Nagpur,Construction,55
+01/09/2025,Electrician,Nagpur City,Construction,55.1
+01/10/2025,Electrician,Nagpur,Construction,54.8
+01/11/2025,Electrician,Nagpur City,Construction,55
+01/12/2025,Electrician,Nagpur,Construction,55.1
+01/01/2026,Electrician,Nagpur City,Construction,55.7
+01/02/2026,Electrician,Nagpur,Construction,55.8
+01/03/2026,Electrician,Nagpur City,Construction,56
+01/04/2026,Electrician,Nagpur,Construction,56
+01/05/2026,Electrician,Nagpur City,Construction,56.1
+01/06/2026,Electrician,Nagpur,Construction,56.3
+01/07/2026,Electrician,Nagpur City,Construction,56.5
+01/08/2026,Electrician,Nagpur,Construction,56.9
+01/09/2026,Electrician,Nagpur City,Construction,57.1
+01/10/2024,Mason,Nagpur,Construction,48.4
+01/11/2024,Mason,Nagpur City,Construction,48.6
+01/12/2024,Mason,Nagpur,Construction,48.6
+01/01/2025,Mason,Nagpur City,Construction,54.4
+01/02/2025,Mason,Nagpur,Construction,54.5
+01/03/2025,Mason,Nagpur City,Construction,54.7
+01/04/2025,Mason,Nagpur,Construction,54.7
+01/05/2025,Mason,Nagpur City,Construction,54.9
+01/06/2025,Mason,Nagpur,Construction,55
+01/07/2025,Mason,Nagpur City,Construction,55.2
+01/08/2025,Mason,Nagpur,Construction,55.2
+01/09/2025,Mason,Nagpur City,Construction,55.4
+01/10/2025,Mason,Nagpur,Construction,50.9
+01/11/2025,Mason,Nagpur City,Construction,51.1
+01/12/2025,Mason,Nagpur,Construction,51.3
+01/01/2026,Mason,Nagpur City,Construction,48.9
+01/02/2026,Mason,Nagpur,Construction,49
+01/03/2026,Mason,Nagpur City,Construction,49.1
+01/04/2026,Mason,Nagpur,Construction,49.5
+01/05/2026,Mason,Nagpur City,Construction,49.6
+01/06/2026,Mason,Nagpur,Construction,49.7
+01/07/2026,Mason,Nagpur City,Construction,49.8
+01/08/2026,Mason,Nagpur,Construction,50.2
+01/09/2026,Mason,Nagpur City,Construction,50.3
+01/10/2024,Retail Sales Associate,Nagpur,Retail,39.9
+01/11/2024,Retail Sales Associate,Nagpur City,Retail,40
+01/12/2024,Retail Sales Associate,Nagpur,Retail,40.3
+01/01/2025,Retail Sales Associate,Nagpur City,Retail,47.8
+01/02/2025,Retail Sales Associate,Nagpur,Retail,48
+01/03/2025,Retail Sales Associate,Nagpur City,Retail,48.1
+01/04/2025,Retail Sales Associate,Nagpur,Retail,48.1
+01/05/2025,Retail Sales Associate,Nagpur City,Retail,48.2
+01/06/2025,Retail Sales Associate,Nagpur,Retail,48.5
+01/07/2025,Retail Sales Associate,Nagpur City,Retail,48.6
+01/08/2025,Retail Sales Associate,Nagpur,Retail,48.6
+01/09/2025,Retail Sales Associate,Nagpur City,Retail,48.7
+01/10/2025,Retail Sales Associate,Nagpur,Retail,49
+01/11/2025,Retail Sales Associate,Nagpur City,Retail,49.1
+01/12/2025,Retail Sales Associate,Nagpur,Retail,49.2
+01/01/2026,Retail Sales Associate,Nagpur City,Retail,46.7
+01/02/2026,Retail Sales Associate,Nagpur,Retail,46.8
+01/03/2026,Retail Sales Associate,Nagpur City,Retail,47
+01/04/2026,Retail Sales Associate,Nagpur,Retail,46.9
+01/05/2026,Retail Sales Associate,Nagpur City,Retail,47.1
+01/06/2026,Retail Sales Associate,Nagpur,Retail,47.3
+01/07/2026,Retail Sales Associate,Nagpur City,Retail,47.5
+01/08/2026,Retail Sales Associate,Nagpur,Retail,47.4
+01/09/2026,Retail Sales Associate,Nagpur City,Retail,47.6
+01/10/2024,Solar Technician,Nagpur,Renewable Energy,62.6
+01/11/2024,Solar Technician,Nagpur City,Renewable Energy,62.8
+01/12/2024,Solar Technician,Nagpur,Renewable Energy,62.8
+01/01/2025,Solar Technician,Nagpur City,Renewable Energy,60
+01/02/2025,Solar Technician,Nagpur,Renewable Energy,60.1
+01/03/2025,Solar Technician,Nagpur City,Renewable Energy,60.3
+01/04/2025,Solar Technician,Nagpur,Renewable Energy,60.6
+01/05/2025,Solar Technician,Nagpur City,Renewable Energy,60.7
+01/06/2025,Solar Technician,Nagpur,Renewable Energy,60.8
+01/07/2025,Solar Technician,Nagpur City,Renewable Energy,61
+01/08/2025,Solar Technician,Nagpur,Renewable Energy,68.8
+01/09/2025,Solar Technician,Nagpur City,Renewable Energy,69
+01/10/2025,Solar Technician,Nagpur,Renewable Energy,61.5
+01/11/2025,Solar Technician,Nagpur City,Renewable Energy,61.6
+01/12/2025,Solar Technician,Nagpur,Renewable Energy,61.9
+01/01/2026,Solar Technician,Nagpur City,Renewable Energy,67.5
+01/02/2026,Solar Technician,Nagpur,Renewable Energy,67.6
+01/03/2026,Solar Technician,Nagpur City,Renewable Energy,67.7
+01/04/2026,Solar Technician,Nagpur,Renewable Energy,67.8
+01/05/2026,Solar Technician,Nagpur City,Renewable Energy,67.9
+01/06/2026,Solar Technician,Nagpur,Renewable Energy,68.1
+01/07/2026,Solar Technician,Nagpur City,Renewable Energy,68.2
+01/08/2026,Solar Technician,Nagpur,Renewable Energy,68.3
+01/09/2026,Solar Technician,Nagpur City,Renewable Energy,68.4
+01/06/2026,Wind Turbine Technician,Nagpur,Renewable Energy,50.9
+01/07/2026,Wind Turbine Technician,Nagpur City,Renewable Energy,51.1
+01/08/2026,Wind Turbine Technician,Nagpur,Renewable Energy,51
+01/09/2026,Wind Turbine Technician,Nagpur City,Renewable Energy,51.2
+Q2 FY27,Software Developer,Bengaluru,IT & Digital,71
