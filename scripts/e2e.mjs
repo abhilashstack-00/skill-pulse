@@ -118,6 +118,11 @@ await shot('04-forecast-pair')
 await page.getByRole('link', { name: 'Action Center' }).click(); await settle()
 body = await main()
 check('recommendation is generated for the pair', body.includes('Increase Solar Technician training capacity in Warangal'))
+// The card states the problem, the action, its expected effect and the confidence, all from the API's figures for this pair.
+const rec = (await api(`/api/recommendations?districtId=warangal&tradeId=solar-technician`)).items[0]
+check('action card: problem line carries the forecast demand, seats and confidence from the API', body.includes('Problem:') && body.includes(`Forecast demand ${indian(rec.row.demand)} against ${indian(rec.row.supply)} seats`) && body.includes(`(${rec.confidence.score} / 100)`), `${rec.row.demand} vs ${rec.row.supply}, confidence ${rec.confidence.score}`)
+check('action card: expected effect is the computed number of seats, and adding them lands inside the balanced band', rec.effect?.kind === 'add_seats' && body.includes(`Expected effect: ${indian(rec.effect.seats)} more seats`) && Math.abs((rec.row.demand - (rec.row.supply + rec.effect.seats)) / (rec.row.supply + rec.effect.seats) * 100) < 15, `${rec.effect?.seats} seats → ${rec.effect?.resultingGapPct}%`)
+check('action card: a low-confidence or interval-crossing action is marked tentative, as the API says', body.includes('Tentative:') === rec.tentative, `tentative ${rec.tentative}`)
 await shot('05-action-pair')
 await page.getByRole('link', { name: 'Gap Analysis' }).click(); await settle()
 body = await main()
@@ -192,6 +197,19 @@ const counted = await page.locator('.ingest-form .ingest-report').innerText()
 check('administrator can choose to count loosely matched rows, and the report says which were', /3 rows read, 2 mapped, 1 rejected/.test(counted) && /1 of the mapped rows matched by a looser rule/.test(counted) && /45 of 70/.test(counted), counted.split('\n')[0].slice(0, 90))
 await shot('09-admin-load-check')
 await setRole('national_planner')
+
+// 7b. What the product says about its own data and method
+await page.goto(BASE + '/data-sources'); await settle()
+body = await main()
+const src = await api('/api/data-sources')
+check('data sources: the synthetic-data statement, no live connection claimed, planned sources shown as planned', body.includes('This prototype uses synthetic pilot data') && body.includes('Sources with a live connection: 0') && (body.match(/Planned integration/g) ?? []).length >= 4 && !/\bConnected\b(?! live)/.test(body.replace(/Not connected/g, '')))
+check('data sources: the data-quality line is the total of the recorded loads', body.includes(`${indian(src.quality.recordsProcessed)} records processed`) && body.includes(`${indian(src.quality.recordsRejected)} rejected`), `${src.quality.recordsProcessed} processed, ${src.quality.completenessPct}% complete`)
+await page.goto(BASE + '/methodology'); await settle()
+body = await main()
+check('methodology: normalization, confidence and limitations are explained, and nothing is called an official rule', ['Normalization and data quality', 'What confidence means', 'Limitations and prototype assumptions', 'no machine-learning model', 'None is an official rule'].every((x) => body.toLowerCase().includes(x.toLowerCase())))
+await page.goto(BASE + '/forecasts?stateId=TG&districtId=warangal'); await settle()
+body = await main()
+check('warnings say which forecast they rest on and its confidence', /Based on the \d+-month forecast · forecast confidence (High|Medium|Low) \(\d+ \/ 100\)/.test(body) || body.includes('Based on the current rate of demand'))
 
 // 8. Hindi
 await page.locator('.lang-switch button[lang="hi"]').click(); await page.waitForTimeout(500)

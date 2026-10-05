@@ -27,7 +27,7 @@ original audit of the frontend as received and is unchanged.
 | Thresholds restated as fixed text | Text takes its numbers from the configuration through the API. | `lib/i18n/messages/*` |
 | "Updated" date a typed constant | Each source shows the date of its latest load; a real load sets a real timestamp. The pilot's date is the day the extracts were generated. | `lib/ingest/apply.ts` |
 | Derived tables write-only and stale | Still not read by the app, now said plainly; refreshed automatically after each load, with a timestamp. | `lib/server/derived-write.ts`, README |
-| Tests circular or missing | 239 tests: hand-worked expected values for the interval, the bands and a hand-typed file; route tests for every role; optional database tests; a browser script in the repo. | `tests/`, `scripts/e2e.mjs` |
+| Tests circular or missing | 277 tests: hand-worked expected values for the interval, the bands and a hand-typed file; route tests for every role; optional database tests; a browser script in the repo. | `tests/`, `scripts/e2e.mjs` |
 
 ## Second review ("judge attack")
 
@@ -75,6 +75,26 @@ Left as limits, not fixed: the 12-month interval is unverified; unmapped volume 
 attributed to a place; mapping tables and account approval have no screen; table rows that
 open a drawer are keyboard-reachable but are not buttons; the unused v0 placeholder images
 in `public/` were left alone.
+
+## Version 3 hardening
+
+The project was audited again against a brief for a traceable, end-to-end prototype. Most of
+it was already in place; these are the gaps that were found and closed.
+
+| Gap | What changed | Where to check |
+|---|---|---|
+| Warnings did not say over what period they held or how sure the forecast was | Each warning carries the view it rests on, its length in months and that forecast's confidence, and shows the figures that fired the rule. | `lib/intelligence/alerts.ts`, `components/ui/intelligence.tsx` |
+| Recommendations had no expected effect | Each capacity action carries the seats it would take to reach the balanced band (or to fill, or to redirect), computed from the same demand and seats. The Action Center shows problem, action, expected effect and confidence. | `lib/intelligence/recommendations.ts`, methodology §14 |
+| Low confidence did not change the advice | An action on a low-confidence forecast is tentative ("monitor before reallocating"), as is one whose classification changes within the interval. | same |
+| Confidence could not be explained beyond a formula | Every forecast carries the basis of its score; the evidence panel shows it; a table in methodology §7 maps each kind of evidence to its effect. | `lib/intelligence/forecast.ts` |
+| Data Sources lacked status, category and integration method columns | Columns are now source, category and coverage, status, last refresh, data type, integration method and feeds. Planned sources read "Planned integration · None yet: no connection exists". A data-quality line totals records processed, valid, rejected and completeness. The synthetic-data statement is on the page. | `components/pages/data-sources.tsx` |
+| Methodology page had no normalization, confidence or limitations sections | Added, with numbers taken from the configuration and the dataset. | `components/pages/methodology.tsx` |
+| The main export had no recommendation | The `gaps` export now has the interval, confidence label, warnings, recommended action, text and seats for roles that get advice. | `lib/server/export.ts` |
+| API names in the brief did not all exist | `/api/summary`, `/api/priorities`, `/api/data-sources` added as the same handlers. | `app/api/*` |
+| No linter | ESLint with the Next.js rules; `pnpm lint` passes with no warnings. Of six hook-rule errors, four were fixed and two are kept with a stated reason, as are four warnings about full-page navigation after sign-in or a role change. | `eslint.config.mjs` |
+| Text contrast below WCAG AA (368 elements) | Status colours get darker text-only variants and secondary text is one step darker; fills, dots and charts keep the original palette. Two structural findings fixed. Scan now reports none. | `app/globals.css` |
+| A reviewer of this round found: the effect's gap could print as exactly ±15.0%; a release with zero forecast demand went negative; "oversupply risk" quoted a forecast confidence although its rule uses no forecast | The gap after the change is cut to two decimals and shown with two; zero demand releases every seat and quotes no percentage; each warning states its basis (current rate, forecast or trend) and only forecast-based ones quote a confidence. A grid test covers every small demand and supply. | `lib/intelligence/recommendations.ts`, `alerts.ts`, `tests/priority-alerts.test.ts` |
+| No test that a source change reaches the screen | `tests/chain.test.ts` loads a file for one quiet pair and checks stored rows, index, forecast, gap, priority, warning, recommendation, views and export all move, and that no other pair does. Filter consistency is tested across 13 filter combinations for every view. | `tests/chain.test.ts`, `tests/server.test.ts` |
 
 ## Not changed
 

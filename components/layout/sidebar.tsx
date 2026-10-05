@@ -68,6 +68,8 @@ export function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () =>
                   title={t('app.demoHint')}
                   onChange={async (event) => {
                     await setDemoRole(event.target.value)
+                    // A full page load on purpose: every cached response belongs to the previous session or role.
+                    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
                     window.location.assign('/')
                   }}
                 >
@@ -80,6 +82,8 @@ export function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () =>
                 className="link-btn"
                 onClick={async () => {
                   await signOut()
+                  // A full page load on purpose: every cached response belongs to the previous session or role.
+                  // eslint-disable-next-line @next/next/no-location-assign-relative-destination
                   window.location.assign('/login')
                 }}
               >

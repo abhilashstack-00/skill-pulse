@@ -1,5 +1,5 @@
-import { RECOMMENDATIONS } from '@/lib/config/methodology'
-import type { ActionCode, EvidenceItem, HorizonResult, Recommendation } from '@/lib/domain/types'
+import { GAP_THRESHOLDS, RECOMMENDATIONS } from '@/lib/config/methodology'
+import type { ActionCode, EvidenceItem, HorizonResult, Recommendation, RecommendationEffect } from '@/lib/domain/types'
 import { isOversupply, isShortage } from './gap'
 
 export interface RecommendationInputs {
@@ -16,6 +16,43 @@ export interface RecommendationInputs {
   priorityScore: number | null
   /** True when a demand source lost a material share of its volume on the way in. */
   demandDataDoubtful: boolean
+  /** Allocated seats and enrolment in the latest cycle, for the "fill seats first" effect. */
+  seats?: number | null
+  enrolled?: number | null
+}
+
+/**
+ * What the proposed action would change, from the same forecast and seats the
+ * gap was computed from. Not a second model: plain arithmetic on the gap.
+ *
+ *   add seats      the fewest extra seats that bring gap % under the shortage threshold
+ *   release seats  the fewest seats to redirect that bring gap % above the oversupply threshold
+ *   fill seats     allocated seats nobody is enrolled in
+ */
+export function expectedEffect(action: ActionCode, planning: HorizonResult, seats: number | null, enrolled: number | null): RecommendationEffect | null {
+  const { demand, supply } = planning
+  if (action === 'fill_seats_first') {
+    if (seats === null || enrolled === null || seats <= enrolled) return null
+    return { kind: 'fill_seats', seats: seats - enrolled, resultingGapPct: null }
+  }
+  if (demand === null || supply === null) return null
+  // The gap after the change, cut (not rounded) to two decimals: the seat count is the smallest that works, so the
+  // result sits just inside the threshold, and rounding 14.996 up to 15.00 would print a figure the rule itself calls a shortage.
+  const after = (newSupply: number): number | null => (newSupply > 0 ? Math.trunc(((demand - newSupply) / newSupply) * 10000) / 100 : null)
+  if (action === 'increase_capacity') {
+    // gap % < shortage threshold  ⇔  supply > demand ÷ (1 + threshold)
+    const needed = Math.floor(demand / (1 + GAP_THRESHOLDS.shortage / 100)) + 1
+    const add = Math.max(1, needed - supply)
+    return { kind: 'add_seats', seats: add, resultingGapPct: after(supply + add) }
+  }
+  if (action === 'review_allocation' || action === 'reduce_or_redirect') {
+    // gap % > oversupply threshold  ⇔  supply < demand ÷ (1 + threshold), the threshold being negative.
+    // With no demand forecast at all, every seat is spare and there is no percentage to quote.
+    const most = Math.max(0, Math.ceil(demand / (1 + GAP_THRESHOLDS.oversupply / 100)) - 1)
+    const release = Math.min(supply, Math.max(1, supply - most))
+    return { kind: 'release_seats', seats: release, resultingGapPct: after(supply - release) }
+  }
+  return null
 }
 
 /**
@@ -67,8 +104,10 @@ export function recommend(input: RecommendationInputs, params: typeof RECOMMENDA
     secondary,
     // Missing demand makes a pair look oversupplied; cutting seats on that basis would be the costly mistake.
     caution: input.demandDataDoubtful && isOversupply(status) ? 'verify_demand_data' : null,
-    // The interval reaches another side of the balanced band: the direction is likely, the amount is not settled.
-    tentative: planning.firm === false && (isShortage(status) || isOversupply(status)),
+    // Low confidence, or an interval that reaches another side of the balanced band: watch before reallocating.
+    tentative: (planning.firm === false || planning.confidence?.label === 'low') && (isShortage(status) || isOversupply(status)),
+    confidence: planning.confidence,
+    effect: expectedEffect(action, planning, input.seats ?? null, input.enrolled ?? null),
     params: {
       gap: planning.gap.gap,
       gapPct: planning.gap.gapPercentage,

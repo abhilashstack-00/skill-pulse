@@ -41,7 +41,12 @@ function Frame({ children }: { children: React.ReactNode }) {
   const { locale, t } = useI18n()
   const meta = useService(getMeta, [])
 
-  useEffect(() => setOpen(false), [pathname])
+  // Close the mobile menu when the route changes (state adjusted during render, as React recommends, not in an effect).
+  const [seenPath, setSeenPath] = useState(pathname)
+  if (seenPath !== pathname) {
+    setSeenPath(pathname)
+    setOpen(false)
+  }
 
   useEffect(() => {
     if (!open) return

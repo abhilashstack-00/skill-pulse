@@ -90,7 +90,7 @@ export function ForecastsPage() {
         </SectionCard>
       </div>
 
-      <SectionCard className="summary-card" aria-label={t('forecast.chart')}>
+      <SectionCard className="summary-card" aria-label={t('forecast.totals')}>
         {forecast.status === 'error' ? null : !data || !totals ? (
           <div className="skeleton" style={{ height: 60 }} role="status" aria-label={t('common.loading')} />
         ) : (

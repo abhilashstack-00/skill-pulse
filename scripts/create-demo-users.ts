@@ -15,7 +15,7 @@
 import { createClient } from '@supabase/supabase-js'
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+const serviceKey = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY
 const password = process.env.DEMO_USER_PASSWORD
 const domain = process.env.DEMO_USER_DOMAIN ?? 'skillpulse.example'
 
@@ -38,26 +38,38 @@ const USERS = [
 
 async function main() {
   const supabase = createClient(url as string, serviceKey as string, { auth: { persistSession: false, autoRefreshToken: false } })
+  const authHeaders = {
+    apikey: serviceKey as string,
+    Authorization: `Bearer ${serviceKey as string}`,
+    'Content-Type': 'application/json',
+  }
+  const authUrl = `${(url as string).replace(/\/+$/, '')}/auth/v1/admin/users`
 
   const existing = new Map<string, string>()
   for (let page = 1; ; page += 1) {
-    const { data, error } = await supabase.auth.admin.listUsers({ page, perPage: 200 })
-    if (error) throw new Error(`Could not list users: ${error.message}`)
-    for (const user of data.users) if (user.email) existing.set(user.email.toLowerCase(), user.id)
-    if (data.users.length < 200) break
+    const response = await fetch(`${authUrl}?page=${page}&per_page=200`, { headers: authHeaders })
+    const body = await response.json() as { users?: { email?: string; id: string }[]; msg?: string; message?: string }
+    if (!response.ok) throw new Error(`Could not list users: ${body.msg ?? body.message ?? response.statusText}`)
+    for (const user of body.users ?? []) if (user.email) existing.set(user.email.toLowerCase(), user.id)
+    if ((body.users ?? []).length < 200) break
   }
 
   for (const user of USERS) {
     let id = existing.get(user.email)
     if (!id) {
-      const { data, error } = await supabase.auth.admin.createUser({
-        email: user.email,
-        password: password as string,
-        email_confirm: true,
-        user_metadata: { full_name: user.full_name },
+      const response = await fetch(authUrl, {
+        method: 'POST',
+        headers: authHeaders,
+        body: JSON.stringify({
+          email: user.email,
+          password: password as string,
+          email_confirm: true,
+          user_metadata: { full_name: user.full_name },
+        }),
       })
-      if (error || !data.user) throw new Error(`Could not create ${user.email}: ${error?.message}`)
-      id = data.user.id
+      const body = await response.json() as { id?: string; msg?: string; message?: string }
+      if (!response.ok || !body.id) throw new Error(`Could not create ${user.email}: ${body.msg ?? body.message ?? response.statusText}`)
+      id = body.id
     }
     const { error } = await supabase
       .from('profiles')

@@ -101,7 +101,7 @@ export function ComponentTable({ components, total, describe }: {
     <table className="calc-table">
       <thead>
         <tr>
-          <th scope="col">&nbsp;</th>
+          <th scope="col"><span className="sr-only">{t('common.component')}</span></th>
           <th scope="col">{t('common.value')}</th>
           <th scope="col">{t('common.weight')}</th>
           <th scope="col">{t('common.contribution')}</th>

@@ -17,10 +17,15 @@ export function useService<T>(fetcher: () => Promise<T>, deps: readonly unknown[
   const [refreshing, setRefreshing] = useState(false)
   const [attempt, setAttempt] = useState(0)
   const fetcherRef = useRef(fetcher)
-  fetcherRef.current = fetcher
+  // Keep the latest fetcher without re-running the request effect for it. Declared first, so it runs first.
+  useEffect(() => {
+    fetcherRef.current = fetcher
+  })
 
   useEffect(() => {
     let cancelled = false
+    // Starting the request is the external work this effect exists for; the flag marks that it has started.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRefreshing(true)
     fetcherRef.current().then(
       (data) => {

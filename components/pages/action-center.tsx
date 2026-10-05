@@ -88,7 +88,14 @@ export function ActionCenterPage() {
                 </dl>
                 <div className="action-footer">
                   <div>
+                    <p className="notice-action" style={{ marginTop: 0, marginBottom: 6 }}>
+                      {t('action.problem', {
+                        status: t(`status.${selected.status}`), demand: row.demand === null ? '—' : formatNumber(row.demand), supply: row.supply === null ? '—' : formatNumber(row.supply),
+                        confidence: text.confidence ?? t('common.insufficient'),
+                      })}
+                    </p>
                     <p className="action-suggestion">{t('action.suggested', { text: text.text })}</p>
+                    {text.effect && <p className="notice-action">{text.effect}</p>}
                     {text.secondary && <p className="notice-action">{text.secondary}</p>}
                     {text.caution && <p className="notice-action">{text.caution}</p>}
                     {text.tentative && <p className="notice-action">{text.tentative}</p>}

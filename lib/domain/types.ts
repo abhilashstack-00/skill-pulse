@@ -194,6 +194,20 @@ export interface GapResult {
 
 export interface Confidence { score: number; label: ConfidenceLabel }
 
+export interface ConfidenceBasis {
+  /** Months with a complete demand figure inside the trend window, and the size of that window. */
+  monthsObserved: number
+  monthsInWindow: number
+  /** Age of the newest observation, in months (0 = the as-of month). */
+  monthsSinceLatest: number
+  /** Half-width of the calibrated interval as a share of the forecast, %. */
+  relativeHalfWidthPct: number
+  /** The score the interval alone gives, before any short-history cap. */
+  scoreFromInterval: number
+  /** The cap applied because of short history, or null. */
+  cap: number | null
+}
+
 export interface ForecastComponents {
   /** Mean of the last observed months. */
   baseline: number
@@ -228,6 +242,8 @@ export interface DemandForecast {
   /** How the interval was built: model half-width × calibration factor = half-width. */
   interval: { modelHalfWidth: number; calibrationFactor: number; halfWidth: number } | null
   confidence: Confidence | null
+  /** The evidence the confidence score rests on, so it can be shown and checked. */
+  confidenceBasis: ConfidenceBasis | null
   components: ForecastComponents | null
   monthly: MonthlyForecastPoint[]
   modelVersion: string
@@ -322,6 +338,19 @@ export interface Warning {
   reason: string
   /** Message key of the suggested action. Null in responses to roles that do not get planner advice. */
   recommendedAction: string | null
+  /**
+   * What the rule that fired reads:
+   *   current   the current rate of demand against this cycle's seats (observed)
+   *   forecast  a forecast, named in `horizon`
+   *   trend     the observed demand trend and change in capacity; no forecast is involved
+   */
+  basis: 'current' | 'forecast' | 'trend'
+  /** The view the rule looks at. 'current' for rules that use no forecast. */
+  horizon: HorizonKey
+  /** Months that view covers. */
+  horizonMonths: number
+  /** Confidence of the forecast the rule used. Null for rules on the current rate, which is observed, not forecast. */
+  confidence: Confidence | null
   params: Record<string, number | string | null>
   evidence: EvidenceItem[]
 }
@@ -344,12 +373,35 @@ export interface Recommendation {
   secondary: 'review_quality' | null
   /** Set on oversupply actions when a demand source lost a material share of its volume on the way in. */
   caution: 'verify_demand_data' | null
-  /** True when the action rests on a classification the forecast interval does not hold on its whole width. */
+  /**
+   * True when the action should be watched rather than acted on yet: the
+   * forecast confidence is low, or the classification does not hold across the
+   * whole forecast interval.
+   */
   tentative: boolean
+  /** Confidence of the forecast the action rests on. */
+  confidence: Confidence | null
+  /** What the action would change, computed from the same figures. Null when no change is proposed. */
+  effect: RecommendationEffect | null
   params: Record<string, number | string | null>
   evidence: EvidenceItem[]
   priorityScore: number | null
   status: GapStatus
+}
+
+export interface RecommendationEffect {
+  /**
+   * add_seats      seats to add over the planning period to bring the gap inside the balanced band
+   * release_seats  seats that could be redirected while staying inside the balanced band
+   * fill_seats     allocated seats not enrolled in the latest cycle
+   */
+  kind: 'add_seats' | 'release_seats' | 'fill_seats'
+  seats: number
+  /**
+   * Gap % after the change, if demand comes in as forecast, cut to two decimals. Null for fill_seats (supply is
+   * allocated seats, so the gap does not move) and when the change leaves no seats to take a percentage of.
+   */
+  resultingGapPct: number | null
 }
 
 export interface DemandMonth {

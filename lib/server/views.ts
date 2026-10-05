@@ -8,6 +8,7 @@ import { recentWindow } from '@/lib/intelligence/forecast'
 import { monthIndex, round, sum } from '@/lib/intelligence/math'
 import { SOURCE_SPECS } from '@/lib/ingest/sources'
 import { TRADE_ALIASES } from '@/lib/intelligence/normalization/mappings'
+import { MATCHING } from '@/lib/intelligence/normalization/normalize'
 import { can, type GeoScope } from './access'
 import { filterCells, type Filters } from './filters'
 import type { Session } from './session'
@@ -397,6 +398,8 @@ function forecastBlock(snapshot: Snapshot, cells: CellAnalysis[], horizon: Horiz
         }
       : null,
     breakdown,
+    /** One pair: what its confidence score rests on. A group's confidence follows from its combined interval instead. */
+    confidenceBasis: key && included.length === 1 ? included[0].demandForecasts[key].confidenceBasis : null,
     /** How the interval of the total was built from the pairs' intervals. */
     interval: key && included.length && h.halfWidth !== null
       ? {
@@ -673,8 +676,14 @@ export function evidenceView(snapshot: Snapshot, districtId: string, tradeId: st
 /* -------------------------- Methodology, sources -------------------------- */
 
 export function methodologyView(snapshot: Snapshot) {
+  const d = snapshot.dataset
+  const months = new Set(d.labourDemand.map((r) => r.period))
   return {
     methodology: METHODOLOGY,
+    /** Matching thresholds used when a file is loaded. */
+    matching: MATCHING,
+    /** What the loaded dataset covers, counted from it. */
+    coverage: { states: d.states.length, districts: d.districts.length, sectors: d.sectors.length, trades: d.trades.length, pairs: snapshot.cells.length, months: months.size },
     references: snapshot.references,
     backtest: snapshot.backtest,
     calibration: snapshot.calibration,
@@ -683,13 +692,27 @@ export function methodologyView(snapshot: Snapshot) {
   }
 }
 
+/** How a source's data gets into the system. Nothing here is a live connection, and nothing is described as one. */
+const integrationOf = (status: string): 'file_load' | 'code_table' | 'planned' =>
+  status === 'planned' ? 'planned' : status === 'prototype_reference' ? 'code_table' : 'file_load'
+
 export function sourcesView(snapshot: Snapshot, session: Session) {
   const latest = new Map<string, Snapshot['dataset']['ingestionRuns'][number]>()
   for (const run of snapshot.dataset.ingestionRuns) if (!latest.has(run.sourceId) || run.id > (latest.get(run.sourceId)?.id ?? 0)) latest.set(run.sourceId, run)
+  const quality = qualityView(snapshot)
+  const read = sum(quality.sources.map((s) => s.rowsRead))
+  const mapped = sum(quality.sources.map((s) => s.rowsMapped))
   return {
     dataset: snapshot.meta,
     mode: dataMode(),
-    sources: snapshot.dataset.dataSources.map((source) => ({ ...source, latestRun: latest.has(source.id) ? runView(latest.get(source.id) as IngestionRun, session) : null })),
+    /** Sources with a live connection. There are none: every loaded source is a file. */
+    connected: 0,
+    /** Records over every load still in the dataset: read, accepted, refused, and the share accepted. */
+    quality: { ...quality, recordsProcessed: read, recordsValid: mapped, recordsRejected: read - mapped, completenessPct: read ? round((mapped / read) * 100, 1) : null },
+    sources: snapshot.dataset.dataSources.map((source) => ({
+      ...source,
+      integration: integrationOf(source.status),
+      latestRun: latest.has(source.id) ? runView(latest.get(source.id) as IngestionRun, session) : null,
+    })),
   }
 }
-

@@ -48,6 +48,9 @@ import { GET as states } from '@/app/api/states/route'
 import { GET as supply } from '@/app/api/supply/route'
 import { GET as trade } from '@/app/api/trade/[id]/route'
 import { GET as trades } from '@/app/api/trades/route'
+import { GET as summaryAlias } from '@/app/api/summary/route'
+import { GET as prioritiesAlias } from '@/app/api/priorities/route'
+import { GET as dataSourcesAlias } from '@/app/api/data-sources/route'
 
 const dataset = JSON.parse(readFileSync('data/pilot/dataset.json', 'utf8')) as Dataset
 const stateOf = new Map(dataset.districts.map((d) => [d.id, d.stateId]))
@@ -85,6 +88,9 @@ const READ_ROUTES: { name: string; handler: Handler; path: string }[] = [
   { name: 'export forecasts', handler: exportRoute, path: '/api/export?dataset=forecasts&format=json' },
   { name: 'export alerts', handler: exportRoute, path: '/api/export?dataset=alerts&format=json' },
   { name: 'ingest history', handler: ingestInfo, path: '/api/ingest' },
+  { name: 'summary', handler: summaryAlias, path: '/api/summary' },
+  { name: 'priorities', handler: prioritiesAlias, path: '/api/priorities' },
+  { name: 'data-sources', handler: dataSourcesAlias, path: '/api/data-sources' },
 ]
 const PLANNER_ROUTES: typeof READ_ROUTES = [
   { name: 'recommendations', handler: recommendations, path: '/api/recommendations' },
@@ -296,6 +302,20 @@ describe('permissions', () => {
     form.set('source', 'job-portals')
     const response = await call(ingest, '/api/ingest', { method: 'POST', body: form, headers: { origin: 'https://evil.example', host: 'localhost' } })
     expect(response.status).toBe(403)
+  })
+})
+
+describe('route names', () => {
+  it('serves the summary, priorities and data sources under both names with the same answer', async () => {
+    for (const [first, second, path, other] of [[summary, summaryAlias, '/api/dashboard/summary?stateId=TG', '/api/summary?stateId=TG'], [priority, prioritiesAlias, '/api/priority?groupBy=trade', '/api/priorities?groupBy=trade'], [sources, dataSourcesAlias, '/api/sources', '/api/data-sources']] as const) {
+      state.session = sessionFor({})
+      const a = await (await call(first, path)).json()
+      state.session = sessionFor({})
+      const b = await (await call(second, other)).json()
+      expect(b, other).toEqual(a)
+    }
+    state.session = sessionFor({})
+    expect((await call(prioritiesAlias, '/api/priorities?groupBy=colour')).status).toBe(400)
   })
 })
 

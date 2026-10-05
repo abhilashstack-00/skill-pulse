@@ -20,7 +20,8 @@ switch in the sidebar instead of a sign-in page.
 
 ```bash
 pnpm typecheck
-pnpm test                          # 239 tests; 8 more run when TEST_DATABASE_URL is set
+pnpm lint
+pnpm test                          # 277 tests; 8 more run when TEST_DATABASE_URL is set
 pnpm build && DEMO_MODE=on pnpm start
 ```
 
@@ -206,6 +207,14 @@ GET /api/export?dataset=gaps|forecasts|priority|alerts|recommendations|demand|su
 For other systems only (no screen calls them): `/api/demand`, `/api/supply`, `/api/priority`,
 `/api/states`, `/api/districts`, `/api/sectors`, `/api/trades`, `/api/district/:id`.
 
+Three routes also answer under plainer names, with the same handler: `/api/summary`
+(= `/api/dashboard/summary`), `/api/priorities` (= `/api/priority`) and `/api/data-sources`
+(= `/api/sources`).
+
+The `gaps` export is the planning export: one row per district and trade with demand and its
+interval, supply, gap, gap %, status, confidence, priority, warnings and, for roles that get
+advice, the recommended action and the seats it would take.
+
 ## Demonstration path
 
 Market Explorer → Telangana → Warangal → Renewable Energy → Solar Technician → View Evidence
@@ -238,13 +247,13 @@ Playwright, see the top of that file).
   in particular is degraded by an unmapped spelling. Left in on purpose; methodology §15.
 - Group totals assume a minimum error correlation of 0.10 between pairs. An assumption.
 - Most classifications do not hold across their own 12-month interval: 7 of 28 shortage pairs
-  and 14 of 33 oversupply pairs do, and 40 of 61 recommendations are marked tentative. The
+  and 14 of 33 oversupply pairs do, and 42 of 61 recommendations are marked tentative. The
   screens say which. This is what a 24-month history supports, not a display problem.
 - Matching was tested on wording written by the same author as the mapping tables, plus one
   hand-typed file. Real files are the real test. Mapping tables are code, not data.
 - No screen for approving accounts or editing mappings.
 - NCO-2015 codes and NSQF levels on pilot trades are indicative.
-- Hindi text was written without native-speaker review. No accessibility audit has been done.
+- Hindi text was written without native-speaker review. An automated WCAG 2.1 A/AA scan (axe) of every screen, the evidence panel, Hindi and phone width reports no violations; no screen-reader or user testing has been done.
 - "Review Action" in the Action Center is kept for the browser session only.
 - The problem statement says "AI-enabled". The forecast is a transparent statistical method;
   there is no machine learning in it.

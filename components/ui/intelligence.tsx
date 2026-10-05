@@ -39,6 +39,8 @@ export function WarningList({ warnings, showPlace = true, limit }: { warnings: W
               {showPlace && <span className="notice-place">{names.trade(w.tradeId)} · {names.district(w.districtId)}</span>}
             </div>
             <p className="notice-text">{text.reason}</p>
+            {text.support && <p className="notice-action">{text.support}</p>}
+            <p className="notice-action">{text.basis}</p>
             {text.action && <p className="notice-action">{text.action}</p>}
           </li>
         )
@@ -63,6 +65,7 @@ export function RecommendationList({ items, limit }: { items: Recommendation[]; 
             </div>
             <p className="notice-title">{text.title}</p>
             <p className="notice-text">{text.text}</p>
+            {text.effect && <p className="notice-action">{text.effect}</p>}
             {text.secondary && <p className="notice-action">{text.secondary}</p>}
             {text.caution && <p className="notice-action">{text.caution}</p>}
             {text.tentative && <p className="notice-action">{text.tentative}</p>}

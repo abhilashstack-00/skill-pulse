@@ -354,6 +354,15 @@ export function SkillIntelligencePage() {
                 ) : (
                   <p className="calc-note"><strong>{f.horizon.key === 'current' ? t('horizon.window.current') : t('common.insufficient')}</strong></p>
                 )}
+                {f.confidenceBasis && (
+                  <p className="calc-note">
+                    {t('skill.forecast.confidenceBasis', {
+                      observed: f.confidenceBasis.monthsObserved, window: f.confidenceBasis.monthsInWindow, age: f.confidenceBasis.monthsSinceLatest,
+                      relative: formatNumber(f.confidenceBasis.relativeHalfWidthPct, 1), score: f.confidenceBasis.scoreFromInterval,
+                    })}
+                    {f.confidenceBasis.cap !== null && ` ${t('skill.forecast.confidenceCap', { cap: f.confidenceBasis.cap })}`}
+                  </p>
+                )}
                 {f.breakdown && (
                   <p className="calc-note">
                     {t('skill.forecast.confidenceRule', { zero: Math.round(f.model.confidence.zeroAtRelativeWidth * 100), high: f.model.confidence.high, medium: f.model.confidence.medium })}

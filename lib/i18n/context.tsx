@@ -19,6 +19,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem(STORAGE_KEY)
+      // Read after mount, not during render: the server cannot know the saved choice, and rendering it early would break hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (saved === 'hi' || saved === 'en') setState(saved)
     } catch {
       // Storage unavailable: stay with English.

@@ -62,6 +62,8 @@ async function get<T>(path: string, params: object = {}): Promise<T> {
   if (cached && Date.now() - cached.at < REUSE_MS) return cached.promise as Promise<T>
   const promise = fetch(url, { credentials: 'same-origin', headers: { Accept: 'application/json' } }).then(async (response) => {
     if (response.status === 401) {
+      // A full page load on purpose: every cached response belongs to the previous session or role.
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       window.location.assign('/login')
       throw new ApiError(401, 'Sign in to continue.')
     }

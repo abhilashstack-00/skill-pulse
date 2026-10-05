@@ -9,12 +9,14 @@ import { PageHeader } from '@/components/layout/page-header'
 import { Button, EmptyState, ErrorState, LoadingState, Pill, SectionCard } from '@/components/ui/primitives'
 
 const COLUMNS = [
-  { label: 'sources.col.source', width: '26%' },
-  { label: 'sources.col.coverage', width: '19%' },
-  { label: 'sources.col.updated', width: '13%' },
-  { label: 'sources.col.granularity', width: '20%' },
-  { label: 'sources.col.feeds', width: 'auto' },
+  { label: 'sources.col.source', width: '21%' },
+  { label: 'sources.col.category', width: '15%' },
+  { label: 'sources.col.status', width: '15%' },
+  { label: 'sources.col.updated', width: '11%' },
+  { label: 'sources.col.granularity', width: '17%' },
+  { label: 'sources.col.integration', width: 'auto' },
 ]
+const statusTone = (status: string) => (status === 'planned' ? 'neutral' : status === 'uploaded' ? 'primary' : 'warning')
 
 export function DataSourcesPage() {
   const { t, locale } = useI18n()
@@ -64,6 +66,7 @@ export function DataSourcesPage() {
   return (
     <div className="page">
       <PageHeader title="sources.title" subtitle="sources.subtitle" />
+      <p className="source-mode" role="note" style={{ marginTop: 12, maxWidth: 980 }}>{t('sources.statement')}</p>
 
       <SectionCard className="sources-card" aria-label={t('sources.title')}>
         {sources.status === 'error' ? (
@@ -92,19 +95,32 @@ export function DataSourcesPage() {
                       }
                     }}
                   >
+                    <td><span className="cell-strong">{source.name}</span></td>
                     <td>
-                      <span className="cell-strong">{source.name}</span>
-                      <span className="source-stage">{t(`sources.status.${source.status}`)}</span>
+                      {t(`sources.type.${source.sourceType}`)}
+                      <span className="source-stage">{source.coverage}</span>
                     </td>
-                    <td>{t(`sources.type.${source.sourceType}`)} · {source.coverage}</td>
-                    <td>{source.lastUpdated ? formatDate(source.lastUpdated, locale) : t('sources.notConnected')}</td>
+                    <td><Pill tone={statusTone(source.status)} compact>{t(`sources.status.${source.status}`)}</Pill></td>
+                    <td>{source.status === 'planned' ? t('sources.notConnected') : source.lastUpdated ? formatDate(source.lastUpdated, locale) : '—'}</td>
                     <td>{source.granularity}</td>
-                    <td>{source.feeds}</td>
+                    <td>
+                      {t(`sources.integration.${source.integration}`)}
+                      <span className="source-stage">{source.feeds}</span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+        )}
+        {sources.data && sources.data.quality.completenessPct !== null && (
+          <p className="source-mode" style={{ padding: '0 24px 4px' }}>
+            {t('sources.quality', {
+              processed: formatNumber(sources.data.quality.recordsProcessed), valid: formatNumber(sources.data.quality.recordsValid),
+              rejected: formatNumber(sources.data.quality.recordsRejected), completeness: formatNumber(sources.data.quality.completenessPct, 1),
+            })}{' '}
+            {t('sources.connected', { count: sources.data.connected })}
+          </p>
         )}
       </SectionCard>
 
@@ -112,9 +128,10 @@ export function DataSourcesPage() {
         <section className="source-detail" aria-live="polite" aria-label={t('sources.selected', { name: selected.name })}>
           <div className="source-detail-head">
             <h2 className="source-detail-title">{t('sources.selected', { name: selected.name })}</h2>
-            <Pill tone={selected.status === 'planned' ? 'neutral' : selected.status === 'uploaded' ? 'primary' : 'warning'} compact>{t(`sources.status.${selected.status}`)}</Pill>
+            <Pill tone={statusTone(selected.status)} compact>{t(`sources.status.${selected.status}`)}</Pill>
           </div>
           <p className="source-detail-text">{selected.description}</p>
+          <p className="source-detail-text" style={{ marginTop: 8 }}>{t('sources.detail.integration', { method: t(`sources.integration.${selected.integration}`), feeds: selected.feeds })}</p>
           <p className="source-detail-text" style={{ marginTop: 8 }}>
             {selected.recordsIn === null
               ? selected.status === 'planned' ? t('sources.noRecords') : selected.granularity

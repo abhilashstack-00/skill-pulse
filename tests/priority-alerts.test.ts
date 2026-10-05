@@ -4,7 +4,7 @@ import type { GapStatus, HorizonResult } from '@/lib/domain/types'
 import { evaluateWarnings } from '@/lib/intelligence/alerts'
 import { computeGap, isFirm } from '@/lib/intelligence/gap'
 import { computePriority } from '@/lib/intelligence/priority'
-import { recommend } from '@/lib/intelligence/recommendations'
+import { expectedEffect, recommend } from '@/lib/intelligence/recommendations'
 
 const horizon = (demand: number | null, supply: number | null, key: HorizonResult['horizon'] = '12M'): HorizonResult => ({
   horizon: key, months: key === '6M' ? 6 : 12, periodStart: '2026-10', periodEnd: '2027-09',
@@ -139,6 +139,24 @@ describe('early-warning rules', () => {
     expect(spare?.reason).toBe('warning.upcoming_saturation.reason.deepening')
   })
 
+  it('says which view each warning rests on, and the confidence of that forecast', () => {
+    const lookahead = { ...horizon(700, 500, '6M'), confidence: { score: 62, label: 'medium' as const } }
+    const planning = { ...horizon(1400, 1000), confidence: { score: 41, label: 'low' as const } }
+    const all = evaluateWarnings({ ...ids, current: horizon(1400, 1000, 'current'), lookahead, planning, demandTrendPct: 40, capacityChangePct: 0 })
+    const by = Object.fromEntries(all.map((w) => [w.type, w]))
+    // Already severe at the current rate: observed, so there is no forecast confidence to quote.
+    expect(by.acute_shortage).toMatchObject({ basis: 'current', horizon: 'current', confidence: null })
+    // Rapid growth against flat capacity is judged on the planning forecast.
+    expect(by.emerging_shortage).toMatchObject({ basis: 'forecast', horizon: '12M', horizonMonths: 12, confidence: { score: 41, label: 'low' } })
+    // Growing capacity against falling demand is read from the trend alone: it must not borrow a forecast's confidence.
+    const risk = evaluateWarnings({ ...ids, current: horizon(900, 1000, 'current'), lookahead: horizon(450, 500, '6M'), planning, demandTrendPct: -10, capacityChangePct: 20 }).find((w) => w.type === 'oversupply_risk')
+    expect(risk).toMatchObject({ basis: 'trend', horizon: 'current', confidence: null })
+    const noForecast = evaluateWarnings({ ...ids, current: horizon(null, 1000, 'current'), lookahead: horizon(null, 500, '6M'), planning: horizon(null, 1000), demandTrendPct: -10, capacityChangePct: 20 }).find((w) => w.type === 'oversupply_risk')
+    expect(noForecast).toMatchObject({ basis: 'trend', confidence: null })
+    const upcoming = evaluateWarnings({ ...ids, current: horizon(1000, 1000, 'current'), lookahead, planning, demandTrendPct: 0, capacityChangePct: 0 }).find((w) => w.type === 'upcoming_shortage')
+    expect(upcoming).toMatchObject({ basis: 'forecast', horizon: '6M', horizonMonths: 6, confidence: { score: 62, label: 'medium' } })
+  })
+
   it('attaches every required field to a warning', () => {
     const [w] = evaluateWarnings({ ...ids, current: horizon(1400, 1000, 'current'), lookahead: horizon(700, 500, '6M'), planning: horizon(1400, 1000), demandTrendPct: 0, capacityChangePct: 0 })
     expect(w).toMatchObject({ type: 'acute_shortage', severity: 'critical', districtId: 'warangal', sectorId: 'renewable-energy', tradeId: 'solar-technician' })
@@ -188,6 +206,53 @@ describe('planner recommendations', () => {
     expect(recommend({ ...base, planning: { ...planning, firm: true } }).tentative).toBe(false)
     // Nothing to be tentative about when no action is proposed.
     expect(recommend({ ...base, planning: { ...horizon(1050, supply), firm: false } }).tentative).toBe(false)
+  })
+
+  it('marks an action tentative when the forecast behind it is low-confidence, even if the interval agrees', () => {
+    const planning = { ...horizon(1400, 1000), confidence: { score: 30, label: 'low' as const } }
+    expect(recommend({ ...base, planning }).tentative).toBe(true)
+    expect(recommend({ ...base, planning: { ...planning, confidence: { score: 55, label: 'medium' as const } } }).tentative).toBe(false)
+    expect(recommend({ ...base, planning }).confidence).toEqual({ score: 30, label: 'low' })
+  })
+
+  it('works out the expected effect of each action from the same demand and seats', () => {
+    // Shortage: demand 1,250, seats 800. Balanced needs gap % < 15, so more than 1,250 ÷ 1.15 = 1,086.96 seats: 1,087, i.e. 287 more.
+    const add = recommend({ ...base, planning: horizon(1250, 800) }).effect!
+    expect(add).toEqual({ kind: 'add_seats', seats: 287, resultingGapPct: 14.99 }) // (1250 − 1087) ÷ 1087 = 14.995…%: cut to 14.99, never rounded up to the threshold
+    expect(computeGap(1250, 800 + add.seats).status).toBe('balanced')
+    expect(computeGap(1250, 800 + add.seats - 1).status).toBe('shortage') // one seat fewer is not enough
+    // Oversupply: demand 400, seats 800. Balanced needs gap % > −15, so fewer than 400 ÷ 0.85 = 470.6 seats: 470, i.e. 330 released.
+    const release = recommend({ ...base, planning: horizon(400, 800) }).effect!
+    expect(release).toMatchObject({ kind: 'release_seats', seats: 330 })
+    expect(computeGap(400, 800 - release.seats).status).toBe('balanced')
+    expect(computeGap(400, 800 - release.seats + 1).status).toBe('oversupply')
+    // Under-used seats: the effect is the seats nobody is enrolled in, and the gap is said not to move.
+    expect(recommend({ ...base, utilizationPct: 61, seats: 800, enrolled: 488, planning: horizon(1250, 800) }).effect).toEqual({ kind: 'fill_seats', seats: 312, resultingGapPct: null })
+    // No change proposed, no effect claimed.
+    expect(recommend({ ...base, planning: horizon(820, 800) }).effect).toBeNull()
+    expect(recommend({ ...base, planning: horizon(null, 800) }).effect).toBeNull()
+    // Every small case, including none of either: the stated seats land inside the band, one seat fewer does not,
+    // supply never goes below zero, and the percentage quoted is itself inside the band.
+    for (let demand = 0; demand <= 60; demand++) {
+      for (let supply = 0; supply <= 60; supply++) {
+        const status = computeGap(demand, supply).status
+        const action = status === 'shortage' || status === 'severe_shortage' ? 'increase_capacity' : status === 'oversupply' ? 'review_allocation' : status === 'severe_oversupply' ? 'reduce_or_redirect' : null
+        if (!action) continue
+        const e = expectedEffect(action, horizon(demand, supply), supply, supply)!
+        const next = e.kind === 'add_seats' ? supply + e.seats : supply - e.seats
+        const oneLess = e.kind === 'add_seats' ? next - 1 : next + 1
+        expect(next, `${demand}/${supply}`).toBeGreaterThanOrEqual(0)
+        expect(computeGap(demand, next).status, `${demand}/${supply}`).toBe('balanced')
+        expect(computeGap(demand, oneLess).status, `${demand}/${supply} with one seat less`).not.toBe('balanced')
+        if (e.resultingGapPct !== null) expect(Math.abs(e.resultingGapPct), `${demand}/${supply}`).toBeLessThan(15)
+        else expect(next).toBe(0)
+      }
+    }
+    // No demand forecast at all: every seat is spare, and no percentage is quoted.
+    expect(expectedEffect('reduce_or_redirect', horizon(0, 5), 5, 5)).toEqual({ kind: 'release_seats', seats: 5, resultingGapPct: null })
+    // Zero seats today: the effect still lands inside the band.
+    const fromZero = expectedEffect('increase_capacity', horizon(120, 0), 0, 0)!
+    expect(computeGap(120, fromZero.seats).status).toBe('balanced')
   })
 
   it('asks to fill existing seats first when they are under-used', () => {

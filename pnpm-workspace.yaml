@@ -6,3 +6,5 @@ minimumReleaseAgeExclude:
 
 allowBuilds:
   esbuild: true
+  # Native module resolver used by the lint import plugin (development only).
+  unrs-resolver: true

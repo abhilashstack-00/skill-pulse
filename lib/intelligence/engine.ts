@@ -266,7 +266,7 @@ function analyseCell(
     recommendation: recommend({
       ...ids, planning, demandTrendPct: trend, capacityChangePct,
       utilizationPct: rates.utilizationPct, completionRatePct: rates.completionRatePct, placementRatePct: rates.placementRatePct,
-      priorityScore: priority.score, demandDataDoubtful,
+      priorityScore: priority.score, demandDataDoubtful, seats: supplyRaw.seats, enrolled: supplyRaw.enrolled,
     }),
   }
 }

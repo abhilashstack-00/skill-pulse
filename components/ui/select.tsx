@@ -33,16 +33,21 @@ export function Select({ label, value, options, onChange, allLabel, disabled, cl
   const id = useId()
   const selected = options.find((option) => option.value === value)
 
+  // On opening, start from the selected option.
+  const [wasOpen, setWasOpen] = useState(open)
+  if (wasOpen !== open) {
+    setWasOpen(open)
+    if (open) setActive(selectedIndex)
+  }
+
   useEffect(() => {
     if (!open) return
-    setActive(selectedIndex)
     listRef.current?.focus()
     const onPointerDown = (event: PointerEvent) => {
       if (!rootRef.current?.contains(event.target as Node)) setOpen(false)
     }
     document.addEventListener('pointerdown', onPointerDown)
     return () => document.removeEventListener('pointerdown', onPointerDown)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   useEffect(() => {

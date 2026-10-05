@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ArrowDown, ArrowUp, ArrowUpDown, Download } from 'lucide-react'
 import { exportUrl, getGaps, type GapsData } from '@/lib/client/api'
@@ -65,7 +65,13 @@ export function GapAnalysisPage() {
     })
   }, [matrix.data, search, sort, names])
 
-  useEffect(() => setPage(0), [filters, search, sort])
+  // Back to the first page whenever what is listed changes.
+  const listKey = JSON.stringify([filters, search, sort])
+  const [seenKey, setSeenKey] = useState(listKey)
+  if (seenKey !== listKey) {
+    setSeenKey(listKey)
+    setPage(0)
+  }
 
   const pageCount = Math.max(1, Math.ceil(rows.length / PAGE_SIZE))
   const visible = rows.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)

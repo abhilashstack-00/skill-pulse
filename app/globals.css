@@ -19,7 +19,7 @@
   --navy: #0b1f3a;
   --text-primary: #142033;
   --text-heading: #0b1f3a;
-  --text-secondary: #667085;
+  --text-secondary: #5c667a; /* was #667085: 4.4:1 on the grey panels, under the 4.5:1 needed for small text */
   --text-muted: #98a2b3;
   --text-on-dark: #d6e2f0;
   --success: #12b76a;
@@ -28,6 +28,11 @@
   --warning-soft: #fff4e5;
   --danger: #d92d20;
   --danger-soft: #fdecec;
+  /* The same three status hues, darkened for use as TEXT only (4.5:1 or better on white and on the soft fills).
+     Fills, dots, borders and chart marks keep the colours above. */
+  --success-text: #067647;
+  --warning-text: #b54708;
+  --danger-text: #b42318;
 
   /* Chart series */
   --series-demand: #155eef;
@@ -132,13 +137,13 @@ p {
 }
 
 /* Tone helpers ------------------------------------------------------------ */
-.tone-danger { --tone: var(--danger); --tone-soft: var(--danger-soft); }
-.tone-warning { --tone: var(--warning); --tone-soft: var(--warning-soft); }
-.tone-success { --tone: var(--success); --tone-soft: var(--success-soft); }
-.tone-primary { --tone: var(--primary); --tone-soft: var(--primary-soft); }
-.tone-mixed { --tone: #7a3fd1; --tone-soft: #f1e9fd; }
-.tone-neutral { --tone: var(--text-primary); --tone-soft: var(--surface-secondary); }
-.tone-text { color: var(--tone); }
+.tone-danger { --tone: var(--danger); --tone-soft: var(--danger-soft); --tone-text: var(--danger-text); }
+.tone-warning { --tone: var(--warning); --tone-soft: var(--warning-soft); --tone-text: var(--warning-text); }
+.tone-success { --tone: var(--success); --tone-soft: var(--success-soft); --tone-text: var(--success-text); }
+.tone-primary { --tone: var(--primary); --tone-soft: var(--primary-soft); --tone-text: var(--primary); }
+.tone-mixed { --tone: #7a3fd1; --tone-soft: #f1e9fd; --tone-text: #7a3fd1; }
+.tone-neutral { --tone: var(--text-primary); --tone-soft: var(--surface-secondary); --tone-text: var(--text-primary); }
+.tone-text { color: var(--tone-text, var(--tone)); }
 
 /* ==========================================================================
    App shell
@@ -239,11 +244,11 @@ p {
   margin-top: 10px;
   font-size: 12px;
   font-weight: 600;
-  color: var(--success);
+  color: var(--success-text);
 }
 
 .dataset-status-value.is-pending { color: var(--text-secondary); }
-.dataset-status-value.is-error { color: var(--danger); }
+.dataset-status-value.is-error { color: var(--danger-text); }
 
 .dataset-status-value::before {
   content: '';
@@ -381,7 +386,7 @@ p {
   font-size: 12px;
   font-weight: 600;
   line-height: 15px;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .kpi-note svg {
@@ -399,7 +404,7 @@ p {
   padding: 0 10px;
   border-radius: var(--radius-pill);
   background: var(--tone-soft);
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
@@ -800,7 +805,7 @@ p {
 
 .data-table .cell-gap {
   font-weight: 600;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
   font-variant-numeric: tabular-nums;
 }
 
@@ -884,7 +889,7 @@ p {
 
 .state-block.is-error .state-icon {
   background: var(--danger-soft);
-  color: var(--danger);
+  color: var(--danger-text);
 }
 
 .state-title {
@@ -1174,7 +1179,7 @@ p {
   font-size: 34px;
   font-weight: 600;
   line-height: 41px;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .balance-tile-link {
@@ -1244,7 +1249,7 @@ p {
   font-size: 12px;
   font-weight: 600;
   line-height: 15px;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .radar-card {
@@ -1493,7 +1498,7 @@ p {
   font-size: 12px;
   font-weight: 600;
   line-height: 15px;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .ranking-change {
@@ -1574,7 +1579,7 @@ p {
 .why-row .kv-value {
   font-size: 14px;
   line-height: 17px;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .why-driver {
@@ -1753,7 +1758,7 @@ p {
   font-weight: 600;
   line-height: 12px;
   text-transform: uppercase;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .warning-name {
@@ -1827,7 +1832,7 @@ p {
   font-weight: 600;
   line-height: 12px;
   text-transform: uppercase;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .action-title {
@@ -1863,7 +1868,7 @@ p {
   font-size: 15px;
   font-weight: 600;
   line-height: 18px;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .action-footer {
@@ -1961,7 +1966,7 @@ p {
 .queue-gap {
   font-size: 12px;
   font-weight: 600;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
   text-align: right;
 }
 
@@ -2723,7 +2728,7 @@ p {
   font-weight: 600;
   line-height: 12px;
   text-transform: uppercase;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 .notice-place {
@@ -2813,7 +2818,7 @@ p {
 .matrix-table td.cell-pct {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--tone);
+  color: var(--tone-text, var(--tone));
 }
 
 /* Forecast extras ------------------------------------------------------------ */
@@ -2987,7 +2992,7 @@ p {
   border-radius: var(--radius-control);
   background: var(--danger-soft);
   font-size: 12px;
-  color: var(--danger);
+  color: var(--danger-text);
 }
 
 .login-note {
@@ -3105,7 +3110,7 @@ p {
   }
   .radar-legend li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
   .radar-legend-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--tone); }
-  .radar-legend strong { color: var(--tone); font-weight: 600; }
+  .radar-legend strong { color: var(--tone-text, var(--tone)); font-weight: 600; }
   .matrix-table td { height: 56px; }
   .matrix-card { min-height: 0; }
 }
@@ -3170,7 +3175,7 @@ p {
   line-height: 12px;
   color: var(--text-secondary);
 }
-.map-label-sub.tone-text { color: var(--tone); font-weight: 500; }
+.map-label-sub.tone-text { color: var(--tone-text, var(--tone)); font-weight: 500; }
 
 .map-label .bubble-tip { text-transform: none; text-align: left; }
 .map-label:hover .bubble-tip,

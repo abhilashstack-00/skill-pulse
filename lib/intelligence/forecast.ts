@@ -47,7 +47,7 @@ export function forecastDemandSeries(
   }
   const none = (reason: 'too_few_months' | 'stale'): DemandForecast => ({
     ...base, method: 'insufficient_data', predictedDemand: null, lowerBound: null, upperBound: null,
-    parts: null, interval: null, confidence: null, components: null, monthly: [], reason,
+    parts: null, interval: null, confidence: null, confidenceBasis: null, components: null, monthly: [], reason,
   })
 
   const points = observations
@@ -130,6 +130,14 @@ export function forecastDemandSeries(
     parts: { baseline: round(baselineTotal, 1), trend: round(trendTotal, 1), recentGrowth: round(growthTotal, 1), floorAdjustment: round(floorAdjustment, 1) },
     interval: { modelHalfWidth: round(modelHalf, 1), calibrationFactor: round(calibrationFactor, 3), halfWidth: round(half, 1) },
     confidence: confidenceFrom(total, half, method, params),
+    confidenceBasis: {
+      monthsObserved: points.length,
+      monthsInWindow: params.trendWindow,
+      monthsSinceLatest: asOf - points[points.length - 1].t,
+      relativeHalfWidthPct: round(total > 0 ? (half / total) * 100 : 100, 1),
+      scoreFromInterval: confidenceFrom(total, half, 'full', params).score,
+      cap: method === 'baseline_estimate' ? params.confidence.capBaselineEstimate : method === 'limited_history' ? params.confidence.capLimitedHistory : null,
+    },
     components: {
       baseline: round(baseline, 2),
       trendSlope: round(trendSlope, 3),

@@ -25,6 +25,8 @@ export function LoginForm() {
       setBusy(false)
       return
     }
+    // A full page load on purpose: every cached response belongs to the previous session or role.
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
     window.location.assign('/')
   }
 

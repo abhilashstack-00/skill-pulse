@@ -189,6 +189,22 @@ half-width = model half-width × calibration factor
 100. High ≥ 75, medium ≥ 50. Because the model half-width differs from pair to pair,
 confidence does too.
 
+What each kind of evidence does to the score, and where to see it (evidence panel → Forecast):
+
+| Evidence | Effect |
+|---|---|
+| History volume | under 12 observed months in the trend window caps the score at 60; under 6 at 35; under 3 there is no forecast |
+| Completeness | a month with either volume source missing is not an observation, so gaps in the series count as missing history |
+| Freshness | newest observation 3 or more months old: no forecast |
+| Noise and trend uncertainty | widen the model interval, which lowers the score |
+| Reliance on extrapolation | half of the projected change is added to the interval as uncertainty |
+| Forecast error in the backtest | the calibration factor widens every interval at that horizon |
+| Source reliability | **not measured.** All sources are synthetic; nothing here says how far a real source can be trusted |
+
+Each forecast carries this basis (`confidenceBasis`: months observed, age of the newest
+month, relative half-width, the score the interval gives and any cap applied), and a test
+checks that the published score equals what the basis implies.
+
 Honest reading of the factor: on the pilot data it is between 2 and 3. The model's own
 interval misses that much of the real error, mostly the difference between a straight-line
 trend and how demand actually moves. The factor is an empirical correction, not a derivation.
@@ -255,7 +271,7 @@ either end lands on another side of the balanced band, the classification is **n
 28 shortage pairs (4,551 of 14,902 seats short) and 14 of the 33 oversupply pairs (16,605 of
 22,051 seats spare) are firm. The Overview shows both figures, the gap export has a
 `holds_across_interval` column, and a recommendation resting on a classification that is not
-firm is marked **tentative** (40 of the 61 on the pilot). The intervals are wide because the
+firm, or on a low-confidence forecast, is marked **tentative** (42 of the 61 on the pilot). The intervals are wide because the
 12-month factor is 3.0 and unverified (section 8): this is the honest size of what the
 prototype knows at that horizon.
 
@@ -338,6 +354,13 @@ whichever window is selected on screen. A decision-support ordering, not an offi
 | Oversupply risk | capacity up ≥ 10% while demand trend ≤ −5% | medium |
 | Monitor | gap forecast to close, or a balanced pair within 5 points of a threshold | low |
 
+Every warning is computed on request from the pair's figures; none is stored. Each carries
+its severity, trade and district, the reason, the figures that made the rule fire, and what
+it rests on: the current rate (acute shortage, saturation), a forecast (upcoming shortage,
+upcoming saturation and monitor on the 6-month forecast; emerging shortage on the 12-month
+one), or the observed trend alone (oversupply risk). Only a warning that rests on a forecast
+quotes a forecast confidence.
+
 ## 14. Recommendations
 
 | Situation (12-month classification) | Recommendation |
@@ -350,7 +373,23 @@ whichever window is selected on screen. A decision-support ordering, not an offi
 | Balanced | Maintain (not listed in the action queue) |
 | Insufficient data | Collect data |
 | Oversupply or severe oversupply while a demand source is flagged (section 2) | adds "check the demand data first" |
-| Any action whose classification does not hold across the interval (section 9) | marked "tentative" |
+| Any action on a low-confidence forecast, or whose classification does not hold across the interval (section 9) | marked "tentative": monitor the next refresh before reallocating |
+
+**Expected effect** is arithmetic on the same forecast and seats, not a second model:
+
+```
+add seats      fewest extra seats with gap % under +15:   floor(demand ÷ 1.15) + 1 − supply
+release seats  fewest seats to redirect with gap % above −15:   supply − (ceil(demand ÷ 0.85) − 1)
+fill seats     allocated seats nobody is enrolled in:   seats − enrolled
+```
+
+The seat count is the smallest that works, so the gap after the change sits just inside the
+threshold; it is shown to two decimals and cut, not rounded, so it never prints as the
+threshold itself. With no demand forecast at all, every seat is spare and no percentage is
+quoted. It holds only "if demand comes in as forecast", and the text says so. Filling seats does not
+move the gap shown, because supply is counted as allocated seats; the text says that too.
+The Action Center shows, for each recommendation: the problem (classification, forecast
+demand against seats), the evidence list, the action, the expected effect and the confidence.
 
 Warnings are findings and every role sees them. The suggested action on a warning, and
 recommendations, are planner advice: employers do not receive them, on any route or export.

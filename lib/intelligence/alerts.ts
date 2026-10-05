@@ -39,6 +39,15 @@ export function evaluateWarnings(input: AlertInputs, params: typeof ALERTS = ALE
     { key: 'ev.planningGapPct', value: planning.gap.gapPercentage, unit: 'pct' },
   ]
 
+  // What each rule reads, so a warning can say over what period and with what confidence it holds.
+  // "Emerging shortage" needs a positive planning-forecast gap, so it rests on that forecast.
+  // "Oversupply risk" reads only the observed trend and the change in capacity: no forecast, so no forecast confidence.
+  const VIEW: Record<WarningType, { basis: Warning['basis']; view: HorizonResult }> = {
+    acute_shortage: { basis: 'current', view: current }, saturation: { basis: 'current', view: current },
+    upcoming_shortage: { basis: 'forecast', view: lookahead }, upcoming_saturation: { basis: 'forecast', view: lookahead }, monitor: { basis: 'forecast', view: lookahead },
+    emerging_shortage: { basis: 'forecast', view: planning },
+    oversupply_risk: { basis: 'trend', view: current },
+  }
   const add = (type: WarningType, severity: Severity, action: string, evidence: EvidenceItem[], variant = '') =>
     warnings.push({
       id: `${type}:${input.key}`,
@@ -49,6 +58,11 @@ export function evaluateWarnings(input: AlertInputs, params: typeof ALERTS = ALE
       tradeId: input.tradeId,
       reason: `warning.${type}.reason${variant}`,
       recommendedAction: action,
+      basis: VIEW[type].basis,
+      horizon: VIEW[type].view.horizon,
+      horizonMonths: VIEW[type].view.months,
+      // Only a forecast has a forecast confidence.
+      confidence: VIEW[type].basis === 'forecast' ? VIEW[type].view.confidence : null,
       params: {
         currentStatus: now,
         currentGapPct: current.gap.gapPercentage,

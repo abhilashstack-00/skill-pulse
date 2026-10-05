@@ -14,7 +14,7 @@ type Row = Record<string, string | number | null>
  * Flat rows for planners' own tools. Every row carries the data label, so an
  * exported file cannot be mistaken for official statistics.
  */
-export function exportRows(snapshot: Snapshot, dataset: ExportDataset, f: Filters, options: { advice: boolean } = { advice: true }): Row[] {
+export function exportRows(snapshot: Snapshot, dataset: ExportDataset, f: Filters, options: { advice: boolean }): Row[] {
   const d = snapshot.dataset
   const t = translator('en')
   const names = namesFrom(d, 'en')
@@ -35,6 +35,12 @@ export function exportRows(snapshot: Snapshot, dataset: ExportDataset, f: Filter
   })
   const stamp: Row = { data_label: snapshot.meta.label, data_as_of: snapshot.meta.asOfPeriod, methodology_version: snapshot.methodologyVersion }
 
+  const advice = (c: CellAnalysis): Row => {
+    const r = c.recommendation
+    const text = recommendationText(t, names, r)
+    return { recommended_action: r.action, recommendation: text.text, recommendation_horizon: PRIORITY.planningHorizon, effect_seats: r.effect?.seats ?? null, tentative: r.tentative ? 'yes' : 'no' }
+  }
+
   switch (dataset) {
     case 'gaps':
       return cells.flatMap((c) =>
@@ -43,7 +49,10 @@ export function exportRows(snapshot: Snapshot, dataset: ExportDataset, f: Filter
           return {
             ...place(c), horizon: h, period_start: x.periodStart, period_end: x.periodEnd,
             demand: x.demand, supply: x.supply, gap: x.gap.gap, gap_percentage: x.gap.gapPercentage, status: x.gap.status, holds_across_interval: x.firm === null ? null : x.firm ? 'yes' : 'no',
-            priority_score: c.priority.score, priority_band: c.priority.band, confidence_score: x.confidence?.score ?? null, forecast_method: x.method, ...stamp,
+            priority_score: c.priority.score, priority_band: c.priority.band, confidence_score: x.confidence?.score ?? null, confidence: x.confidence?.label ?? null, forecast_method: x.method,
+            demand_lower: x.demandLower, demand_upper: x.demandUpper, warnings: c.warnings.map((w) => w.type).join(' ') || null,
+            // The planner recommendation rests on the planning horizon whichever horizon is exported; roles without advice do not get it.
+            ...(options.advice ? advice(c) : {}), ...stamp,
           }
         }),
       ).filter((r) => matchesStatus(r.status as GapStatus, f.status))
@@ -76,14 +85,14 @@ export function exportRows(snapshot: Snapshot, dataset: ExportDataset, f: Filter
       return cells.flatMap((c) =>
         c.warnings.map((w) => {
           const text = warningText(t, w)
-          return { ...place(c), type: w.type, severity: w.severity, title: text.title, reason: text.reason, ...(options.advice ? { recommended_action: text.action } : {}), evidence: w.evidence.map((e) => `${t(e.key)}=${e.value ?? 'n/a'}`).join('; '), ...stamp }
+          return { ...place(c), type: w.type, severity: w.severity, title: text.title, reason: text.reason, basis: w.basis, horizon: w.horizon, horizon_months: w.horizonMonths, confidence_score: w.confidence?.score ?? null, confidence: w.confidence?.label ?? null, ...(options.advice ? { recommended_action: text.action } : {}), evidence: w.evidence.map((e) => `${t(e.key)}=${e.value ?? 'n/a'}`).join('; '), ...stamp }
         }),
       )
     case 'recommendations':
       return cells.map((c) => {
         const r = c.recommendation
         const text = recommendationText(t, names, r)
-        return { ...place(c), action: r.action, title: text.title, recommendation: text.text, note: text.secondary, caution: text.caution, tentative: text.tentative, status: r.status, priority_score: r.priorityScore, evidence: r.evidence.map((e) => `${t(e.key)}=${e.value ?? 'n/a'}`).join('; '), ...stamp }
+        return { ...place(c), action: r.action, title: text.title, recommendation: text.text, expected_effect: text.effect, effect_kind: r.effect?.kind ?? null, effect_seats: r.effect?.seats ?? null, gap_pct_after: r.effect?.resultingGapPct ?? null, note: text.secondary, caution: text.caution, tentative: text.tentative, confidence_score: r.confidence?.score ?? null, confidence: r.confidence?.label ?? null, status: r.status, priority_score: r.priorityScore, evidence: r.evidence.map((e) => `${t(e.key)}=${e.value ?? 'n/a'}`).join('; '), ...stamp }
       })
         // Same order as the Action Center: actions first, "maintain" last, highest priority first within each.
         .sort((a, b) => Number(a.action === 'maintain') - Number(b.action === 'maintain') || ((b.priority_score as number | null) ?? -1) - ((a.priority_score as number | null) ?? -1))

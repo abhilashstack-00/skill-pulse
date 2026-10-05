@@ -475,7 +475,7 @@ describe('classifications and the forecast interval', () => {
     expect(Math.abs(all.firmSurplusTotal)).toBeLessThanOrEqual(Math.abs(all.surplusTotal))
     // "Current" has no interval, so nothing is called firm or not.
     expect(snapshot.cells.every((c) => c.horizons.current.firm === null)).toBe(true)
-    for (const c of snapshot.cells) expect(c.recommendation.tentative, c.key).toBe(c.horizons['12M'].firm === false && ['increase_capacity', 'fill_seats_first', 'review_allocation', 'reduce_or_redirect'].includes(c.recommendation.action))
+    for (const c of snapshot.cells) expect(c.recommendation.tentative, c.key).toBe((c.horizons['12M'].firm === false || c.horizons['12M'].confidence?.label === 'low') && ['increase_capacity', 'fill_seats_first', 'review_allocation', 'reduce_or_redirect'].includes(c.recommendation.action))
   })
 
 })

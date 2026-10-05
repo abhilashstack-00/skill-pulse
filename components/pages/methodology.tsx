@@ -148,6 +148,34 @@ export function MethodologyPage() {
                   <Pill tone="neutral" compact>{t('common.prototypeThresholds')}</Pill> &nbsp;{t('method.version', { version: m.version })} · {m.forecast.modelVersion} · {m.supplyForecast.modelVersion}
                 </p>
               </SectionCard>
+
+              <SectionCard className="method-card" aria-labelledby="normalization-title">
+                <h2 className="card-title" id="normalization-title">{t('method.normalization')}</h2>
+                <p className="method-text">{t('method.normalization.text', { spelling: Math.round(data.matching.fuzzyThreshold * 100), word: Math.round(data.matching.wordThreshold * 100) })}</p>
+                <p className="method-text">{t('method.normalization.quality', { share: m.dataQuality.minVolumeSharePct, large: m.dataQuality.largeRejectSharePct })}</p>
+                <h3 className="drawer-section-title">{t('method.confidence')}</h3>
+                <p className="method-text">
+                  {t('method.confidence.text', {
+                    zero: Math.round(m.forecast.confidence.zeroAtRelativeWidth * 100), window: m.forecast.trendWindow, minTrend: m.forecast.minMonthsTrend, minBaseline: m.forecast.minMonthsBaseline,
+                    capShort: m.forecast.confidence.capLimitedHistory, capBaseline: m.forecast.confidence.capBaselineEstimate, stale: m.forecast.staleAfterMonths,
+                  })}
+                </p>
+              </SectionCard>
+
+              <SectionCard className="method-card" aria-labelledby="limits-title">
+                <h2 className="card-title" id="limits-title">{t('method.limits')}</h2>
+                <p className="method-text"><strong>{t('sources.statement')}</strong></p>
+                <ul className="rule-list">
+                  <li>{t('method.limits.assumptions')}</li>
+                  <li>{t('method.limits.coverage', data.coverage)}</li>
+                  <li>{t('method.limits.supply')}</li>
+                  <li>{t('method.limits.demand')}</li>
+                  <li>{t('method.limits.forecast')}</li>
+                  <li>{t('method.limits.confidence')}</li>
+                  <li>{t('method.limits.backtest')}</li>
+                  <li>{t('method.limits.sources')}</li>
+                </ul>
+              </SectionCard>
             </>
           )
         })()
