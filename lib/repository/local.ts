@@ -19,4 +19,8 @@ export class LocalRepository implements Repository {
   async getProfile(): Promise<Profile | null> {
     return null
   }
+
+  async visibleDistrictIds(): Promise<null> {
+    return null
+  }
 }

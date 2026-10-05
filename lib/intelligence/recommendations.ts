@@ -14,6 +14,8 @@ export interface RecommendationInputs {
   completionRatePct: number | null
   placementRatePct: number | null
   priorityScore: number | null
+  /** True when a demand source lost a material share of its volume on the way in. */
+  demandDataDoubtful: boolean
 }
 
 /**
@@ -63,6 +65,10 @@ export function recommend(input: RecommendationInputs, params: typeof RECOMMENDA
     tradeId: input.tradeId,
     action,
     secondary,
+    // Missing demand makes a pair look oversupplied; cutting seats on that basis would be the costly mistake.
+    caution: input.demandDataDoubtful && isOversupply(status) ? 'verify_demand_data' : null,
+    // The interval reaches another side of the balanced band: the direction is likely, the amount is not settled.
+    tentative: planning.firm === false && (isShortage(status) || isOversupply(status)),
     params: {
       gap: planning.gap.gap,
       gapPct: planning.gap.gapPercentage,

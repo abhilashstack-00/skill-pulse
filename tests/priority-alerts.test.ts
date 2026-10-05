@@ -2,13 +2,13 @@ import { describe, expect, it } from 'vitest'
 import { PRIORITY } from '@/lib/config/methodology'
 import type { GapStatus, HorizonResult } from '@/lib/domain/types'
 import { evaluateWarnings } from '@/lib/intelligence/alerts'
-import { computeGap } from '@/lib/intelligence/gap'
+import { computeGap, isFirm } from '@/lib/intelligence/gap'
 import { computePriority } from '@/lib/intelligence/priority'
 import { recommend } from '@/lib/intelligence/recommendations'
 
 const horizon = (demand: number | null, supply: number | null, key: HorizonResult['horizon'] = '12M'): HorizonResult => ({
   horizon: key, months: key === '6M' ? 6 : 12, periodStart: '2026-10', periodEnd: '2027-09',
-  demand, demandLower: demand, demandUpper: demand, supply, gap: computeGap(demand, supply),
+  demand, demandLower: demand, demandUpper: demand, supply, gap: computeGap(demand, supply), firm: demand === null || supply === null ? null : true,
   confidence: demand === null ? null : { score: 80, label: 'high' }, method: demand === null ? 'insufficient_data' : 'full',
 })
 
@@ -59,7 +59,23 @@ describe('Priority Score', () => {
     const at = (gapPct: number) => computePriority({ gap: computeGap(1000 + gapPct * 10, 1000), demandTrendPct: 0, employmentSignal: 0, utilizationPct: 0, confidenceScore: 0 })
     expect(at(60).score).toBe(35) // only gap severity contributes: 0.35 × 100
     expect(at(60).band).toBe('low')
-    expect(PRIORITY.bands).toEqual({ high: 70, medium: 45 })
+    // With every other component at 100: score = 35 × severity + 65. Severity 5 ÷ 60 → 67.9, 9 ÷ 60 → 70.25.
+    const withRest = (gapPct: number) => computePriority({ gap: computeGap(1000 + gapPct * 10, 1000), demandTrendPct: 30, employmentSignal: 100, utilizationPct: 100, confidenceScore: 100 })
+    expect(withRest(8).score).toBeCloseTo(69.7, 1)
+    expect(withRest(8).band).toBe('medium')
+    expect(withRest(9).score).toBeCloseTo(70.3, 1)
+    expect(withRest(9).band).toBe('medium') // 9% is inside the balanced band: capped, and it says so
+    expect(withRest(9).cappedBy).toBe('balanced')
+    expect(withRest(15).band).toBe('high') // a shortage with the same inputs is not capped
+    expect(withRest(15).cappedBy).toBeNull()
+    // Exactly on the cut-offs.
+    const flat = (confidence: number) => computePriority({ gap: computeGap(1000, 1000), demandTrendPct: 30, employmentSignal: 100, utilizationPct: 100, confidenceScore: confidence })
+    expect(flat(100).score).toBe(PRIORITY.bands.high - 5) // 25 + 15 + 15 + 10 = 65
+    expect(flat(100).band).toBe('medium')
+    const edge = computePriority({ gap: computeGap(1000, 1000), demandTrendPct: 30, employmentSignal: 100, utilizationPct: 0, confidenceScore: 50 })
+    expect(edge.score).toBe(PRIORITY.bands.medium) // 25 + 15 + 0 + 5 = 45
+    expect(edge.band).toBe('medium')
+    expect(computePriority({ gap: computeGap(1000, 1000), demandTrendPct: 30, employmentSignal: 100, utilizationPct: 0, confidenceScore: 40 }).band).toBe('low') // 44
   })
 })
 
@@ -115,6 +131,14 @@ describe('early-warning rules', () => {
     expect(types(horizon(null, 280, 'current'), horizon(null, 140, '6M'), horizon(null, 280), null, 3)).toEqual([])
   })
 
+  it('says a shortage deepens, not that it is coming, when the pair is already short', () => {
+    const from = (current: number, soon: number) => evaluateWarnings({ ...ids, current: horizon(current, 1000, 'current'), lookahead: horizon(soon, 500, '6M'), planning: horizon(1400, 1000), demandTrendPct: 0, capacityChangePct: 0 }).find((w) => w.type === 'upcoming_shortage')
+    expect(from(1000, 600)).toMatchObject({ reason: 'warning.upcoming_shortage.reason', recommendedAction: 'warning.action.planCapacity' }) // balanced → shortage
+    expect(from(1200, 700)).toMatchObject({ reason: 'warning.upcoming_shortage.reason.deepening', recommendedAction: 'warning.action.planCapacityWidening' }) // shortage → severe
+    const spare = evaluateWarnings({ ...ids, current: horizon(800, 1000, 'current'), lookahead: horizon(300, 500, '6M'), planning: horizon(600, 1000), demandTrendPct: 0, capacityChangePct: 0 }).find((w) => w.type === 'upcoming_saturation')
+    expect(spare?.reason).toBe('warning.upcoming_saturation.reason.deepening')
+  })
+
   it('attaches every required field to a warning', () => {
     const [w] = evaluateWarnings({ ...ids, current: horizon(1400, 1000, 'current'), lookahead: horizon(700, 500, '6M'), planning: horizon(1400, 1000), demandTrendPct: 0, capacityChangePct: 0 })
     expect(w).toMatchObject({ type: 'acute_shortage', severity: 'critical', districtId: 'warangal', sectorId: 'renewable-energy', tradeId: 'solar-technician' })
@@ -125,7 +149,7 @@ describe('early-warning rules', () => {
 })
 
 describe('planner recommendations', () => {
-  const base = { key: 'k', districtId: 'd', sectorId: 's', tradeId: 't', demandTrendPct: 10, capacityChangePct: 0, utilizationPct: 92, completionRatePct: 82, placementRatePct: 70, priorityScore: 80 }
+  const base = { key: 'k', districtId: 'd', sectorId: 's', tradeId: 't', demandTrendPct: 10, capacityChangePct: 0, utilizationPct: 92, completionRatePct: 82, placementRatePct: 70, priorityScore: 80, demandDataDoubtful: false }
   const actionFor = (demand: number | null, supply: number | null, extra: Partial<typeof base> = {}) => recommend({ ...base, ...extra, planning: horizon(demand, supply) })
 
   it.each<[number, number, string, GapStatus]>([
@@ -138,6 +162,32 @@ describe('planner recommendations', () => {
     const r = actionFor(demand, supply)
     expect(r.action).toBe(action)
     expect(r.status).toBe(status)
+  })
+
+  it('warns before cutting seats when part of the demand data did not arrive', () => {
+    expect(actionFor(400, 800).caution).toBeNull()
+    expect(actionFor(400, 800, { demandDataDoubtful: true }).caution).toBe('verify_demand_data')
+    expect(actionFor(650, 800, { demandDataDoubtful: true }).caution).toBe('verify_demand_data')
+    // Missing demand cannot create a shortage, so shortage actions carry no such note.
+    expect(actionFor(1250, 800, { demandDataDoubtful: true }).caution).toBeNull()
+    expect(actionFor(820, 800, { demandDataDoubtful: true }).caution).toBeNull()
+  })
+
+  it('marks an action tentative when the forecast interval reaches another classification', () => {
+    const supply = 1000
+    // Forecast 1,200 (+20%, shortage). Interval 1,160–1,240 stays a shortage; 1,100–1,300 reaches the balanced band at its low end.
+    expect(isFirm(computeGap(1200, supply), 1160, 1240)).toBe(true)
+    expect(isFirm(computeGap(1200, supply), 1100, 1300)).toBe(false)
+    // Shortage and severe shortage are the same side: 1,400 with 1,200–1,600 is firm although the low end is only "shortage".
+    expect(isFirm(computeGap(1400, supply), 1200, 1600)).toBe(true)
+    // A balanced pair whose interval reaches a shortage is not firm either.
+    expect(isFirm(computeGap(1100, supply), 1000, 1200)).toBe(false)
+    expect(isFirm(computeGap(null, supply), null, null)).toBeNull()
+    const planning = { ...horizon(1200, supply), demandLower: 1100, demandUpper: 1300, firm: false }
+    expect(recommend({ ...base, planning }).tentative).toBe(true)
+    expect(recommend({ ...base, planning: { ...planning, firm: true } }).tentative).toBe(false)
+    // Nothing to be tentative about when no action is proposed.
+    expect(recommend({ ...base, planning: { ...horizon(1050, supply), firm: false } }).tentative).toBe(false)
   })
 
   it('asks to fill existing seats first when they are under-used', () => {

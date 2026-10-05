@@ -142,7 +142,7 @@ create table if not exists public.gap_analysis (
   unique (district_id, trade_id, horizon)
 );
 
--- Indexes on the columns every query filters by ---------------------------------
+-- Indexes for SQL and BI clients reading these tables. (The application itself loads whole tables.)
 
 create index if not exists districts_state_idx          on public.districts (state_id);
 create index if not exists trades_sector_idx            on public.trades (sector_id);

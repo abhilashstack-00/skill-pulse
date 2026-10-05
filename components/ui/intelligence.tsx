@@ -12,8 +12,6 @@ export function useFigures() {
   const { t, locale } = useI18n()
   return {
     num: (value: number | null | undefined, decimals = 0) => (value === null || value === undefined ? '—' : formatNumber(value, decimals)),
-    orInsufficient: (value: number | null | undefined, format: (n: number) => string) =>
-      value === null || value === undefined ? t('common.insufficient') : format(value),
     /** 'next 12 months' or 'at the current annual rate'. */
     windowText: (horizon: { key: HorizonKey; months: number }) =>
       horizon.key === 'current' ? t('horizon.currentRate') : t('horizon.next', { months: horizon.months }),
@@ -41,7 +39,7 @@ export function WarningList({ warnings, showPlace = true, limit }: { warnings: W
               {showPlace && <span className="notice-place">{names.trade(w.tradeId)} · {names.district(w.districtId)}</span>}
             </div>
             <p className="notice-text">{text.reason}</p>
-            <p className="notice-action">{text.action}</p>
+            {text.action && <p className="notice-action">{text.action}</p>}
           </li>
         )
       })}
@@ -66,6 +64,8 @@ export function RecommendationList({ items, limit }: { items: Recommendation[]; 
             <p className="notice-title">{text.title}</p>
             <p className="notice-text">{text.text}</p>
             {text.secondary && <p className="notice-action">{text.secondary}</p>}
+            {text.caution && <p className="notice-action">{text.caution}</p>}
+            {text.tentative && <p className="notice-action">{text.tentative}</p>}
           </li>
         )
       })}

@@ -13,10 +13,11 @@ export interface RawTables {
   training_capacity: Row[]
   labour_demand: Row[]
   data_sources: Row[]
+  ingestion_runs: Row[]
 }
 
 export const STORED_TABLES = [
-  'dataset_meta', 'states', 'districts', 'sectors', 'trades', 'training_centres', 'training_capacity', 'labour_demand', 'data_sources',
+  'dataset_meta', 'states', 'districts', 'sectors', 'trades', 'training_centres', 'training_capacity', 'labour_demand', 'data_sources', 'ingestion_runs',
 ] as const
 
 const text = (v: unknown): string => (v === null || v === undefined ? '' : String(v))
@@ -28,6 +29,9 @@ const isoDate = (v: unknown): string =>
     ? `${v.getFullYear()}-${String(v.getMonth() + 1).padStart(2, '0')}-${String(v.getDate()).padStart(2, '0')}`
     : text(v).slice(0, 10)
 const period = (v: unknown): string => isoDate(v).slice(0, 7)
+const timestamp = (v: unknown): string => (v instanceof Date ? v.toISOString() : new Date(text(v)).toISOString())
+/** jsonb arrives parsed from PostgreSQL and PostgREST; a string means it was stored as text. */
+const json = <T,>(v: unknown, fallback: T): T => (v === null || v === undefined ? fallback : typeof v === 'string' ? (JSON.parse(v) as T) : (v as T))
 
 /** Database rows → domain dataset. The only place column names are translated. */
 export function tablesToDataset(t: RawTables): Dataset {
@@ -52,12 +56,14 @@ export function tablesToDataset(t: RawTables): Dataset {
     trainingCapacity: t.training_capacity.map((r) => ({
       districtId: text(r.district_id), sectorId: text(r.sector_id), tradeId: text(r.trade_id), year: num(r.year),
       allocatedSeats: num(r.allocated_seats), enrolled: numOrNull(r.enrolled), completed: numOrNull(r.completed), placed: numOrNull(r.placed),
+      runId: numOrNull(r.run_id),
     })),
     labourDemand: t.labour_demand.map((r) => ({
       districtId: text(r.district_id), sectorId: text(r.sector_id), tradeId: text(r.trade_id), period: period(r.period),
       jobPostings: numOrNull(r.job_postings), hiringSignal: numOrNull(r.hiring_signal),
       employmentRegistrations: numOrNull(r.employment_registrations), industryDemandSignal: numOrNull(r.industry_demand_signal),
       source: text(r.source),
+      lineage: json(r.lineage, {}),
     })),
     dataSources: t.data_sources.map((r) => ({
       id: text(r.id), name: text(r.name), description: text(r.description),
@@ -66,6 +72,15 @@ export function tablesToDataset(t: RawTables): Dataset {
       status: text(r.status) as Dataset['dataSources'][number]['status'],
       coverage: text(r.coverage), granularity: text(r.granularity), feeds: text(r.feeds),
       recordsIn: numOrNull(r.records_in), recordsMapped: numOrNull(r.records_mapped),
+    })),
+    ingestionRuns: (t.ingestion_runs ?? []).map((r) => ({
+      id: num(r.id), sourceId: text(r.source_id), fileName: text(r.file_name), loadedAt: timestamp(r.loaded_at), loadedBy: r.loaded_by ? text(r.loaded_by) : null,
+      mode: r.mode === 'replace' ? 'replace' : 'merge', synthetic: r.synthetic !== false,
+      rowsRead: num(r.rows_read), rowsMapped: num(r.rows_mapped), rowsRejected: num(r.rows_rejected), rowsLooselyMatched: num(r.rows_loosely_matched ?? 0),
+      rowsHeld: num(r.rows_held ?? 0), looseMatches: r.loose_policy === 'count' ? 'count' : 'hold',
+      valueRead: numOrNull(r.value_read), valueMapped: numOrNull(r.value_mapped),
+      periodMin: r.period_min ? text(r.period_min) : null, periodMax: r.period_max ? text(r.period_max) : null,
+      rejects: json(r.rejects, []), rejectKinds: num(r.reject_kinds ?? 0), looseMatchList: json(r.loose_matches, []), looseKinds: num(r.loose_kinds ?? 0),
     })),
   }
 }
@@ -81,4 +96,5 @@ export const TABLE_ORDER: Record<(typeof STORED_TABLES)[number], string> = {
   training_capacity: 'id',
   labour_demand: 'id',
   data_sources: 'id',
+  ingestion_runs: 'id',
 }

@@ -21,7 +21,8 @@ export interface PriorityInputs {
  * Components are measured in the direction of the gap, so the same score
  * ranks shortages (rising demand, full seats) and oversupply (falling demand,
  * empty seats). A prototype decision-support score, not an official ranking.
- * Returns null when any input is missing.
+ * Returns null when any input is missing. A pair forecast to be balanced is
+ * never placed in the high band, whatever its score.
  */
 export function computePriority(input: PriorityInputs, params: typeof PRIORITY = PRIORITY): PriorityResult {
   const { gap } = input
@@ -57,9 +58,11 @@ export function computePriority(input: PriorityInputs, params: typeof PRIORITY =
     }
   })
   const missing = components.filter((c) => c.value === null).map((c) => c.key)
-  if (missing.length) return { score: null, band: null, direction, components, missing }
+  if (missing.length) return { score: null, band: null, cappedBy: null, direction, components, missing }
 
   const score = round(components.reduce((total, c) => total + c.weight * (values[c.key].value as number), 0), 1)
-  const band = score >= params.bands.high ? 'high' : score >= params.bands.medium ? 'medium' : 'low'
-  return { score, band, direction, components, missing }
+  const byScore = score >= params.bands.high ? 'high' : score >= params.bands.medium ? 'medium' : 'low'
+  // Fast growth and full seats can lift a balanced pair's score, but there is no mismatch to act on yet.
+  const capped = gap.status === 'balanced' && byScore === 'high'
+  return { score, band: capped ? params.balancedBandCap : byScore, cappedBy: capped ? 'balanced' : null, direction, components, missing }
 }

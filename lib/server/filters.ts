@@ -9,6 +9,8 @@ export interface Filters {
   tradeId: string | null
   horizon: HorizonKey
   status: StatusFilter | null
+  /** Districts the database lets this session read; null when that does not apply. Never taken from the request. */
+  districtIds: ReadonlySet<string> | null
 }
 
 export class ValidationError extends Error {}
@@ -50,6 +52,10 @@ export function parseFilters(params: URLSearchParams, snapshot: Snapshot, scope:
   }
   if (scope.stateId && stateId && stateId !== scope.stateId) throw new AccessError(403, 'That state is outside your access scope.')
   if (scope.districtId && districtId && districtId !== scope.districtId) throw new AccessError(403, 'That district is outside your access scope.')
+  if (scope.districtIds) {
+    if (districtId && !scope.districtIds.has(districtId)) throw new AccessError(403, 'That district is outside your access scope.')
+    if (stateId && !d.districts.some((x) => x.stateId === stateId && scope.districtIds!.has(x.id))) throw new AccessError(403, 'That state is outside your access scope.')
+  }
 
   return {
     stateId: scope.stateId ?? stateId,
@@ -58,13 +64,18 @@ export function parseFilters(params: URLSearchParams, snapshot: Snapshot, scope:
     tradeId: q.tradeId ?? null,
     horizon: q.horizon ?? '12M',
     status: q.status ?? null,
+    districtIds: scope.districtIds,
   }
 }
 
 /** Cells matching the geography, sector and trade filters (status is applied by the caller). */
-export function filterCells(snapshot: Snapshot, f: Pick<Filters, 'stateId' | 'districtId' | 'sectorId' | 'tradeId'>): CellAnalysis[] {
+export function filterCells(
+  snapshot: Snapshot,
+  f: Pick<Filters, 'stateId' | 'districtId' | 'sectorId' | 'tradeId'> & { districtIds?: ReadonlySet<string> | null },
+): CellAnalysis[] {
   return snapshot.cells.filter(
     (c) =>
+      (!f.districtIds || f.districtIds.has(c.districtId)) &&
       (!f.stateId || c.stateId === f.stateId) &&
       (!f.districtId || c.districtId === f.districtId) &&
       (!f.sectorId || c.sectorId === f.sectorId) &&

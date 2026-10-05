@@ -1,9 +1,10 @@
 'use client'
 
 import type {
-  alertsView, drilldownView, forecastsView, gapsView, metaView, methodologyView, recommendationsView, sourcesView, summaryView, tradeView,
+  alertsView, drilldownView, evidenceView, forecastsView, gapsView, metaView, methodologyView, recommendationsView, RunView, sourcesView, summaryView, tradeView,
 } from '@/lib/server/views'
-import type { HorizonKey, StatusFilter } from '@/lib/domain/types'
+import type { HorizonKey, IngestionRun, StatusFilter } from '@/lib/domain/types'
+import type { IngestReport } from '@/lib/ingest/ingest'
 
 /**
  * Browser-side client for the SkillPulse API. Screens call these functions
@@ -20,6 +21,14 @@ export type RecommendationsData = ReturnType<typeof recommendationsView>
 export type TradeData = NonNullable<ReturnType<typeof tradeView>>
 export type MethodologyData = ReturnType<typeof methodologyView>
 export type SourcesData = ReturnType<typeof sourcesView>
+export type EvidenceData = NonNullable<ReturnType<typeof evidenceView>>
+export interface IngestInfo {
+  canLoad: boolean
+  writable: boolean
+  specs: { id: string; kind: 'demand' | 'training'; columns: string[] }[]
+  runs: RunView[]
+}
+export interface IngestResult { written: boolean; report: IngestReport; run: IngestionRun | null; asOfPeriod?: string; derivedRefreshed?: boolean; replaces: number }
 
 export interface QueryFilters {
   stateId?: string | null
@@ -75,6 +84,26 @@ export const getRecommendations = (f: QueryFilters) => get<RecommendationsData>(
 export const getTrade = (tradeId: string, f: QueryFilters) => get<TradeData>(`trade/${encodeURIComponent(tradeId)}`, { ...f, tradeId: null, sectorId: null })
 export const getMethodology = () => get<MethodologyData>('methodology')
 export const getSources = () => get<SourcesData>('sources')
+export const getEvidence = (districtId: string, tradeId: string) => get<EvidenceData>('evidence', { districtId, tradeId })
+export const getIngest = () => get<IngestInfo>('ingest')
+
+/** Send one source file to be checked (dry run) or loaded. */
+export async function postIngest(input: { source: string; file: File; mode: 'merge' | 'replace'; synthetic: boolean; countLoose: boolean; monthFirst: boolean; dryRun: boolean }): Promise<IngestResult> {
+  const form = new FormData()
+  form.set('source', input.source)
+  form.set('file', input.file)
+  form.set('mode', input.mode)
+  form.set('synthetic', String(input.synthetic))
+  form.set('countLoose', String(input.countLoose))
+  form.set('monthFirst', String(input.monthFirst))
+  form.set('dryRun', String(input.dryRun))
+  const response = await fetch('/api/ingest', { method: 'POST', body: form, credentials: 'same-origin' })
+  const body = (await response.json().catch(() => null)) as { data?: IngestResult; error?: string } | null
+  if (!response.ok || !body?.data) throw new ApiError(response.status, body?.error ?? 'The file could not be loaded.')
+  // Everything on screen was computed from the old rows.
+  if (body.data.written) inflight.clear()
+  return body.data
+}
 
 export const exportUrl = (dataset: string, f: QueryFilters) => `/api/export${query({ dataset, format: 'csv', ...f })}`
 

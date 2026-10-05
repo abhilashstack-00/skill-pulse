@@ -60,7 +60,7 @@ export function ForecastsPage() {
               items={[
                 { label: t('forecast.legend.actual'), color: seriesColor.demand },
                 { label: t('forecast.legend.forecast'), color: seriesColor.demand, kind: 'dashed' },
-                { label: t('forecast.legend.band'), color: seriesColor.demand, kind: 'band' },
+                { label: t('forecast.legend.band', { coverage: data ? Math.round(data.model.coverage * 100) : 80 }), color: seriesColor.demand, kind: 'band' },
                 { label: t('forecast.legend.capacity'), color: seriesColor.supply },
               ]}
             />
@@ -105,15 +105,19 @@ export function ForecastsPage() {
                 <dd className="summary-value" style={{ marginLeft: 0 }}>{totals.supply === null ? t('common.insufficient') : num(totals.supply)}</dd>
               </div>
               <div>
-                <dt className="summary-label">{t('forecast.summary.gap')}</dt>
+                <dt className="summary-label">{totals.cellsIncluded > 1 ? t('forecast.summary.mismatch') : t('forecast.summary.gap')}</dt>
                 <dd className="summary-value" style={{ marginLeft: 0 }}>
-                  {totals.gap === null ? t('common.insufficient') : `${signed(totals.gap)}${totals.gapPercentage === null ? '' : ` (${signedPct(totals.gapPercentage)})`}`}
+                  {totals.gap === null
+                    ? t('common.insufficient')
+                    : totals.cellsIncluded > 1
+                      ? `${formatNumber(totals.shortageTotal)} / ${formatNumber(Math.abs(totals.surplusTotal))}`
+                      : `${signed(totals.gap)}${totals.gapPercentage === null ? '' : ` (${signedPct(totals.gapPercentage)})`}`}
                 </dd>
               </div>
               <div>
                 <dt className="summary-label">{t('forecast.summary.confidence')}</dt>
                 <dd className="summary-value" style={{ marginLeft: 0 }}>
-                  {filters.horizon === 'current' ? t('forecast.summary.observed') : totals.confidence ? `${t(`confidence.${totals.confidence.label}`)} · ${totals.confidence.score}` : t('common.insufficient')}
+                  {filters.horizon === 'current' ? t('forecast.summary.observed') : totals.confidence ? `${t(`confidence.${totals.confidence.label}`)} · ${totals.confidence.score}${data?.interval && !data.interval.forwardCheck ? ` · ${t('forecast.provisional')}` : ''}` : t('common.insufficient')}
                 </dd>
               </div>
               <div>
@@ -123,7 +127,8 @@ export function ForecastsPage() {
             </dl>
             <div className="action-footer" style={{ marginTop: 24 }}>
               <p className="summary-note" style={{ marginTop: 0 }}>
-                <StatusBadge status={totals.status} /> &nbsp;{periodText(data.horizon)} · {t('common.pairs', { count: totals.cellsIncluded + totals.cellsExcluded })}
+                <StatusBadge status={totals.headline} /> &nbsp;{periodText(data.horizon)} · {t('common.pairs', { count: totals.cellsIncluded })}
+                {totals.cellsIncluded > 1 && totals.gap !== null && ` · ${t('forecast.summary.net', { value: signed(totals.gap) })}`}
               </p>
               {meta?.session.permissions.recommendations && (
                 <Button variant="secondary" onClick={() => router.push('/action-center')}>
@@ -139,16 +144,33 @@ export function ForecastsPage() {
         <SectionCard className="build-card" aria-labelledby="build-title">
           <h2 className="card-title" id="build-title">{t('forecast.build.title')}</h2>
           <div className="build-lines">
-            {data.components ? (
-              <p>
-                <strong>
-                  {t('forecast.build.line', {
-                    baseline: formatNumber(data.components.parts.baseline), trend: signed(data.components.parts.trend),
-                    growth: signed(data.components.parts.recentGrowth), total: num(totals.demand),
-                  })}
-                </strong>{' '}
-                {t('forecast.build.interval', { lower: num(totals.lower), upper: num(totals.upper) })}
-              </p>
+            {data.breakdown ? (
+              <>
+                <p>
+                  <strong>
+                    {t('forecast.build.line', { baseline: formatNumber(data.breakdown.baseline), trend: signed(data.breakdown.trend), growth: signed(data.breakdown.recentGrowth) })}
+                    {data.breakdown.floorAdjustment !== 0 && ` ${t('forecast.build.floor', { value: signed(data.breakdown.floorAdjustment) })}`}
+                    {data.breakdown.rounding !== 0 && ` ${t('forecast.build.rounding', { value: signed(data.breakdown.rounding) })}`}
+                    {` = ${formatNumber(data.breakdown.total)}`}
+                  </strong>{' '}
+                  {totals.cellsIncluded === 1 ? t('forecast.build.pairsOne') : t('forecast.build.pairs', { count: totals.cellsIncluded })}
+                </p>
+                {data.interval && (
+                  <p>
+                    {t('forecast.build.interval', { lower: num(totals.lower), upper: num(totals.upper), coverage: Math.round(data.model.coverage * 100) })}{' '}
+                    {data.interval.single
+                      ? t('forecast.build.intervalOne', { model: formatNumber(data.interval.single.modelHalfWidth), factor: formatNumber(data.interval.calibrationFactor, 2), half: formatNumber(data.interval.halfWidth) })
+                      : t('forecast.build.intervalMany', { pairs: data.interval.pairs, rho: formatNumber(data.interval.errorCorrelation, 2), measured: data.interval.measuredCorrelation === null ? '—' : formatNumber(data.interval.measuredCorrelation, 2), min: formatNumber(data.interval.minCorrelation, 2), independent: formatNumber(data.interval.ifIndependent), instep: formatNumber(data.interval.ifInStep), half: formatNumber(data.interval.halfWidth) })}
+                  </p>
+                )}
+                {data.interval && (
+                  <p>
+                    {data.interval.forwardCheck
+                      ? t('forecast.build.checked', { coverage: formatNumber(data.interval.forwardCheck.coveragePct, 1), samples: formatNumber(data.interval.forwardCheck.samples), target: Math.round(data.model.coverage * 100) })
+                      : t('forecast.build.unchecked', { months: data.horizon.months })}
+                  </p>
+                )}
+              </>
             ) : (
               <p><strong>{t('horizon.window.current')}</strong></p>
             )}
@@ -159,8 +181,13 @@ export function ForecastsPage() {
                 {data.excluded.slice(0, 4).map((x) => `${names.trade(x.tradeId)} (${names.district(x.districtId)})`).join(', ')}
               </p>
             )}
-            {tested && tested.wape !== null && tested.p80Ape !== null && (
-              <p>{t('forecast.backtest', { months: data.horizon.months, p80: formatNumber(tested.p80Ape, 1), wape: formatNumber(tested.wape, 1) })}</p>
+            {tested && tested.wape !== null && tested.calibrationFactor !== null && (
+              <p>
+                {t('forecast.backtest', {
+                  samples: formatNumber(tested.samples), pairs: tested.cells, months: data.horizon.months, wape: formatNumber(tested.wape, 1),
+                  factor: formatNumber(tested.calibrationFactor, 2), coverage: Math.round(data.model.coverage * 100),
+                })}
+              </p>
             )}
             <p>{t('skill.forecast.model')}: {data.model.demand} · {data.model.supply}</p>
           </div>

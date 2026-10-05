@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
 import { getDrilldown, type DrilldownData } from '@/lib/client/api'
 import { toQuery, useFilters, type Filters } from '@/lib/filters-context'
-import { cx, formatNumber, signed, signedPct } from '@/lib/format'
+import { cx, formatNumber } from '@/lib/format'
 import { useService } from '@/lib/hooks/use-service'
 import { useI18n } from '@/lib/i18n/context'
-import { gapTone } from '@/lib/ui/tones'
+import { headlineTone } from '@/lib/ui/tones'
 import { useMeta } from '@/components/layout/app-shell'
 import { PageHeader } from '@/components/layout/page-header'
 import { Legend } from '@/components/charts/chart-kit'
@@ -76,13 +76,20 @@ export function MarketExplorerPage() {
               <div className="map-footer">
                 <Legend
                   items={[
-                    { label: t('overview.balance.shortage'), color: 'var(--danger)', kind: 'dot' },
-                    { label: t('overview.balance.balanced'), color: 'var(--success)', kind: 'dot' },
-                    { label: t('overview.balance.oversupply'), color: 'var(--warning)', kind: 'dot' },
+                    { label: t('status.mostly_shortage'), color: 'var(--danger)', kind: 'dot' },
+                    { label: t('status.mostly_oversupply'), color: 'var(--warning)', kind: 'dot' },
+                    { label: t('status.mixed'), color: '#7a3fd1', kind: 'dot' },
+                    { label: `${t('status.balanced')} / ${t('status.largely_balanced')}`, color: 'var(--success)', kind: 'dot' },
                   ]}
                 />
                 <span className="map-count" aria-live="polite">{t('explorer.map.pairs', { count: data.total.cells })}</span>
               </div>
+              <p className="map-credit">
+                {data.mapScope.districtId
+                  ? t('explorer.map.scopeDistrict', { district: names.district(data.mapScope.districtId) })
+                  : t('explorer.map.rule')}{' '}
+                {t('explorer.map.credit')}
+              </p>
             </div>
           )}
         </SectionCard>
@@ -102,18 +109,20 @@ export function MarketExplorerPage() {
                   <button
                     type="button"
                     className="ranking-row"
-                    aria-label={`${index + 1}. ${names.trade(row.tradeId)}: ${row.gapPercentage === null ? t('common.insufficient') : signedPct(row.gapPercentage)}. ${t('common.openTrade')}`}
+                    aria-label={`${index + 1}. ${names.trade(row.tradeId)}: ${t(`status.${row.headline}`)}, ${t('explorer.rankings.pairs', { count: row.highPriorityPairs })}. ${t('common.openTrade')}`}
                     onClick={() => openTrade({ tradeId: row.tradeId, sectorId: row.sectorId })}
                   >
                     <span className="ranking-rank">{String(index + 1).padStart(2, '0')}</span>
                     <span>
                       <span className="ranking-name">{names.trade(row.tradeId)}</span>
-                      <span className={cx('ranking-gap', `tone-${gapTone(row.status)}`)}>
-                        {row.gap === null ? t('common.insufficient') : `${signed(row.gap)} · ${row.gapPercentage === null ? '—' : signedPct(row.gapPercentage)}`}
+                      <span className={cx('ranking-gap', `tone-${headlineTone[row.headline]}`)}>
+                        {row.cellsIncluded === 0
+                          ? t('common.insufficient')
+                          : `${t('explorer.map.short', { value: formatNumber(row.shortageTotal) })} · ${t('explorer.map.spare', { value: formatNumber(Math.abs(row.surplusTotal)) })}`}
                       </span>
                     </span>
                     <span className="ranking-score">
-                      {t(`status.${row.status}`)}
+                      {t('explorer.rankings.pairs', { count: row.highPriorityPairs })}
                       <br />
                       {row.priorityScore === null ? '—' : t('explorer.rankings.score', { score: formatNumber(row.priorityScore, 1) })}
                     </span>
@@ -170,8 +179,8 @@ export function MarketExplorerPage() {
                     <th scope="col">{t(`explorer.level.${data.level}`)}</th>
                     <th scope="col">{t('explorer.col.demand')}</th>
                     <th scope="col">{t('explorer.col.supply')}</th>
-                    <th scope="col">{t('explorer.col.gap')}</th>
-                    <th scope="col">{t('explorer.col.gapPct')}</th>
+                    <th scope="col">{t('explorer.col.short')}</th>
+                    <th scope="col">{t('explorer.col.spare')}</th>
                     <th scope="col">{t('explorer.col.status')}</th>
                     <th scope="col">{t('explorer.col.priority')}</th>
                   </tr>
@@ -181,7 +190,7 @@ export function MarketExplorerPage() {
                     <tr
                       key={child.id}
                       tabIndex={0}
-                      aria-label={`${nameOf(child)}: ${t(`status.${child.status}`)}`}
+                      aria-label={`${nameOf(child)}: ${t(`status.${child.headline}`)}`}
                       onClick={() => drill(child)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
@@ -193,16 +202,16 @@ export function MarketExplorerPage() {
                       <td><span className="cell-strong">{nameOf(child)}</span></td>
                       <td className="cell-num">{num(child.demand)}</td>
                       <td className="cell-num">{num(child.supply)}</td>
-                      <td className={cx('cell-gap', `tone-${gapTone(child.status)}`)}>{child.gap === null ? '—' : signed(child.gap)}</td>
-                      <td className={cx('cell-gap', `tone-${gapTone(child.status)}`)}>{child.gapPercentage === null ? '—' : signedPct(child.gapPercentage)}</td>
-                      <td><StatusBadge status={child.status} /></td>
-                      <td><PriorityBadge band={child.priorityBand} /></td>
+                      <td className={cx('cell-gap', child.shortageTotal > 0 && 'tone-danger')}>{child.cellsIncluded === 0 ? '—' : formatNumber(child.shortageTotal)}</td>
+                      <td className={cx('cell-gap', child.surplusTotal < 0 && 'tone-warning')}>{child.cellsIncluded === 0 ? '—' : formatNumber(Math.abs(child.surplusTotal))}</td>
+                      <td><StatusBadge status={child.headline} /></td>
+                      <td><PriorityBadge band={child.priorityBand} pairs={child.cells > 1 ? child.highPriorityPairs : undefined} /></td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p className="drill-note">{t('explorer.drill.hint')}</p>
+            <p className="drill-note">{t('explorer.drill.hint')} {t('explorer.drill.rule')}</p>
           </>
         )}
       </SectionCard>

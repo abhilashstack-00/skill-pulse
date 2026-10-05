@@ -1,10 +1,10 @@
 'use client'
 
 import { ArrowDown, ArrowUp, Inbox, Search, TriangleAlert, X } from 'lucide-react'
-import type { GapStatus, WeightedComponent } from '@/lib/domain/types'
+import type { GroupHeadline, WeightedComponent } from '@/lib/domain/types'
 import { cx, formatNumber } from '@/lib/format'
 import { useI18n } from '@/lib/i18n/context'
-import { bandTone, statusTone, type Tone } from '@/lib/ui/tones'
+import { bandTone, headlineTone, type Tone } from '@/lib/ui/tones'
 
 import type { Option } from './select'
 
@@ -67,20 +67,24 @@ export function Pill({ tone, children, compact, strong }: { tone: Tone; children
   return <span className={cx('pill', `tone-${tone}`, compact && 'pill-compact', strong && 'pill-strong')}>{children}</span>
 }
 
-/** One colour per status everywhere; the label carries the distinction too. */
-export function StatusBadge({ status }: { status: GapStatus }) {
+/**
+ * One colour per status everywhere; the label carries the distinction too.
+ * Takes a pair's status or a group's headline (mostly shortage, mostly oversupply, mixed).
+ */
+export function StatusBadge({ status }: { status: GroupHeadline }) {
   const { t } = useI18n()
   return (
-    <Pill tone={statusTone[status]} strong={status === 'severe_shortage' || status === 'severe_oversupply'}>
+    <Pill tone={headlineTone[status]} strong={status === 'severe_shortage' || status === 'severe_oversupply'}>
       {t(`status.${status}`)}
     </Pill>
   )
 }
 
-export function PriorityBadge({ band }: { band: 'high' | 'medium' | 'low' | null }) {
+/** `pairs` is given for a group: how many of its pairs are high priority. The band is then that of its highest pair. */
+export function PriorityBadge({ band, pairs }: { band: 'high' | 'medium' | 'low' | null; pairs?: number }) {
   const { t } = useI18n()
   if (!band) return <Pill tone="neutral">{t('common.notAvailable')}</Pill>
-  return <Pill tone={bandTone[band]}>{t(`band.${band}`)}</Pill>
+  return <Pill tone={bandTone[band]}>{t(`band.${band}`)}{pairs !== undefined && pairs > 0 ? ` · ${pairs}` : ''}</Pill>
 }
 
 /**
@@ -158,12 +162,14 @@ export function SearchInput({ value, onChange, placeholder, label }: SearchInput
 
 interface TabsProps {
   label: string
+  /** Id of the panel the tabs control; each tab gets the id `tab-<value>` for the panel to be labelled by. */
+  panelId?: string
   value: string
   options: Option[]
   onChange: (value: string) => void
 }
 
-export function Tabs({ label, value, options, onChange }: TabsProps) {
+export function Tabs({ label, panelId, value, options, onChange }: TabsProps) {
   return (
     <div className="tabs" role="tablist" aria-label={label}>
       {options.map((option) => (
@@ -171,6 +177,8 @@ export function Tabs({ label, value, options, onChange }: TabsProps) {
           key={option.value}
           type="button"
           role="tab"
+          id={`tab-${option.value}`}
+          aria-controls={panelId}
           className="tab"
           aria-selected={option.value === value}
           tabIndex={option.value === value ? 0 : -1}
@@ -246,7 +254,7 @@ export function ErrorState({ error, onRetry }: { error?: Error; onRetry?: () => 
         <TriangleAlert aria-hidden="true" />
       </div>
       <p className="state-title">{t(forbidden ? 'common.forbiddenTitle' : 'common.errorTitle')}</p>
-      <p className="state-text">{forbidden ? t('common.forbiddenText') : error?.message}</p>
+      <p className="state-text">{forbidden && (!error?.message || error.message === 'forbidden') ? t('common.forbiddenText') : error?.message}</p>
       {onRetry && !forbidden && (
         <Button variant="secondary" size="sm" onClick={onRetry}>
           {t('common.retry')}

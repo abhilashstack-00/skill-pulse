@@ -39,12 +39,12 @@ export function warningText(t: Translator, w: Pick<Warning, 'type' | 'reason' | 
       capacityChangePct: pct(p.capacityChangePct),
       lookaheadMonths: p.lookaheadMonths,
     }),
-    action: t(w.recommendedAction),
+    action: w.recommendedAction ? t(w.recommendedAction) : null,
   }
 }
 
 /** Text of a planner recommendation. */
-export function recommendationText(t: Translator, names: Names, r: Pick<Recommendation, 'action' | 'secondary' | 'params' | 'tradeId' | 'districtId'>) {
+export function recommendationText(t: Translator, names: Names, r: Pick<Recommendation, 'action' | 'secondary' | 'caution' | 'tentative' | 'params' | 'tradeId' | 'districtId'>) {
   const gap = typeof r.params.gap === 'number' ? r.params.gap : null
   const params = {
     trade: names.trade(r.tradeId),
@@ -59,6 +59,8 @@ export function recommendationText(t: Translator, names: Names, r: Pick<Recommen
     title: t(`rec.${r.action}.title`, params),
     text: t(`rec.${r.action}.text`, params),
     secondary: r.secondary ? t(`rec.secondary.${r.secondary}`) : null,
+    caution: r.caution ? t(`rec.caution.${r.caution}`) : null,
+    tentative: r.tentative ? t('rec.tentative') : null,
   }
 }
 

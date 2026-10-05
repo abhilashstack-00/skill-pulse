@@ -6,6 +6,8 @@
  *
  * Needs NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY (from .env.local).
  * Safe to run again: existing users are kept and only their profile is updated.
+ * The users it creates are approved; anyone who signs up on their own is not,
+ * and sees nothing until an administrator sets profiles.approved.
  *
  * Not exercised against a live Supabase project during development (the build
  * sandbox could not reach Supabase). It uses only the documented admin API.
@@ -59,7 +61,7 @@ async function main() {
     }
     const { error } = await supabase
       .from('profiles')
-      .upsert({ id, full_name: user.full_name, role: user.role, state_id: user.state_id, district_id: user.district_id }, { onConflict: 'id' })
+      .upsert({ id, full_name: user.full_name, role: user.role, state_id: user.state_id, district_id: user.district_id, approved: true }, { onConflict: 'id' })
     if (error) throw new Error(`Could not set the profile for ${user.email}: ${error.message}`)
     console.log(`${existing.has(user.email) ? 'kept   ' : 'created'}  ${user.email.padEnd(34)} ${user.role}`)
   }

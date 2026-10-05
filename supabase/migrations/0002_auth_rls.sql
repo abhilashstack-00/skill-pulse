@@ -1,5 +1,7 @@
--- Roles and row level security.
+-- Roles, account approval and row level security.
 -- Users live in Supabase Auth (auth.users); their role and scope live here.
+-- Safe to run more than once, and on its own: nothing here is looser than what
+-- a later migration sets, so re-running this file alone cannot open anything up.
 
 create table if not exists public.profiles (
   id          uuid primary key references auth.users (id) on delete cascade,
@@ -8,16 +10,22 @@ create table if not exists public.profiles (
               check (role in ('admin', 'national_planner', 'state_planner', 'district_planner', 'employer')),
   state_id    text references public.states (id),      -- required for state_planner
   district_id text references public.districts (id),   -- required for district_planner
+  approved    boolean not null default false,          -- nothing is readable until an administrator sets this
   created_at  timestamptz not null default now(),
   check (role <> 'state_planner' or state_id is not null),
   check (role <> 'district_planner' or district_id is not null)
 );
 
+-- A database created before approval existed gets the column, with every account unapproved.
+-- Approving is always an explicit act by an administrator; no migration does it.
+alter table public.profiles add column if not exists approved boolean not null default false;
+
 -- Helpers. SECURITY DEFINER so policies can read profiles without recursion.
+-- An account that is not approved has no role as far as any policy is concerned.
 
 create or replace function public.current_app_role()
 returns text language sql stable security definer set search_path = public as $$
-  select role from public.profiles where id = auth.uid()
+  select role from public.profiles where id = auth.uid() and approved
 $$;
 
 create or replace function public.can_see_district(target_district text)
@@ -27,6 +35,7 @@ returns boolean language sql stable security definer set search_path = public as
     from public.profiles p
     join public.districts d on d.id = target_district
     where p.id = auth.uid()
+      and p.approved
       and (
         p.role in ('admin', 'national_planner', 'employer')
         or (p.role = 'state_planner' and d.state_id = p.state_id)
@@ -35,20 +44,20 @@ returns boolean language sql stable security definer set search_path = public as
   )
 $$;
 
--- Reference tables: any signed-in user may read; only admins may write.
+-- Reference tables: any approved user may read; only admins may write.
 do $$
 declare t text;
 begin
   foreach t in array array['dataset_meta', 'states', 'districts', 'sectors', 'trades', 'data_sources'] loop
     execute format('alter table public.%I enable row level security', t);
     execute format('drop policy if exists %I on public.%I', t || '_read', t);
-    execute format('create policy %I on public.%I for select to authenticated using (true)', t || '_read', t);
+    execute format('create policy %I on public.%I for select to authenticated using (public.current_app_role() is not null)', t || '_read', t);
     execute format('drop policy if exists %I on public.%I', t || '_admin_write', t);
     execute format('create policy %I on public.%I for all to authenticated using (public.current_app_role() = ''admin'') with check (public.current_app_role() = ''admin'')', t || '_admin_write', t);
   end loop;
 end $$;
 
--- Fact and derived tables: any signed-in user, limited to the districts in their scope.
+-- Fact and derived tables: any approved user, limited to the districts in their scope.
 -- (What each role may do with them — planner actions, export — is enforced by the API.)
 do $$
 declare t text;
@@ -71,7 +80,7 @@ drop policy if exists profiles_admin_write on public.profiles;
 create policy profiles_admin_write on public.profiles for all to authenticated
   using (public.current_app_role() = 'admin') with check (public.current_app_role() = 'admin');
 
--- New sign-ups get the least-privileged role until an admin changes it.
+-- New sign-ups get the least-privileged role, unapproved, until an admin changes it.
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$
 begin

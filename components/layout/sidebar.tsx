@@ -92,7 +92,7 @@ export function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () =>
         <div className="dataset-status">
           <div className="dataset-status-label">{t('app.dataset')}</div>
           <div className={cx('dataset-status-value', !meta && 'is-pending', failed && 'is-error')} title={t('app.syntheticHint')}>
-            {meta ? t('app.datasetStatus', { mode: t(`app.mode.${meta.dataset.mode}`) }) : failed ? t('app.unavailable') : '…'}
+            {meta ? t(meta.dataset.synthetic ? 'app.datasetStatus' : 'app.datasetStatusUploaded', { mode: t(`app.mode.${meta.dataset.mode}`) }) : failed ? t('app.unavailable') : '…'}
           </div>
         </div>
       </div>

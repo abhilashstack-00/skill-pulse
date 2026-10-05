@@ -23,6 +23,11 @@ export function getSnapshot(): Promise<Snapshot> {
   return promise
 }
 
+/** Drop the cached snapshot so the next request reads the data again (used after a data load). */
+export function resetSnapshot(): void {
+  globalThis.__skillpulseSnapshot = undefined
+}
+
 export function dataMode(): 'database' | 'bundled' {
   return getRepository().kind === 'local' ? 'bundled' : 'database'
 }

@@ -25,7 +25,7 @@ export function Drawer({ open, onClose, eyebrow, title, children, footer }: Draw
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
       if (event.key !== 'Tab' || !panelRef.current) return
-      const focusable = panelRef.current.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], [tabindex="0"]')
+      const focusable = panelRef.current.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]')
       if (!focusable.length) return
       const first = focusable[0]
       const last = focusable[focusable.length - 1]

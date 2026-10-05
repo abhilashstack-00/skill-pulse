@@ -3,13 +3,13 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
-import { getDrilldown, getTrade, type TradeData } from '@/lib/client/api'
+import { getDrilldown, getEvidence, getTrade, type EvidenceData, type TradeData } from '@/lib/client/api'
 import type { PriorityComponent } from '@/lib/domain/types'
 import { useFilters } from '@/lib/filters-context'
-import { cx, formatDate, formatNumber, signed, signedPct } from '@/lib/format'
+import { cx, formatDate, formatMonth, formatNumber, signed, signedPct } from '@/lib/format'
 import { useService } from '@/lib/hooks/use-service'
 import { useI18n } from '@/lib/i18n/context'
-import { bandTone, gapTone } from '@/lib/ui/tones'
+import { bandTone, gapTone, headlineTone } from '@/lib/ui/tones'
 import { useMeta } from '@/components/layout/app-shell'
 import { PageHeader } from '@/components/layout/page-header'
 import { Legend, seriesColor } from '@/components/charts/chart-kit'
@@ -19,7 +19,7 @@ import { FilterBar } from '@/components/ui/filter-bar'
 import { RecommendationList, useFigures, WarningList } from '@/components/ui/intelligence'
 import { Button, ComponentTable, EmptyState, ErrorState, KpiCard, KpiSkeleton, LoadingState, Pill, SectionCard, StatusBadge, Tabs } from '@/components/ui/primitives'
 
-type Tab = 'demand' | 'supply' | 'gap' | 'forecast'
+type Tab = 'demand' | 'supply' | 'gap' | 'forecast' | 'data'
 
 export function SkillIntelligencePage() {
   const router = useRouter()
@@ -38,13 +38,21 @@ export function SkillIntelligencePage() {
   const tradeId = filters.tradeId ?? ranking.data?.ranking[0]?.tradeId ?? null
   const trade = useService(() => (tradeId ? getTrade(tradeId, geo) : Promise.resolve(null)), [tradeId, filters.stateId, filters.districtId, filters.horizon])
   const data = trade.data
+  // The stored rows behind one pair, fetched when the evidence panel is opened on a single district.
+  const pair = data && data.byDistrict.length === 1 ? data.byDistrict[0] : null
+  const evidence = useService(
+    () => (tab !== null && pair ? getEvidence(pair.districtId, pair.tradeId) : Promise.resolve(null)),
+    [tab !== null, pair?.districtId, pair?.tradeId],
+  )
   const loading = trade.status === 'loading' || (!filters.tradeId && ranking.status === 'loading')
   const error = trade.status === 'error' ? trade : ranking.status === 'error' ? ranking : null
 
   const describe = (c: { key: string; raw: number | null; reference?: number | null }) => {
     const value = formatNumber(c.raw as number, Number.isInteger(c.raw) ? 0 : 1)
     if (c.key === 'hiringSignal' || c.key === 'industryDemandSignal') return t('comp.raw.score', { value })
-    return t(`comp.raw.${c.key}`, { value, reference: c.reference === null || c.reference === undefined ? '' : formatNumber(c.reference, 0) })
+    // A group's index is an average of its pairs' indices, so its totals are shown without a scaling reference.
+    if (c.reference === null || c.reference === undefined) return t(`comp.rawTotal.${c.key}`, { value })
+    return t(`comp.raw.${c.key}`, { value, reference: formatNumber(c.reference, 0) })
   }
 
   return (
@@ -83,7 +91,9 @@ export function SkillIntelligencePage() {
     const scopeText = single
       ? t('skill.scope.one', { district: names.district(single.districtId), state: names.state(single.stateId) })
       : t('skill.scope.many', { count: data.scope.cells })
-    const priority = data.priority
+    const priority = data.priority.result
+    const peak = data.priority.peak
+    const many = data.scope.cells > 1
     const horizonShort = t(`horizon.short.${f.horizon.key}`)
     const tradeName = names.trade(data.trade.id)
 
@@ -117,15 +127,24 @@ export function SkillIntelligencePage() {
             note={data.supply.capacityChangePct === null ? t('common.insufficient') : t('skill.kpi.capacity', { value: signedPct(data.supply.capacityChangePct) })}
             tone="neutral" onClick={() => setTab('supply')} actionLabel={t('common.explain')}
           />
+          {many ? (
+            <KpiCard
+              value={totals.gap === null ? '—' : `${formatNumber(totals.shortageTotal)} / ${formatNumber(Math.abs(totals.surplusTotal))}`}
+              label={t('skill.kpi.mismatch', { horizon: horizonShort })}
+              note={`${t(`status.${totals.headline}`)} · ${t('skill.kpi.mismatchNote', { short: totals.shortagePairs, spare: totals.oversupplyPairs })}`}
+              tone={headlineTone[totals.headline]} onClick={() => setTab('gap')} actionLabel={t('common.explain')}
+            />
+          ) : (
+            <KpiCard
+              value={totals.gap === null ? '—' : signed(totals.gap)} label={t('skill.kpi.gap', { horizon: horizonShort })}
+              note={totals.gapPercentage === null ? t(`status.${totals.headline}`) : `${signedPct(totals.gapPercentage)} · ${t(`status.${totals.headline}`)}`}
+              tone={headlineTone[totals.headline]} onClick={() => setTab('gap')} actionLabel={t('common.explain')}
+            />
+          )}
           <KpiCard
-            value={totals.gap === null ? '—' : signed(totals.gap)} label={t('skill.kpi.gap', { horizon: horizonShort })}
-            note={totals.gapPercentage === null ? t(`status.${totals.status}`) : `${signedPct(totals.gapPercentage)} · ${t(`status.${totals.status}`)}`}
-            tone={gapTone(totals.status)} onClick={() => setTab('gap')} actionLabel={t('common.explain')}
-          />
-          <KpiCard
-            value={num(priority.score, 1)} label={t('skill.kpi.priority')}
-            note={priority.band ? t(`band.long.${priority.band}`) : t('common.insufficient')}
-            tone={priority.band ? bandTone[priority.band] : 'neutral'}
+            value={num(priority?.score, 1)} label={t(peak ? 'skill.kpi.priorityPeak' : 'skill.kpi.priority')}
+            note={!priority?.band ? t('common.insufficient') : peak ? t('skill.kpi.priorityPeakNote', { district: names.district(peak.districtId), count: data.priority.highPairs }) : t(`band.long.${priority.band}`)}
+            tone={priority?.band ? bandTone[priority.band] : 'neutral'}
           />
         </div>
 
@@ -153,10 +172,11 @@ export function SkillIntelligencePage() {
 
           <SectionCard className="why-card" aria-labelledby="why-title">
             <h2 className="card-title" id="why-title">
-              {priority.band ? t('skill.why', { band: t(`band.${priority.band}`).toUpperCase() }) : t('skill.why.none')}
+              {priority?.band ? t('skill.why', { band: t(`band.${priority.band}`).toUpperCase() }) : t('skill.why.none')}
             </h2>
+            {peak && <p className="card-subtitle why-peak">{t('skill.why.peak', { district: names.district(peak.districtId), high: data.priority.highPairs, medium: data.priority.mediumPairs, low: data.priority.lowPairs })}</p>}
             <div className="why-rows">
-              {priority.components.map((c) => (
+              {(priority?.components ?? []).map((c) => (
                 <div className="kv-row why-row" key={c.key}>
                   <span className="kv-label">{t(`comp.${c.key}`)} <span className="why-raw">× {formatNumber(c.weight, 2)}</span></span>
                   <span className="why-raw">{priorityRaw(c)}</span>
@@ -164,10 +184,13 @@ export function SkillIntelligencePage() {
                 </div>
               ))}
             </div>
-            {priority.score === null ? (
-              <p className="muted-text">{t('skill.why.missing', { missing: priority.missing.map((key) => t(`comp.${key}`)).join(', ') })}</p>
+            {!priority || priority.score === null ? (
+              <p className="muted-text">{t('skill.why.missing', { missing: (priority?.missing ?? []).map((key) => t(`comp.${key}`)).join(', ') || t('common.insufficient') })}</p>
             ) : (
-              <p className="why-total"><span>{t('skill.why.score')}</span><strong>{formatNumber(priority.score, 1)} / 100</strong></p>
+              <>
+                <p className="why-total"><span>{t('skill.why.score')}</span><strong>{formatNumber(priority.score, 1)} / 100</strong></p>
+                <p className="muted-text">{t('skill.why.planning')}{priority.cappedBy === 'balanced' ? ` ${t('skill.why.capped')}` : ''}</p>
+              </>
             )}
             <div className="why-footer">
               <Pill tone="neutral" compact>{t('common.notOfficial')}</Pill>
@@ -183,7 +206,7 @@ export function SkillIntelligencePage() {
           </SectionCard>
           <SectionCard className="detail-card" aria-labelledby="rec-title">
             <h2 className="card-title" id="rec-title">{t('skill.recommendation')}</h2>
-            <RecommendationList items={data.recommendations} limit={single ? 1 : 3} />
+            {data.recommendations ? <RecommendationList items={data.recommendations} limit={single ? 1 : 3} /> : <p className="muted-text">{t('skill.recommendation.plannerOnly')}</p>}
           </SectionCard>
         </div>
 
@@ -238,13 +261,16 @@ export function SkillIntelligencePage() {
           }
         >
           <Tabs
-            label={t('skill.drawer.title')} value={tab ?? 'demand'} onChange={(value) => setTab(value as Tab)}
-            options={(['demand', 'supply', 'gap', 'forecast'] as Tab[]).map((value) => ({ value, label: t(`skill.tab.${value}`) }))}
+            label={t('skill.drawer.title')} panelId="skill-tabpanel" value={tab ?? 'demand'} onChange={(value) => setTab(value as Tab)}
+            options={(['demand', 'supply', 'gap', 'forecast', 'data'] as Tab[]).map((value) => ({ value, label: t(`skill.tab.${value}`) }))}
           />
-          <div role="tabpanel">
+          <div role="tabpanel" id="skill-tabpanel" aria-labelledby={`tab-${tab ?? 'demand'}`}>
             {tab === 'demand' && (
               <>
-                <p className="calc-note">{t('skill.demand.intro')}{data.scope.cells > 1 && ` ${t('skill.demand.aggregate', { count: data.demand.index.cellsIncluded })}`}</p>
+                <p className="calc-note">
+                  {t('skill.demand.intro', { ...weightParams(data.weights.demand), months: data.recentWindowMonths })}
+                  {data.demand.index.averaged && ` ${t('skill.index.averaged', { count: data.demand.index.cellsIncluded, by: t('skill.index.byDemand') })}`}
+                </p>
                 <ComponentTable components={data.demand.index.components} total={data.demand.index.value} describe={describe} />
                 <dl className="calc-list" style={{ marginTop: 14 }}>
                   <div className="kv-row"><dt className="kv-label">{t('skill.demand.runRate')}</dt><dd className="kv-value">{data.demand.monthlyRunRate === null ? t('common.insufficient') : t('skill.demand.runRateValue', { value: formatNumber(data.demand.monthlyRunRate, 1) })}</dd></div>
@@ -258,7 +284,10 @@ export function SkillIntelligencePage() {
             )}
             {tab === 'supply' && (
               <>
-                <p className="calc-note">{t('skill.supply.intro')}</p>
+                <p className="calc-note">
+                  {t('skill.supply.intro', weightParams(data.weights.supply))}
+                  {data.supply.index.averaged && ` ${t('skill.index.averaged', { count: data.supply.index.cellsIncluded, by: t('skill.index.bySeats') })}`}
+                </p>
                 <ComponentTable components={data.supply.index.components} total={data.supply.index.value} describe={describe} />
                 <dl className="calc-list" style={{ marginTop: 14 }}>
                   <div className="kv-row"><dt className="kv-label">{t('skill.supply.seats', { year: cycle(data.supply.latestYear) })}</dt><dd className="kv-value">{num(data.supply.seats)}</dd></div>
@@ -272,42 +301,169 @@ export function SkillIntelligencePage() {
             )}
             {tab === 'gap' && (
               <>
-                <p className="calc-note">{t('skill.gap.intro')}</p>
+                <p className="calc-note">{t(many ? 'skill.gap.introMany' : 'skill.gap.intro')}</p>
                 <dl className="calc-list">
                   <div className="kv-row"><dt className="kv-label">{t('skill.gap.window')}</dt><dd className="kv-value">{periodText(f.horizon)}</dd></div>
                   <div className="kv-row"><dt className="kv-label">{t('skill.gap.demand')}</dt><dd className="kv-value">{totals.demand === null ? t('common.insufficient') : num(totals.demand)}</dd></div>
                   <div className="kv-row"><dt className="kv-label">{t('skill.gap.supply')}</dt><dd className="kv-value">{totals.supply === null ? t('common.insufficient') : num(totals.supply)}</dd></div>
-                  <div className="kv-row is-total"><dt className="kv-label">{t('skill.gap.gap')}</dt><dd className="kv-value">{totals.gap === null ? t('common.insufficient') : signed(totals.gap)}</dd></div>
-                  <div className="kv-row is-total"><dt className="kv-label">{t('skill.gap.gapPct')}</dt><dd className="kv-value">{totals.gapPercentage === null ? t('common.insufficient') : signedPct(totals.gapPercentage, 2)}</dd></div>
-                  <div className="kv-row"><dt className="kv-label">{t('skill.gap.class')}</dt><dd className="kv-value"><StatusBadge status={totals.status} /></dd></div>
+                  {many ? (
+                    <>
+                      <div className="kv-row is-total"><dt className="kv-label">{t('skill.gap.short', { count: totals.shortagePairs })}</dt><dd className="kv-value">{signed(totals.shortageTotal)}</dd></div>
+                      <div className="kv-row is-total"><dt className="kv-label">{t('skill.gap.spare', { count: totals.oversupplyPairs })}</dt><dd className="kv-value">{signed(totals.surplusTotal)}</dd></div>
+                      <div className="kv-row"><dt className="kv-label">{t('skill.gap.balancedNet')}</dt><dd className="kv-value">{signed(totals.balancedNet)}</dd></div>
+                      <div className="kv-row"><dt className="kv-label">{t('skill.gap.net')}</dt><dd className="kv-value">{totals.gap === null ? t('common.insufficient') : signed(totals.gap)}</dd></div>
+                      <div className="kv-row"><dt className="kv-label">{t('skill.gap.headline')}</dt><dd className="kv-value"><StatusBadge status={totals.headline} /></dd></div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="kv-row is-total"><dt className="kv-label">{t('skill.gap.gap')}</dt><dd className="kv-value">{totals.gap === null ? t('common.insufficient') : signed(totals.gap)}</dd></div>
+                      <div className="kv-row is-total"><dt className="kv-label">{t('skill.gap.gapPct')}</dt><dd className="kv-value">{totals.gapPercentage === null ? t('common.insufficient') : signedPct(totals.gapPercentage, 2)}</dd></div>
+                      <div className="kv-row"><dt className="kv-label">{t('skill.gap.class')}</dt><dd className="kv-value"><StatusBadge status={totals.headline} /></dd></div>
+                    </>
+                  )}
                 </dl>
-                <p className="calc-note">{t('common.prototypeThresholds')}: {t('nav.methodology')}.</p>
+                <p className="calc-note">{many ? t('skill.gap.noteMany') : `${t('common.prototypeThresholds')}: ${t('nav.methodology')}.`}</p>
                 {totals.cellsExcluded > 0 && <p className="calc-note">{t('common.pairsExcluded', { count: totals.cellsExcluded })}</p>}
               </>
             )}
             {tab === 'forecast' && (
               <>
                 <p className="calc-note">{t('skill.forecast.intro')}</p>
-                {f.components ? (
+                {f.breakdown ? (
                   <dl className="calc-list">
-                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.baseline')}</dt><dd className="kv-value">{num(f.components.parts.baseline)}</dd></div>
-                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.trend')}</dt><dd className="kv-value">{signed(f.components.parts.trend)}</dd></div>
-                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.growth')}</dt><dd className="kv-value">{signed(f.components.parts.recentGrowth)}</dd></div>
-                    <div className="kv-row is-total"><dt className="kv-label">{t('skill.forecast.total')}</dt><dd className="kv-value">{num(totals.demand)}</dd></div>
-                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.interval')}</dt><dd className="kv-value">{num(totals.lower)} – {num(totals.upper)}</dd></div>
-                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.confidence')}</dt><dd className="kv-value">{totals.confidence ? `${t(`confidence.${totals.confidence.label}`)} (${totals.confidence.score} / 100)` : t('common.insufficient')}</dd></div>
+                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.baseline', { months: data.recentWindowMonths })}</dt><dd className="kv-value">{num(f.breakdown.baseline)}</dd></div>
+                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.trend')}</dt><dd className="kv-value">{signed(f.breakdown.trend)}</dd></div>
+                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.growth')}</dt><dd className="kv-value">{signed(f.breakdown.recentGrowth)}</dd></div>
+                    {f.breakdown.floorAdjustment !== 0 && <div className="kv-row"><dt className="kv-label">{t('skill.forecast.floor')}</dt><dd className="kv-value">{signed(f.breakdown.floorAdjustment)}</dd></div>}
+                    {f.breakdown.rounding !== 0 && <div className="kv-row"><dt className="kv-label">{t('skill.forecast.rounding')}</dt><dd className="kv-value">{signed(f.breakdown.rounding)}</dd></div>}
+                    <div className="kv-row is-total"><dt className="kv-label">{t('skill.forecast.total')}</dt><dd className="kv-value">{num(f.breakdown.total)}</dd></div>
+                    {f.interval?.single && (
+                      <>
+                        <div className="kv-row"><dt className="kv-label">{t('skill.forecast.modelHalf')}</dt><dd className="kv-value">± {num(f.interval.single.modelHalfWidth)}</dd></div>
+                        <div className="kv-row"><dt className="kv-label">{t('skill.forecast.factor')}</dt><dd className="kv-value">× {formatNumber(f.interval.single.calibrationFactor, 2)}</dd></div>
+                      </>
+                    )}
+                    {f.interval && !f.interval.single && (
+                      <div className="kv-row"><dt className="kv-label">{t('skill.forecast.combined', { pairs: f.interval.pairs })}</dt><dd className="kv-value">± {num(f.interval.halfWidth)}</dd></div>
+                    )}
+                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.interval', { coverage: Math.round(f.model.coverage * 100) })}</dt><dd className="kv-value">{num(totals.lower)} – {num(totals.upper)}</dd></div>
+                    <div className="kv-row"><dt className="kv-label">{t('skill.forecast.confidence')}</dt><dd className="kv-value">{totals.confidence ? `${t(`confidence.${totals.confidence.label}`)} (${totals.confidence.score} / 100)${f.interval && !f.interval.forwardCheck ? ` · ${t('forecast.provisional')}` : ''}` : t('common.insufficient')}</dd></div>
                     <div className="kv-row"><dt className="kv-label">{t('skill.forecast.method')}</dt><dd className="kv-value">{Object.keys(f.methods).map((m) => t(`method.short.${m}`)).join(', ')}</dd></div>
                     <div className="kv-row"><dt className="kv-label">{t('skill.forecast.model')}</dt><dd className="kv-value">{f.model.demand}</dd></div>
                   </dl>
                 ) : (
                   <p className="calc-note"><strong>{f.horizon.key === 'current' ? t('horizon.window.current') : t('common.insufficient')}</strong></p>
                 )}
+                {f.breakdown && (
+                  <p className="calc-note">
+                    {t('skill.forecast.confidenceRule', { zero: Math.round(f.model.confidence.zeroAtRelativeWidth * 100), high: f.model.confidence.high, medium: f.model.confidence.medium })}
+                  </p>
+                )}
+                {f.interval && <p className="calc-note">{f.interval.forwardCheck ? t('forecast.build.checked', { coverage: formatNumber(f.interval.forwardCheck.coveragePct, 1), samples: formatNumber(f.interval.forwardCheck.samples), target: Math.round(f.model.coverage * 100) }) : t('forecast.build.unchecked', { months: f.horizon.months })}</p>}
                 <p className="calc-note">{t('common.freshness')}: {formatDate(data.freshness, locale)}</p>
               </>
+            )}
+            {tab === 'data' && (
+              !pair ? (
+                <p className="calc-note">{t('skill.data.choose')}</p>
+              ) : evidence.status === 'error' ? (
+                <ErrorState error={evidence.error} onRetry={evidence.retry} />
+              ) : !evidence.data ? (
+                <LoadingState height={260} />
+              ) : (
+                renderData(evidence.data)
+              )
             )}
           </div>
         </Drawer>
       </div>
+    )
+  }
+
+  /** The stored rows, which months each calculation used, and which file load each value came from. */
+  function renderData(e: EvidenceData) {
+    const cell = (value: number | null, decimals = 0) => (value === null ? '—' : formatNumber(value, decimals))
+    return (
+      <>
+        <p className="calc-note">{t('skill.data.intro', { recent: e.windows.recentMonths, trend: e.windows.trendMonths })}</p>
+        <div className="table-scroll">
+          <table className="calc-table data-rows">
+            <thead>
+              <tr>
+                <th scope="col">{t('skill.data.month')}</th>
+                <th scope="col">{t('comp.jobPostings')}</th>
+                <th scope="col">{t('comp.employmentRegistrations')}</th>
+                <th scope="col">{t('skill.data.volume')}</th>
+                <th scope="col">{t('comp.hiringSignal')}</th>
+                <th scope="col">{t('comp.industryDemandSignal')}</th>
+                <th scope="col">{t('skill.data.used')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...e.demandRows].reverse().map((row) => (
+                <tr key={row.period} className={cx(row.usedForBaseline && 'is-baseline')}>
+                  <th scope="row">{formatMonth(row.period, locale)}</th>
+                  <td>{cell(row.jobPostings)}</td>
+                  <td>{cell(row.employmentRegistrations)}</td>
+                  <td>{cell(row.volume)}</td>
+                  <td>{cell(row.hiringSignal, 1)}</td>
+                  <td>{cell(row.industryDemandSignal, 1)}</td>
+                  <td>{row.usedForBaseline ? t('skill.data.usedBaseline') : row.usedForTrend ? t('skill.data.usedTrend') : row.volume === null ? t('skill.data.usedNoVolume') : t('skill.data.usedNo')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {e.forecast.components && (
+          <p className="calc-note">
+            {t('skill.data.arithmetic', {
+              baseline: formatNumber(e.forecast.components.baseline, 2), slope: formatNumber(e.forecast.components.trendSlope, 3), recent: formatNumber(e.forecast.components.recentSlope, 3),
+              trendWeight: e.forecast.weights.trend, growthWeight: e.forecast.weights.recentGrowth, damping: e.forecast.weights.damping, months: e.forecast.components.monthsUsed,
+              total: e.forecast.predictedDemand === null ? '—' : formatNumber(e.forecast.predictedDemand),
+            })}
+          </p>
+        )}
+        <h3 className="drawer-section-title">{t('skill.data.training')}</h3>
+        {e.trainingRows.length === 0 ? (
+          <p className="calc-note">{t('skill.data.noTraining')}</p>
+        ) : (
+          <table className="calc-table data-rows">
+            <thead>
+              <tr>
+                <th scope="col">{t('skill.data.year')}</th>
+                <th scope="col">{t('comp.seats')}</th>
+                <th scope="col">{t('skill.supply.enrolled')}</th>
+                <th scope="col">{t('skill.data.completed')}</th>
+                <th scope="col">{t('skill.supply.placed')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...e.trainingRows].reverse().map((row) => (
+                <tr key={row.year}>
+                  <th scope="row">{cycle(row.year)}</th>
+                  <td>{cell(row.allocatedSeats)}</td>
+                  <td>{cell(row.enrolled)}</td>
+                  <td>{cell(row.completed)}</td>
+                  <td>{cell(row.placed)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        <h3 className="drawer-section-title">{t('skill.data.lineage')}</h3>
+        <ul className="evidence-sources" style={{ marginTop: 0 }}>
+          {e.runs.map((run) => (
+            <li className="evidence-source" key={run.id}>
+              <span>
+                <strong>{run.sourceName}</strong>
+                <span>{t('skill.data.run', { id: run.id, file: run.fileName ?? '—', mapped: formatNumber(run.rowsMapped), read: formatNumber(run.rowsRead) })} · {t(run.synthetic ? 'sources.status.prototype_synthetic' : 'sources.status.uploaded')}</span>
+              </span>
+              <span>{formatDate(run.loadedAt.slice(0, 10), locale)}</span>
+            </li>
+          ))}
+        </ul>
+        {e.runs.length === 0 && <p className="calc-note">{t('skill.data.noRuns')}</p>}
+      </>
     )
   }
 
@@ -329,6 +485,11 @@ export function SkillIntelligencePage() {
       </>
     )
   }
+}
+
+/** { jobPostings: 0.4 } → { jobPostings: '0.40' }, for formulas shown in text. */
+function weightParams(weights: Record<string, number>): Record<string, string> {
+  return Object.fromEntries(Object.entries(weights).map(([key, weight]) => [key, weight.toFixed(2)]))
 }
 
 /** 2026 → '2026-27' */

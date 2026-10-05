@@ -39,7 +39,7 @@ export function evaluateWarnings(input: AlertInputs, params: typeof ALERTS = ALE
     { key: 'ev.planningGapPct', value: planning.gap.gapPercentage, unit: 'pct' },
   ]
 
-  const add = (type: WarningType, severity: Severity, action: string, evidence: EvidenceItem[]) =>
+  const add = (type: WarningType, severity: Severity, action: string, evidence: EvidenceItem[], variant = '') =>
     warnings.push({
       id: `${type}:${input.key}`,
       type,
@@ -47,7 +47,7 @@ export function evaluateWarnings(input: AlertInputs, params: typeof ALERTS = ALE
       districtId: input.districtId,
       sectorId: input.sectorId,
       tradeId: input.tradeId,
-      reason: `warning.${type}.reason`,
+      reason: `warning.${type}.reason${variant}`,
       recommendedAction: action,
       params: {
         currentStatus: now,
@@ -65,13 +65,16 @@ export function evaluateWarnings(input: AlertInputs, params: typeof ALERTS = ALE
   if (now === 'severe_shortage') add('acute_shortage', 'critical', 'warning.action.expandNow', baseEvidence)
 
   // Upcoming shortage: the forecast moves the cell into (or deeper into) shortage.
+  // A pair already short is not "about to" run short: the wording says it gets worse.
+  const alreadyShort = known(now) && isShortage(now)
+  const capacityAction = alreadyShort ? 'warning.action.planCapacityWidening' : 'warning.action.planCapacity'
   if (known(soon) && isShortage(soon) && STATUS_RANK[soon] > STATUS_RANK[now]) {
-    add('upcoming_shortage', soon === 'severe_shortage' ? 'high' : 'medium', 'warning.action.planCapacity', baseEvidence)
+    add('upcoming_shortage', soon === 'severe_shortage' ? 'high' : 'medium', capacityAction, baseEvidence, alreadyShort ? '.deepening' : '')
   }
 
   // Emerging shortage: demand rising rapidly while training capacity stays flat.
   if (trend !== null && capacity !== null && trend >= params.rapidDemandGrowthPct && capacity <= params.flatCapacityPct && (planning.gap.gap ?? 0) > 0) {
-    add('emerging_shortage', trend >= 2 * params.rapidDemandGrowthPct ? 'high' : 'medium', 'warning.action.planCapacity', trendEvidence)
+    add('emerging_shortage', trend >= 2 * params.rapidDemandGrowthPct ? 'high' : 'medium', capacityAction, trendEvidence)
   }
 
   // Saturation: already a severe oversupply.
@@ -79,7 +82,7 @@ export function evaluateWarnings(input: AlertInputs, params: typeof ALERTS = ALE
 
   // Upcoming saturation: the forecast moves the cell into (or deeper into) oversupply.
   if (known(soon) && isOversupply(soon) && STATUS_RANK[soon] < STATUS_RANK[now]) {
-    add('upcoming_saturation', soon === 'severe_oversupply' ? 'high' : 'medium', 'warning.action.reviewSeats', baseEvidence)
+    add('upcoming_saturation', soon === 'severe_oversupply' ? 'high' : 'medium', 'warning.action.reviewSeats', baseEvidence, known(now) && isOversupply(now) ? '.deepening' : '')
   }
 
   // Oversupply risk: capacity growing while demand declines.

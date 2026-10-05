@@ -1,61 +1,51 @@
 /**
- * Ingest: raw extracts → normalisation layer → one normalised dataset.
+ * Builds the pilot dataset: every raw extract in data/pilot/raw goes through
+ * the same ingestion code the upload endpoint and `pnpm ingest` use.
  *
  * Writes
- *   data/pilot/dataset.json        used when the app runs without Supabase
- *   data/pilot/ingest-report.json  what was mapped and what was rejected
+ *   data/pilot/dataset.json        used when the app runs without a database
+ *   data/pilot/ingest-report.json  what was mapped, matched loosely or refused
  *   supabase/seed.sql              the same rows as SQL inserts
  *
  * Run: pnpm data:ingest
  */
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import type { DataSource, Dataset } from '@/lib/domain/types'
-import { normalizeDemand, normalizeTraining, type RawDemandRecord, type RawTrainingRecord } from '@/lib/intelligence/normalization/normalize'
-import { numberOrNull, readCsv } from './lib/csv'
-import { DATASET_TAG, dataSources, districts, meta, sectors, states, trades, trainingCentres } from './pilot/reference'
+import type { Dataset } from '@/lib/domain/types'
+import { applyToDataset } from '@/lib/ingest/apply'
+import { ingestExtract, type IngestReport } from '@/lib/ingest/ingest'
+import { SOURCE_SPECS } from '@/lib/ingest/sources'
 import { datasetToSql } from './lib/sql'
+import { dataSources, districts, meta, sectors, states, trades, trainingCentres } from './pilot/reference'
 
 const RAW = join(process.cwd(), 'data/pilot/raw')
-const raw = (name: string) => readCsv(join(RAW, `${name}.csv`))
+/** Fixed so the build is reproducible: the day the pilot extracts were generated. */
+const LOADED_AT = `${meta.updatedAt}T00:00:00.000Z`
 
-/** Each reader turns one source's own columns into the common raw-record shape. */
-const demandRecords: RawDemandRecord[] = [
-  ...raw('job_portal').map((r) => ({ source: 'job_portal', metric: 'jobPostings' as const, period: r.posting_date, occupation: r.job_title, place: r.city, sector: r.industry, value: numberOrNull(r.openings) })),
-  ...raw('employment_exchange').map((r) => ({ source: 'employment_exchange', metric: 'employmentRegistrations' as const, period: r.period, occupation: r.occupation, ncoCode: r.nco_code, place: r.district, value: numberOrNull(r.vacancies) })),
-  ...raw('industry_hiring').map((r) => ({ source: 'industry_hiring', metric: 'hiringSignal' as const, period: r.month, occupation: r.role, place: r.location, sector: r.sector, value: numberOrNull(r.hiring_intent_score) })),
-  ...raw('industry_survey').map((r) => ({ source: 'industry_survey', metric: 'industryDemandSignal' as const, period: r.survey_month, occupation: r.trade, place: r.district, value: numberOrNull(r.outlook_score) })),
-]
-const trainingRecords: RawTrainingRecord[] = raw('training_capacity').map((r) => ({
-  year: r.training_year, place: r.district, occupation: r.trade,
-  allocatedSeats: numberOrNull(r.allocated_seats), enrolled: numberOrNull(r.enrolled), completed: numberOrNull(r.completed), placed: numberOrNull(r.placed),
-}))
-
-const sectorOfTrade = new Map(trades.map((t) => [t.id, t.sectorId]))
-const demand = normalizeDemand(demandRecords, sectorOfTrade, DATASET_TAG)
-const training = normalizeTraining(trainingRecords, sectorOfTrade)
-const reports = [...demand.reports, training.report]
-
-const sources: DataSource[] = dataSources.map(({ rawFile, ...source }) => {
-  const report = reports.find((r) => r.source === rawFile)
-  return {
-    ...source,
-    lastUpdated: source.status === 'planned' ? null : meta.updatedAt,
-    recordsIn: report?.recordsIn ?? null,
-    recordsMapped: report?.recordsMapped ?? null,
-  }
-})
-
-const dataset: Dataset = {
+let dataset: Dataset = {
   meta, states, districts, sectors, trades, trainingCentres,
-  trainingCapacity: training.rows,
-  labourDemand: demand.rows,
-  dataSources: sources,
+  trainingCapacity: [],
+  labourDemand: [],
+  dataSources: dataSources.map((source) => ({ ...source, lastUpdated: null, recordsIn: null, recordsMapped: null })),
+  ingestionRuns: [],
 }
 
-writeFileSync(join(process.cwd(), 'data/pilot/dataset.json'), JSON.stringify(dataset))
-writeFileSync(join(process.cwd(), 'data/pilot/ingest-report.json'), JSON.stringify({ generatedFor: meta.asOfPeriod, reports }, null, 2) + '\n')
-writeFileSync(join(process.cwd(), 'supabase/seed.sql'), datasetToSql(dataset))
+const reports: IngestReport[] = []
+for (const spec of SOURCE_SPECS) {
+  const fileName = `${spec.rawFile}.csv`
+  // The pilot counts rows matched by a looser rule (and lists them), so that its demand is not
+  // understated further. A file loaded by a person holds them for review unless told otherwise.
+  const outcome = ingestExtract(spec, readFileSync(join(RAW, fileName), 'utf8'), { trades, districts, states }, { looseMatches: 'count', today: meta.asOfPeriod })
+  dataset = applyToDataset(dataset, spec, outcome, { fileName, loadedAt: LOADED_AT, loadedBy: null, mode: 'replace', synthetic: true })
+  reports.push(outcome.report)
+  const r = outcome.report
+  const volume = r.valueRead ? `; ${((100 * (r.valueMapped ?? 0)) / r.valueRead).toFixed(1)}% of volume mapped` : ''
+  console.log(`${spec.id}: ${r.rowsMapped}/${r.rowsRead} rows mapped (${r.rowsLooselyMatched} by a looser rule), ${r.rowsRejected} rejected${volume}`)
+}
+// The reference mapping is dated with the build as well.
+dataset = { ...dataset, dataSources: dataset.dataSources.map((s) => (s.status === 'prototype_reference' ? { ...s, lastUpdated: meta.updatedAt } : s)) }
 
-for (const r of reports) console.log(`${r.source}: ${r.recordsMapped}/${r.recordsIn} mapped, ${r.recordsIn - r.recordsMapped} rejected`)
-console.log(`dataset: ${dataset.labourDemand.length} demand rows, ${dataset.trainingCapacity.length} training rows`)
+writeFileSync(join(process.cwd(), 'data/pilot/dataset.json'), JSON.stringify(dataset))
+writeFileSync(join(process.cwd(), 'data/pilot/ingest-report.json'), JSON.stringify({ generatedFor: dataset.meta.asOfPeriod, reports }, null, 2) + '\n')
+writeFileSync(join(process.cwd(), 'supabase/seed.sql'), datasetToSql(dataset))
+console.log(`dataset: ${dataset.labourDemand.length} demand rows, ${dataset.trainingCapacity.length} training rows, as of ${dataset.meta.asOfPeriod}`)

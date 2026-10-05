@@ -30,6 +30,21 @@ export function computeGap(demand: number | null, supply: number | null, thresho
   return { demand, supply, gap, gapPercentage: round(gapPercentage, 2), status: classifyGap(gapPercentage, thresholds), note: null }
 }
 
+/** Which side of the balanced band a status is on. */
+export const sideOf = (s: GapStatus): 'shortage' | 'oversupply' | 'balanced' | null =>
+  s === 'insufficient_data' ? null : isShortage(s) ? 'shortage' : isOversupply(s) ? 'oversupply' : 'balanced'
+
+/**
+ * Does the classification hold across the whole demand interval? The gap is
+ * recomputed at the low and the high end of the interval; if either lands on
+ * another side of the balanced band, the classification is not firm.
+ */
+export function isFirm(gap: GapResult, demandLower: number | null, demandUpper: number | null, thresholds: GapThresholds = GAP_THRESHOLDS): boolean | null {
+  if (gap.status === 'insufficient_data' || demandLower === null || demandUpper === null) return null
+  const side = sideOf(gap.status)
+  return sideOf(computeGap(demandLower, gap.supply, thresholds).status) === side && sideOf(computeGap(demandUpper, gap.supply, thresholds).status) === side
+}
+
 /** Position of a status on the oversupply → shortage axis. */
 export const STATUS_RANK: Record<GapStatus, number> = {
   severe_oversupply: -2,

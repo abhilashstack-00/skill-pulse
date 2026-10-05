@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { beforeAll, describe, expect, it } from 'vitest'
 import type { Dataset, Snapshot } from '@/lib/domain/types'
+import { aggregateCells } from '@/lib/intelligence/aggregate'
 import { buildSnapshot } from '@/lib/intelligence/engine'
 import { sum } from '@/lib/intelligence/math'
 import { tablesToDataset, type Row } from '@/lib/repository/map'
@@ -8,13 +9,15 @@ import { SupabaseRestRepository } from '@/lib/repository/supabase-rest'
 import { AccessError, can, scopeOf, type GeoScope } from '@/lib/server/access'
 import { derivedRows } from '@/lib/server/derived'
 import { exportRows, toCsv } from '@/lib/server/export'
-import { parseFilters, ValidationError } from '@/lib/server/filters'
+import { filterCells, parseFilters, ValidationError } from '@/lib/server/filters'
 import type { Session } from '@/lib/server/session'
-import { alertsView, districtView, drilldownView, gapsView, recommendationsView, summaryView, tradeView } from '@/lib/server/views'
+import { alertsView, districtView, drilldownView, evidenceView, forecastsView, gapsView, recommendationsView, runView, sourcesView, summaryView, tradeView } from '@/lib/server/views'
 
 let snapshot: Snapshot
-const session = (over: Partial<Session>): Session => ({ userId: 'u', name: 'n', email: null, role: 'national_planner', stateId: null, districtId: null, demo: false, ...over })
-const open: GeoScope = { stateId: null, districtId: null }
+const session = (over: Partial<Session>): Session => ({ userId: 'u', name: 'n', email: null, role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false, ...over })
+const adminSession = session({ role: 'admin' })
+const employerSession = session({ role: 'employer' })
+const open: GeoScope = { stateId: null, districtId: null, districtIds: null }
 const filters = (query: string, scope: GeoScope = open) => parseFilters(new URLSearchParams(query), snapshot, scope)
 
 beforeAll(() => {
@@ -23,7 +26,7 @@ beforeAll(() => {
 
 describe('filters', () => {
   it('defaults to the 12-month horizon and no restriction', () => {
-    expect(filters('')).toEqual({ stateId: null, districtId: null, sectorId: null, tradeId: null, horizon: '12M', status: null })
+    expect(filters('')).toEqual({ stateId: null, districtId: null, sectorId: null, tradeId: null, horizon: '12M', status: null, districtIds: null })
   })
 
   it('derives the state from a district', () => {
@@ -39,19 +42,49 @@ describe('filters', () => {
 })
 
 describe('role-based access', () => {
-  it('lets planners and admins use recommendations and export, and employers only view', () => {
+  it('gives each role exactly its permissions', () => {
     for (const role of ['admin', 'national_planner', 'state_planner', 'district_planner'] as const) {
+      expect(can(session({ role }), 'view')).toBe(true)
       expect(can(session({ role }), 'recommendations')).toBe(true)
-      expect(can(session({ role }), 'export')).toBe(true)
+      expect(can(session({ role }), 'ingest')).toBe(role === 'admin')
     }
     expect(can(session({ role: 'employer' }), 'view')).toBe(true)
     expect(can(session({ role: 'employer' }), 'recommendations')).toBe(false)
-    expect(can(session({ role: 'employer' }), 'export')).toBe(false)
+    expect(can(session({ role: 'employer' }), 'ingest')).toBe(false)
+  })
+
+  it('gives an account that has not been approved nothing at all', () => {
+    for (const role of ['admin', 'national_planner', 'employer'] as const) {
+      const pending = session({ role, approved: false })
+      expect(can(pending, 'view')).toBe(false)
+      expect(can(pending, 'recommendations')).toBe(false)
+      expect(() => scopeOf(pending, snapshot)).toThrow(AccessError)
+    }
+  })
+
+  it('refuses a role it does not know', () => {
+    expect(() => scopeOf(session({ role: 'superuser' as never }), snapshot)).toThrow(AccessError)
+    expect(can(session({ role: 'superuser' as never }), 'view')).toBe(false)
+  })
+
+  it('lets the database narrow the scope, and refuses when the two disagree', () => {
+    // The database says this state planner can read only two of Telangana's three districts.
+    const visible = new Set(['hyderabad', 'warangal'])
+    const scope = scopeOf(session({ role: 'state_planner', stateId: 'TG' }), snapshot, visible)
+    const rows = gapsView(snapshot, filters('', scope)).rows
+    expect(new Set(rows.map((r) => r.districtId))).toEqual(visible)
+    expect(() => filters('districtId=rangareddy', scope)).toThrow(AccessError)
+    // A national role the database shows nothing to sees nothing.
+    const none = scopeOf(session({ role: 'national_planner' }), snapshot, new Set())
+    expect(gapsView(snapshot, filters('', none)).rows).toHaveLength(0)
+    expect(() => filters('stateId=TG', none)).toThrow(AccessError)
+    // A district planner whose district the database does not grant is refused outright.
+    expect(() => scopeOf(session({ role: 'district_planner', districtId: 'warangal' }), snapshot, new Set(['pune']))).toThrow(AccessError)
   })
 
   it('limits a state planner to their state', () => {
     const scope = scopeOf(session({ role: 'state_planner', stateId: 'TG' }), snapshot)
-    expect(scope).toEqual({ stateId: 'TG', districtId: null })
+    expect(scope).toEqual({ stateId: 'TG', districtId: null, districtIds: null })
     const f = filters('', scope)
     expect(f.stateId).toBe('TG')
     expect(new Set(gapsView(snapshot, f).rows.map((r) => r.stateId))).toEqual(new Set(['TG']))
@@ -61,7 +94,7 @@ describe('role-based access', () => {
 
   it('limits a district planner to their district', () => {
     const scope = scopeOf(session({ role: 'district_planner', districtId: 'warangal' }), snapshot)
-    expect(scope).toEqual({ stateId: 'TG', districtId: 'warangal' })
+    expect(scope).toEqual({ stateId: 'TG', districtId: 'warangal', districtIds: null })
     const rows = gapsView(snapshot, filters('', scope)).rows
     expect(rows.length).toBeGreaterThan(0)
     expect(rows.every((r) => r.districtId === 'warangal')).toBe(true)
@@ -81,44 +114,161 @@ describe('role-based access', () => {
 })
 
 describe('one source of truth across screens', () => {
+  const QUERIES = ['', 'stateId=TG', 'districtId=pune', 'districtId=warangal', 'districtId=mysuru', 'sectorId=renewable-energy', 'stateId=KA&sectorId=it-digital', 'tradeId=solar-technician&horizon=6M', 'horizon=current', 'horizon=3M&stateId=MH', 'horizon=6M']
+  const demo = () => snapshot.cells.find((c) => c.key === 'warangal|solar-technician')!
+
   it('the dashboard, the gap table and the drill-down agree on every total', () => {
-    for (const query of ['', 'stateId=TG', 'districtId=pune', 'sectorId=renewable-energy', 'stateId=KA&sectorId=it-digital', 'tradeId=solar-technician&horizon=6M', 'horizon=current', 'horizon=3M&stateId=MH']) {
+    for (const query of QUERIES) {
       const f = filters(query)
       const summary = summaryView(snapshot, f)
       const gaps = gapsView(snapshot, f)
-      const drill = drilldownView(snapshot, f)
+      const drill = drilldownView(snapshot, f, open)
       const known = gaps.rows.filter((r) => r.demand !== null && r.supply !== null)
       expect(summary.totals.demand ?? 0, query).toBe(sum(known.map((r) => r.demand as number)))
       expect(summary.totals.supply ?? 0, query).toBe(sum(known.map((r) => r.supply as number)))
       expect(summary.totals.gap ?? 0, query).toBe(sum(known.map((r) => r.gap as number)))
       expect(drill.total.demand, query).toBe(summary.totals.demand)
       expect(drill.total.gap, query).toBe(summary.totals.gap)
-      if (drill.children.length) expect(sum(drill.children.map((c) => c.demand ?? 0)), query).toBe(summary.totals.demand ?? 0)
+      expect(drill.total.headline, query).toBe(summary.totals.headline)
+      if (drill.children.length) {
+        expect(sum(drill.children.map((c) => c.demand ?? 0)), query).toBe(summary.totals.demand ?? 0)
+        expect(sum(drill.children.map((c) => c.shortageTotal)), query).toBe(summary.totals.shortageTotal)
+        expect(sum(drill.children.map((c) => c.surplusTotal)), query).toBe(summary.totals.surplusTotal)
+      }
       expect(sum(Object.values(summary.statusCounts)), query).toBe(gaps.rows.length)
+      // The figures the dashboard explains are the figures it shows.
+      const shortRows = known.filter((r) => r.status === 'shortage' || r.status === 'severe_shortage')
+      expect(summary.totals.shortageTotal, query).toBe(sum(shortRows.map((r) => r.gap as number)))
+      expect(summary.totals.shortagePairs, query).toBe(shortRows.length)
+      expect(summary.explain.shortage.every((r) => r.status === 'shortage' || r.status === 'severe_shortage'), query).toBe(true)
+      expect(summary.explain.excluded.length, query).toBe(summary.totals.cellsExcluded)
     }
   })
 
+  it('the forecast screen adds up: breakdown, chart, capacity line and total cover the same pairs', () => {
+    for (const query of QUERIES.filter((q) => !q.includes('current'))) {
+      const f = filters(query)
+      const view = forecastsView(snapshot, f)
+      const b = view.breakdown!
+      expect(b.total, query).toBe(view.totals.demand)
+      expect(b.baseline + b.trend + b.recentGrowth + b.floorAdjustment + b.rounding, query).toBe(view.totals.demand)
+      // Rounding is the only slack, and it is small: under one person per pair.
+      expect(Math.abs(b.rounding), query).toBeLessThanOrEqual(view.totals.cellsIncluded)
+      expect(Math.abs(sum(view.monthly.map((m) => m.value)) - (view.totals.demand as number)), query).toBeLessThanOrEqual(view.totals.cellsIncluded)
+      expect(view.supplyPerMonth as number, query).toBeCloseTo((view.totals.supply as number) / view.horizon.months, 1)
+      expect(view.totals.cellsIncluded + view.excluded.length, query).toBe(filterCells(snapshot, f).length)
+      expect(view.interval!.halfWidth, query).toBeGreaterThanOrEqual(view.interval!.ifIndependent - 0.1)
+      expect(view.interval!.halfWidth, query).toBeLessThanOrEqual(view.interval!.ifInStep + 0.1)
+    }
+    const current = forecastsView(snapshot, filters('horizon=current'))
+    expect(current.breakdown).toBeNull()
+    expect(current.monthly).toEqual([])
+  })
+
   it('drills from national to state, district, sector and trade', () => {
-    expect(drilldownView(snapshot, filters('')).level).toBe('state')
-    expect(drilldownView(snapshot, filters('stateId=TG')).level).toBe('district')
-    expect(drilldownView(snapshot, filters('districtId=warangal')).level).toBe('sector')
-    const trades = drilldownView(snapshot, filters('districtId=warangal&sectorId=renewable-energy'))
+    expect(drilldownView(snapshot, filters(''), open).level).toBe('state')
+    expect(drilldownView(snapshot, filters('stateId=TG'), open).level).toBe('district')
+    expect(drilldownView(snapshot, filters('districtId=warangal'), open).level).toBe('sector')
+    const trades = drilldownView(snapshot, filters('districtId=warangal&sectorId=renewable-energy'), open)
     expect(trades.level).toBe('trade')
     expect(trades.children.map((c) => c.id)).toEqual(['solar-technician'])
-    const leaf = drilldownView(snapshot, filters('districtId=warangal&sectorId=renewable-energy&tradeId=solar-technician'))
+    const leaf = drilldownView(snapshot, filters('districtId=warangal&sectorId=renewable-energy&tradeId=solar-technician'), open)
     expect(leaf.level).toBe('cell')
-    expect(leaf.leaf[0]).toMatchObject({ demand: 1250, supply: 800, gap: 450, status: 'severe_shortage' })
+    const h = demo().horizons['12M']
+    expect(leaf.leaf[0]).toMatchObject({ demand: h.demand, supply: h.supply, gap: h.gap.gap, status: h.gap.status })
+  })
+
+  it('ranks groups by high-priority pairs, then highest pair score, then seats short', () => {
+    const view = drilldownView(snapshot, filters(''), open)
+    const rows = [...view.children]
+    for (let i = 1; i < rows.length; i++) {
+      const [a, b] = [rows[i - 1], rows[i]]
+      const ordered = a.highPriorityPairs > b.highPriorityPairs
+        || (a.highPriorityPairs === b.highPriorityPairs && ((a.priorityScore ?? -1) > (b.priorityScore ?? -1)
+          || ((a.priorityScore ?? -1) === (b.priorityScore ?? -1) && a.shortageTotal >= b.shortageTotal)))
+      expect(ordered, `${a.id} before ${b.id}`).toBe(true)
+    }
+    expect(view.ranking.length).toBeGreaterThan(0)
+    expect(view.ranking[0].highPriorityPairs).toBe(Math.max(...view.ranking.map((r) => r.highPriorityPairs)))
+  })
+
+  it('puts the largest mismatch first in the gap table and data-less pairs last', () => {
+    const rows = gapsView(snapshot, filters('')).rows
+    const lastWithGap = rows.map((r) => r.gap !== null).lastIndexOf(true)
+    expect(rows.slice(lastWithGap + 1).every((r) => r.gap === null)).toBe(true)
+    expect(rows.slice(0, lastWithGap + 1).every((r) => r.gap !== null)).toBe(true)
+    const pcts = rows.filter((r) => r.gapPercentage !== null).map((r) => Math.abs(r.gapPercentage as number))
+    expect(pcts).toEqual([...pcts].sort((a, b) => b - a))
   })
 
   it('shows the same trade figures on the trade endpoint as in the gap table', () => {
-    const view = tradeView(snapshot, 'solar-technician', filters('districtId=warangal'))!
-    expect(view.forecast.totals).toMatchObject({ demand: 1250, supply: 800, gap: 450, gapPercentage: 56.25, status: 'severe_shortage' })
-    expect(view.priority.score).toBe(snapshot.cells.find((c) => c.key === 'warangal|solar-technician')?.priority.score)
+    const c = demo()
+    const h = c.horizons['12M']
+    const view = tradeView(snapshot, 'solar-technician', filters('districtId=warangal'), adminSession)!
+    expect(view.forecast.totals).toMatchObject({ demand: h.demand, supply: h.supply, gap: h.gap.gap, gapPercentage: h.gap.gapPercentage, headline: h.gap.status })
+    expect(view.priority.result).toEqual(c.priority)
+    expect(view.priority.peak).toBeNull() // one pair: the score is its own, there is no "highest pair"
     expect(view.warnings.map((w) => w.type)).toContain('upcoming_shortage')
-    expect(view.recommendations[0].action).toBe('increase_capacity')
+    expect(view.recommendations?.[0].action).toBe('increase_capacity')
     expect(view.sources.demand.length).toBeGreaterThan(0)
     expect(view.forecast.monthly).toHaveLength(12)
-    expect(tradeView(snapshot, 'unknown', filters(''))).toBeNull()
+    expect(view.forecast.interval?.single).toEqual(c.demandForecasts['12M'].interval)
+    expect(tradeView(snapshot, 'unknown', filters(''), adminSession)).toBeNull()
+  })
+
+  it('names the highest-priority pair when a trade is viewed across districts', () => {
+    const view = tradeView(snapshot, 'solar-technician', filters(''), adminSession)!
+    const cells = snapshot.cells.filter((c) => c.tradeId === 'solar-technician')
+    const top = Math.max(...cells.map((c) => c.priority.score ?? -1))
+    expect(view.priority.result?.score).toBe(top)
+    expect(cells.find((c) => c.districtId === view.priority.peak?.districtId)?.priority.score).toBe(top)
+    expect(view.priority.highPairs).toBe(cells.filter((c) => c.priority.band === 'high').length)
+  })
+
+  it('leaves recommendations out of the trade view for a role without them', () => {
+    const view = tradeView(snapshot, 'solar-technician', filters('districtId=warangal'), employerSession)!
+    expect(view.recommendations).toBeNull()
+    expect(JSON.stringify(view)).not.toContain('increase_capacity')
+    // The warnings stay (they are findings); the suggested action on each does not.
+    expect(view.warnings.length).toBeGreaterThan(0)
+    expect(view.warnings.every((w) => w.recommendedAction === null)).toBe(true)
+  })
+
+  it('gives findings to every role and advice only to planners, on every view that carries warnings', () => {
+    const f = filters('districtId=warangal')
+    const views = (s: Session) => [alertsView(snapshot, f, s).warnings, districtView(snapshot, 'warangal', filters(''), s)!.warnings, evidenceView(snapshot, 'warangal', 'solar-technician', s)!.warnings]
+    for (const warnings of views(employerSession)) {
+      expect(warnings.length).toBeGreaterThan(0)
+      expect(JSON.stringify(warnings)).not.toContain('warning.action.')
+    }
+    for (const warnings of views(adminSession)) expect(warnings.every((w) => typeof w.recommendedAction === 'string')).toBe(true)
+    expect(Object.keys(exportRows(snapshot, 'alerts', f, { advice: false })[0])).not.toContain('recommended_action')
+    expect(Object.keys(exportRows(snapshot, 'alerts', f)[0])).toContain('recommended_action')
+  })
+
+  it('shows load history in as much detail as the role should have', () => {
+    const run = snapshot.dataset.ingestionRuns.find((r) => r.sourceId === 'job-portals')!
+    expect(run.rejects.length).toBeGreaterThan(0)
+    const forEmployer = runView(run, employerSession)
+    expect(forEmployer).toMatchObject({ fileName: null, loadedBy: null, rejects: null, looseMatchList: null, rowsRead: run.rowsRead, valueMapped: run.valueMapped })
+    const forPlanner = runView(run, session({ role: 'state_planner', stateId: 'TG' }))
+    expect(forPlanner).toMatchObject({ fileName: run.fileName, loadedBy: null, rejects: null })
+    expect(runView(run, adminSession).rejects).toEqual(run.rejects)
+    // The same rule wherever a run appears.
+    expect(JSON.stringify(sourcesView(snapshot, employerSession))).not.toContain('Java Developer')
+    expect(JSON.stringify(evidenceView(snapshot, 'warangal', 'solar-technician', employerSession))).not.toContain(run.fileName)
+  })
+
+  it('limits the map to the session\'s own area', () => {
+    const district = scopeOf(session({ role: 'district_planner', districtId: 'warangal' }), snapshot)
+    const view = drilldownView(snapshot, filters('', district), district)
+    expect(view.states.map((s) => s.stateId)).toEqual(['TG'])
+    const own = aggregateCells(snapshot.cells.filter((c) => c.districtId === 'warangal'), snapshot.calibration).horizons['12M']
+    expect(view.states[0]).toMatchObject({ demand: own.demand, supply: own.supply, cells: snapshot.cells.filter((c) => c.districtId === 'warangal').length })
+    expect(view.mapScope).toEqual({ stateId: 'TG', districtId: 'warangal' })
+    const state = scopeOf(session({ role: 'state_planner', stateId: 'KA' }), snapshot)
+    expect(drilldownView(snapshot, filters('', state), state).states.map((s) => s.stateId)).toEqual(['KA'])
+    expect(drilldownView(snapshot, filters(''), open).states.map((s) => s.stateId).sort()).toEqual(['KA', 'MH', 'TG'])
   })
 
   it('filters the gap table by status and by status group', () => {
@@ -126,13 +276,15 @@ describe('one source of truth across screens', () => {
     expect(severe.every((r) => r.status === 'severe_shortage')).toBe(true)
     const anyShortage = gapsView(snapshot, filters('status=any_shortage')).rows
     expect(anyShortage.length).toBe(severe.length + gapsView(snapshot, filters('status=shortage')).rows.length)
-    expect(gapsView(snapshot, filters('status=insufficient_data')).rows).toHaveLength(2)
+    const noData = snapshot.cells.filter((c) => c.horizons['12M'].gap.status === 'insufficient_data').length
+    expect(noData).toBeGreaterThan(0)
+    expect(gapsView(snapshot, filters('status=insufficient_data')).rows).toHaveLength(noData)
   })
 
   it('counts warnings and recommendations from the same pairs', () => {
     const f = filters('stateId=TG')
     const summary = summaryView(snapshot, f)
-    const alerts = alertsView(snapshot, f)
+    const alerts = alertsView(snapshot, f, adminSession)
     expect(alerts.warnings.length).toBe(summary.counts.warnings)
     expect(alerts.warnings.every((w) => w.stateId === 'TG')).toBe(true)
     const recs = recommendationsView(snapshot, f)
@@ -141,7 +293,7 @@ describe('one source of truth across screens', () => {
   })
 
   it('profiles a district', () => {
-    const view = districtView(snapshot, 'warangal', filters(''))!
+    const view = districtView(snapshot, 'warangal', filters(''), adminSession)!
     expect(view.state?.id).toBe('TG')
     expect(sum(view.sectors.map((s) => s.demand ?? 0))).toBe(view.total.demand)
     expect(view.trainingCentres.total).toBe(7)
@@ -153,7 +305,8 @@ describe('export', () => {
     const rows = exportRows(snapshot, 'gaps', filters('districtId=warangal'))
     expect(rows.length).toBe(snapshot.cells.filter((c) => c.districtId === 'warangal').length)
     const solar = rows.find((r) => r.trade === 'Solar Technician')!
-    expect(solar).toMatchObject({ state: 'Telangana', district: 'Warangal', demand: 1250, supply: 800, gap: 450, gap_percentage: 56.25, status: 'severe_shortage', data_label: 'Prototype synthetic pilot data' })
+    const h = snapshot.cells.find((c) => c.key === 'warangal|solar-technician')!.horizons['12M']
+    expect(solar).toMatchObject({ state: 'Telangana', district: 'Warangal', demand: h.demand, supply: h.supply, gap: h.gap.gap, gap_percentage: h.gap.gapPercentage, status: h.gap.status, data_label: 'Prototype synthetic pilot data' })
     const csv = toCsv(rows)
     expect(csv.split('\n')[0]).toContain('state,state_code,district')
     expect(csv.trim().split('\n')).toHaveLength(rows.length + 1)
@@ -161,7 +314,9 @@ describe('export', () => {
 
   it('exports forecasts, priority, alerts and recommendations', () => {
     const f = filters('tradeId=solar-technician&districtId=warangal')
-    expect(exportRows(snapshot, 'forecasts', f).map((r) => r.horizon)).toEqual(['3M', '6M', '12M'])
+    expect(exportRows(snapshot, 'forecasts', f).map((r) => r.horizon)).toEqual(['12M']) // the selected horizon, like the screen
+    expect(exportRows(snapshot, 'forecasts', filters('tradeId=solar-technician&districtId=warangal&horizon=3M'))[0]).toMatchObject({ horizon: '3M' })
+    expect(exportRows(snapshot, 'forecasts', filters('tradeId=solar-technician&districtId=warangal&horizon=current'))).toHaveLength(3) // no single forecast horizon chosen: all three
     expect(exportRows(snapshot, 'priority', f)[0].priority_band).toBe('high')
     expect(exportRows(snapshot, 'alerts', f).map((r) => r.type)).toContain('upcoming_shortage')
     expect(String(exportRows(snapshot, 'recommendations', f)[0].recommendation)).toContain('Increase Solar Technician training capacity in Warangal')
@@ -174,7 +329,40 @@ describe('export', () => {
   })
 })
 
+describe('evidence for one pair', () => {
+  it('returns the stored rows unchanged, with the months each calculation used', () => {
+    const view = evidenceView(snapshot, 'warangal', 'solar-technician', adminSession)!
+    const stored = snapshot.dataset.labourDemand.filter((r) => r.districtId === 'warangal' && r.tradeId === 'solar-technician').sort((a, b) => a.period.localeCompare(b.period))
+    expect(view.demandRows.map((r) => [r.period, r.jobPostings, r.employmentRegistrations, r.hiringSignal, r.industryDemandSignal])).toEqual(
+      stored.map((r) => [r.period, r.jobPostings, r.employmentRegistrations, r.hiringSignal, r.industryDemandSignal]),
+    )
+    expect(view.demandRows.filter((r) => r.usedForBaseline).map((r) => r.period)).toEqual(['2026-07', '2026-08', '2026-09'])
+    expect(view.demandRows.filter((r) => r.usedForTrend)).toHaveLength(12)
+    // The baseline shown is the mean of exactly the shaded rows.
+    const shaded = view.demandRows.filter((r) => r.usedForBaseline).map((r) => r.volume as number)
+    expect(view.forecast.components?.baseline).toBeCloseTo(sum(shaded) / shaded.length, 2)
+    expect(view.trainingRows.map((r) => r.year)).toEqual([2023, 2024, 2025, 2026])
+  })
+
+  it('names the file load behind every value', () => {
+    const view = evidenceView(snapshot, 'warangal', 'solar-technician', adminSession)!
+    expect(view.runs.map((r) => r.sourceId).sort()).toEqual(['employment-exchange', 'industry-hiring', 'industry-survey', 'job-portals', 'training-capacity'])
+    const runIds = new Set(view.runs.map((r) => r.id))
+    for (const row of view.demandRows) for (const id of Object.values(row.lineage)) expect(runIds.has(id as number)).toBe(true)
+    expect(view.signals.map((s) => s.metric).sort()).toEqual(['employmentRegistrations', 'hiringSignal', 'industryDemandSignal', 'jobPostings'])
+    expect(evidenceView(snapshot, 'warangal', 'wind-turbine-technician', adminSession)).toBeNull() // no such pair in the pilot
+  })
+})
+
 describe('derived tables', () => {
+  it('carries the priority score only on the planning-horizon row', () => {
+    const { columns, rows } = derivedRows(snapshot).gap_analysis
+    const [horizon, score] = [columns.indexOf('horizon'), columns.indexOf('priority_score')]
+    expect(rows.filter((r) => r[horizon] !== '12M').every((r) => r[score] === null)).toBe(true)
+    expect(rows.some((r) => r[horizon] === '12M' && r[score] !== null)).toBe(true)
+  })
+
+
   it('produces one row per pair and horizon', () => {
     const derived = derivedRows(snapshot)
     expect(derived.demand_forecasts.rows).toHaveLength(snapshot.cells.length * 3)
@@ -188,7 +376,7 @@ describe('repositories', () => {
   const tables = () => ({
     dataset_meta: [{ label: 'x', synthetic: true, as_of_period: new Date(2026, 8, 1), updated_at: '2026-09-28', current_training_year: 2026 }],
     states: [{ id: 'TG', name: 'Telangana', name_hi: null, code: 'TG' }],
-    districts: [], sectors: [], trades: [], training_centres: [], data_sources: [],
+    districts: [], sectors: [], trades: [], training_centres: [], data_sources: [], ingestion_runs: [],
     training_capacity: [{ district_id: 'd', sector_id: 's', trade_id: 't', year: 2026, allocated_seats: 800, enrolled: 752, completed: null, placed: null }],
     labour_demand: [{ district_id: 'd', sector_id: 's', trade_id: 't', period: '2026-09-01', job_postings: 57, hiring_signal: '92.5', employment_registrations: 30, industry_demand_signal: null, source: 'x' }],
   })

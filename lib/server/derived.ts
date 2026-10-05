@@ -1,4 +1,4 @@
-import { FORECAST, SUPPLY_FORECAST } from '@/lib/config/methodology'
+import { FORECAST, PRIORITY, SUPPLY_FORECAST } from '@/lib/config/methodology'
 import type { Snapshot } from '@/lib/domain/types'
 import { FORECAST_HORIZONS, HORIZON_KEYS } from '@/lib/intelligence/engine'
 
@@ -19,7 +19,8 @@ export function derivedRows(snapshot: Snapshot) {
     }
     for (const horizon of HORIZON_KEYS) {
       const h = cell.horizons[horizon]
-      gapAnalysis.push([...ids, horizon, monthEnd(h.periodEnd), h.demand, h.supply, h.gap.gap, h.gap.gapPercentage, h.gap.status, cell.priority.score])
+      // The priority score is defined on the planning horizon only, so only that row carries it.
+      gapAnalysis.push([...ids, horizon, monthEnd(h.periodEnd), h.demand, h.supply, h.gap.gap, h.gap.gapPercentage, h.gap.status, horizon === PRIORITY.planningHorizon ? cell.priority.score : null])
     }
   }
   return {

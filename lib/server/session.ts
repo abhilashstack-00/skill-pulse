@@ -1,7 +1,8 @@
 import { cookies } from 'next/headers'
 import { createServerClient } from '@supabase/ssr'
-import { authEnabled, env } from '@/lib/config/env'
-import { getRepository, type Role } from '@/lib/repository'
+import { authEnabled, demoModeAllowed, env } from '@/lib/config/env'
+import { getRepository, ROLES as ROLE_LIST, type Role } from '@/lib/repository'
+import { AccessError } from './access'
 
 export interface Session {
   userId: string | null
@@ -10,15 +11,17 @@ export interface Session {
   role: Role
   stateId: string | null
   districtId: string | null
+  /** False for a sign-up no administrator has approved yet; such a session sees nothing. */
+  approved: boolean
   /** True when Supabase Auth is not configured and a demo role is in use. */
   demo: boolean
 }
 
-export const ROLES: Role[] = ['admin', 'national_planner', 'state_planner', 'district_planner', 'employer']
+export const ROLES: readonly Role[] = ROLE_LIST
 export const DEMO_ROLE_COOKIE = 'sp_demo_role'
 
 /** Stand-in identities used only when sign-in is not configured. */
-export const DEMO_PROFILES: Record<Role, Omit<Session, 'demo' | 'userId' | 'email'>> = {
+export const DEMO_PROFILES: Record<Role, Omit<Session, 'demo' | 'userId' | 'email' | 'approved'>> = {
   admin: { name: 'Demo administrator', role: 'admin', stateId: null, districtId: null },
   national_planner: { name: 'Demo national planner', role: 'national_planner', stateId: null, districtId: null },
   state_planner: { name: 'Demo state planner', role: 'state_planner', stateId: 'TG', districtId: null },
@@ -46,10 +49,13 @@ export async function createSupabaseServerClient() {
 /** The signed-in user with role and scope, or null when not signed in. */
 export async function getSession(): Promise<Session | null> {
   if (!authEnabled) {
+    if (!demoModeAllowed) {
+      throw new AccessError(503, 'Sign-in is not configured. Set the Supabase settings, or set DEMO_MODE=on to run the open demo on purpose.')
+    }
     const store = await cookies()
     const requested = store.get(DEMO_ROLE_COOKIE)?.value as Role | undefined
     const role = requested && ROLES.includes(requested) ? requested : 'national_planner'
-    return { ...DEMO_PROFILES[role], userId: null, email: null, demo: true }
+    return { ...DEMO_PROFILES[role], userId: null, email: null, approved: true, demo: true }
   }
   const supabase = await createSupabaseServerClient()
   const { data, error } = await supabase.auth.getUser()
@@ -59,10 +65,11 @@ export async function getSession(): Promise<Session | null> {
     userId: data.user.id,
     email: data.user.email ?? null,
     name: profile?.fullName ?? data.user.email ?? 'Signed-in user',
-    // No profile row means no granted role: fall back to the least privileged one.
+    // No profile, an unknown role or no approval all mean the same thing: no access yet.
     role: profile?.role ?? 'employer',
     stateId: profile?.stateId ?? null,
     districtId: profile?.districtId ?? null,
+    approved: Boolean(profile && profile.role && profile.approved),
     demo: false,
   }
 }

@@ -20,10 +20,11 @@ export type ForecastParams = typeof FORECAST
  *   recent growth  change between the last two 3-month averages, per month,
  *                  × (1 − trendWeight), damped each month
  *
- * The horizon forecast is the sum of the monthly forecasts. The interval
+ * The horizon forecast is the sum of the monthly forecasts. The model interval
  * combines month-to-month noise, uncertainty in the baseline average and
- * uncertainty in the trend slope, and is widened to the error measured in the
- * backtest when that is larger. Nothing here is random.
+ * uncertainty in the trend slope, so it is wider for noisy or short series.
+ * It is then multiplied by a calibration factor measured in the backtest.
+ * Nothing here is random.
  */
 export function forecastDemandSeries(
   observations: MonthlyObservation[],
@@ -31,11 +32,11 @@ export function forecastDemandSeries(
   horizonMonths: number,
   params: ForecastParams = FORECAST,
   /**
-   * Relative error observed in the backtest at this horizon (e.g. 0.12).
-   * When given, the interval is never narrower than ± this share of the
-   * forecast, so stated uncertainty cannot be smaller than measured error.
+   * How much the backtest says the model interval has to be widened for this
+   * horizon (1 = not at all). The model interval differs from pair to pair with
+   * each pair's own noise and trend uncertainty; this factor scales all of them.
    */
-  empiricalRelativeError = 0,
+  calibrationFactor = 1,
 ): DemandForecast {
   const asOf = monthIndex(asOfPeriod)
   const base = {
@@ -46,7 +47,7 @@ export function forecastDemandSeries(
   }
   const none = (reason: 'too_few_months' | 'stale'): DemandForecast => ({
     ...base, method: 'insufficient_data', predictedDemand: null, lowerBound: null, upperBound: null,
-    parts: null, confidence: null, components: null, monthly: [], reason,
+    parts: null, interval: null, confidence: null, components: null, monthly: [], reason,
   })
 
   const points = observations
@@ -60,7 +61,8 @@ export function forecastDemandSeries(
   const method: ForecastMethod =
     points.length < params.minMonthsTrend ? 'baseline_estimate' : points.length < params.trendWindow ? 'limited_history' : 'full'
 
-  const last = points.slice(-params.baselineWindow)
+  const last = recentWindow(points, asOf, params)
+  if (last.length < 2) return none('stale')
   const baseline = mean(last.map((p) => p.y))
   const baselineCentre = mean(last.map((p) => p.t))
 
@@ -74,7 +76,7 @@ export function forecastDemandSeries(
     trendSlope = fit.slope
     residualStd = fit.residualStd
     slopeStdErr = fit.slopeStdErr
-    const previous = points.slice(-2 * params.baselineWindow, -params.baselineWindow)
+    const previous = points.filter((p) => p.t < last[0].t).slice(-params.baselineWindow)
     const gapMonths = baselineCentre - mean(previous.map((p) => p.t))
     recentSlope = gapMonths > 0 ? (baseline - mean(previous.map((p) => p.y))) / gapMonths : 0
   }
@@ -94,9 +96,9 @@ export function forecastDemandSeries(
     const trendPart = wTrend * trendSlope * d
     const growthPart = (1 - wTrend) * recentSlope * dampedDistance(d)
     const value = Math.max(0, baseline + trendPart + growthPart)
-    const half = Math.max(
-      z * Math.sqrt(residualStd ** 2 * (1 + 1 / last.length) + (wTrend * slopeStdErr * d) ** 2),
-      empiricalRelativeError * value,
+    const half = calibrationFactor * Math.max(
+      z * Math.sqrt(residualStd ** 2 * (1 + 1 / last.length) + (wTrend * slopeStdErr * d) ** 2 + (params.extrapolationUncertainty * (trendPart + growthPart)) ** 2),
+      params.minRelativeHalfWidth * value,
     )
     distances.push(d)
     trendTotal += trendPart
@@ -106,12 +108,18 @@ export function forecastDemandSeries(
   }
 
   // Variance of the horizon total: independent monthly noise, one shared error
-  // in the baseline average, and one shared error in the trend slope.
+  // in the baseline average, one shared error in the trend slope, and the
+  // uncertainty of extrapolating the projected change at all.
   const variance =
     horizonMonths * residualStd ** 2 +
     (horizonMonths ** 2 * residualStd ** 2) / last.length +
-    (wTrend * slopeStdErr * sum(distances)) ** 2
-  const half = Math.max(z * Math.sqrt(variance), empiricalRelativeError * total)
+    (wTrend * slopeStdErr * sum(distances)) ** 2 +
+    (params.extrapolationUncertainty * (trendTotal + growthTotal)) ** 2
+  const modelHalf = Math.max(z * Math.sqrt(variance), params.minRelativeHalfWidth * total)
+  const half = calibrationFactor * modelHalf
+  // Months floored at zero make the total larger than the three parts; keep the difference visible.
+  const baselineTotal = baseline * horizonMonths
+  const floorAdjustment = total - (baselineTotal + trendTotal + growthTotal)
 
   return {
     ...base,
@@ -119,7 +127,8 @@ export function forecastDemandSeries(
     predictedDemand: Math.round(total),
     lowerBound: Math.round(Math.max(0, total - half)),
     upperBound: Math.round(total + half),
-    parts: { baseline: round(baseline * horizonMonths, 1), trend: round(trendTotal, 1), recentGrowth: round(growthTotal, 1) },
+    parts: { baseline: round(baselineTotal, 1), trend: round(trendTotal, 1), recentGrowth: round(growthTotal, 1), floorAdjustment: round(floorAdjustment, 1) },
+    interval: { modelHalfWidth: round(modelHalf, 1), calibrationFactor: round(calibrationFactor, 3), halfWidth: round(half, 1) },
     confidence: confidenceFrom(total, half, method, params),
     components: {
       baseline: round(baseline, 2),
@@ -136,8 +145,21 @@ export function forecastDemandSeries(
 }
 
 /**
- * Confidence is derived from the width of the interval relative to the
- * forecast, then capped when history is short. It is never asserted.
+ * The most recent observations: the last `baselineWindow` observed months.
+ * Empty when the newest observation is `staleAfterMonths` or more months old;
+ * otherwise none of the months used is older than the window plus that allowance.
+ * Used for the forecast baseline, the Demand Index and the "current" rate alike.
+ */
+export function recentWindow<T extends { t: number }>(points: T[], asOf: number, params: Pick<ForecastParams, 'baselineWindow' | 'staleAfterMonths'> = FORECAST): T[] {
+  const oldest = asOf - (params.baselineWindow + params.staleAfterMonths - 1)
+  const recent = points.filter((p) => p.t <= asOf && p.t > oldest).sort((a, b) => a.t - b.t).slice(-params.baselineWindow)
+  if (!recent.length || asOf - recent[recent.length - 1].t >= params.staleAfterMonths) return []
+  return recent
+}
+
+/**
+ * Confidence is read off the width of the interval relative to the forecast,
+ * then capped when history is short.
  */
 export function confidenceFrom(predicted: number, halfWidth: number, method: ForecastMethod, params: ForecastParams = FORECAST): Confidence {
   const c = params.confidence

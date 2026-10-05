@@ -90,6 +90,8 @@ export function ActionCenterPage() {
                   <div>
                     <p className="action-suggestion">{t('action.suggested', { text: text.text })}</p>
                     {text.secondary && <p className="notice-action">{text.secondary}</p>}
+                    {text.caution && <p className="notice-action">{text.caution}</p>}
+                    {text.tentative && <p className="notice-action">{text.tentative}</p>}
                   </div>
                   <div className="action-buttons">
                     {reviewed.has(selected.id) ? (
@@ -132,7 +134,7 @@ export function ActionCenterPage() {
                     <Trace label={t('action.trace.demandSources')} value={`${actions.data.sources.demand.length} · ${actions.data.sources.demand.map((s) => s.name).join(', ')}`} />
                     <Trace label={t('action.trace.supplySources')} value={`${actions.data.sources.supply.length} · ${actions.data.sources.supply.map((s) => s.name).join(', ')}`} />
                     <Trace label={t('action.trace.history')} value={t('action.trace.historyValue', { months: selected.coverage.monthsObserved })} />
-                    <Trace label={t('common.freshness')} value={`${formatDate(actions.data.freshness, locale)} · ${t('app.synthetic')}`} />
+                    <Trace label={t('common.freshness')} value={`${formatDate(actions.data.freshness, locale)} · ${t(meta?.dataset.synthetic === false ? 'sources.status.uploaded' : 'app.synthetic')}`} />
                     <Trace label={t('action.trace.method')} value={t('action.trace.methodValue')} />
                   </dl>
                 </SectionCard>

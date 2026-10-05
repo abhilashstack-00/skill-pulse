@@ -66,6 +66,7 @@ export function MethodologyPage() {
               </div>
               <p className="weights-note" style={{ marginTop: 14 }}>
                 {t('method.scaling', {
+                  percentile: m.normalization.referencePercentile, months: m.demandIndex.smoothingMonths,
                   postings: formatNumber(data.references.jobPostings, 0), registrations: formatNumber(data.references.employmentRegistrations, 0), seats: formatNumber(data.references.seats, 0),
                 })}
               </p>
@@ -102,8 +103,15 @@ export function MethodologyPage() {
                 <h2 className="card-title" id="forecast-method">{t('method.forecast')}</h2>
                 <p className="method-text">
                   {t('method.forecast.text', {
-                    baseline: m.forecast.baselineWindow, trendWeight: Math.round(m.forecast.trendWeight * 100), growthWeight: Math.round((1 - m.forecast.trendWeight) * 100),
+                    baseline: m.forecast.baselineWindow, trend: m.forecast.trendWindow, trendWeight: Math.round(m.forecast.trendWeight * 100), growthWeight: Math.round((1 - m.forecast.trendWeight) * 100),
                     damping: m.forecast.growthDamping, minTrend: m.forecast.minMonthsTrend, minBaseline: m.forecast.minMonthsBaseline,
+                  })}
+                </p>
+                <p className="method-text">
+                  {t('method.interval.text', {
+                    coverage: Math.round(m.forecast.coverage * 100), extrapolation: Math.round(m.forecast.extrapolationUncertainty * 100),
+                    zero: Math.round(m.forecast.confidence.zeroAtRelativeWidth * 100), high: m.forecast.confidence.high, medium: m.forecast.confidence.medium,
+                    capShort: m.forecast.confidence.capLimitedHistory, capBaseline: m.forecast.confidence.capBaselineEstimate,
                   })}
                 </p>
                 <h3 className="drawer-section-title">{t('method.backtest')}</h3>
@@ -112,8 +120,11 @@ export function MethodologyPage() {
                     <tr>
                       <th scope="col">{t('method.backtest.col.horizon')}</th>
                       <th scope="col">{t('method.backtest.col.pairs')}</th>
+                      <th scope="col">{t('method.backtest.col.samples')}</th>
                       <th scope="col">{t('method.backtest.col.wape')}</th>
-                      <th scope="col">{t('method.backtest.col.p80')}</th>
+                      <th scope="col">{t('method.backtest.col.factor')}</th>
+                      <th scope="col">{t('method.backtest.col.holdout', { coverage: Math.round(m.forecast.coverage * 100) })}</th>
+                      <th scope="col">{t('method.backtest.col.correlation')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -121,13 +132,18 @@ export function MethodologyPage() {
                       <tr key={b.horizon}>
                         <td>{t(`horizon.${b.horizon}`)}</td>
                         <td>{b.cells}</td>
+                        <td>{formatNumber(b.samples)}</td>
                         <td>{b.wape === null ? '—' : `${formatNumber(b.wape, 1)}%`}</td>
-                        <td>{b.p80Ape === null ? '—' : `±${formatNumber(b.p80Ape, 1)}%`}</td>
+                        <td>{b.calibrationFactor === null ? '—' : `× ${formatNumber(b.calibrationFactor, 2)}`}</td>
+                        <td>{b.holdoutCoverage === null ? t('method.backtest.notPossible') : `${formatNumber(b.holdoutCoverage, 1)}% (${formatNumber(b.holdoutSamples)})`}</td>
+                        <td>{b.errorCorrelation === null ? '—' : `${formatNumber(b.errorCorrelation, 2)} → ${formatNumber(data.calibration[b.horizon].errorCorrelation, 2)}`}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-                <p className="method-text">{t('method.backtest.note')}</p>
+                <p className="method-text">{t('method.backtest.note', { coverage: Math.round(m.forecast.coverage * 100), rho: m.group.minErrorCorrelation })}</p>
+                <h3 className="drawer-section-title">{t('method.groups')}</h3>
+                <p className="method-text">{t('method.groups.text', { share: m.group.materialSharePct, rho: m.group.minErrorCorrelation })}</p>
                 <p className="method-text">
                   <Pill tone="neutral" compact>{t('common.prototypeThresholds')}</Pill> &nbsp;{t('method.version', { version: m.version })} · {m.forecast.modelVersion} · {m.supplyForecast.modelVersion}
                 </p>

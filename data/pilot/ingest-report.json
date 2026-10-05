@@ -2,68 +2,264 @@
   "generatedFor": "2026-09",
   "reports": [
     {
-      "source": "job_portal",
-      "recordsIn": 6645,
-      "recordsMapped": 6642,
-      "unmapped": [
+      "sourceId": "job-portals",
+      "rowsRead": 8859,
+      "rowsMapped": 7882,
+      "rowsRejected": 977,
+      "rowsLooselyMatched": 1352,
+      "rowsHeld": 0,
+      "looseMatches": "count",
+      "duplicateRows": 0,
+      "sectorMismatches": 0,
+      "codeConflicts": 0,
+      "valueRead": 234797,
+      "valueMapped": 220732,
+      "periodMin": "2024-10",
+      "periodMax": "2026-09",
+      "pairs": 94,
+      "rejects": [
         {
-          "reason": "occupation",
-          "example": "Astrologer",
-          "count": 1
+          "reason": "occupation_unknown",
+          "example": "Java Developer",
+          "count": 168,
+          "value": 7619
         },
         {
-          "reason": "place",
+          "reason": "occupation_unknown",
+          "example": "Hospital Attendant",
+          "count": 168,
+          "value": 1792
+        },
+        {
+          "reason": "place_unknown",
+          "example": "Mysooru",
+          "count": 134,
+          "value": 1432
+        },
+        {
+          "reason": "occupation_unknown",
+          "example": "Performance Marketing Associate",
+          "count": 168,
+          "value": 1388
+        },
+        {
+          "reason": "occupation_unknown",
+          "example": "Shuttering Carpenter",
+          "count": 168,
+          "value": 897
+        },
+        {
+          "reason": "occupation_unknown",
+          "example": "Fabricator cum Welder",
+          "count": 168,
+          "value": 676
+        },
+        {
+          "reason": "place_unknown",
           "example": "Chennai",
-          "count": 1
+          "count": 1,
+          "value": 240
         },
         {
-          "reason": "occupation",
-          "example": "Drone Pilot",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "source": "employment_exchange",
-      "recordsIn": 2215,
-      "recordsMapped": 2214,
-      "unmapped": [
+          "reason": "occupation_unknown",
+          "example": "Astrologer",
+          "count": 1,
+          "value": 12
+        },
         {
-          "reason": "occupation",
-          "example": "Occupation not classified",
-          "count": 1
+          "reason": "occupation_unknown",
+          "example": "Drone Pilot",
+          "count": 1,
+          "value": 9
         }
-      ]
+      ],
+      "rejectKinds": 9,
+      "looseMatchList": [
+        {
+          "raw": "Retail Sales Assosiate",
+          "mappedTo": "retail-sales-associate",
+          "method": "spelling",
+          "score": 0.955,
+          "count": 162,
+          "value": 2618
+        },
+        {
+          "raw": "Data Entry Opertor",
+          "mappedTo": "data-entry-operator",
+          "method": "spelling",
+          "score": 0.947,
+          "count": 167,
+          "value": 2082
+        },
+        {
+          "raw": "Wearhouse Associate",
+          "mappedTo": "warehouse-associate",
+          "method": "spelling",
+          "score": 0.895,
+          "count": 162,
+          "value": 1919
+        },
+        {
+          "raw": "Electrician cum Wireman",
+          "mappedTo": "electrician",
+          "method": "alias_with_qualifier",
+          "score": 0.85,
+          "count": 165,
+          "value": 1406
+        },
+        {
+          "raw": "CNC Operator - Night Shift",
+          "mappedTo": "cnc-operator",
+          "method": "alias_with_qualifier",
+          "score": 0.85,
+          "count": 142,
+          "value": 754
+        },
+        {
+          "raw": "Logistics Co-ordinator",
+          "mappedTo": "logistics-coordinator",
+          "method": "spelling",
+          "score": 0.955,
+          "count": 166,
+          "value": 709
+        },
+        {
+          "raw": "Solar Technician - Rooftop",
+          "mappedTo": "solar-technician",
+          "method": "alias_with_qualifier",
+          "score": 0.85,
+          "count": 168,
+          "value": 690
+        },
+        {
+          "raw": "Phlebotomist (Home Collection)",
+          "mappedTo": "phlebotomy-technician",
+          "method": "alias_with_qualifier",
+          "score": 0.85,
+          "count": 146,
+          "value": 557
+        },
+        {
+          "raw": "Wind Turbine Technician (O&M)",
+          "mappedTo": "wind-turbine-technician",
+          "method": "alias_with_qualifier",
+          "score": 0.85,
+          "count": 74,
+          "value": 155
+        }
+      ],
+      "looseKinds": 9
     },
     {
-      "source": "industry_hiring",
-      "recordsIn": 2215,
-      "recordsMapped": 2214,
-      "unmapped": [
+      "sourceId": "employment-exchange",
+      "rowsRead": 2215,
+      "rowsMapped": 2214,
+      "rowsRejected": 1,
+      "rowsLooselyMatched": 0,
+      "rowsHeld": 0,
+      "looseMatches": "count",
+      "duplicateRows": 0,
+      "sectorMismatches": 0,
+      "codeConflicts": 0,
+      "valueRead": 86980,
+      "valueMapped": 86950,
+      "periodMin": "2024-10",
+      "periodMax": "2026-09",
+      "pairs": 94,
+      "rejects": [
+        {
+          "reason": "occupation_unknown",
+          "example": "Occupation not classified",
+          "count": 1,
+          "value": 30
+        }
+      ],
+      "rejectKinds": 1,
+      "looseMatchList": [],
+      "looseKinds": 0
+    },
+    {
+      "sourceId": "industry-hiring",
+      "rowsRead": 2215,
+      "rowsMapped": 2139,
+      "rowsRejected": 76,
+      "rowsLooselyMatched": 0,
+      "rowsHeld": 0,
+      "looseMatches": "count",
+      "duplicateRows": 0,
+      "sectorMismatches": 0,
+      "codeConflicts": 0,
+      "valueRead": null,
+      "valueMapped": null,
+      "periodMin": "2024-10",
+      "periodMax": "2026-09",
+      "pairs": 94,
+      "rejects": [
+        {
+          "reason": "place_unknown",
+          "example": "Mysooru",
+          "count": 75,
+          "value": null
+        },
         {
           "reason": "period",
           "example": "Q2 FY27",
-          "count": 1
+          "count": 1,
+          "value": null
         }
-      ]
+      ],
+      "rejectKinds": 2,
+      "looseMatchList": [],
+      "looseKinds": 0
     },
     {
-      "source": "industry_survey",
-      "recordsIn": 2212,
-      "recordsMapped": 2211,
-      "unmapped": [
+      "sourceId": "industry-survey",
+      "rowsRead": 2212,
+      "rowsMapped": 2211,
+      "rowsRejected": 1,
+      "rowsLooselyMatched": 0,
+      "rowsHeld": 0,
+      "looseMatches": "count",
+      "duplicateRows": 0,
+      "sectorMismatches": 0,
+      "codeConflicts": 0,
+      "valueRead": null,
+      "valueMapped": null,
+      "periodMin": "2024-10",
+      "periodMax": "2026-09",
+      "pairs": 94,
+      "rejects": [
         {
-          "reason": "place",
+          "reason": "place_unknown",
           "example": "Kolhapur",
-          "count": 1
+          "count": 1,
+          "value": null
         }
-      ]
+      ],
+      "rejectKinds": 1,
+      "looseMatchList": [],
+      "looseKinds": 0
     },
     {
-      "source": "training_capacity",
-      "recordsIn": 369,
-      "recordsMapped": 369,
-      "unmapped": []
+      "sourceId": "training-capacity",
+      "rowsRead": 369,
+      "rowsMapped": 369,
+      "rowsRejected": 0,
+      "rowsLooselyMatched": 0,
+      "rowsHeld": 0,
+      "looseMatches": "count",
+      "duplicateRows": 0,
+      "sectorMismatches": 0,
+      "codeConflicts": 0,
+      "valueRead": 633410,
+      "valueMapped": 633410,
+      "periodMin": "2023",
+      "periodMax": "2026",
+      "pairs": 93,
+      "rejects": [],
+      "rejectKinds": 0,
+      "looseMatchList": [],
+      "looseKinds": 0
     }
   ]
 }

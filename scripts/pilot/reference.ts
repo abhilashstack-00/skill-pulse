@@ -70,31 +70,31 @@ export const trainingCentres: TrainingCentre[] = districts.flatMap((district) =>
   })),
 )
 
-type SourceSeed = Omit<DataSource, 'recordsIn' | 'recordsMapped' | 'lastUpdated'> & { rawFile?: string }
+type SourceSeed = Omit<DataSource, 'recordsIn' | 'recordsMapped' | 'lastUpdated'>
 
 export const dataSources: SourceSeed[] = [
   {
-    id: 'job-portals', name: 'Job portal postings', sourceType: 'demand', status: 'prototype_synthetic', rawFile: 'job_portal',
+    id: 'job-portals', name: 'Job portal postings', sourceType: 'demand', status: 'prototype_synthetic',
     description: 'Synthetic extract in the shape of job-portal vacancy listings. Stands in for portal data until a real feed is agreed.',
     coverage: '7 pilot districts in 3 states', granularity: 'District × job title × month', feeds: 'Job postings (Demand Index, demand volume)',
   },
   {
-    id: 'employment-exchange', name: 'Employment exchange vacancies (NCS-style)', sourceType: 'demand', status: 'prototype_synthetic', rawFile: 'employment_exchange',
+    id: 'employment-exchange', name: 'Employment exchange vacancies (NCS-style)', sourceType: 'demand', status: 'prototype_synthetic',
     description: 'Synthetic extract shaped like National Career Service vacancy registrations with NCO codes. No connection to NCS exists yet.',
     coverage: '7 pilot districts in 3 states', granularity: 'District × NCO unit group × month', feeds: 'Employment registrations (Demand Index, demand volume)',
   },
   {
-    id: 'industry-hiring', name: 'Industry hiring intent', sourceType: 'demand', status: 'prototype_synthetic', rawFile: 'industry_hiring',
+    id: 'industry-hiring', name: 'Industry hiring intent', sourceType: 'demand', status: 'prototype_synthetic',
     description: 'Synthetic employer hiring-intent scores (0–100) by role and location.',
     coverage: '7 pilot districts in 3 states', granularity: 'District × role × month', feeds: 'Hiring signal (Demand Index)',
   },
   {
-    id: 'industry-survey', name: 'Industry demand outlook survey', sourceType: 'demand', status: 'prototype_synthetic', rawFile: 'industry_survey',
+    id: 'industry-survey', name: 'Industry demand outlook survey', sourceType: 'demand', status: 'prototype_synthetic',
     description: 'Synthetic sector-skill-council style outlook scores (0–100) by trade and district.',
     coverage: '7 pilot districts in 3 states', granularity: 'District × trade × month', feeds: 'Industry demand signal (Demand Index)',
   },
   {
-    id: 'training-capacity', name: 'Training capacity and outcomes', sourceType: 'supply', status: 'prototype_synthetic', rawFile: 'training_capacity',
+    id: 'training-capacity', name: 'Training capacity and outcomes', sourceType: 'supply', status: 'prototype_synthetic',
     description: 'Synthetic seat allocation, enrolment, completion and placement by trade and district. Stands in for scheme MIS data.',
     coverage: '7 pilot districts in 3 states', granularity: 'District × trade × training year', feeds: 'Supply Index, supply forecast',
   },

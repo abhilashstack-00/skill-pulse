@@ -7,7 +7,13 @@
  * response, export and test expectation that depends on it.
  */
 
-export const METHODOLOGY_VERSION = 'prototype-0.1'
+export const METHODOLOGY_VERSION = 'prototype-0.3'
+
+/**
+ * Months that count as "recent". The Demand Index, the forecast baseline and
+ * the "current" demand rate all use this one window, so they cannot drift apart.
+ */
+export const RECENT_WINDOW_MONTHS = 3
 
 export const DEMAND_INDEX = {
   /** Weights of the four normalised demand components. Must sum to 1. */
@@ -18,7 +24,7 @@ export const DEMAND_INDEX = {
     industryDemandSignal: 0.15,
   },
   /** Months averaged to get the "current" value of each component. */
-  smoothingMonths: 3,
+  smoothingMonths: RECENT_WINDOW_MONTHS,
 } as const
 
 export const SUPPLY_INDEX = {
@@ -50,18 +56,34 @@ export const GAP_THRESHOLDS = {
 } as const
 
 export const FORECAST = {
-  modelVersion: 'baseline-trend-v1',
+  modelVersion: 'baseline-trend-v2',
   horizons: { '3M': 3, '6M': 6, '12M': 12 },
   /** Months averaged for the baseline (rolling average). */
-  baselineWindow: 3,
+  baselineWindow: RECENT_WINDOW_MONTHS,
   /** Months used for the linear trend. */
   trendWindow: 12,
   /** Share of the slope taken from the 12-month trend; the rest is recent growth. */
   trendWeight: 0.6,
   /** Monthly damping applied to the recent-growth component. */
   growthDamping: 0.85,
-  /** z-value of the prediction interval (1.28 ≈ 80% interval). */
-  intervalZ: 1.28,
+  /** Share of outcomes the prediction interval is meant to contain. */
+  coverage: 0.8,
+  /** z-value matching `coverage` for a normal error (0.8 → 1.2816). Change both together. */
+  intervalZ: 1.2816,
+  /**
+   * Extrapolation uncertainty: the projected change (trend + recent growth) is
+   * treated as uncertain by this share of its own size. A forecast that leans
+   * on a steep trend is therefore less certain than one for a steady trade.
+   */
+  extrapolationUncertainty: 0.5,
+  /** The model interval is never taken to be narrower than this share of the forecast. */
+  minRelativeHalfWidth: 0.01,
+  calibration: {
+    /** The backtest may widen the model interval but never narrow it below this factor. */
+    minFactor: 1,
+    /** The forward check sets the factor on earlier start months only if they give at least this many forecasts. */
+    minForwardSamples: 30,
+  },
   /** Fewer observed months than this in the trend window: no forecast. */
   minMonthsBaseline: 3,
   /** Fewer than this: baseline estimate only (no trend), low confidence. */
@@ -77,6 +99,40 @@ export const FORECAST = {
     capBaselineEstimate: 35,
     capLimitedHistory: 60,
   },
+} as const
+
+/** How a group of pairs (a district, a state, a sector, the whole pilot) is summarised. */
+export const GROUP = {
+  /**
+   * Seats short (or spare) count as material when they are at least this share
+   * of the group's supply, %. One material side: "mostly shortage" or "mostly
+   * oversupply". Both: "mixed". Neither: "largely balanced". A group is only
+   * "balanced" when none of its pairs is outside the balanced band.
+   */
+  materialSharePct: 2,
+  /**
+   * Lowest correlation between pairs' forecast errors assumed when the interval
+   * of a group total is built. The backtest measures the correlation, but on
+   * synthetic data with no common shocks it comes out at about zero, which
+   * would make every group total look almost certain. Real labour markets move
+   * together, so the measured value is used only when it is higher than this.
+   * An assumption, not a measurement.
+   */
+  minErrorCorrelation: 0.1,
+  /**
+   * When more than this share of a group's forecast demand comes from pairs
+   * forecast without the full method, the group's confidence is capped like a
+   * short-history pair's, however narrow its interval.
+   */
+  shortHistoryShare: 0.5,
+} as const
+
+/** When the loaded data itself is doubtful enough to say so next to the results. */
+export const DATA_QUALITY = {
+  /** A count source is flagged when less than this share of its volume reached the dataset, %. */
+  minVolumeSharePct: 95,
+  /** One rejected or held value is flagged when it carries at least this share of its source's volume, %. */
+  largeRejectSharePct: 1,
 } as const
 
 export const SUPPLY_FORECAST = {
@@ -101,6 +157,8 @@ export const PRIORITY = {
   /** Annualised demand trend (%) at which the growth component reaches 100. */
   growthSaturationPct: 30,
   bands: { high: 70, medium: 45 },
+  /** A pair forecast to be balanced has no mismatch to act on, so its band is never above this. */
+  balancedBandCap: 'medium',
   /** Horizon used for priority, warnings and recommendations. */
   planningHorizon: '12M',
 } as const
@@ -135,6 +193,8 @@ export const METHODOLOGY = {
   normalization: NORMALIZATION,
   gapThresholds: GAP_THRESHOLDS,
   forecast: FORECAST,
+  group: GROUP,
+  dataQuality: DATA_QUALITY,
   supplyForecast: SUPPLY_FORECAST,
   priority: PRIORITY,
   alerts: ALERTS,

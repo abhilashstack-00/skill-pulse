@@ -10,7 +10,7 @@ describe('gap calculation', () => {
     expect(result.status).toBe('severe_shortage')
   })
 
-  it('matches the demo scenario: demand 1,250 against 800 seats', () => {
+  it('classifies demand 1,250 against 800 seats as a severe shortage of 56.25%', () => {
     expect(computeGap(1250, 800)).toMatchObject({ gap: 450, gapPercentage: 56.25, status: 'severe_shortage' })
   })
 
