@@ -37,7 +37,7 @@ export function provenance(snapshot: Snapshot) {
 const WINDOW_MS = 60_000
 const hits = new Map<string, { windowStart: number; count: number }>()
 
-function overLimit(key: string): boolean {
+export function overLimit(key: string, limit: number = env.rateLimitPerMinute): boolean {
   const now = Date.now()
   const entry = hits.get(key)
   if (!entry || now - entry.windowStart >= WINDOW_MS) {
@@ -46,7 +46,7 @@ function overLimit(key: string): boolean {
     return false
   }
   entry.count += 1
-  return entry.count > env.rateLimitPerMinute
+  return entry.count > limit
 }
 
 /**
@@ -55,10 +55,10 @@ function overLimit(key: string): boolean {
  * and every client without the header shares one bucket. Good enough to slow
  * a runaway script, not a defence against someone trying.
  */
-const addressKey = (request: NextRequest) => `ip:${request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'local'}`
+export const addressKey = (request: NextRequest) => `ip:${request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'local'}`
 
 /** True when the request names an origin that is not this site. A missing header is allowed: same-origin GET-style clients omit it. */
-function crossSite(request: NextRequest): boolean {
+export function crossSite(request: NextRequest): boolean {
   const origin = request.headers.get('origin')
   if (origin === null) return false
   try {

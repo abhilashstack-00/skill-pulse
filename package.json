@@ -18,6 +18,7 @@
     "ingest": "tsx --env-file-if-exists=.env.local scripts/ingest-file.ts",
     "e2e": "node scripts/e2e.mjs",
     "demo:users": "tsx --env-file-if-exists=.env.local scripts/create-demo-users.ts",
+    "demo:evaluator": "tsx --env-file-if-exists=.env.local scripts/create-evaluator-account.ts",
     "verify:supabase": "tsx --env-file-if-exists=.env.local scripts/verify-supabase.ts",
     "db:check-rls": "psql \"$DATABASE_URL\" -v ON_ERROR_STOP=1 -q -f supabase/tests/rls-check.sql"
   },

@@ -22,6 +22,7 @@ export const en = {
   'app.language': 'Language',
   'app.signOut': 'Sign out',
   'app.demoRole': 'Demo role',
+  'app.evaluator': 'Demo Environment · {role} · Read Only',
   'app.demoHint': 'Sign-in is not configured, so access is shown with demo roles.',
   'app.scope.all': 'All pilot states',
   'role.admin': 'Administrator',
@@ -522,6 +523,9 @@ export const en = {
   'login.submitting': 'Signing in…',
   'login.error': 'Sign-in failed. Check the email and password.',
   'login.note': 'Accounts and roles are managed by an administrator.',
+  'login.demo': 'Continue with Demo Account',
+  'login.demoOpening': 'Opening demo…',
+  'login.demoError': 'Demo access is temporarily unavailable. Please use the standard sign-in.',
   // Group figures, calibrated intervals, evidence and data loading
   'status.mostly_shortage': 'Mostly shortage',
   'status.mostly_oversupply': 'Mostly oversupply',

@@ -58,7 +58,7 @@ const ALL_DISTRICTS = dataset.districts.map((d) => d.id)
 
 let counter = 0
 const sessionFor = (over: Partial<Session>): Session => ({
-  userId: `user-${++counter}`, name: 'Test user', email: 'test@example.test', role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false, ...over,
+  userId: `user-${++counter}`, name: 'Test user', email: 'test@example.test', role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false, evaluator: false, ...over,
 })
 
 type Handler = (request: NextRequest) => Promise<Response>

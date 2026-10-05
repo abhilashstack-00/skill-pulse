@@ -56,6 +56,7 @@ export function Sidebar({ open, onNavigate }: { open: boolean; onNavigate: () =>
 
         {session && (
           <div className="account">
+            {session.evaluator && <div className="account-evaluator">{t('app.evaluator', { role: t(`role.${session.role}`) })}</div>}
             <div className="account-name">{session.demo ? t(`role.${session.role}`) : session.name}</div>
             <div className="account-role">
               {session.demo ? scope : `${t(`role.${session.role}`)} · ${scope}`}

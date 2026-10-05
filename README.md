@@ -106,6 +106,16 @@ To accept a title or place name that was rejected, add it to
    signs up on their own sees nothing until an administrator approves them. There is no
    screen for that yet; in the Supabase SQL editor:
    `update public.profiles set role = 'state_planner', state_id = 'TG', approved = true where id = '<user id>';`
+7. Optional, for evaluators: `DEMO_ACCOUNT_EMAIL='…' DEMO_ACCOUNT_PASSWORD='…' pnpm demo:evaluator`
+   creates one more real user, an approved national planner marked as the evaluator account,
+   and setting the same two variables on the server adds **Continue with Demo Account** to the
+   sign-in page. One click then signs the visitor in as that user: the server performs an
+   ordinary Supabase password sign-in (`app/api/auth/demo/route.ts`), so the password never
+   reaches the browser and the session is checked like any other, by `proxy.ts`, the API
+   wrapper and row level security. The account cannot load data whatever its profile says, the
+   route refuses any account that is not an approved national planner carrying the mark, and
+   signing out ends that browser's session only (the account is shared). This is unrelated to
+   `DEMO_MODE`, which must stay unset when sign-in is on.
 
 | Configured | The app reads from |
 |---|---|

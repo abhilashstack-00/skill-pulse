@@ -109,6 +109,16 @@ export async function postIngest(input: { source: string; file: File; mode: 'mer
 
 export const exportUrl = (dataset: string, f: QueryFilters) => `/api/export${query({ dataset, format: 'csv', ...f })}`
 
+/** Asks the server to sign this browser in as the evaluator account. True when a session was opened. */
+export async function signInDemo(): Promise<boolean> {
+  try {
+    const response = await fetch('/api/auth/demo', { method: 'POST', credentials: 'same-origin' })
+    return response.ok
+  } catch {
+    return false
+  }
+}
+
 export async function setDemoRole(role: string): Promise<void> {
   await fetch('/api/demo-role', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ role }) })
   inflight.clear()

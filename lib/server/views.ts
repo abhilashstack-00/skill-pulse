@@ -141,7 +141,7 @@ export function metaView(snapshot: Snapshot, session: Session, scope: GeoScope) 
   return {
     dataset: { ...snapshot.meta, mode: dataMode(), methodologyVersion: snapshot.methodologyVersion },
     session: {
-      name: session.name, email: session.email, role: session.role, demo: session.demo,
+      name: session.name, email: session.email, role: session.role, demo: session.demo, evaluator: session.evaluator,
       stateId: scope.stateId, districtId: scope.districtId,
       permissions: { recommendations: can(session, 'recommendations'), export: can(session, 'view'), ingest: can(session, 'ingest') },
     },

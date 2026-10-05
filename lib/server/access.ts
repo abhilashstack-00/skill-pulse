@@ -23,6 +23,8 @@ const ALLOWED: Record<Permission, readonly Role[]> = {
 }
 
 export function can(session: Session, permission: Permission): boolean {
+  // The evaluator account is read-only whatever role its profile carries.
+  if (session.evaluator && permission === 'ingest') return false
   return session.approved && ALLOWED[permission].includes(session.role)
 }
 

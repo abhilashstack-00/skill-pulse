@@ -29,7 +29,7 @@ vi.mock('@/lib/server/session', () => ({
 
 import { clearScopeCache, visibleDistrictIds } from '@/lib/server/db-scope'
 
-const session = (over: Partial<Session> = {}): Session => ({ userId: 'user-1', name: 'n', email: null, role: 'state_planner', stateId: 'TG', districtId: null, approved: true, demo: false, ...over })
+const session = (over: Partial<Session> = {}): Session => ({ userId: 'user-1', name: 'n', email: null, role: 'state_planner', stateId: 'TG', districtId: null, approved: true, demo: false, evaluator: false, ...over })
 
 beforeEach(() => {
   clearScopeCache()

@@ -17,7 +17,7 @@ import type { Session } from '@/lib/server/session'
 import { alertsView, demandView, districtView, drilldownView, evidenceView, forecastsView, gapsView, methodologyView, priorityView, recommendationsView, runView, sourcesView, summaryView, supplyView, tradeView } from '@/lib/server/views'
 
 let snapshot: Snapshot
-const session = (over: Partial<Session>): Session => ({ userId: 'u', name: 'n', email: null, role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false, ...over })
+const session = (over: Partial<Session>): Session => ({ userId: 'u', name: 'n', email: null, role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false, evaluator: false, ...over })
 const adminSession = session({ role: 'admin' })
 const employerSession = session({ role: 'employer' })
 const open: GeoScope = { stateId: null, districtId: null, districtIds: null }

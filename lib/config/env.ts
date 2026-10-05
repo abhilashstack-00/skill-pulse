@@ -16,6 +16,12 @@ export const env = {
   supabaseAnonKey: value('NEXT_PUBLIC_SUPABASE_ANON_KEY'),
   /** Server only. Used to read profiles and, without DATABASE_URL, the data tables. */
   supabaseServiceRoleKey: value('SUPABASE_SERVICE_ROLE_KEY'),
+  /**
+   * The evaluator account behind "Continue with Demo Account". Server only: the
+   * sign-in is made by the server, so neither value is ever sent to the browser.
+   */
+  demoAccountEmail: value('DEMO_ACCOUNT_EMAIL'),
+  demoAccountPassword: value('DEMO_ACCOUNT_PASSWORD'),
   /** How long a computed snapshot is reused before the data is read again. */
   snapshotTtlSeconds: positiveNumber('SNAPSHOT_TTL_SECONDS', 300),
   /** API requests allowed per client per minute. */
@@ -24,6 +30,13 @@ export const env = {
 
 /** Sign-in is enforced only when Supabase Auth is configured. */
 export const authEnabled = Boolean(env.supabaseUrl && env.supabaseAnonKey)
+
+/**
+ * One-click evaluator access is offered only when sign-in is on and the
+ * evaluator account is configured. It is a real sign-in as a real, restricted
+ * user; it has nothing to do with DEMO_MODE below, which has no users at all.
+ */
+export const demoAccountAvailable = Boolean(authEnabled && env.demoAccountEmail && env.demoAccountPassword)
 
 /**
  * Demo mode: no sign-in, and the role is picked from a menu. It is on by

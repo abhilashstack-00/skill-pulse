@@ -2403,6 +2403,19 @@ p {
   white-space: nowrap;
 }
 
+/* Marks the evaluator account. Deliberately quiet: one small line, no banner. */
+.account-evaluator {
+  margin-bottom: 8px;
+  padding: 5px 8px;
+  border-radius: var(--radius-control);
+  background: var(--surface-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
 .account-role {
   margin: 3px 0 8px;
   font-size: 11px;
@@ -2984,6 +2997,10 @@ p {
 .login-card .btn {
   width: 100%;
   margin-top: 22px;
+}
+
+.login-card .btn.login-demo {
+  margin-top: 10px;
 }
 
 .form-error {

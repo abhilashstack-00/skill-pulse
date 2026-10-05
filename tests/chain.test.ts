@@ -26,7 +26,7 @@ import { alertsView, evidenceView, gapsView, recommendationsView, summaryView } 
  * No expected value is written here. The pair is chosen from the pilot data
  * by rule, and "after" is compared with "before".
  */
-const planner: Session = { userId: 'u', name: 'n', email: null, role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false }
+const planner: Session = { userId: 'u', name: 'n', email: null, role: 'national_planner', stateId: null, districtId: null, approved: true, demo: false, evaluator: false }
 const open = { stateId: null, districtId: null, districtIds: null }
 const portal = specFor('job-portals')!
 

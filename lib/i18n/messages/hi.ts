@@ -24,6 +24,7 @@ export const hi: Record<MessageKey, string> = {
   'app.language': 'भाषा',
   'app.signOut': 'साइन आउट',
   'app.demoRole': 'डेमो भूमिका',
+  'app.evaluator': 'डेमो परिवेश · {role} · केवल देखने के लिए',
   'app.demoHint': 'साइन-इन सेट नहीं है, इसलिए पहुँच डेमो भूमिकाओं से दिखाई जा रही है।',
   'app.scope.all': 'सभी पायलट राज्य',
   'role.admin': 'प्रशासक',
@@ -524,6 +525,9 @@ export const hi: Record<MessageKey, string> = {
   'login.submitting': 'साइन इन हो रहा है…',
   'login.error': 'साइन-इन विफल रहा। ईमेल और पासवर्ड जाँचें।',
   'login.note': 'खाते और भूमिकाएँ प्रशासक द्वारा प्रबंधित की जाती हैं।',
+  'login.demo': 'डेमो खाते से जारी रखें',
+  'login.demoOpening': 'डेमो खुल रहा है…',
+  'login.demoError': 'डेमो पहुँच अभी उपलब्ध नहीं है। कृपया सामान्य साइन-इन का उपयोग करें।',
   // Group figures, calibrated intervals, evidence and data loading
   'status.mostly_shortage': 'अधिकतर कमी',
   'status.mostly_oversupply': 'अधिकतर अधिकता',
